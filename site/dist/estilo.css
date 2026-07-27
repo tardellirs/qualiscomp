@@ -182,7 +182,8 @@
     /* 16px é o piso: abaixo disso o Safari do iPhone dá zoom ao focar, e a
        página fica torta até o usuário pinçar de volta. */
     font-size: max(16px, 1rem);
-    inline-size: 100%; padding: .6rem .7rem .6rem 2rem;
+    /* Espaço à direita para o × não ficar em cima do texto. */
+    inline-size: 100%; padding: .6rem 2.6rem .6rem 2rem;
     background: var(--painel); border: 1px solid var(--borda);
     border-radius: var(--r);
   }

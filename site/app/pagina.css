@@ -52,6 +52,16 @@
   }
   .desca a:hover { color: var(--txt); border-color: var(--acento); }
   .desca b { font-weight: 600; color: var(--txt); }
+  .desca a { white-space: nowrap; }
+  /* Em tela estreita o texto longo quebrava em duas linhas e a pastilha voltava
+     a cobrir uma linha da lista. Versão curta abaixo de 30rem. */
+  .desca__longo { display: inline; }
+  .desca__curto { display: none; }
+  @media (max-width: 30rem) {
+    .desca__longo { display: none; }
+    .desca__curto { display: inline; }
+    .desca a { font-size: .78rem; padding-inline: .8rem; }
+  }
 
   .principal { position: relative; }
 
