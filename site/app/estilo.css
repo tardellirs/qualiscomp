@@ -352,6 +352,24 @@
   .caixa { display: flex; gap: .45rem; align-items: center; font-size: .82rem; color: var(--txt-2);
            padding: .2rem 0; cursor: pointer; }
 
+  .caixa { display: flex; gap: .5rem; align-items: center; font-size: .82rem;
+           color: var(--txt-2); margin-block-start: 1rem; cursor: pointer;
+           min-block-size: 2.25rem; }
+  .caixa b { color: var(--txt); font-weight: 600; }
+
+  /* APC: a taxa que a revista cobraria do autor e a CAPES cobre. Não muda o
+     estrato — por isso a cor é a de acento, não a da rampa dos estratos. */
+  .tag-apc {
+    font-size: .62rem; font-weight: 700; letter-spacing: .04em;
+    padding: .1rem .3rem; border-radius: 4px; vertical-align: .05em;
+    background: color-mix(in oklab, var(--acento) 22%, transparent);
+    color: var(--acento);
+  }
+  .cartao--apc { border-color: color-mix(in oklab, var(--acento) 45%, var(--borda));
+                 background: color-mix(in oklab, var(--acento) 7%, var(--painel)); }
+  .cartao--apc p { font-size: .86rem; color: var(--txt-2); margin-block-start: .3rem; }
+  .apc__link { color: var(--acento); text-decoration: none; font-size: .82rem; }
+
   .limpar { font-size: .78rem; color: var(--acento); text-decoration: underline; align-self: start; }
 
   /* A busca fica fora da gaveta de filtros: no celular a gaveta nasce fechada,

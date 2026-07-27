@@ -79,6 +79,7 @@ function estado() {
     estratos: new Set(d.getAll('estrato')),
     ces: subareas,
     soSBC: apenasSBC,
+    soAPC: !!d.get('soapc'),
     ordem: $('#ordem').value,
   };
 }
@@ -129,6 +130,7 @@ function aplicar() {
   for (const v of BASE.veiculos) {
     if (e.tipo !== 'todos' && v.t !== e.tipo) continue;
     if (e.estratos.size && !e.estratos.has(v.e)) continue;
+    if (e.soAPC && !v.apc) continue;
     // Múltipla escolha: união, não interseção — quem marca IHC e IA quer ver
     // os eventos das duas, não só os que estão nas duas.
     if (e.ces.size || e.soSBC) {
@@ -252,7 +254,7 @@ function desenhar() {
         <b>${v.g ? `${esc(v.g)} · ` : ''}${esc(v.n)}</b>
         ${v.g && v.a ? `<small>${esc(v.a.split(' · ')[0])}</small>` : ''}
       </span>
-      <span class="item__ed">${esc(v._ed)}</span>
+      <span class="item__ed">${v.apc ? '<b class="tag-apc" title="Taxa de publicação coberta por acordo da CAPES">APC</b> ' : ''}${esc(v._ed)}</span>
       <span class="item__ind">${ind}</span>
       <span class="item__tipo">${v.t === 'p' ? 'periódico' : 'evento'}</span>
     </button>`;
@@ -502,6 +504,16 @@ async function abrir(slug) {
         antiga (A1–A4, B1–B4), que tem os mesmos oito degraus e os mesmos cortes de h5.
         É do ciclo anterior — não vale para 2025-2028, mas é a única classificação
         oficial de eventos que existe.</p></div>` : ''}
+    ${d.apc_capes ? `<div class="cartao cartao--apc">
+      <h3>Você não paga a taxa de publicação</h3>
+      <p>A CAPES tem acordo de isenção de <b>APC</b> com a
+        <b>${esc(d.apc_editora)}</b> para esta revista${d.apc_licenca
+          ? `, sob licença ${esc(d.apc_licenca)}` : ''}. Vale para autores de
+        instituições participantes — confirme se a sua está na lista.</p>
+      ${d.apc_url ? `<p><a href="${esc(d.apc_url)}" target="_blank" rel="noopener"
+         class="apc__link">Ver a revista na editora ↗</a></p>` : ''}
+      <p class="sim__ajuda">Não altera o estrato: muda quanto custa publicar.</p>
+    </div>` : ''}
     ${regua(d)}
     ${historico(d)}
     ${simulador(d)}
