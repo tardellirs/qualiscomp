@@ -139,21 +139,27 @@
   :root[data-tema="claro"] .cab__tema [data-tema="claro"],
   :root[data-tema="escuro"] .cab__tema [data-tema="escuro"] { display: block; }
 
-  /* Atalhos de subárea — atrás de flag, ver FLAGS em app.js */
-  .atalhos { display: flex; flex-wrap: wrap; gap: .35rem;
-             padding: .6rem 1rem; border-block-end: 1px solid var(--borda); }
-  .atalhos[hidden] { display: none; }
-  .atalhos__rot { font-size: .74rem; color: var(--txt-3); align-self: center;
-                  margin-inline-end: .3rem; }
+  /* Subáreas: ocupam o lugar da tabela de cortes quando o filtro é Eventos.
+     Ver FLAGS em app.js. */
+  .subareas { margin-block-start: auto; padding-block-start: 1rem;
+              border-block-start: 1px solid var(--borda); }
+  .subareas[hidden] { display: none; }
+  .subareas h3 { font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
+                 color: var(--txt-3); margin-block-end: .5rem; }
+  .subareas h3 span { display: block; font-weight: 400; text-transform: none;
+                      letter-spacing: 0; font-size: .68rem; opacity: .85;
+                      margin-block-start: .1rem; }
+  .subareas__grade { display: flex; flex-wrap: wrap; gap: .3rem; }
   .atalho {
-    padding: .35rem .7rem; border-radius: 99px; font-size: .8rem;
+    padding: .3rem .55rem; border-radius: 8px; font-size: .76rem;
     border: 1px solid var(--borda); background: var(--painel); color: var(--txt-2);
     min-block-size: 2.25rem;
   }
   .atalho:hover { border-color: var(--acento); color: var(--txt); }
   .atalho[aria-pressed="true"] { background: var(--acento); color: var(--fundo);
-                                 border-color: transparent; font-weight: 600; }
-  .atalho small { opacity: .7; margin-inline-start: .3rem; }
+                                 border-color: transparent; font-weight: 650; }
+  .atalho small { opacity: .65; margin-inline-start: .25rem;
+                  font-variant-numeric: tabular-nums; }
   .cab__esq { grid-column: 1; display: flex; gap: .35rem; align-items: center; }
   .cab__menu { min-inline-size: 2.75rem; min-block-size: 2.75rem;
                display: grid; place-items: center; }

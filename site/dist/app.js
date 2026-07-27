@@ -37,7 +37,7 @@ let BASE = null;
 let filtrados = [];
 let atual = null;
 let limite = 80;
-let subarea = null;   // índice da CE escolhida nos atalhos
+let subareas = new Set();   // índices das CEs escolhidas (múltipla)
 
 /* ---------------------------------------------------------------- dados -- */
 
@@ -76,9 +76,7 @@ function estado() {
     q: $('#q').value.trim(),
     tipo: d.get('tipo') || 'todos',
     estratos: new Set(d.getAll('estrato')),
-    ce: subarea,
-    min: parseFloat(d.get('min')),
-    max: parseFloat(d.get('max')),
+    ces: subareas,
     ordem: $('#ordem').value,
   };
 }
@@ -120,6 +118,8 @@ function bonusEstrato(v) {
 }
 
 function aplicar() {
+  // Trocar de tipo pode invalidar as subáreas escolhidas; nesse caso refiltra.
+  if (desenharSubareas()) return aplicar();
   const e = estado();
   const q = norm(e.q);
   let rs = [];
@@ -127,11 +127,9 @@ function aplicar() {
   for (const v of BASE.veiculos) {
     if (e.tipo !== 'todos' && v.t !== e.tipo) continue;
     if (e.estratos.size && !e.estratos.has(v.e)) continue;
-    if (e.ce !== null && !(v.ce || []).includes(e.ce)) continue;
-    // O indicador: percentil para periódico, h5 para evento.
-    const ind = v.i;
-    if (!Number.isNaN(e.min) && (ind == null || ind < e.min)) continue;
-    if (!Number.isNaN(e.max) && (ind == null || ind > e.max)) continue;
+    // Múltipla escolha: união, não interseção — quem marca IHC e IA quer ver
+    // os eventos das duas, não só os que estão nas duas.
+    if (e.ces.size && !(v.ce || []).some((c) => e.ces.has(c))) continue;
     if (q) {
       const p = pontuar(v, q);
       if (!p) continue;
@@ -175,26 +173,40 @@ function chip(e, extra = '') {
   return `<span class="e ${extra}" data-e="${e}">${e}</span>`;
 }
 
-function desenharAtalhos() {
-  const el = $('#atalhos');
-  if (!FLAGS.subareas || !BASE.ces?.length) { el.hidden = true; return; }
-  const temBusca = $('#q').value.trim().length > 0;
-  if (temBusca && subarea === null) { el.hidden = true; return; }
+function desenharSubareas() {
+  const bloco = $('#subareas');
+  const regras = $('#regras');
+  const tipo = new FormData($('#form-filtros')).get('tipo');
+  // Só faz sentido com o filtro em Eventos: as Comissões Especiais não
+  // classificam periódicos, e mostrá-las em "Tudo" esconderia os periódicos
+  // sem avisar.
+  const mostrar = FLAGS.subareas && tipo === 'e' && BASE.ces?.length;
+
+  bloco.hidden = !mostrar;
+  if (regras) regras.hidden = !!mostrar;   // cede o lugar na lateral
+  if (!mostrar) {
+    if (subareas.size) { subareas.clear(); return true; }  // pede novo filtro
+    return false;
+  }
 
   const contagem = new Map();
-  for (const v of BASE.veiculos) for (const c of v.ce || [])
-    contagem.set(c, (contagem.get(c) || 0) + 1);
-  const top = [...contagem.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
+  for (const v of BASE.veiculos) {
+    if (v.t !== 'e') continue;
+    for (const c of v.ce || []) contagem.set(c, (contagem.get(c) || 0) + 1);
+  }
+  const ordenadas = [...contagem.entries()].sort((a, b) => b[1] - a[1]);
 
-  el.hidden = false;
-  el.innerHTML = '<span class="atalhos__rot">Subárea da SBC:</span>' +
-    top.map(([i, n]) => `<button class="atalho" type="button" data-ce="${i}"
-      aria-pressed="${subarea === i}">${esc(BASE.ces[i])}<small>${n}</small></button>`).join('') +
-    (subarea !== null ? '<button class="atalho" type="button" data-ce="">limpar</button>' : '');
+  $('#subareas-grade').innerHTML = ordenadas.map(([i, n]) => {
+    const [sigla, nome] = BASE.ces[i];
+    return `<button class="atalho" type="button" data-ce="${i}"
+      aria-pressed="${subareas.has(i)}"
+      title="${esc(nome || sigla)}">${esc(sigla)}<small>${n}</small></button>`;
+  }).join('');
+  $('#limpar-subareas').hidden = subareas.size === 0;
+  return false;
 }
 
 function desenhar() {
-  desenharAtalhos();
   const lista = $('#lista');
   const n = filtrados.length;
   $('#contagem').textContent = n.toLocaleString('pt-BR');
@@ -487,18 +499,7 @@ addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // O documento define DOIS indicadores, não um genérico: percentil para
-  // periódico, h5 para evento. O rótulo do campo segue o tipo escolhido, em vez
-  // de inventar um nome guarda-chuva que não existe na regra.
-  const rotularFaixa = () => {
-    const t = new FormData($('#form-filtros')).get('tipo');
-    const r = $('#rot-faixa'), a = $('#ajuda-faixa');
-    if (t === 'p') { r.textContent = 'Percentil'; a.textContent = 'Posição do periódico no Scopus, de 0 a 100.'; }
-    else if (t === 'e') { r.textContent = 'h5-index'; a.textContent = 'h5 do evento no Google Scholar.'; }
-    else { r.textContent = 'Percentil e h5'; a.textContent = 'Periódico vai por percentil (0–100), evento por h5.'; }
-  };
-
-  const rodar = () => { rotularFaixa(); aplicar(); };
+  const rodar = () => aplicar();
   let t;
   $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(rodar, 80); });
   $('#form-filtros').addEventListener('change', rodar);
@@ -515,16 +516,19 @@ addEventListener('DOMContentLoaded', async () => {
 
   // A marca no canto esquerdo devolve o estado inicial sem recarregar: fecha a
   // ficha, limpa busca e filtros, volta a ordenação e sobe a lista.
-  $('#atalhos').addEventListener('click', (e) => {
+  $('#subareas-grade').addEventListener('click', (e) => {
     const b = e.target.closest('[data-ce]');
     if (!b) return;
-    subarea = b.dataset.ce === '' ? null : Number(b.dataset.ce);
+    const i = Number(b.dataset.ce);
+    if (subareas.has(i)) subareas.delete(i);
+    else subareas.add(i);
     aplicar();
   });
+  $('#limpar-subareas').addEventListener('click', () => { subareas.clear(); aplicar(); });
 
   $('#ir-inicio').addEventListener('click', () => {
     if (atual) fechar();
-    subarea = null;
+    subareas.clear();
     $('#form-filtros').reset();
     $('#q').value = '';
     $('#ordem').value = 'relevancia';

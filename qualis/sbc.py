@@ -107,6 +107,27 @@ def _normalizar_classificacao(v: object) -> str | None:
 
 
 ALIASES = Path(__file__).resolve().parent.parent / "data" / "aliases_eventos.csv"
+NOMES_CE = Path(__file__).resolve().parent.parent / "data" / "ces_sbc_nomes.csv"
+
+
+def nomes_das_ces(caminho: Path | None = None) -> dict[str, str]:
+    """Sigla da Comissão Especial -> nome por extenso.
+
+    A planilha de conferências traz só a sigla, no nome da aba. Sem o nome,
+    "CE-GRAPI" não diz nada a quem não é da subárea.
+    """
+    import csv
+
+    caminho = caminho or NOMES_CE
+    if not caminho.exists():
+        return {}
+    with caminho.open(encoding="utf-8") as f:
+        linhas = [l for l in f if not l.lstrip().startswith("//")]
+    return {
+        (r["sigla"] or "").strip(): (r["nome"] or "").strip()
+        for r in csv.DictReader(linhas)
+        if (r.get("sigla") or "").strip()
+    }
 
 
 def carregar_aliases(caminho: Path | None = None) -> dict[str, list[str]]:

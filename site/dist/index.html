@@ -111,20 +111,16 @@
         </div>
       </div>
 
-      <div class="grupo">
-        <h3 id="rot-faixa">Percentil e h5</h3>
-        <div class="faixa">
-          <input type="number" name="min" placeholder="de" min="0" step="1" inputmode="numeric">
-          <span>–</span>
-          <input type="number" name="max" placeholder="até" min="0" step="1" inputmode="numeric">
-        </div>
-        <p class="ajuda" id="ajuda-faixa">Periódico vai por percentil (0–100), evento por h5.</p>
-      </div>
-
       <button class="limpar" id="limpar" type="button">Limpar filtros</button>
     </form>
 
-    <div class="regras">
+    <div class="subareas" id="subareas" hidden>
+      <h3>Subárea da SBC<span>Comissões Especiais · só eventos</span></h3>
+      <div class="subareas__grade" id="subareas-grade"></div>
+      <button class="limpar" id="limpar-subareas" type="button" hidden>Limpar subáreas</button>
+    </div>
+
+    <div class="regras" id="regras">
       <h3>Novos estratos CAPES<span>Área 02 · Computação</span></h3>
       <table>
         <thead><tr><th></th><th>percentil</th><th>h5</th></tr></thead>
@@ -164,7 +160,6 @@
         </select>
       </div>
     </div>
-    <div class="atalhos" id="atalhos" hidden></div>
     <div class="rolo"><div class="lista" id="lista"></div></div>
     <div class="desca"><a href="sobre/"><b><span class="desca__longo">Entenda a mudança da CAPES a partir de 2025</span><span class="desca__curto">Entenda a mudança de 2025</span></b> →</a></div>
   </main>

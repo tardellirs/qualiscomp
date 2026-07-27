@@ -1,0 +1,36 @@
+// Nomes por extenso das Comissões Especiais da SBC.
+// Fonte: https://www.sbc.org.br/institucional-2/comissoes-especiais/
+// A planilha de conferências traz só a sigla no nome da aba; estes nomes vêm
+// da página institucional da SBC.
+sigla,nome
+CE-ACPAD,Arquitetura de Computadores e Processamento de Alto Desempenho
+CE-SEG,Cibersegurança
+CE-CN,Computação em Nuvem
+CE-CCI,Concepção de Circuitos e Sistemas Integrados
+CE-ESC,Engenharia de Sistemas Computacionais
+CE-RESD,Redes de Computadores e Sistemas Distribuídos
+CE-R,Robótica
+CE-TF,Sistemas Tolerantes a Falhas
+CE-ES,Engenharia de Software
+CE-LP,Linguagens de Programação
+CE-MF,Métodos Formais
+CE-ACO,"Algoritmos, Combinatória e Otimização"
+CE-BioComp,Biologia Computacional
+CE-GRAPI,Computação Gráfica e Processamento de Imagens
+CE-CM,Computação Musical
+CE-IA,Inteligência Artificial
+CE-IC,Inteligência Computacional
+CE-IHC,Interação Humano-Computador
+CE-JOGOS,Jogos e Entretenimento Digital
+CE-PLN,Processamento de Linguagem Natural
+CE-RV,Realidade Virtual
+CE-SC,Sistemas Colaborativos
+CE-WEBMEDIA,Sistemas Multimídia e Web
+CE-CAS,Computação Aplicada à Saúde
+CE-GD,Governo Digital
+CE-EDUCOMP,Educação em Computação
+CE-Geoinformática,Geoinformática
+CE-IE,Informática na Educação
+CE-SI,Sistemas de Informação
+CE-BD,Bancos de Dados
+GI-L,Grupo de Interesse em Linguagens

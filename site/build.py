@@ -544,7 +544,10 @@ def main() -> int:
 
     # Comissões Especiais da SBC: são as subáreas da Computação brasileira, e
     # até aqui só apareciam como texto decorativo na ficha.
-    ces: list[str] = []
+    # Sigla sem o prefixo "CE-" (redundante quando todas têm) e nome por
+    # extenso para o tooltip: "GRAPI" não diz nada a quem não é da subárea.
+    nomes_ce = sbc.nomes_das_ces()
+    ces: list[list[str]] = []
     pos_ce: dict[str, int] = {}
     for d in indice:
         lista = d.pop("ce", None)
@@ -553,7 +556,8 @@ def main() -> int:
             for c in lista:
                 if c not in pos_ce:
                     pos_ce[c] = len(ces)
-                    ces.append(c)
+                    curto = c[3:] if c.upper().startswith("CE-") else c
+                    ces.append([curto, nomes_ce.get(c, "")])
                 ids.append(pos_ce[c])
             d["ce"] = ids
 
