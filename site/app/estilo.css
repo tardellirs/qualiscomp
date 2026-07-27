@@ -10,6 +10,10 @@
 }
 
 @layer tokens {
+  /* A escolha manual sobrepõe a preferência do sistema, nas duas direções. */
+  :root[data-theme="light"] { color-scheme: light; }
+  :root[data-theme="dark"]  { color-scheme: dark; }
+
   :root {
     color-scheme: dark light;
     --h: 250;
@@ -120,6 +124,35 @@
     color: var(--txt-2);
   }
   .cab__gh:hover { color: var(--txt); background: var(--acento-fr); }
+
+  .cab__tema {
+    display: grid; place-items: center;
+    inline-size: 2.5rem; block-size: 2.5rem; border-radius: 8px;
+    color: var(--txt-2); font-size: 1.05rem; line-height: 1;
+  }
+  .cab__tema:hover { color: var(--txt); background: var(--acento-fr); }
+  /* Mostra só o ícone do estado atual. */
+  .cab__tema [data-tema] { display: none; }
+  :root:not([data-tema]) .cab__tema [data-tema="auto"],
+  :root[data-tema="auto"] .cab__tema [data-tema="auto"],
+  :root[data-tema="claro"] .cab__tema [data-tema="claro"],
+  :root[data-tema="escuro"] .cab__tema [data-tema="escuro"] { display: block; }
+
+  /* Atalhos de subárea — atrás de flag, ver FLAGS em app.js */
+  .atalhos { display: flex; flex-wrap: wrap; gap: .35rem;
+             padding: .6rem 1rem; border-block-end: 1px solid var(--borda); }
+  .atalhos[hidden] { display: none; }
+  .atalhos__rot { font-size: .74rem; color: var(--txt-3); align-self: center;
+                  margin-inline-end: .3rem; }
+  .atalho {
+    padding: .35rem .7rem; border-radius: 99px; font-size: .8rem;
+    border: 1px solid var(--borda); background: var(--painel); color: var(--txt-2);
+    min-block-size: 2.25rem;
+  }
+  .atalho:hover { border-color: var(--acento); color: var(--txt); }
+  .atalho[aria-pressed="true"] { background: var(--acento); color: var(--fundo);
+                                 border-color: transparent; font-weight: 600; }
+  .atalho small { opacity: .7; margin-inline-start: .3rem; }
   .cab__esq { grid-column: 1; display: flex; gap: .35rem; align-items: center; }
   .cab__menu { min-inline-size: 2.75rem; min-block-size: 2.75rem;
                display: grid; place-items: center; }

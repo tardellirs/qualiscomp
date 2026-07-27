@@ -115,6 +115,20 @@ O que mais precisa de gente da área: o **ano de fundação dos eventos da SBC**
 (sem ele o critério de indução não dispara e o CSBC aparece como A8) e os
 **nomes alternativos** de eventos que o Google Scholar indexa duas vezes.
 
+## Funcionalidades em teste
+
+`FLAGS` em `site/app/app.js` guarda o que ainda está em avaliação. O padrão vem
+do código, e a URL sobrepõe sem precisar publicar de novo:
+
+```
+?flag=subareas      liga só nesta visita
+?flag=-subareas     desliga
+```
+
+Em teste agora: **subareas** — pastilhas das Comissões Especiais da SBC no
+estado vazio, para quem chega sem saber o nome do veículo. Cobre só eventos,
+porque as CEs não classificam periódicos.
+
 ## Limites conhecidos
 
 - O **critério de indução** (evento nacional da SBC com 20+ anos → A4) não é

@@ -16,6 +16,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1">
 <link rel="stylesheet" href="estilo.css">
 <link rel="stylesheet" href="pagina.css">
+<script src="tema.js"></script>
 <script type="module" src="app.js"></script>
 
 <script type="application/ld+json">
@@ -72,6 +73,12 @@
     <div class="cab__marca">Classificador de Periódicos e eventos CAPES (2025-2028)
       <span>Área: 02 &mdash; Computação</span></div>
     <div class="cab__dir">
+      <button class="cab__tema" id="tema" type="button" aria-live="polite"
+              title="Alternar tema (segue o sistema por padrão)">
+        <span data-tema="auto" aria-hidden="true">◐</span>
+        <span data-tema="claro" aria-hidden="true">☀</span>
+        <span data-tema="escuro" aria-hidden="true">☾</span>
+      </button>
       <nav class="cab__nav">
         <a href="sobre/">Entenda a mudança de 2025</a>
         <a href="sobre/#criterios">Critérios</a>
@@ -157,6 +164,7 @@
         </select>
       </div>
     </div>
+    <div class="atalhos" id="atalhos" hidden></div>
     <div class="rolo"><div class="lista" id="lista"></div></div>
     <div class="desca"><a href="sobre/"><b><span class="desca__longo">Entenda a mudança da CAPES a partir de 2025</span><span class="desca__curto">Entenda a mudança de 2025</span></b> →</a></div>
   </main>

@@ -118,6 +118,8 @@ class Veiculo:
             d["ed"] = self.editora   # trocado por índice em `_compactar`
         if self.acesso_aberto:
             d["oa"] = 1
+        if self.ces:
+            d["ce"] = self.ces      # trocado por índices em `main`
         return d
 
 
@@ -540,12 +542,28 @@ def main() -> int:
                 editoras.append(nome)
             d["ed"] = pos[nome]
 
+    # Comissões Especiais da SBC: são as subáreas da Computação brasileira, e
+    # até aqui só apareciam como texto decorativo na ficha.
+    ces: list[str] = []
+    pos_ce: dict[str, int] = {}
+    for d in indice:
+        lista = d.pop("ce", None)
+        if lista:
+            ids = []
+            for c in lista:
+                if c not in pos_ce:
+                    pos_ce[c] = len(ces)
+                    ces.append(c)
+                ids.append(pos_ce[c])
+            d["ce"] = ids
+
     (SAIDA / "dados" / "indice.json").write_text(
         json.dumps(
             {
                 "snapshot": SNAPSHOT,
                 "dist": dist,
                 "editoras": editoras,
+                "ces": ces,
                 "veiculos": indice,
             },
             ensure_ascii=False,
@@ -577,7 +595,7 @@ def main() -> int:
 
     # Página única: a ferramenta em cima, o texto embaixo. A raiz é o que o
     # buscador indexa, e é a mesma coisa que a pessoa usa.
-    for nome in ("index.html", "estilo.css", "pagina.css", "app.js"):
+    for nome in ("index.html", "estilo.css", "pagina.css", "app.js", "tema.js"):
         shutil.copy2(APP / nome, SAIDA / nome)
     # A explicação vive em /sobre/: quem chega vai direto para a busca, e quem
     # quer entender tem uma página própria — que é também a que carrega o FAQ

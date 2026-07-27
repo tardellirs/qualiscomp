@@ -13,6 +13,19 @@ const norm = (s) =>
    .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 
 const ESTRATOS = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'];
+
+/* Funcionalidades em teste. Trocar aqui muda o padrão; `?flag=nome` liga só
+   naquela visita, e `?flag=-nome` desliga — dá para experimentar em produção
+   sem publicar de novo, e voltar atrás sem mexer em código.
+
+   subareas: pastilhas das Comissões Especiais da SBC no estado vazio, para
+   quem chega sem saber o nome do veículo. Cobre só eventos: as CEs não
+   classificam periódicos. */
+const FLAGS = { subareas: false };
+for (const f of new URLSearchParams(location.search).getAll('flag')) {
+  if (f.startsWith('-')) FLAGS[f.slice(1)] = false;
+  else FLAGS[f] = true;
+}
 const CORTE_PCT = { A1: 87.5, A2: 75, A3: 62.5, A4: 50, A5: 37.5, A6: 25, A7: 12.5 };
 const CORTE_H5 = { A1: 35, A2: 25, A3: 20, A4: 15, A5: 12, A6: 9, A7: 6, A8: 1 };
 
@@ -20,6 +33,7 @@ let BASE = null;
 let filtrados = [];
 let atual = null;
 let limite = 80;
+let subarea = null;   // índice da CE escolhida nos atalhos
 
 /* ---------------------------------------------------------------- dados -- */
 
@@ -58,6 +72,7 @@ function estado() {
     q: $('#q').value.trim(),
     tipo: d.get('tipo') || 'todos',
     estratos: new Set(d.getAll('estrato')),
+    ce: subarea,
     min: parseFloat(d.get('min')),
     max: parseFloat(d.get('max')),
     ordem: $('#ordem').value,
@@ -108,6 +123,7 @@ function aplicar() {
   for (const v of BASE.veiculos) {
     if (e.tipo !== 'todos' && v.t !== e.tipo) continue;
     if (e.estratos.size && !e.estratos.has(v.e)) continue;
+    if (e.ce !== null && !(v.ce || []).includes(e.ce)) continue;
     // O indicador: percentil para periódico, h5 para evento.
     const ind = v.i;
     if (!Number.isNaN(e.min) && (ind == null || ind < e.min)) continue;
@@ -155,7 +171,26 @@ function chip(e, extra = '') {
   return `<span class="e ${extra}" data-e="${e}">${e}</span>`;
 }
 
+function desenharAtalhos() {
+  const el = $('#atalhos');
+  if (!FLAGS.subareas || !BASE.ces?.length) { el.hidden = true; return; }
+  const temBusca = $('#q').value.trim().length > 0;
+  if (temBusca && subarea === null) { el.hidden = true; return; }
+
+  const contagem = new Map();
+  for (const v of BASE.veiculos) for (const c of v.ce || [])
+    contagem.set(c, (contagem.get(c) || 0) + 1);
+  const top = [...contagem.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12);
+
+  el.hidden = false;
+  el.innerHTML = '<span class="atalhos__rot">Subárea da SBC:</span>' +
+    top.map(([i, n]) => `<button class="atalho" type="button" data-ce="${i}"
+      aria-pressed="${subarea === i}">${esc(BASE.ces[i])}<small>${n}</small></button>`).join('') +
+    (subarea !== null ? '<button class="atalho" type="button" data-ce="">limpar</button>' : '');
+}
+
 function desenhar() {
+  desenharAtalhos();
   const lista = $('#lista');
   const n = filtrados.length;
   $('#contagem').textContent = n.toLocaleString('pt-BR');
@@ -476,8 +511,16 @@ addEventListener('DOMContentLoaded', async () => {
 
   // A marca no canto esquerdo devolve o estado inicial sem recarregar: fecha a
   // ficha, limpa busca e filtros, volta a ordenação e sobe a lista.
+  $('#atalhos').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-ce]');
+    if (!b) return;
+    subarea = b.dataset.ce === '' ? null : Number(b.dataset.ce);
+    aplicar();
+  });
+
   $('#ir-inicio').addEventListener('click', () => {
     if (atual) fechar();
+    subarea = null;
     $('#form-filtros').reset();
     $('#q').value = '';
     $('#ordem').value = 'relevancia';
