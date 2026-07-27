@@ -450,7 +450,13 @@ addEventListener('DOMContentLoaded', async () => {
   const q = par.get('q');
   if (q) $('#q').value = q;
   aplicar();
-  if (q) $('#q').focus();
+
+  // Foco no campo de busca ao abrir: quem chega aqui quer digitar um nome.
+  // Só em ponteiro fino (mouse/trackpad) — no celular, focar sozinho abre o
+  // teclado, come metade da tela e esconde a lista antes de a pessoa ver o que
+  // o site é.
+  const podeFocar = matchMedia('(pointer: fine)').matches;
+  if (q || podeFocar) $('#q').focus();
   const v = par.get('v');
   if (v) abrir(v);
 });

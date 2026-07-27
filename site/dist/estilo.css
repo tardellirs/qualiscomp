@@ -278,6 +278,9 @@
 
   /* --- Lista --------------------------------------------------------------- */
   .rolo { overflow-y: auto; flex: 1; overscroll-behavior: contain; }
+  /* Espaço para a pastilha flutuante do rodapé: a última linha precisa poder
+     rolar acima dela. */
+  .lista { padding-block-end: 4rem; }
 
   .lista { display: block; }
   .item {
