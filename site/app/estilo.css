@@ -110,7 +110,13 @@
     display: block; font-weight: 500; font-size: .84rem;
     letter-spacing: 0; color: var(--txt); opacity: .92;
   }
-  .cab__dir { grid-column: 3; display: flex; gap: .5rem; align-items: center; }
+  .cab__dir { grid-column: 3; display: flex; gap: .6rem; align-items: center; }
+  .cab__gh {
+    display: grid; place-items: center;
+    inline-size: 2.5rem; block-size: 2.5rem; border-radius: 8px;
+    color: var(--txt-2);
+  }
+  .cab__gh:hover { color: var(--txt); background: var(--acento-fr); }
   .cab__menu { grid-column: 1; min-inline-size: 2.75rem; min-block-size: 2.75rem;
                display: grid; place-items: center; }
   @media (max-width: 46rem) {
