@@ -140,6 +140,15 @@ function desenhar() {
   const n = filtrados.length;
   $('#contagem').textContent = n.toLocaleString('pt-BR');
 
+  // O rótulo acompanha o filtro de tipo: dizer "periódicos e eventos" com o
+  // filtro em "Periódicos" seria falso.
+  const tipo = new FormData($('#form-filtros')).get('tipo');
+  const um = n === 1;
+  $('#rotulo-tipo').textContent =
+    tipo === 'p' ? (um ? 'periódico' : 'periódicos')
+    : tipo === 'e' ? (um ? 'evento' : 'eventos')
+    : (um ? 'periódico ou evento' : 'periódicos e eventos');
+
   if (!n) {
     lista.innerHTML = `<div class="vazio">
       <h2>Nada encontrado</h2>
