@@ -204,7 +204,7 @@
          clip-path: inset(50%); white-space: nowrap; }
 
   .doc {
-    max-inline-size: 48rem;
+    max-inline-size: 44rem;
     margin: clamp(2rem, 6vh, 3.5rem) auto;
     padding-inline: 1.25rem;
     font-size: 1rem; line-height: 1.62;
@@ -213,9 +213,11 @@
     font-size: clamp(1.5rem, 4.2vw, 2.15rem);
     letter-spacing: -.028em; line-height: 1.12;
   }
+  /* Sem largura própria: com 60ch a abertura terminava antes das seções de
+     baixo e o bloco parecia deslocado para a esquerda. A medida de leitura é
+     controlada pela coluna inteira (.doc), para tudo alinhar. */
   .doc__abre {
     margin-block-start: .9rem; color: var(--txt-2); font-size: 1.02rem;
-    max-inline-size: 60ch;
   }
   .doc section { margin-block-start: clamp(2rem, 5vh, 3rem); }
   .doc h2 {
