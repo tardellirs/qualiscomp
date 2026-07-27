@@ -18,10 +18,10 @@ const ESTRATOS = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'];
    naquela visita, e `?flag=-nome` desliga — dá para experimentar em produção
    sem publicar de novo, e voltar atrás sem mexer em código.
 
-   subareas: pastilhas das Comissões Especiais da SBC no estado vazio, para
-   quem chega sem saber o nome do veículo. Cobre só eventos: as CEs não
-   classificam periódicos. */
-const FLAGS = { subareas: false };
+   subareas: painel das Comissões Especiais da SBC na lateral, quando o filtro
+   é Eventos. Ligado por padrão desde a avaliação; `?flag=-subareas` desliga se
+   precisar. */
+const FLAGS = { subareas: true };
 // `location` não existe fora do navegador, e este módulo é executado em Node
 // pelo teste que monta as 3.816 fichas. Sem a guarda, o teste quebra inteiro.
 if (typeof location !== 'undefined') {

@@ -3,7 +3,7 @@
 import { chromium } from 'playwright';
 const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
-await p.goto('http://localhost:8080/?flag=subareas', { waitUntil: 'networkidle' });
+await p.goto('http://localhost:8080/', { waitUntil: 'networkidle' });   // ligado por padrão
 await p.waitForTimeout(600);
 
 const est = async () => ({

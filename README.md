@@ -125,9 +125,9 @@ do código, e a URL sobrepõe sem precisar publicar de novo:
 ?flag=-subareas     desliga
 ```
 
-Em teste agora: **subareas** — pastilhas das Comissões Especiais da SBC no
-estado vazio, para quem chega sem saber o nome do veículo. Cobre só eventos,
-porque as CEs não classificam periódicos.
+Nenhuma em avaliação no momento. **subareas** — o painel das Comissões
+Especiais da SBC quando o filtro é Eventos — passou a ser o padrão; se algo
+quebrar, `?flag=-subareas` desliga sem publicar de novo.
 
 ## Limites conhecidos
 

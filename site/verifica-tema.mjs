@@ -16,7 +16,7 @@ for (let i = 0; i < 3; i++) {
 }
 await p.reload({ waitUntil: 'networkidle' }); await p.waitForTimeout(400);
 console.log('persiste', await ler());
-// As subáreas ficam na lateral e só em Eventos; quem cobre isso é
-// verifica-subareas.mjs.
-console.log('subáreas escondidas sem flag:', await p.isHidden('#subareas'));
+// Em "Tudo" as subáreas não aparecem — elas só valem para eventos. Quem cobre
+// o comportamento completo é verifica-subareas.mjs.
+console.log('subáreas escondidas fora de Eventos:', await p.isHidden('#subareas'));
 await b.close();
