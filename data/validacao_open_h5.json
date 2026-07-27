@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "venue": "ICSE",
+    "venue_name": "ACM/IEEE International Conference on Software Engineering",
+    "type": "conference",
+    "h5_index": 98,
+    "h5_median": 149
+  },
+  {
+    "rank": 2,
+    "venue": "TSE",
+    "venue_name": "IEEE Transactions on Software Engineering",
+    "type": "journal",
+    "h5_index": 77,
+    "h5_median": 104
+  },
+  {
+    "rank": 3,
+    "venue": "JSS",
+    "venue_name": "Journal of Systems and Software",
+    "type": "journal",
+    "h5_index": 72,
+    "h5_median": 112
+  },
+  {
+    "rank": 4,
+    "venue": "FSE",
+    "venue_name": "ACM SIGSOFT International Symposium on Foundations of Software Engineering",
+    "type": "conference",
+    "h5_index": 69,
+    "h5_median": 105
+  },
+  {
+    "rank": 5,
+    "venue": "IST",
+    "venue_name": "Information and Software Technology",
+    "type": "journal",
+    "h5_index": 69,
+    "h5_median": 104
+  },
+  {
+    "rank": 6,
+    "venue": "TOSEM",
+    "venue_name": "ACM Transactions on Software Engineering and Methodology",
+    "type": "journal",
+    "h5_index": 62,
+    "h5_median": 100
+  },
+  {
+    "rank": 7,
+    "venue": "EMSE",
+    "venue_name": "Empirical Software Engineering",
+    "type": "journal",
+    "h5_index": 62,
+    "h5_median": 100
+  },
+  {
+    "rank": 8,
+    "venue": "ASE",
+    "venue_name": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "type": "conference",
+    "h5_index": 57,
+    "h5_median": 81
+  },
+  {
+    "rank": 9,
+    "venue": "PACMPL",
+    "venue_name": "Proceedings of the ACM on Programming Languages",
+    "type": "journal",
+    "h5_index": 51,
+    "h5_median": 79
+  },
+  {
+    "rank": 10,
+    "venue": "SPE",
+    "venue_name": "Software: Practice and Experience",
+    "type": "journal",
+    "h5_index": 51,
+    "h5_median": 77
+  },
+  {
+    "rank": 11,
+    "venue": "PLDI",
+    "venue_name": "ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)",
+    "type": "conference",
+    "h5_index": 51,
+    "h5_median": 74
+  },
+  {
+    "rank": 12,
+    "venue": "ISSTA",
+    "venue_name": "International Symposium on Software Testing and Analysis",
+    "type": "conference",
+    "h5_index": 50,
+    "h5_median": 86
+  },
+  {
+    "rank": 13,
+    "venue": "MSR",
+    "venue_name": "Mining Software Repositories",
+    "type": "conference",
+    "h5_index": 44,
+    "h5_median": 77
+  },
+  {
+    "rank": 14,
+    "venue": "IEEE Software",
+    "venue_name": "IEEE Software",
+    "type": "journal",
+    "h5_index": 44,
+    "h5_median": 75
+  },
+  {
+    "rank": 15,
+    "venue": "SOSP",
+    "venue_name": "Symposium on Operating Systems Principles",
+    "type": "conference",
+    "h5_index": 43,
+    "h5_median": 66
+  },
+  {
+    "rank": 16,
+    "venue": "SoSyM",
+    "venue_name": "Software and Systems Modeling",
+    "type": "journal",
+    "h5_index": 40,
+    "h5_median": 58
+  },
+  {
+    "rank": 17,
+    "venue": "SANER",
+    "venue_name": "International Conference on Software Analysis, Evolution, and Reengineering (SANER)",
+    "type": "conference",
+    "h5_index": 38,
+    "h5_median": 54
+  },
+  {
+    "rank": 18,
+    "venue": "JSEP",
+    "venue_name": "Journal of Software: Evolution and Process",
+    "type": "journal",
+    "h5_index": 38,
+    "h5_median": 48
+  },
+  {
+    "rank": 19,
+    "venue": "ICSME",
+    "venue_name": "IEEE International Conference on Software Maintenance and Evolution",
+    "type": "conference",
+    "h5_index": 35,
+    "h5_median": 48
+  },
+  {
+    "rank": 20,
+    "venue": "TACAS",
+    "venue_name": "International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS)",
+    "type": "conference",
+    "h5_index": 35,
+    "h5_median": 47
+  }
+]

@@ -1,0 +1,1134 @@
+// Gerado por `qualis coletar-eventos`. Edite à mão se precisar:
+// linhas iniciadas por // são ignoradas, e a coluna h5 vence.
+// h5_fonte=scholar é o dado que o Documento de Área manda usar;
+// h5_fonte=sbc-2024 é a coluna da planilha da SBC, que está
+// desatualizada e serve só como referência.
+// ambiguo=1: o Scholar tem mais de uma entrada para o evento,
+// com h5 diferentes; ficamos com o maior. Confira esses casos.
+// anos_tradicao fica vazio: não há fonte verificável em massa.
+sigla,nome,h5,ce_sbc,anos_tradicao,segue_gt_capes,h5_fonte,h5_sbc,ambiguo,ces,entradas_scholar
+3DIC,IEEE International 3D Systems Integration Conference,,relevante,,1,nenhum,5,0,CE-CCI,
+3DUI,IEEE Symposium on 3D User Interfaces,,relevante,,1,nenhum,22,0,CE-IHC,
+3DV,International Conference on 3D Vision,56,relevante,,1,scholar,51,0,CE-GRAPI|CE-RV,International Conference on 3D Vision (3DV) (h5=56)
+<Programming>,"International Conference on the Art, Science, and Engineering of Programming",77,relevante,,1,scholar,8,1,CE-LP,"International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) (h5=77) || Mathematical Programming (h5=64) || Scientific Programming (h5=53) || Proceedings of the ACM on Programming Languages (h5=51) || ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) (h5=51) || ACM SIGPLAN Symposium on Principles & Practice of Parallel Programming (PPOPP) (h5=34) || International Colloquium on Automata, Languages and Programming (ICALP) (h5=29) || Science of Computer Programming (h5=27) || Mathematical Programming Computation (h5=25) || European Symposium on Programming (ESOP) (h5=24) || International Conference on Agile Processes in Software Engineering and Extreme Programming (XP) (h5=23) || Genetic Programming and Evolvable Machines (h5=22) || International Journal of Parallel Programming (h5=22) || European Conference on Object-oriented Programming (ECOOP) (h5=21) || Theory and Practice of Logic Programming (h5=21) || International Conference on Principles and Practice of Constraint Programming (h5=20) || International Conference on Integration of AI and OR Techniques in Constraint Programming (h5=18) || Programming and Computer Software (h5=17) || Journal of Logical and Algebraic Methods in Programming (h5=17) || Journal of Functional Programming (h5=13)"
+AAAI,AAAI Conference on Artificial Intelligence,232,top10,,1,scholar,220,1,CE-GRAPI|CE-IA|CE-IC|CE-PLN,"AAAI Conference on Artificial Intelligence (h5=232) || AAAI/ACM Conference on AI, Ethics, and Society (h5=62) || Artificial Intelligence (h5=62) || AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment (h5=23) || SafeAI@ AAAI (h5=18) || AAAI Spring Symposium: MAKE (h5=17) || AAAI Symposium Series (h5=14)"
+AAATE,Association for the Advancement of Assistive Technology in Europe Conference,,relevante,,1,nenhum,0,0,CE-IHC,
+AAMAS,International Conference on Autonomous Agents and Multiagent Systems,54,top10,,1,scholar,54,0,CE-IA,International Conference on Autonomous Agents and Multiagent Systems (h5=54)
+ABCIBER,Congresso Brasileiro de Pesquisadores em Cibercultura,,relevante,,1,nenhum,0,0,CE-IHC,
+ABZ,"International ABZ Conference ASM, Alloy, B, TLA, VDM, Z",,top20,,1,nenhum,13,0,CE-MF,
+ACC,American Control Conference,50,relevante,,1,scholar,41,0,CE-R,American Control Conference (h5=50)
+ACCV,Asian Conference on Computer Vision,262,relevante,,1,scholar,39,1,CE-GRAPI|CE-RV,European Conference on Computer Vision (h5=262) || IEEE/CVF International Conference on Computer Vision (h5=256) || International Journal of Computer Vision (h5=109) || Asian Conference on Computer Vision (ACCV) (h5=52) || IET Computer Vision (h5=21) || International Workshop on Frontiers of Computer Vision (h5=11)
+ACE,The Australasian Computing Education Conference,21,top20,,1,scholar,22,0,CE-EDUCOMP|CE-IHC,Australasian Computing Education Conference (h5=21)
+ACE-X,International Conference on Advanced Computational Engineering and Experimenting,,relevante,,1,nenhum,,0,CE-RV,
+ACHI,International Conference on Advances in Computer-Human Interaction,,relevante,,1,nenhum,0,0,CE-IHC,
+ACII,International Conference on Affective Computing and Intelligent Interaction,23,relevante,,1,scholar,24,0,CE-IA|CE-IHC,International Conference on Affective Computing and Intelligent Interaction and Workshops (h5=23)
+ACIRS,Asia-Pacific Conference on Intelligent Robot Systems,9,relevante,,1,scholar,7,0,CE-R,Asia-Pacific Conference on Intelligent Robot Systems (h5=9)
+ACIS,Australasian Conference on Information Systems,17,relevante,,1,scholar,14,1,CE-SI,"Australasian Conference on Information Systems (h5=17) || ACIS International Conference on Software Engineering Research, Management & Applications (h5=12) || ACIS International Conference on Software Engineering, Artificial Intelligence, Networking, and Parallel/Distributed Computing (h5=11) || IEEE/ACIS International Conference on Computer and Information Science ICIS (h5=8) || Buletin ACIS (h5=1)"
+ACISP,Australasian Conference on Information Security and Privacy,19,relevante,,1,scholar,17,1,CE-SEG,International Conference on Information Systems Security and Privacy (h5=19) || Australasian Conference on Information Security and Privacy (ACISP) (h5=18) || International Journal of Information Security and Privacy (h5=17)
+ACIVS,Advanced Concepts for Intelligent Vision Systems,,relevante,,1,nenhum,6,0,CE-GRAPI,
+ACL,Annual Meeting of the Association for Computational Linguistics,236,top10,,1,scholar,215,0,CE-BD|CE-IA|CE-PLN,Meeting of the Association for Computational Linguistics (ACL) (h5=236)
+ACM CC,Creativity & Cognition,,relevante,,1,nenhum,23,0,CE-IHC,
+ACM CCS,ACM Symposium on Computer and Communications Security,90,top10,,1,scholar,92,0,CE-SEG,ACM Symposium on Computer and Communications Security (h5=90)
+ACM CHI PLAY,ACM SIGCHI Annual Symposium on Computer-Human Interaction in Play,27,top20,,1,scholar,31,0,CE-IHC,Annual Symposium on Computer-Human Interaction in Play (h5=27)
+ACM DocEng,ACM Symposium on Document Engineering,14,relevante,,1,scholar,13,0,CE-WEBMEDIA,ACM Symposium on Document Engineering (h5=14)
+ACM HT,ACM Hypertext Conference / Hipertext,,relevante,,1,nenhum,0,0,CE-IHC,
+ACM IMX,ACM International Conference on Interactive Media Experiences,20,top10,,1,scholar,15,0,CE-WEBMEDIA,ACM International Conference on Interactive Media Experiences (h5=20)
+ACM Multimedia,ACM International Conference on Multimedia,119,relevante,,1,scholar,101,0,CE-GRAPI,ACM International Conference on Multimedia (h5=119)
+ACM-CIKM,ACM International Conference on Information and Knowledge Management,96,relevante,,1,scholar,79,0,CE-IA,ACM International Conference on Information and Knowledge Management (h5=96)
+ACM-MM,ACM International Conference on Multimedia,119,relevante,,1,scholar,101,0,CE-RV,ACM International Conference on Multimedia (h5=119)
+ACMSOCC,ACM Symposium on Cloud Computing,39,relevante,,1,scholar,35,1,CE-RESD,ACM Symposium on Cloud Computing (h5=39) || IEEE International Conference on Cloud Computing (CLOUD) (h5=24)
+ACNS,Applied Cryptography and Network Security,28,top20,,1,scholar,28,0,CE-SEG,Applied Cryptography and Network Security (h5=28)
+ACRA,Australasian Conference on Robotics and Automation,129,relevante,,1,scholar,,0,CE-R,IEEE International Conference on Robotics and Automation (h5=129)
+ACSAC,Computer Security Applications Conference,40,top20,,1,scholar,36,0,CE-SEG,Computer Security Applications Conference (h5=40)
+ADBIS,European Conference on Advances in Databases and Information Systems,14,top20,,1,scholar,13,0,CE-BD|CE-SI,Advances in Databases and Information Systems (ADBIS) (h5=14)
+ADHOC-NOW,International Conference on Ad-Hoc Networks and Wireless,,relevante,,1,nenhum,,0,CE-RESD,
+AE-SBSI,Anais Estendidos do Simpósio Brasileiro de Sistemas de Informação,,top20,,1,nenhum,5,0,CE-SI,
+AES,International Convention of the Audio Engineering Society,,top20,,1,nenhum,,0,CE-CM,
+AES Brasil,Congresso de Engenharia de Áudio da Audio Engineering Society Brasil.,,relevante,,1,nenhum,,0,CE-CM,
+AES-ICSA,AES International Conference on Semantic Audio,,top20,,1,nenhum,,0,CE-CM,
+AGILE,AGILE Conference on Geo-information Science,23,top10,,1,scholar,10,1,CE-Geoinformática,International Conference on Agile Processes in Software Engineering and Extreme Programming (XP) (h5=23) || International Journal of Agile Systems and Management (h5=16) || AGILE: GIScience Series (h5=14) || International Conference on Geographic Information Science (h5=11)
+AH,Augmented Human International Conference,19,top10,,1,scholar,20,0,CE-IHC|CE-RV,Augmented Human International Conference (AH) (h5=19)
+AICT,International Conference on Application of Information and Communication Technologies,17,relevante,,1,scholar,16,0,CE-SI,IEEE International Conference on Application of Information and Communication Technologies (AICT) (h5=17)
+AIED,International Conference on Artificial Intelligence in Education,38,top10,,1,scholar,31,0,CE-IA|CE-IE|CE-IHC,Artificial Intelligence in Education (h5=38)
+AIIDE,AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment,23,top10,,1,scholar,21,0,CE-IA|CE-JOGOS,AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment (h5=23)
+AIM,IEEE/ASME International Conference on Advanced Intelligent Mechatronics,20,relevante,,1,scholar,17,0,CE-R,IEEE/ASME International Conference on Advanced Intelligent Mechatronics (h5=20)
+AIME,Conference on Artificial Intelligence in Medicine,83,top20,,1,scholar,19,0,CE-CAS,Artificial Intelligence in Medicine (h5=83)
+AIML,Advances in Modal Logic,10,top20,,1,scholar,8,0,GI-L,Conference on Advances in Modal Logic (h5=10)
+AINA,IEEE International Conference on Advanced Information Networking and Applications,21,relevante,,1,scholar,22,1,CE-BD|CE-RESD|CE-TF,"International Conference on Advanced Information Networking and Applications (AINA) (h5=21) || International Conference on Advanced Information Networking and Applications-Workshops, AINAW (h5=15)"
+AISTATS,International Conference on Artificial Intelligence and Statistics,101,top20,,1,scholar,100,0,CE-IA|CE-IC,International Conference on Artificial Intelligence and Statistics (h5=101)
+AIware,ACM International Conference on AI-powered Software,,relevante,,1,nenhum,1,0,CE-ES,
+AIxVR,IEEE International Conference on Artificial Intelligence & eXtended and Virtual Reality,,top20,,1,nenhum,,0,CE-RV,
+AlCoB,International Conference on Algorithms for Computational Biology,,top20,,1,nenhum,,0,CE-BioComp,
+ALENEX,SIAM Symposium on Algorithm Engineering and Experiments,,relevante,,1,nenhum,,0,CE-ACO,
+ALIO/EURO,Joint ALIO/EURO International Conference on Applied Combinatorial Optimization,,relevante,,1,nenhum,,0,CE-ACO,
+ALLERTON,"Allerton Conference on Communication, Control, and Computing",11,relevante,,1,scholar,28,1,CE-RESD,"Allerton Conference on Communication, Control, and Computing (h5=11) || International Conference on Control, Communication and Computing (h5=7)"
+AMCIS,Americas Conference on Information Systems,52,top10,,1,scholar,29,1,CE-SI,Information Systems (h5=52) || Americas Conference on Information Systems (AMCIS) (h5=29)
+AMD,Workshop on Analysis of Movement Data,,relevante,,1,nenhum,,0,CE-Geoinformática,
+AMIA,AMIA Symposium,31,top10,,1,scholar,30,1,CE-CAS,AMIA Symposium (h5=31) || AMIA Joint Summits on Translational Science proceedings. AMIA Joint Summits on Translational Science (h5=24)
+AMW,Alberto Mendelzon International Workshop on Foundations of Data Management,,relevante,,1,nenhum,10,0,CE-BD,
+ANALCO,Workshop on Analytic Algorithmics and Combinatorics,,relevante,,1,nenhum,,0,CE-ACO,
+ANCS,ACM/IEEE Symposium on Architectures for Networking and Communications Systems,,relevante,,1,nenhum,,0,CE-RESD,
+ANPPOM,Congresso da Associação Nacional de Pesquisa e Pós-Graduação em Música,4,top20,,1,scholar,,0,CE-CM,Congresso da ANPPOM (h5=4)
+AofA,"International Conference on Probabilistic, Combinatorial, and Asymptotic Methods in the Analysis of Algorithms",,relevante,,1,nenhum,,0,CE-ACO,
+APCCAS,IEEE Asia Pacific Conference on Circuits and Systems,40,relevante,,1,scholar,12,1,CE-CCI,"IEEE International Symposium on Circuits and Systems (h5=40) || IEEE Asia Pacific Conference on Circuits and Systems, APCCAS (h5=12)"
+APLAS,Asian Symposium on Programming Languages and Systems,,relevante,,1,nenhum,13,0,CE-LP,
+APNOMS,Asia-Pacific Network Operations and Management Symposium,,relevante,,1,nenhum,,0,CE-RESD,
+APPROX-RANDOM,International Conference on Approximation Algorithms for Combinatorial Optimization Problems,,top20,,1,nenhum,18,0,CE-ACO,
+APWEB,Asia-Pacific Web Conference,13,relevante,,1,scholar,11,0,CE-BD,APWeb-WAIM International Joint Conference on Web and Big Data (h5=13)
+ARC,Applied Reconfigurable Computing,10,relevante,,1,scholar,13,0,CE-CCI|CE-ESC,Applied Reconfigurable Computing (h5=10)
+ARCS,International Conference on Architecture of Computing Systems,,relevante,,1,nenhum,8,0,CE-ACPAD|CE-ESC,
+ARES,"International Conference on Availability, Reliability and Security",35,top20,,1,scholar,34,0,CE-SEG,"International Conference on Availability, Reliability and Security, ARES (h5=35)"
+ARIC,International Workshop on Intelligent and Resilient Cities,,relevante,,1,nenhum,,0,CE-Geoinformática,
+ARSO,IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO),8,relevante,,1,scholar,10,0,CE-R,IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (h5=8)
+ASAP,"IEEE International Conference on Application-specific Systems, Architectures and Processors",20,relevante,,1,scholar,20,1,CE-ACPAD|CE-CCI|CE-ESC,"IEEE International Conference on Application-specific Systems, Architectures and Processors, ASAP (h5=20) || ASAP/Journal (h5=7)"
+ASE,IEEE/ACM International Conference on Automated Software Engineering,57,top10,,1,scholar,54,1,CE-ES,IEEE/ACM International Conference on Automated Software Engineering (ASE) (h5=57) || Automated Software Engineering (h5=29)
+ASIACCS,"ACM Symposium on Information, Computer and Communications Security",,top10,,1,nenhum,39,0,CE-SEG,
+ASIACRYPT,International Conference on The Theory and Application of Cryptology and Information Security,53,top10,,1,scholar,46,0,CE-SEG,International Conference on The Theory and Application of Cryptology and Information Security (ASIACRYPT) (h5=53)
+ASID,"International Conference on Anti-counterfeiting, Security, and Identification in Communication",9,relevante,,1,scholar,11,0,CE-SEG,"International Conference on Anti-counterfeiting, Security, and Identification in Communication (h5=9)"
+ASMS,Advanced Satellite Multimedia Systems Conference,,relevante,,1,nenhum,14,0,CE-WEBMEDIA,
+ASONAM,International Conference on Advances in Social Networks Analysis and Mining,24,relevante,,1,scholar,36,0,CE-BD|CE-SI,International Conference on Advances in Social Networks Analysis and Mining (h5=24)
+ASP-DAC,Asia and South Pacific Design Automation Conference,34,top10,,1,scholar,38,0,CE-CCI|CE-ESC,Asia and South Pacific Design Automation Conference (ASP-DAC) (h5=34)
+ASPLOS,International Conference on Architectural Support for Programming Languages and Operating Systems,77,top10,,1,scholar,66,0,CE-ACPAD|CE-ESC|CE-LP,International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) (h5=77)
+ASPRS,Annual Conference and International Lidar Mapping Forum,,relevante,,1,nenhum,,0,CE-RV,
+ASSETS,International ACM SIGACCESS Conference on Computers and Accessibility,36,top10,,1,scholar,32,1,CE-IE|CE-IHC|CE-RV,"International ACM Conference on Assistive Technologies (Assets) (h5=36) || JMIR Rehabilitation and Assistive Technologies (h5=24) || Journal of Accounting Research, Utility Finance and Digital Assets (h5=13)"
+AST,IEEE/ACM International Workshop on Automation of Software Testing,,relevante,,1,nenhum,13,0,CE-ES,
+ASYNC,Symposium on Asynchronous Circuits and Systems,,top20,,1,nenhum,8,0,CE-CCI,
+ATC,USENIX Annual Technical Conference,57,relevante,,1,scholar,59,0,CE-RESD,USENIX Annual Technical Conference (h5=57)
+AUDIOMOSTLY,Audio Mostly Conference,13,top20,,1,scholar,10,0,CE-CM,International Audio Mostly Conference (h5=13)
+AVI,Working Conference on Advanced Visual Interfaces,20,top20,,1,scholar,15,0,CE-IHC|CE-RV,Working Conference on Advanced Visual Interfaces (AVI) (h5=20)
+AVSS,IEEE International Conference on Advanced Video and Signal-Based Surveillance,13,relevante,,1,scholar,23,0,CE-GRAPI,IEEE International Conference on Advanced Video and Signal-Based Surveillance (AVSS) (h5=13)
+BCB,"ACM Conference on Bioinformatics, Computational Biology, and Health Informatics",21,top10,,1,scholar,19,0,CE-BioComp|CE-CAS,"ACM Conference on Bioinformatics, Computational Biology and Health Informatics (h5=21)"
+BCS-HCI,Conference of the British Computer Society Human Computer Interaction Specialist Group,,relevante,,1,nenhum,11,0,CE-IHC,
+BDCLOUD,International Conference on Big Data and Cloud Computing,7,relevante,,1,scholar,4,0,CE-BD,IEEE International Conference on Big Data and Cloud Computing (BdCloud) (h5=7) || International Conference on Cloud Computing and Big Data (h5=7)
+BESC,International Conference on Behavioural and Social Computing,13,relevante,,1,scholar,8,0,CE-SC,International Conference on Behavioural and Social Computing (h5=13)
+BIATA,Bioinformatics: from Algorithms to Applications,,top20,,1,nenhum,,0,CE-BioComp,
+BIBE,IEEE International Conference on Bioinformatics and Bioengineering,20,top10,,1,scholar,11,0,CE-BioComp,"IEEE International Conference on Bioinformatics and Bioengineering, BIBE (h5=20)"
+BIBM,IEEE International Conference on Bioinformatics and Biomedicine,31,top10,,1,scholar,23,0,CE-BioComp,IEEE International Conference on Bioinformatics and Biomedicine (h5=31)
+BIGDATA,IEEE International Conference on Big Data,55,relevante,,1,scholar,54,1,CE-ACPAD|CE-BD|CE-IC,"IEEE International Conference on Big Data (h5=55) || International Journal of AI, BigData, Computational and Management Studies (h5=9) || The Journal of Bigdata (h5=8) || International Conference on Bigdata Blockchain and Economy Management (h5=5)"
+BigDataSE,IEEE International Conference On Big Data Science And Engineering,,relevante,,1,nenhum,,0,CE-BD,
+BIGDATASERVICE,IEEE International Conference on Big Data Computing Service and Applications,17,relevante,,1,scholar,18,0,CE-BD,International Conference on Big Data Computing Service and Applications (BigDataService) (h5=17)
+BIGMM,IEEE International Conference on Multimedia Big Data,17,relevante,,1,scholar,22,0,CE-GRAPI,IEEE International Conference on Multimedia Big Data (h5=17)
+BigSpatial,International Workshop on Analytics for Big Geospatial Data,,relevante,,1,nenhum,,0,CE-Geoinformática,
+BioRob,IEEE RAS & EMBS International Conference on Biomedical Robotics and Biomechatronics,21,top20,,1,scholar,17,0,CE-R,IEEE/RAS-EMBS International Conference on Biomedical Robotics and Biomechatronics (h5=21)
+BIS,International Conference on Business Information Systems,56,relevante,,1,scholar,16,1,CE-SI,Business & Information Systems Engineering (h5=56) || Information Systems and e-Business Management (h5=39) || International Journal of Business Information Systems (h5=26)
+BLOCKCHAIN,IEEE International Conference on Blockchain,38,relevante,,1,scholar,34,1,CE-RESD|CE-SEG,"Blockchain: Research and Applications (h5=38) || Frontiers in Blockchain (h5=37) || IEEE International Conference on Blockchain and Cryptocurrency (h5=32) || IEEE International Conference on Blockchain (h5=30) || Conference on Blockchain Research & Applications for Innovative Networks and Services (h5=22) || International Conference on Blockchain and Trustworthy Systems (h5=16) || International Conference on Blockchain Computing and Applications (h5=15) || Blockchain in Healthcare Today (h5=13) || International Conference on Blockchain Technology and Information Security (h5=11) || International Congress on Blockchain and Applications (h5=11) || IEEE International Conference on Blockchain and Distributed Systems Security (h5=9) || International Conference on Artificial Intelligence, Blockchain, and Internet of Things (h5=7) || International Conference on Computer Science and Blockchain (h5=6) || International Conference on Computer, Blockchain and Financial Development (h5=6) || International Conference on Bigdata Blockchain and Economy Management (h5=5) || International Academic Conference on Blockchain, Information Technology and Smart Finance (h5=3)"
+BMSB,IEEE International Symposium on Broadband Multimedia Systems and Broadcasting,14,relevante,,1,scholar,16,0,CE-WEBMEDIA,IEEE International Symposium on Broadband Multimedia Systems and Broadcasting (h5=14)
+BMVC,British Machine Vision Conference,57,relevante,,1,scholar,65,0,CE-GRAPI|CE-RV,British Machine Vision Conference (BMVC) (h5=57)
+BotSE,International Workshop on Bots in Software Engineering,,relevante,,1,nenhum,10,0,CE-ES,
+BPM,International Conference on Business Process Management,32,top10,,1,scholar,27,0,CE-SI,Business Process Management (h5=32)
+BPMS2,Workshop on Social and Human Aspects of Business Process Management,,relevante,,1,nenhum,3,0,CE-SI,
+BRACIS,Brazilian Conference on Intelligent Systems,41,top10,,1,scholar,16,1,CE-IA|CE-IC,International IEEE Conference on Intelligent Systems (h5=41) || Brazilian Conference on Intelligent Systems (BRACIS) (h5=18)
+BRAHUR,Brazilian Humanoid Robot Workshop,,relevante,,1,nenhum,,0,CE-R,
+BRASERO,Brazilian Workshop on Service Robotics,4,relevante,,1,scholar,,0,CE-R,International Conference on Service Robotics (h5=4)
+BraSNAM,Brazilian Workshop on Social Network Analysis and Mining,47,top10,,1,scholar,8,1,CE-BD|CE-PLN|CE-SI|CE-WEBMEDIA,Social Network Analysis and Mining (h5=47) || Brazilian Workshop on Social Network Analysis and Mining (BraSNAM) (h5=8)
+BreSci,Brazilian e-Science Workshop,,relevante,,1,nenhum,,0,CE-BD,
+BSB,Brazilian Symposium on Bioinformatics,137,top20,,1,scholar,,0,CE-BioComp,Bioinformatics (h5=137)
+BSN,IEEE-EMBS INTERNATIONAL CONFERENCE ON WEARABLE AND IMPLANTABLE BODY SENSOR NETWORKS,10,top20,,1,scholar,15,0,CE-CAS,International Workshop on Wearable and Implantable Body Sensor Networks (h5=10)
+BTAS,IEEE International Conference on Biometrics: Theory Applications and Systems,34,relevante,,1,scholar,32,0,CE-GRAPI,IEEE International Conference on Biometrics: Theory Applications and Systems (BTAS) (h5=34)
+C&T,International Conference on Communities and Technologies,,top10,,1,nenhum,12,0,CE-SC,
+CADE/IJCAR,International Conference on Automated Deduction,24,top20,,1,scholar,17,0,CE-MF,International Conference on Automated Deduction (h5=24)
+CAIN,International Conference on AI Engineering – Software Engineering for AI,19,relevante,,1,scholar,13,0,CE-ES,ACM International Conference on AI Engineering–Software Engineering for (h5=19)
+CAIP,International Conference on Computer Analysis of Images and Patterns,11,top20,,1,scholar,16,0,CE-GRAPI,International Conference on Computer Analysis of Images and Patterns (h5=11)
+CAiSE,International Conference on Advanced Information Systems Engineering,24,top10,,1,scholar,27,0,CE-BD|CE-ES|CE-SI,International Conference on Advanced Information Systems Engineering (h5=24)
+CALDAM,International Conference on Algorithms and Discrete Applied Mathematics,13,relevante,,1,scholar,10,0,CE-ACO,Conference on Algorithms and Discrete Applied Mathematics (h5=13)
+CAMAD,IEEE International Workshop on Computer Aided Modeling and Design of Communication Links and Networks,17,relevante,,1,scholar,25,0,CE-RESD,IEEE International Workshop on Computer Aided Modeling and Design of Communication Links and Networks (CAMAD) (h5=17)
+CANS,Cryptology and Network Security,16,relevante,,1,scholar,17,0,CE-SEG,Cryptology and Network Security (h5=16)
+CapaIHC,"Workshop CAPA - Culturas, Alteridades e Participações em IHC",,relevante,,1,nenhum,0,0,CE-IHC,
+CASA,International Conference on Computer Animation and Social Agents,9,top20,,1,scholar,17,1,CE-GRAPI|CE-JOGOS,Mélanges de la Casa de Velázquez. Nouvelle série (h5=9) || Arquivos Médicos dos Hospitais e da Faculdade de Ciências Médicas da Santa Casa de São Paulo (h5=5) || Revista da Casa da Geografia de Sobral (RCGS) (h5=5) || Revista de la Casa de las Américas (h5=4)
+CASE,IEEE Conference on Automation Science and Engineering,92,top10,,1,scholar,24,1,CE-ESC|CE-R,"Case Studies in Thermal Engineering (h5=92) || Case Studies in Construction Materials (h5=90) || Case Studies in Chemical and Environmental Engineering (h5=63) || BMJ Case Reports CP (h5=57) || Case Studies on Transport Policy (h5=48) || JAAD Case Reports (h5=33) || American Journal of Case Reports (h5=31) || IEEE International Conference on Automation Science and Engineering, CASE (h5=30) || Journal of Medical Case Reports (h5=28) || American Journal of Ophthalmology Case Reports (h5=27) || Clinical Case Reports (h5=27) || European Journal of Case Reports in Internal Medicine (h5=26) || European Heart Journal-Case Reports (h5=25) || Respiratory Medicine Case Reports (h5=25) || Radiology Case Reports (h5=25) || International Journal of Surgery Case Reports (h5=25) || Journal of Investigative Medicine High Impact Case Reports (h5=24) || Medical Mycology Case Reports (h5=19) || HeartRhythm Case Reports (h5=19) || Case Reports in Dentistry (h5=19) || International Conference on Mechanical Engineering and Automation Science (h5=5)"
+CASES,"International Conference on Compilers, Architecture, and Synthesis for Embedded Systems",48,relevante,,1,scholar,15,1,CE-ACPAD|CE-CCI|CE-LP,"World Journal of Clinical Cases (h5=48) || Spinal Cord Series and Cases (h5=20) || Retinal Cases and Brief Reports (h5=19) || Journal of Vascular Surgery Cases, Innovations and Techniques (h5=17) || Journal of Cases in Educational Leadership (h5=16) || South Asian Journal of Business and Management Cases (h5=15) || Clinical Practice and Cases in Emergency Medicine (h5=15) || Journal of Information Technology Teaching Cases (h5=15) || Journal of Medical Cases (h5=14) || Journal of Cardiology Cases (h5=12) || Journal of Cases on Information Technology (h5=11) || Oral and Maxillofacial Surgery Cases (h5=9) || Foot & Ankle Surgery: Techniques, Reports & Cases (h5=9) || GMS Ophthalmology Cases (h5=8) || Archive of Clinical Cases (h5=7) || Annals of Internal Medicine: Clinical Cases (h5=5) || JOSPT Cases (h5=5) || Tourism Cases (h5=4) || General Thoracic and Cardiovascular Surgery Cases (h5=2) || European Employment Law Cases (h5=1)"
+CATE,Computers and Advanced Technology in Education,,relevante,,1,nenhum,,0,CE-IE,
+CAV,International Conference on Computer Aided Verification,44,top10,,1,scholar,39,0,CE-MF,International Conference on Computer Aided Verification (CAV) (h5=44)
+CBA,Congresso Brasileiro de Automática,8,relevante,,1,scholar,,0,CE-R|CE-RV,Congresso Brasileiro de Automática-CBA (h5=8)
+CBEB,Congresso Brasileiro de Engenharia Biomédica,,relevante,,1,nenhum,1,0,CE-CAS|CE-RV,
+CBI,IEEE Conference on Business Informatics,18,top20,,1,scholar,21,0,CE-SI,Conference on Business Informatics (h5=18)
+CBIC,Brazilian Congress on Computational Intelligence,39,relevante,,1,scholar,,0,CE-IA,Computational Intelligence (h5=39)
+CBIS,Congresso Brasileiro de Informática em Saúde,,relevante,,1,nenhum,,0,CE-CAS,
+CBMI,International Workshop on Content-Based Multimedia Indexing,13,relevante,,1,scholar,15,0,CE-GRAPI|CE-WEBMEDIA,International Workshop on Content-Based Multimedia Indexing (h5=13)
+CBMS,IEEE Symposium on Computer-Based Medical Systems,24,top10,,1,scholar,25,0,CE-BD|CE-CAS,IEEE Symposium on Computer-Based Medical Systems (h5=24)
+CBS,IEEE International Conference on Cyborg and Bionic Systems,40,relevante,,1,scholar,4,1,CE-R|CE-SI,Cyborg and Bionic Systems (h5=40) || IEEE International Conference on Cyborg and Bionic Systems (h5=5)
+CBSoft,Brazilian Conference on Software: Theory and Practice,,relevante,,1,nenhum,5,0,CE-ES,
+CBTMS,Congresso Brasileiro de Telemedicina e Telesaúde,,relevante,,1,nenhum,,0,CE-CAS,
+CC,International Conference on Compiler Construction,,top10,,1,nenhum,13,0,CE-LP,
+CCC,IEEE Conference on Computational Complexity,27,top20,,1,scholar,22,1,CE-ACO,Chinese Control Conference (CCC) (h5=27) || Computational Complexity Conference (h5=21)
+CCGRID,"IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing",,top10,,1,nenhum,29,0,CE-ACPAD|CE-BD|CE-RESD|CE-SI,
+CCNC,Annual IEEE Consumer Communications & Networking Conference,,relevante,,1,nenhum,33,0,CE-RESD,
+CCS,ACM Symposium on Computer and Communications Security,90,relevante,,1,scholar,93,0,CE-RESD,ACM Symposium on Computer and Communications Security (h5=90)
+CCSI,Workshop on Core Computations on Spatial Information,,relevante,,1,nenhum,,0,CE-Geoinformática,
+CDC,IEEE Conference on Decision and Control,48,relevante,,1,scholar,40,0,CE-R,IEEE Conference on Decision and Control (h5=48)
+CDVE,"CDVE - International Conference on Cooperative Design, Visualization, and Engineering",9,top20,,1,scholar,7,0,CE-SC,"Cooperative Design, Visualization, and Engineering (h5=9)"
+CEC,IEEE Congress on Evolutionary Computation,94,top10,,1,scholar,89,1,CE-GRAPI|CE-IA|CE-IC,IEEE Congress on Evolutionary Computation (h5=94) || Evolutionary Computation (h5=29)
+CEDEM,International Conference for E-Democracy and Open Government,16,relevante,,1,scholar,9,0,CE-SI,International Conference on eDemocracy & eGovernment (h5=16)
+CELDA,Cognition and Exploratory Learning in Digital Age,,relevante,,1,nenhum,,0,CE-IE,
+CENTERIS,Conference on ENTERprise Information Systems,46,relevante,,1,scholar,11,1,CE-SI,CENTERIS/ProjMAN/HCist (h5=46) || Enterprise Information Systems (h5=44)
+CGI,Computer Graphics International Conference,11,top20,,1,scholar,11,0,CE-GRAPI,Computer Graphics International Conference (h5=11)
+CGO,International Symposium on Code Generation and Optimization,25,top10,,1,scholar,25,0,CE-LP,International Symposium on Code Generation and Optimization (h5=25)
+CGVCVIP,"International Conference on Computer Graphics, Visualization, Computer Vision and Image Processing",,relevante,,1,nenhum,6,0,CE-GRAPI,
+CHASE,International Workshop on Cooperative and Human Aspects of Software Engineering,,top20,,1,nenhum,10,0,CE-ES|CE-SC,
+CHES,Workshop on Cryptographic Hardware and Embedded Systems,57,relevante,,1,scholar,14,0,CE-SEG,IACR Transactions on Cryptographic Hardware and Embedded Systems (h5=57)
+CHI,ACM Conference on Human Factors in Computing Systems,139,top10,,1,scholar,129,1,CE-IHC|CE-RV|CE-SC,Computer Human Interaction (CHI) (h5=139) || Brazilian Symposium on Human Factors in Computing Systems (h5=16)
+CHIIR,Conference on Human Information Interaction and Retrieval,29,relevante,,1,scholar,29,0,CE-BD,Conference on Human Information Interaction and Retrieval (h5=29)
+CHIPlay,ACM Annual Symposium on Computer-Human Interaction in Play,27,top10,,1,scholar,31,0,CE-JOGOS,Annual Symposium on Computer-Human Interaction in Play (h5=27)
+CIAC,International Conference on Algorithms and Complexity,,relevante,,1,nenhum,11,0,CE-ACO,
+CIARP,Iberoamerican Congress on Pattern Recognition,126,top20,,1,scholar,12,1,CE-GRAPI,Pattern Recognition (h5=126) || International Conference on Pattern Recognition (h5=68) || Iberoamerican Congress on Pattern Recognition (CIARP) (h5=7)
+CIBCB,IEEE Symposium on Computational Intelligence in Bioinformatics and Computational Biology,13,top10,,1,scholar,10,0,CE-BioComp,IEEE Symposium on Computational Intelligence in Bioinformatics and Computational Biology (h5=13)
+CIbSE,Conferencia Iberoamericana de Software Engineering,98,top20,,1,scholar,10,1,CE-ES,ACM/IEEE International Conference on Software Engineering (h5=98) || Software Engineering (h5=29) || Congresso Ibero-Americano em Engenharia de Software (CIbSE) (h5=5)
+CIC,ACM International Conference on Collaboration and Internet Computing,,top20,,1,nenhum,15,0,CE-SC,
+CICC,IEEE Custom Integrated Circuits Conference,30,relevante,,1,scholar,26,0,CE-CCI,"IEEE Custom Integrated Circuits Conference, CICC (h5=30)"
+CICLING,International Conference on Intelligent Text Processing and Computational Linguistics,,relevante,,1,nenhum,0,0,CE-PLN|CE-SI,
+CIDI,Congresso Internacional de Design da Informação,,relevante,,1,nenhum,0,0,CE-IHC,
+CIDM,Symposium on Computational Intelligence and Data Mining,,relevante,,1,nenhum,12,0,CE-BD,
+CIDR,Biennial Conference on Innovative Data Systems Research,36,top10,,1,scholar,32,0,CE-BD,Conference on Innovative Data system Research (CIDR) (h5=36)
+CIG,IEEE Conference on Computational Intelligence and Games,27,relevante,,1,scholar,31,0,CE-IA,IEEE Conference on Computational Intelligence and Games (CIG) (h5=27)
+CIKM,ACM International Conference on Information and Knowledge Management,96,top10,,1,scholar,91,0,CE-BD|CE-SI,ACM International Conference on Information and Knowledge Management (h5=96)
+CILAMCE,Iberian Latin American Congress on Computational Methods,8,relevante,,1,scholar,,1,CE-RV,Ibero-Latin American Congress on Computational Methods in Engineering (h5=8) || Ibero-Latin American Congress on Computational Methods in Engineering (CILAMCE) (h5=1)
+CIMENICS,International Congress on Numerical Methods in Engineering and Applied Sciences,,relevante,,1,nenhum,1,0,CE-RV,
+CISIM,International Conference on Computer Information Systems and Industrial Management,8,relevante,,1,scholar,6,0,CE-SI,Computer Information Systems and Industrial Management (h5=8)
+CISTI,Iberian Conference on Information Systems and Technologies,24,relevante,,1,scholar,23,0,CE-SI,Iberian Conference on Information Systems and Technologies (h5=24)
+CIT,IEEE International Conference on Computer and Information Technology,26,relevante,,1,scholar,13,0,CE-SI,International Conference on Computer and Information Technology (h5=26)
+CITS,"International Conference on Computer, Information, and Telecommunication Systems",14,relevante,,1,scholar,15,0,CE-RESD|CE-SI,"International Conference on Computer, Information and Telecommunication Systems (h5=14)"
+CL,Corpus Linguistics Conference,,top20,,1,nenhum,2,0,CE-PLN,
+CLAIO,Latin-Ibero-American Conference on Operations Research,,relevante,,1,nenhum,,0,CE-ACO,
+CLEF,Conference and Labs of the Evaluation Forum,,relevante,,1,nenhum,16,0,CE-PLN,
+CLEI,Conferencia Latinoamericana de Informática / Conferencia Latinoamericana En Informatica,12,relevante,,1,scholar,11,0,CE-BD|CE-ES|CE-IHC|CE-RV|CE-SI,Conferencia Latinoamericana En Informatica (CLEI) (h5=12)
+CLIHC,Latin American Conference on Human Computer Interaction,139,relevante,,1,scholar,7,1,CE-IHC|CE-SC,Computer Human Interaction (CHI) (h5=139) || Proceedings of the ACM on Human-Computer Interaction (h5=88) || International Journal of Human-Computer Interaction (h5=83) || ACM Transactions on Computer-Human Interaction (h5=55) || Human–Computer Interaction (h5=39) || Annual Symposium on Computer-Human Interaction in Play (h5=27) || Australian Computer-Human Interaction Conference (h5=19) || International Conference on Human-Computer Interaction (h5=14) || International Conference on Human Computer Interaction (h5=10) || Iberoamerican Workshop on Human-Computer Interaction (h5=7) || International BCS Human-Computer Interaction Conference (h5=6)
+CLOSER,International Conference on Cloud Computing and Services Science,17,top20,,1,scholar,15,0,CE-ACPAD|CE-BD|CE-SI,International Conference on Cloud Computing and Services Science (CLOSER) (h5=17)
+CLOUD,IEEE International Conference on Cloud Computing,50,relevante,,1,scholar,34,1,CE-BD|CE-SI,"Journal of Cloud Computing (h5=50) || IEEE Transactions on Cloud Computing (h5=50) || Workshop on Cloud Technologies in Education (h5=42) || ACM Symposium on Cloud Computing (h5=39) || International Conference on Cloud Computing, Data Science & Engineering (h5=36) || International Journal of Cloud Applications and Computing (h5=29) || IEEE International Conference on Cloud Computing (CLOUD) (h5=24) || International Conference on I-SMAC (IoT in Social, Mobile, Analytics and Cloud)(I-SMAC) (h5=23) || International Conference on Utility and Cloud Computing (h5=20) || IEEE International Conference on Cloud Engineering (h5=19) || International Conference on Cyber Security and Cloud Computing (CSCloud) (h5=18) || International Conference on Cloud Computing and Services Science (CLOSER) (h5=17) || International Conference on Machine Learning, Big Data, Cloud and Parallel Computing (h5=17) || International Conference on Cloud Computing and Big Data Analytics (h5=17) || IEEE SmartWorld, Ubiquitous Intelligence & Computing, Advanced & Trusted Computing, Scalable Computing & Communications, Cloud & Big Data Computing, Internet of People and Smart City Innovation (h5=12) || International Journal of Cloud Computing (h5=12) || International Conference on Cloud Networking (CloudNet) (h5=12) || IEEE International Conference on Smart Cloud (h5=12) || Artificial Intelligence and Cloud Computing Conference (h5=11) || Conference on Cloud and Internet of Things (h5=11) || P2P, Parallel, Grid, Cloud and Internet Computing (h5=10) || IEEE International Conference on Cloud Computing and Intelligence Systems (h5=9) || IEEE International Conference on Cloud Computing Technology and Science (CloudCom) (h5=9) || IEEE International Conference on Big Data and Cloud Computing (BdCloud) (h5=7) || International Conference on Cloud Computing, Big Data Application and Software Engineering (h5=7) || International Conference on Cloud Computing and Big Data (h5=7) || International Conference on Machine Learning, Cloud Computing and Intelligent Mining (h5=5) || International Conference on Artificial Intelligence, Information Processing and Cloud Computing (h5=5)"
+CloudCom,IEEE International Conference on Cloud Computing Technology and Science,9,relevante,,1,scholar,13,0,CE-ACPAD|CE-BD|CE-RESD|CE-SI,IEEE International Conference on Cloud Computing Technology and Science (CloudCom) (h5=9)
+CloudNet,IEEE International Conference on Cloud Networking,12,relevante,,1,scholar,18,0,CE-RESD|CE-SI,International Conference on Cloud Networking (CloudNet) (h5=12)
+CLOUDTECH,International Conference on Cloud Computing Technologies and Applications,,relevante,,1,nenhum,13,0,CE-SI,
+CLUSTER,IEEE International Conference on Cluster Computing,80,relevante,,1,scholar,22,1,CE-ACPAD,Cluster Computing (h5=80) || Journal of Cluster Science (h5=51) || IEEE International Symposium on Cluster Computing and the Grid (h5=30) || IEEE International Conference on Cluster Computing (h5=24)
+CMBBE,International Symposium on Computer Methods in Biomechanics and Biomedical Engineering,31,relevante,,1,scholar,,0,CE-CAS,Computer Methods in Biomechanics and Biomedical Engineering (h5=31)
+CMMR,International Symposium on Computer Music Multidisciplinary Research,,top10,,1,nenhum,,0,CE-CM,
+CMN,Congress on Numerical Methods in Engineering,45,relevante,,1,scholar,1,1,CE-RV,International Journal for Numerical Methods in Engineering (h5=45) || Numerical Methods in Civil Engineering (h5=8)
+CNMAC,Congresso Nacional de Matemática Aplicada e Computacional,,relevante,,1,nenhum,,0,CE-ACO,
+CNS,IEEE Conference on Communications and Network Security,21,relevante,,1,scholar,24,0,CE-SEG,IEEE Conference on Communications and Network Security (h5=21)
+CNSM,International Conference on Network and Service Management,22,relevante,,1,scholar,19,0,CE-RESD,Conference on Network and Service Management (h5=22)
+CoARCH,Workshop On Computing Techniques For Spatio-Temporal Data in Archaeology And Cultural Heritage,,relevante,,1,nenhum,,0,CE-Geoinformática,
+COCOA,International Conference on Combinatorial Optimization and Applications,9,relevante,,1,scholar,9,0,CE-ACO,Conference on Combinatorial Optimization and Applications (h5=9)
+COCOON,International Computing and Combinatorics Conference,11,relevante,,1,scholar,9,0,CE-ACO,International Conference on Computing and Combinatorics (h5=11)
+CODASPY,ACM Conference on Data and Application Security and Privacy,24,relevante,,1,scholar,23,0,CE-SEG,ACM Conference on Data and Application Security and Privacy (h5=24)
+CODES+ISSS,IEEE/ACM/IFIP International Conference on Hardware/Software Codesign and System Synthesis,,relevante,,1,nenhum,5,0,CE-CCI,
+CoG,IEEE Conference on Games,11,top10,,1,scholar,31,0,CE-JOGOS,International Conference on Serious Games (h5=11)
+COGSCI,Annual Meeting of the Cognitive Science Society,36,relevante,,1,scholar,32,1,CE-SI,Annual Meeting of the Cognitive Science Society (h5=36) || Proceedings of the MEi: CogSci Conference (h5=2)
+COLING,International Conference on Computational Linguistics,81,top10,,1,scholar,65,1,CE-IA|CE-PLN,International Conference on Computational Linguistics (COLING) (h5=81) || Computational Linguistics (h5=41)
+CollaborateCom,"International Conference on Collaborative Computing: Networking, Applications and Worksharing (CollaborateCom)",9,top20,,1,scholar,8,0,CE-SC,"International Conference on Collaborative Computing: Networking, Applications and Worksharing (CollaborateCom) (h5=9)"
+CollabTech,International Conference on Collaboration Technologies and Social Computing,,relevante,,1,nenhum,5,0,CE-IHC,
+COLT,Conference on Learning Theory,74,top20,,1,scholar,74,1,CE-IA,Conference on Learning Theory (COLT) (h5=74) || Algorithmic Learning Theory (ALT) (h5=33) || International Conference on Deep Learning Theory and Applications (h5=11)
+CompEd,ACM Conference on Global Computing Education,,top20,,1,nenhum,12,0,CE-EDUCOMP,
+COMPSAC,"Annual International Computers, Software & Applications Conference",30,relevante,,1,scholar,29,0,CE-IHC,IEEE Annual Computer Software and Applications Conference (COMPSAC) (h5=30)
+COMSNETS,International Conference on COMmunication Systems & NETworkS,28,relevante,,1,scholar,26,0,CE-RESD,International Communication Systems and Networks (COMSNETS) (h5=28)
+CONCUR,International Conference on Concurrency Theory,18,top20,,1,scholar,21,0,CE-MF,International Conference on Concurrency Theory (CONCUR) (h5=18)
+CONEXT,Conference on Emerging Network Experiment and Technology,29,top10,,1,scholar,31,0,CE-RESD,ACM Conference on Emerging Network Experiment and Technology (CoNEXT) (h5=29)
+CoNLL,Conference on Natural Language Learning,30,top10,,1,scholar,39,1,CE-PLN|CE-SI,Conference on Computational Natural Language Learning (CoNLL) (h5=30) || International Conference on Machine Learning and Natural Language Processing (h5=5)
+CONTECSI,International Conference on Information Systems and Technology Management,2,relevante,,1,scholar,5,0,CE-SI,CONTECSI-International Conference on Information Systems and Technology Management Virtual (h5=2)
+CoopIS,International Conference on Cooperative Information Systems,,relevante,,1,nenhum,6,0,CE-BD|CE-SI,
+CoRL,Conference on Robot Learning,107,top10,,1,scholar,33,0,CE-R,Conference on Robot Learning (h5=107)
+COSIT,International Conference on Spatial Information Theory,,top10,,1,nenhum,13,0,CE-Geoinformática,
+CP,International Conference on Principles and Practice of Constraint Programming,20,top20,,1,scholar,20,0,CE-ACO,International Conference on Principles and Practice of Constraint Programming (h5=20)
+CPAIOR,"International Conference on Integration of Constraint Programming, Artificial Intelligence, and Operations Research",,relevante,,1,nenhum,,0,CE-ACO,
+CPP,ACM Symposium on Certified Programs and Proofs,23,top20,,1,scholar,20,0,CE-LP,ACM SIGPLAN International Conference on Certified Programs and Proofs (h5=23)
+CRIWG,International Workshop on Groupware,,relevante,,1,nenhum,8,0,CE-WEBMEDIA,
+CRTL+E,Congresso sobre Tecnologias na Educação,8,relevante,,1,scholar,8,0,CE-IE,Congresso sobre Tecnologias na Educação (Ctrl+ e) (h5=8)
+CRV,Canadian Conference on Computer and Robot Vision,17,relevante,,1,scholar,15,0,CE-R,Canadian Conference on Computer and Robot Vision (CRV) (h5=17)
+CRYPTO,International Cryptology Conference,66,top10,,1,scholar,61,0,CE-SEG,International Cryptology Conference (CRYPTO) (h5=66)
+CSBC,Congresso da Sociedade Brasileira de Computação,,relevante,,1,nenhum,0,0,CE-BD|CE-IHC,
+CSBIO,International Conference on Computational Systems-Biology and Bioinformatics,,top20,,1,nenhum,,0,CE-BioComp,
+CSCL,CSCL - International Conference on Computer Supported Collaborative Learning,7,top10,,1,scholar,12,0,CE-IE|CE-SC,International Conference on Computer-Supported Collaborative Learning (h5=7)
+CSCN,IEEE Conference on Standards for Communications and Networking,12,relevante,,1,scholar,18,0,CE-RESD,IEEE Conference on Standards for Communications and Networking (h5=12)
+CSCW,CSCW - ACM Conference on Computer Supported Cooperative Work & Social Computing,27,top10,,1,scholar,23,0,CE-IHC|CE-RV|CE-SC|CE-SI|CE-WEBMEDIA,Computer Supported Cooperative Work (CSCW) (h5=27) || ACM Conference on Computer-Supported Cooperative Work & Social Computing (h5=27)
+CSCWD,CSCWD - IEEE International Conference on Computer Supported Cooperative Work in Design,23,top10,,1,scholar,16,0,CE-IHC|CE-SC,"International Conference on Computer Supported Cooperative Work in Design, CSCWD (h5=23)"
+CSE,International Conference on Computational Science and Engineering,21,relevante,,1,scholar,13,0,CE-ACPAD,International Journal of Computational Science and Engineering (h5=21)
+CSEDU,International Conference on Computer Supported Education,25,top10,,1,scholar,21,0,CE-EDUCOMP|CE-IE|CE-IHC,International Conference on Computer Supported Education (CSEDU) (h5=25)
+CSEE&T,Conference on Software Engineering Education and Training,23,top20,,1,scholar,9,1,CE-EDUCOMP|CE-ES|CE-IE,ACM International Conference on Software Engineering: Software Engineering Education and Training (h5=23) || IEEE-CS Conference on Software Engineering Education and Training (CSEE&T) (h5=12)
+CSF,IEEE Computer Security Foundations Symposium,22,top20,,1,scholar,32,0,CE-SEG,IEEE Computer Security Foundations Symposium (h5=22)
+CSL,Computer Science Logic,30,top10,,1,scholar,16,1,GI-L,IEEE Symposium on Logic in Computer Science (h5=30) || Conference for Computer Science Logic (CSL) (h5=19)
+CSMC,Conference on Computer Simulation of Musical Creativity,,top20,,1,nenhum,,0,CE-CM,
+CTW,Cologne-Twente Workshop on Graphs and Combinatorial Optimization,,relevante,,1,nenhum,,0,CE-ACO,
+CVPR,IEEE Conference on Computer Vision and Pattern Recognition,450,relevante,,1,scholar,440,1,CE-GRAPI|CE-RV,IEEE/CVF Conference on Computer Vision and Pattern Recognition (h5=450) || Chinese Conference on Pattern Recognition and Computer Vision (h5=22)
+CVPRW,IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops,117,top10,,1,scholar,115,0,CE-GRAPI|CE-RV,IEEE/CVF Computer Society Conference on Computer Vision and Pattern Recognition Workshops (CVPRW) (h5=117)
+DAC,Design Automation Conference,56,top10,,1,scholar,60,0,CE-ACPAD|CE-CCI|CE-ESC,ACM/IEEE Design Automation Conference (h5=56)
+DAFX,International Conference on Digital Audio Effects,,top10,,1,nenhum,,0,CE-CM,
+DAMON,International Workshop on Data Management on New Hardware,,relevante,,1,nenhum,,0,CE-BD,
+DARS,International Symposium on Distributed Autonomous Robotic Systems,,relevante,,1,nenhum,,0,CE-R,
+DASFAA,International Conference on Database Systems for Advanced Applications,23,top20,,1,scholar,23,0,CE-BD,International Conference on Database Systems for Advanced Applications (h5=23)
+DATA,"International Conference on Data Science, E-learning and Information Systems",129,relevante,,1,scholar,15,1,CE-SI,Scientific Data (h5=129) || IEEE Transactions on Knowledge and Data Engineering (h5=126) || ACM SIGKDD Conference on Knowledge Discovery and Data Mining (h5=124) || Earth System Science Data (h5=102) || ACM International Conference on Web Search and Data Mining (h5=86) || Journal of Big Data (h5=85) || International Conference on Data Engineering (h5=82) || ACM SIGMOD International Conference on Management of Data (h5=74) || International Journal of Information Management Data Insights (h5=73) || Big Data & Society (h5=71) || Industrial Management & Data Systems (h5=66) || International Journal of Data & Network Science (h5=65) || Data in Brief (h5=61) || Big Data and Cognitive Computing (h5=57) || Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery (h5=56) || IEEE International Conference on Big Data (h5=55) || IEEE Transactions on Big Data (h5=51) || Data Mining and Knowledge Discovery (h5=51) || International Conference on Financial Cryptography and Data Security (h5=50) || IEEE International Conference on Data Mining (h5=49)
+DATE,"Design, Automation and Test in Europe Conference and Exhibition",46,top10,,1,scholar,46,1,CE-BD|CE-CCI|CE-ESC,"Design, Automation & Test in Europe Conference & Exhibition, DATE (h5=46) || thersites. Journal for Transcultural Presences & Diachronic Identities from Antiquity to Date (h5=2)"
+DAWAK,International Conference on Big Data Analytics and Knowledge Discovery,13,relevante,,1,scholar,12,0,CE-BD,Data Warehousing and Knowledge Discovery (DaWaK) (h5=13)
+DBSec,IFIP WG 11.3 Conference on Data and Applications Security and Privacy,14,relevante,,1,scholar,15,0,CE-SEG,International conference on Data and Applications Security and Privacy (h5=14)
+DCASE,Workshop on Detection and Classification of Acoustic Scenes and Events,32,relevante,,1,scholar,,0,CE-CM,Detection and Classification of Acoustic Scenes and Events (h5=32)
+DCOSS,International Conference on Distributed Computing in Sensor Systems,22,relevante,,1,scholar,21,0,CE-RESD,IEEE International Conference on Distributed Computing in Sensor Systems (h5=22)
+DDECS,IEEE International Symposium on Design and Diagnostics of Electronic Circuits and Systems,12,relevante,,1,scholar,10,0,CE-ACPAD|CE-CCI,IEEE International Symposium on Design and Diagnostics of Electronic Circuits & Systems (h5=12)
+DEBS,International Conference on Distributed and Event-Based Systems,,relevante,,1,nenhum,18,0,CE-RESD,
+DEPCOS,International Conference on Dependability of Computer Systems,,relevante,,1,nenhum,9,0,CE-TF,
+DEXA,Conference on Database and Expert Systems Applications,16,top20,,1,scholar,15,0,CE-BD,Database and Expert Systems Applications (DEXA) (h5=16)
+DFT,IEEE International Symposium on Defect and Fault Tolerance in VLSI and Nanotechnology Systems,,top20,,1,nenhum,15,0,CE-TF,
+DFTVS,IEEE International Symposium on Defect and Fault Tolerance of VLSI Systems,16,relevante,,1,scholar,15,0,CE-CCI,"IEEE International Symposium on Defect and Fault Tolerance of VLSI Systems, DFTVS (h5=16)"
+DG.O,Annual International Conference on Digital Government Research,24,top20,,1,scholar,27,0,CE-IHC|CE-SI,Annual International Conference on Digital Government Research (h5=24)
+DGMM,Discrete Geometry and Mathematical Morphology (DGMM = DGCI+ISMM desde 2021),,top10,,1,nenhum,21,0,CE-GRAPI,
+DGO,Annual International Conference on Digital Government Research,24,relevante,,1,scholar,25,0,CE-BD,Annual International Conference on Digital Government Research (h5=24)
+DH,Digital Heritage,,relevante,,1,nenhum,10,0,CE-SI,
+DICTA,International Conference on Digital Image Computing Techniques and Applications,17,relevante,,1,scholar,20,0,CE-GRAPI,International Conference on Digital Image Computing Techniques and Applications (DICTA) (h5=17)
+DiGRA,Digital Games Research Association International Conference,14,top20,,1,scholar,,0,CE-JOGOS,DiGRA International Conference (h5=14)
+DIS,ACM Designing Interactive Systems,54,top10,,1,scholar,49,0,CE-IHC|CE-RV,ACM Designing Interactive Systems Conference (h5=54)
+DISC,International Symposium on DIStributed Computing,23,top10,,1,scholar,22,1,CE-RESD|CE-TF,International Symposium on Distributed Computing (DISC) (h5=23) || Distributed Computing (h5=22)
+DLS,Dynamic Languages Symposium,,relevante,,1,nenhum,6,0,CE-LP,
+DM,SIAM Conference on Discrete Mathematics,30,relevante,,1,scholar,,1,CE-ACO,Discrete Mathematics (h5=30) || SIAM Journal on Discrete Mathematics (h5=27)
+DMIN,International Conference on Data Mining,49,relevante,,1,scholar,50,0,CE-IA,IEEE International Conference on Data Mining (h5=49)
+DOCENG,ACM Symposium on Document Engineering,14,relevante,,1,scholar,13,0,CE-BD|CE-IHC,ACM Symposium on Document Engineering (h5=14)
+DOING,Intelligent Data - From Data to Knowledge Workshop,,relevante,,1,nenhum,,0,CE-BD,
+DOLAP,International Workshop On Data Warehousing and OLAP,,relevante,,1,nenhum,,0,CE-BD,
+DPM,International Workshop on Data Privacy Management,,relevante,,1,nenhum,,0,CE-BD,
+DRCN,International Conference on the Design of Reliable Communication Networks,,relevante,,1,nenhum,12,0,CE-ESC|CE-RESD,
+DS-RT,IEEE/ACM International Symposium on Distributed Simulation and Real-Time Applications,14,relevante,,1,scholar,14,0,CE-ESC,"IEEE/ACM International Symposium on Distributed Simulation and Real-Time Applications, DR-RT (h5=14)"
+DSAA,IEEE International Conference on Data Science and Advanced Analytics,27,relevante,,1,scholar,26,0,CE-BD|CE-SI,IEEE International Conference on Data Science and Advanced Analytics (DSAA) (h5=27)
+DSAI,International Conference on Software Development for Enhancing Accessibility and Fighting Info-exclusion,,relevante,,1,nenhum,8,0,CE-IHC,
+DSD,"Euromicro Conference on Digital System Design, Architectures, Methods and Tools",20,top20,,1,scholar,18,0,CE-ACPAD|CE-CCI|CE-ESC,"Euromicro Conference on Digital System Design, Architectures, Methods and Tools, DSD (h5=20)"
+DSN,IEEE/IFIP International Conference on Dependable Systems and Networks,35,top10,,1,scholar,37,0,CE-ESC|CE-RESD|CE-TF,IEEE/IFIP International Conference on Dependable Systems and Networks (h5=35)
+DSNW,IEEE International Conference on Dependable Systems and Networks Workshops,,relevante,,1,nenhum,25,0,CE-TF,
+DSP,International Conference on Digital Signal Processing,49,relevante,,1,scholar,7,1,CE-CCI,Digital Signal Processing (h5=49) || International Conference on Digital Signal Processing (h5=8)
+DSW,Dataset Showcase Workshop,,relevante,,1,nenhum,,0,CE-BD,
+DySPAN,IEEE Symposium on New Frontiers in Dynamic Spectrum Access Networks,12,relevante,,1,scholar,21,0,CE-RESD,IEEE Symposium on New Frontiers in Dynamic Spectrum Access Networks (h5=12)
+E-Learning,IADIS International Conference on e-Learning,,relevante,,1,nenhum,,0,CE-IE,
+EACL,Conference of the European Chapter of the Association for Computational Linguistics,77,top10,,1,scholar,56,0,CE-IA|CE-PLN,Conference of the European Chapter of the Association for Computational Linguistics (EACL) (h5=77)
+EASE,International Conference on Evaluation and Assessment in Software Engineering,31,relevante,,1,scholar,25,0,CE-ES,International Conference on Evaluation and Assessment in Software Engineering (h5=31)
+EATIS,Euro American Conference on Telematics and Information Systems,6,top20,,1,scholar,6,0,CE-SI,Euro American Conference on Telematics and Information Systems (h5=6)
+EC,ACM conference on Economics and Computation,,relevante,,1,nenhum,51,0,CE-WEBMEDIA,
+EC-TEL,European Conference on Technology Enhanced Learning,20,top10,,1,scholar,19,0,CE-IE,"European Conference on Technology Enhanced Learning"" (h5=20)"
+ECAI,European Conference on Artificial Intelligence,62,top20,,1,scholar,36,1,CE-IA|CE-IC,Artificial Intelligence (h5=62) || European Conference on Artificial Intelligence (ECAI) (h5=44)
+ECC,European Control Conference,29,relevante,,1,scholar,27,0,CE-R,European Control Conference (h5=29)
+ECCO,European Chapter on Combinatorial Optimization,,relevante,,1,nenhum,,0,CE-ACO,
+ECCTD,European Conference on Circuit Theory and Design,,relevante,,1,nenhum,8,0,CE-CCI,
+ECCV,European Conference on Computer Vision,262,relevante,,1,scholar,206,0,CE-GRAPI|CE-RV,European Conference on Computer Vision (h5=262)
+ECIR,European Conference on Information Retrieval,47,relevante,,1,scholar,42,0,CE-BD,European Conference on Advances in Information Retrieval (h5=47)
+ECIS,European Conference on Information Systems,37,top10,,1,scholar,39,0,CE-BD|CE-SI,European Conference on Information Systems (h5=37)
+ECML,European Conference on Machine Learning and Knowledge Discovery in Databases,41,top10,,1,scholar,45,0,CE-BD|CE-IC,European Conference on Machine Learning and Knowledge Discovery in Databases (h5=41)
+ECML PKDD,European Conference on Machine Learning and Knowledge Discovery in Databases,41,relevante,,1,scholar,45,0,CE-IA,European Conference on Machine Learning and Knowledge Discovery in Databases (h5=41)
+ECMR,European Conference on Mobile Robots,14,top20,,1,scholar,19,0,CE-R,European Conference on Mobile Robots (h5=14)
+ECOOP,European Conference on Object-Oriented Programming,21,top10,,1,scholar,19,0,CE-ES|CE-LP,European Conference on Object-oriented Programming (ECOOP) (h5=21)
+ECRTS,Euromicro Conference on Real-Time Systems,20,top10,,1,scholar,21,0,CE-ESC,Euromicro Conference on Real-Time Systems (h5=20)
+ECSA,European Conference on Software Architecture,21,relevante,,1,scholar,20,0,CE-ES,European Conference on Software Architecture (h5=21)
+ECSCW,ECSCW - European Conference on Computer Supported Cooperative Work (https://dblp.org/db/conf/ecscw/index.html),,top10,,1,nenhum,11,0,CE-SC,
+ECSQARU,European Conference on Symbolic and Quantitative Approaches to Reasoning and Uncertainty,,relevante,,1,nenhum,12,0,CE-IA,
+EDBT,International Conference on Extending Database Technology,29,top10,,1,scholar,29,0,CE-BD,International Conference on Extending Database Technology (EDBT) (h5=29)
+EDCC,European Dependable Computing Conference,16,top20,,1,scholar,14,0,CE-TF,European Dependable Computing Conference (h5=16)
+EDM,International Conference on Educational Data Mining,31,top10,,1,scholar,32,0,CE-IE,International Conference on Educational Data Mining (EDM) (h5=31)
+EDOC,"Enterprise Design, Operations and Computing",19,relevante,,1,scholar,21,0,CE-SI,"International IEEE Enterprise Distributed Object Computing Conference, EDOC (h5=19)"
+EduComp,Simpósio Brasileiro de Educação em Computação,11,top10,,1,scholar,7,0,CE-EDUCOMP|CE-IE,Simpósio Brasileiro de Educação em Computação (EDUCOMP) (h5=11)
+EDUCON,IEEE Global Engineering Education Conference,,top10,,1,nenhum,32,0,CE-EDUCOMP|CE-IE,
+EDULEARN,International Conference on Education and New Learning Technologies,21,top20,,1,scholar,22,0,CE-IE,International Conference on Education and New Learning Technologies (h5=21)
+EGOV,International Conference on Electronic Government,17,top10,,1,scholar,16,0,CE-IHC|CE-SI,International Conference on Electronic Government (h5=17)
+EGOVIS,Electronic Government and the Information Systems Perspective,,relevante,,1,nenhum,0,0,CE-IHC|CE-SI,
+EICS,Engineering Interactive Computing Systems,10,top20,,1,scholar,13,0,CE-IHC|CE-RV,ACM SIGCHI Symposium on Engineering Interactive Computing Systems (h5=10)
+EJC,International Conference on Information Modeling and Knowledge,,relevante,,1,nenhum,7,0,CE-BD,
+ELC,Encontro de Linguística de Corpus,,top20,,1,nenhum,0,0,CE-PLN,
+EM-GIS,International Workshop on the Use of GIS in Emergency Management,,relevante,,1,nenhum,,0,CE-Geoinformática,
+EMBC,International Conference of the IEEE Engineering in Medicine and Biology Society,47,top10,,1,scholar,48,0,CE-CAS|CE-GRAPI,"International Conference of the IEEE Engineering in Medicine and Biology Society, EMBC (h5=47)"
+EMBS,IEEE EMBS International Conference on Biomedical and Health Informatics,113,top10,,1,scholar,23,1,CE-CAS,IEEE Journal of Biomedical and Health Informatics (h5=113) || IEEE EMBS International Conference on Biomedical and Health Informatics (h5=17)
+EMCIS,"European, Mediterranean, and Middle Eastern Conference on Information Systems",14,relevante,,1,scholar,14,0,CE-SI,"European, Mediterranean, and Middle Eastern Conference on Information Systems (h5=14)"
+EMNDKLP,Conference on Empirical Methods in Natural Language Processing,218,top20,,1,scholar,193,1,CE-IA,Conference on Empirical Methods in Natural Language Processing (EMNLP) (h5=218) || Conference on Empirical Methods in Natural Language Processing: System Demonstrations (h5=35)
+EMNLP,Conference on Empirical Methods in Natural Language Processing,218,top10,,1,scholar,193,1,CE-BD|CE-PLN|CE-SI,Conference on Empirical Methods in Natural Language Processing (EMNLP) (h5=218) || Conference on Empirical Methods in Natural Language Processing: System Demonstrations (h5=35)
+ENANPAD,Encontro da Associação Nacional de Pós-Graduação e Pesquisa em Administração,,relevante,,1,nenhum,4,0,CE-SI,
+ENASE,Evaluation of Novel Approaches to Software Engineering,15,relevante,,1,scholar,15,0,CE-ES,Evaluation of Novel Approaches to Software Engineering (ENASE) (h5=15)
+ENIAC,Encontro Nacional de Inteligência Artificial e Computacional,9,top10,,1,scholar,9,0,CE-IA|CE-IC,Encontro Nacional de Inteligência Artificial e Computacional (h5=9)
+EPIA,Portuguese Conference on Artificial Intelligence,62,relevante,,1,scholar,16,1,CE-GRAPI|CE-IC,Artificial Intelligence (h5=62) || Portuguese Conference on Artificial Intelligence (EPIA) (h5=11)
+ER,International Conference on Conceptual Modeling,24,top10,,1,scholar,20,0,CE-BD|CE-ES|CE-Geoinformática|CE-SI,International Conference on Conceptual Modeling (h5=24)
+ERES,Escola Regional de Engenharia de Software,4,relevante,,1,scholar,4,0,CE-ES,Escola Regional de Engenharia de Software (ERES) (h5=4)
+ESA,European Symposium on Algorithms,22,top10,,1,scholar,25,0,CE-ACO,European Symposium on Algorithms (h5=22)
+ESANN,European Symposium on Artificial Neural Networks,28,relevante,,1,scholar,18,1,CE-GRAPI,International Conference on Artificial Neural Networks (h5=28) || European Symposium on Artificial Neural Networks (ESANN) (h5=17)
+eScience,IEEE eScience International Conference,14,top10,,1,scholar,15,0,CE-BD|CE-Geoinformática,IEEE International Conference on eScience (h5=14)
+escolher,,,relevante,,1,nenhum,,0,CE-ACPAD,
+ESEM,ACM/IEEE International Symposium on Empirical Software Engineering and Measurement,27,relevante,,1,scholar,28,0,CE-ES,"International Symposium on Empirical Software Engineering and Measurement, ESEM (h5=27)"
+ESGSR,Eurographics Symposium on Rendering,,relevante,,1,nenhum,15,0,CE-GRAPI,
+ESOP,European Symposium on Programming,24,top10,,1,scholar,23,0,CE-LP|GI-L,European Symposium on Programming (ESOP) (h5=24)
+ESREF,European Symposium on Reliability of Electron Devices Failure Physics and Analysis,,relevante,,1,nenhum,1,0,CE-CCI,
+ESSCIRC,European Solid State Circuits Conference,19,relevante,,1,scholar,21,0,CE-CCI,European Solid State Circuits Conference (ESSCIRC) (h5=19)
+ESSDERC,European Solid State Device Research Conference,13,relevante,,1,scholar,14,0,CE-CCI,"European Solid State Device Research Conference, ESSDERC (h5=13)"
+ESWC,European Semantic Web Conference,,relevante,,1,nenhum,41,0,CE-BD|CE-IA,
+ESWS,Extended Semantic Web Conference,31,top20,,1,scholar,32,0,CE-WEBMEDIA,Extended Semantic Web Conference (h5=31)
+ETC,Encontro de Teoria da Computação,2,relevante,,1,scholar,2,0,CE-ACO,Encontro de Teoria da Computação (ETC) (h5=2)
+ETFA,IEEE International Conference on Emerging Technologies and Factory Automation,34,top20,,1,scholar,34,0,CE-ESC|CE-R,IEEE Conference on Emerging Technologies & Factory Automation (ETFA) (h5=34)
+ETS,IEEE European Test Symposium,16,relevante,,1,scholar,16,0,CE-CCI,IEEE European Test Symposium (ETS) (h5=16)
+EUC,IEEE/IFIP International Conferences on Embedded and Ubiquitous Computing,,relevante,,1,nenhum,,0,CE-ESC,
+EuCNC,European Conference on Networks and Communications,26,relevante,,1,scholar,24,0,CE-RESD,European Conference on Networks and Communications (h5=26)
+EUROCOMB,"European Conference on Combinatorics, Graph Theory and Applications",9,top20,,1,scholar,12,0,CE-ACO,"European Conference on Combinatorics, Graph Theory and Applications (h5=9)"
+EUROCRYPT,International Conference on Theory and Applications of Cryptographic Techniques,66,top10,,1,scholar,63,0,CE-SEG,International Conference on Theory and Applications of Cryptographic Techniques (EUROCRYPT) (h5=66)
+EuroHaptics,EuroHaptics,11,top20,,1,scholar,15,0,CE-IHC|CE-RV,EuroHaptics (h5=11)
+EuroMPI,European MPI Users Group Meeting,,relevante,,1,nenhum,12,0,CE-ACPAD,
+EUROPAR,European Conference on Parallel Computing,22,top20,,1,scholar,15,0,CE-ACPAD|CE-RESD,Parallel Computing (h5=22)
+EUROPLOP,European Conference on Pattern Languages of Programs,14,relevante,,1,scholar,13,0,CE-ES,European Conference on Pattern Languages of Programs (h5=14)
+EuroS&P,IEEE European Symposium on Security and Privacy,52,top10,,1,scholar,47,0,CE-SEG,IEEE European Symposium on Security and Privacy (h5=52)
+EuroSPI,European Conference on Software Process Improvement,17,relevante,,1,scholar,17,1,CE-ES,Conference on European System & Software Process Improvement and Innovation (EuroSPI) (h5=17) || International Conference On Software Process Improvement (h5=5)
+EUROSYS,European Conference on Computer Systems,52,top10,,1,scholar,48,0,CE-ESC|CE-RESD|CE-TF,ACM European Conference on Computer Systems (h5=52)
+EuroVis,EG/VGTC Conference on Visualization,23,top10,,1,scholar,17,0,CE-GRAPI,IEEE Visualization Conference (h5=23)
+EUSIPCO,European Signal Processing Conference,35,relevante,,1,scholar,36,0,CE-GRAPI,European Signal Processing Conference (EUSIPCO) (h5=35)
+EWSDN,European Workshop on Software Defined Networks,,relevante,,1,nenhum,,0,CE-RESD,
+EWSN,European Conference on Wireless Sensor Networks,16,relevante,,1,scholar,17,0,CE-RESD,INTERNATIONAL CONFERENCE ON EMBEDDED WIRELESS SYSTEMS AND NETWORKS (h5=16)
+FACS,International Conference on Formal Aspects of Component Software,,top20,,1,nenhum,19,0,CE-MF,
+FASE,Fundamental Approaches to Software Engineering,19,top10,,1,scholar,18,0,CE-ES|CE-MF,Fundamental Approaches to Software Engineering (h5=19)
+FASE4Games,Foundations of Applied Software Engineering for Games Workshop,,top20,,1,nenhum,0,0,CE-JOGOS,
+FAST,USENIX Conference on File and Storage Technologies,40,relevante,,1,scholar,39,0,CE-BD,Conference on File and Storage Technologies (FAST) (h5=40)
+FC,International Conference on Financial Cryptography and Data Security,50,top10,,1,scholar,47,0,CE-SEG,International Conference on Financial Cryptography and Data Security (h5=50)
+FCCM,IEEE Annual Symposium on Field-Programmable Custom Computing Machines,25,top20,,1,scholar,28,0,CE-CCI|CE-ESC,IEEE Symposium on Field-Programmable Custom Computing Machines (h5=25)
+FCT,International Symposium on Fundamentals of Computation Theory,,relevante,,1,nenhum,,0,CE-ACO,
+FDG,International Conference on the Foundations of Digital Games,,top10,,1,nenhum,25,0,CE-JOGOS,
+FDL,Forum on Specification and Design Languages,,relevante,,1,nenhum,1,0,CE-CCI|CE-LP,
+FEDCSIS,Federated Conference on Computer Science and Information Systems,17,relevante,,1,scholar,22,1,CE-SI,Annals of Computer Science and Information Systems (h5=17) || International Conference on Advanced Computer Science and Information Systems (h5=15) || Journal of Computer Science and Information Systems (JCoInS) (h5=5)
+FG,IEEE International Conference on Automatic Face & Gesture Recognition,40,relevante,,1,scholar,43,0,CE-GRAPI|CE-RV,IEEE International Conference on Automatic Face & Gesture Recognition (h5=40)
+FiCloud,International Conference on Future Internet of Things and Cloud,11,relevante,,1,scholar,21,0,CE-RESD,International Conference on Future Internet of Things and Cloud (FiCloud) (h5=11)
+FIE,IEEE Frontiers in Education Conference,30,top10,,1,scholar,26,0,CE-EDUCOMP|CE-IE,Frontiers in Education Conference (h5=30)
+FIMH,Functional Imaging and Modeling of the Heart,12,relevante,,1,scholar,13,0,CE-GRAPI,Functional Imaging and Modeling of the Heart (h5=12)
+FLOPS,International Symposium on Functional and Logic Programming,,top20,,1,nenhum,4,0,GI-L,
+FM,Formal Methods,17,top10,,1,scholar,19,0,CE-MF,Formal Methods (h5=17)
+FMCAD,International Conference on Formal Methods in Computer-Aided Design,19,top10,,1,scholar,17,0,CE-MF,Formal Methods in Computer-Aided Design (FMCAD) (h5=19)
+FNWF,IEEE Future Networks World Forum,13,relevante,,1,scholar,4,0,CE-RESD,IEEE Future Networks World Forum (h5=13)
+FOCS,IEEE Annual Symposium on Foundations of Computer Science,62,top10,,1,scholar,55,1,CE-ACO,IEEE Symposium on Foundations of Computer Science (FOCS) (h5=62) || International Journal of Foundations of Computer Science (h5=14)
+FOIS,International Conference on Formal Ontology in Information Systems,,relevante,,1,nenhum,,0,CE-BD,
+FOMI,International Workshop on Formal Ontologies Meet Industry,11,relevante,,1,scholar,11,0,CE-BD,International Workshop on Formal Ontologies Meet Industry (h5=11)
+FoSSaCS,International Conference on Foundations of Software Science and Computation Structures,15,top10,,1,scholar,17,0,GI-L,International Conference on Foundations of Software Science and Computation Structures (FoSSaCS) (h5=15)
+FPGA,Symposium on Field Programmable Gate Arrays,39,top10,,1,scholar,40,0,CE-ACPAD|CE-CCI|CE-ESC,Symposium on Field Programmable Gate Arrays (FPGA) (h5=39)
+FPL,International Conference on Field Programmable Logic and Applications,26,top10,,1,scholar,28,0,CE-ACPAD|CE-CCI|CE-ESC,International Conference on Field Programmable Logic and Applications (h5=26)
+FPT,International Conference on Field-Programmable Technology,19,relevante,,1,scholar,21,0,CE-CCI,International Conference on Field-Programmable Technology (h5=19)
+FROCOS,International Symposium on Frontiers of Combining System,,top20,,1,nenhum,5,0,GI-L,
+FSCD,International Conference on Formal Structures for Computation and Deduction,16,top10,,1,scholar,10,0,GI-L,International Conference on Formal Structures for Computation and Deduction (h5=16)
+FSE,Fast Software Encryption,,relevante,,1,nenhum,8,0,CE-SEG,
+FSE/ESEC,Joint Meeting on European Software Engineering Conference and Foundations of Software Engineering,69,top10,,1,scholar,62,0,CE-ES,ACM SIGSOFT International Symposium on Foundations of Software Engineering (h5=69)
+FSR,Conference on Field and Service Robotics,,relevante,,1,nenhum,,0,CE-R,
+FSTTCS,Foundations of Software Technology and Theoretical Computer Science,13,relevante,,1,scholar,11,0,CE-ACO,Foundations of Software Technology and Theoretical Computer Science (FSTTCS) (h5=13)
+FUN,International Conference on Fun with Algorithms,,relevante,,1,nenhum,,0,CE-ACO,
+FUSION,International Conference on Information Fusion,143,relevante,,1,scholar,25,1,CE-R,Information Fusion (h5=143) || International Conference on Information Fusion (h5=23)
+FUZZ,IEEE International Conference on Fuzzy Systems (FUZZ),111,top10,,1,scholar,25,1,CE-IA|CE-IC,IEEE Transactions on Fuzzy Systems (h5=111) || International Journal of Fuzzy Systems (h5=49) || Fuzzy Sets and Systems (h5=49) || IEEE International Conference on Fuzzy Systems (FUZZ) (h5=25)
+GALA,Games and Learning Alliance Conference,,top20,,1,nenhum,13,0,CE-JOGOS,
+GAS,International Workshop on Games and Software Engineering,,top20,,1,nenhum,4,0,CE-JOGOS,
+GD,International Symposium on Graph Drawing and Network Visualization,,relevante,,1,nenhum,13,0,CE-ACO,
+GECCO,Conference on Genetic and Evolutionary Computation,49,top10,,1,scholar,47,0,CE-GRAPI|CE-IA|CE-IC,Conference on Genetic and Evolutionary Computation (h5=49)
+GEM,"IEEE Games, Entertainment, Media Conference",5,top20,,1,scholar,4,0,CE-JOGOS,Estudos da Língua (gem) (h5=5)
+GeoAI,International Workshop on AI for Geographic Knowledge Discovery,,relevante,,1,nenhum,,0,CE-Geoinformática,
+GEOBIA,Geographic Object-based Image Analysis (GEOBIA),,top20,,1,nenhum,,0,CE-Geoinformática,
+GeoInfo,Brazilian Symposium on Geoinformatics,4,top10,,1,scholar,10,0,CE-BD|CE-Geoinformática,Brazilian Symposium on GeoInformatics (h5=4)
+GEOprocessing,"International Conference on Advanced Geographic Information Systems, Applications, and Services (GEOProcessing)",,top20,,1,nenhum,,0,CE-Geoinformática,
+GeoSim,International Workshop on Geospatial Simulation,,relevante,,1,nenhum,,0,CE-Geoinformática,
+GI,Graphics Interface Conference,13,top20,,1,scholar,15,0,CE-GRAPI|CE-IHC|CE-RV,Graphics Interface Conference (h5=13)
+GIR,Workshop on Geographic Information Retrieval,,top20,,1,nenhum,7,0,CE-Geoinformática,
+GIScience,International Conference on Geographic Information Science,11,top10,,1,scholar,8,0,CE-Geoinformática,International Conference on Geographic Information Science (h5=11)
+GLOBECOM,IEEE Global Communications Conference,8,top10,,1,scholar,64,1,CE-RESD,Global Conference on Information Technologies and Communications (h5=8) || Global Conference on Communications and Information Technologies (h5=4)
+GLSVLSI,Great Lakes Symposium on VLSI,24,relevante,,1,scholar,26,0,CE-CCI,Great Lakes Symposium on VLSI (h5=24)
+GPCE,Generative Programming: Concepts and Experiences,,top20,,1,nenhum,10,0,CE-ES|CE-LP,
+GRAPP,International Conference on Computer Graphics Theory and Applications,11,top20,,1,scholar,10,1,CE-GRAPI|CE-RV,"International Conference on Computer Graphics Theory and Applications (GRAPP) (h5=11) || International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications (h5=10)"
+GreenCom,IEEE International Conference on Green Computing and Communications,,relevante,,1,nenhum,,0,CE-RESD,
+GROUP,GROUP - International Conference on Supporting Group Work,53,top10,,1,scholar,14,1,CE-SC,"Group Processes & Intergroup Relations (h5=53) || Group & Organization Management (h5=44) || Small Group Research (h5=30) || Group Decision and Negotiation (h5=27) || Annual Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL) (h5=26) || Group Dynamics: Theory, Research, and Practice (h5=21) || The Journal for Specialists in Group Work (h5=18) || Main Group Chemistry (h5=15) || International Journal of Group Psychotherapy (h5=15) || International Journal on Minority and Group Rights (h5=14) || Main Group Metal Chemistry (h5=14) || Special Interest Group on Computer Personnel Research Annual Conference (SIGCPR) (h5=13) || International Phytoplasmologist Working Group Meeting (h5=13) || Group Analysis (h5=12) || Journal of Group Theory (h5=12) || IUCN Otter Specialist Group Bulletin (h5=9) || IEEE International Conference on Group IV Photonics (GFP) (h5=8) || International Journal of Group Theory (h5=7) || International Conference on the Assessment of Animal Welfare at the Farm and Group Level (h5=3)"
+GVIZ,Workshop on New Directions in Geovisual Analytics,,relevante,,1,nenhum,,0,CE-Geoinformática,
+HAPTICS,IEEE Haptics Symposium,38,top10,,1,scholar,21,0,CE-IHC|CE-R|CE-RV,IEEE Transactions on Haptics (h5=38)
+HASE,IEEE High Assurance Systems Engineering Symposium,,top20,,1,nenhum,15,0,CE-TF,
+HCII,International Conference on Human-Computer Interaction,88,relevante,,1,scholar,41,1,CE-IHC|CE-RV,Proceedings of the ACM on Human-Computer Interaction (h5=88) || Human–Computer Interaction (h5=39) || International Conference on Human-Computer Interaction (h5=14) || International Conference on Human Computer Interaction (h5=10)
+HCOMP,AAAI Conference on Human Computation and Crowdsourcing,,top20,,1,nenhum,22,0,CE-IHC|CE-SC|CE-SI,
+HCSE,International Working Conference on Human-Centered Software Engineering,,relevante,,1,nenhum,0,0,CE-IHC,
+Healthcom,"IEEE International Conference on e-Health Networking, Applications and Services",13,top10,,1,scholar,13,0,CE-CAS|CE-RESD,"IEEE International Conference on e-Health Networking, Applications and Services (Healthcom) (h5=13)"
+HEALTHINF,International Conference on Health Informatics,49,top20,,1,scholar,17,1,CE-CAS,Health Informatics Journal (h5=49) || International Conference on Health Informatics (HEALTHINF) (h5=18) || Frontiers in Health Informatics (h5=15) || International Conference on Medical and Health Informatics (h5=14) || Journal of Health Informatics (h5=9)
+HICSS,Hawaii International Conference on System Sciences,53,top20,,1,scholar,59,0,CE-ES|CE-IHC|CE-SC|CE-SI,Hawaii International Conference on System Sciences (h5=53)
+HIPC,IEEE International Conference on High Performance Computing,26,top20,,1,scholar,14,0,CE-ACPAD,International Conference on High Performance Computing (h5=26)
+HIS,International Conference on Hybrid Intelligent Systems,14,relevante,,1,scholar,15,0,CE-IC,International Conference on Hybrid Intelligent Systems (h5=14)
+HOST,IEEE International Symposium on Hardware-Oriented Security and Trust,24,relevante,,1,scholar,25,0,CE-SEG,Hardware-Oriented Security and Trust (h5=24)
+HOTNETS,ACM Workshop on Hot Topics in Networks,23,top20,,1,scholar,23,0,CE-RESD,ACM Workshop on Hot Topics in Networks (h5=23)
+HPCA,IEEE International Symposium on High Performance Computer Architecture,59,top10,,1,scholar,50,0,CE-ACPAD,IEEE International Symposium on High Performance Computer Architecture (h5=59)
+HPCC,International Conference on High Performance Computing and Communications,19,top20,,1,scholar,20,0,CE-ACPAD,IEEE International Conference on High Performance Computing and Communications (h5=19)
+HPCS,International Conference on High Performance Computing & Simulation,,relevante,,1,nenhum,13,0,CE-ACPAD,
+HPDC,International Symposium on High Performance Distributed Computing,23,top20,,1,scholar,21,0,CE-ACPAD|CE-RESD,ACM International Symposium on High Performance Distributed Computing (h5=23)
+HRI,ACM/IEEE International Conference on Human Robot Interaction,52,top10,,1,scholar,46,0,CE-IHC|CE-R|CE-RV,ACM/IEEE International Conference on Human Robot Interaction (h5=52)
+HS,Haskell Symposium,,relevante,,1,nenhum,7,0,CE-LP,
+HT,ACM Conference on Hypertext and Social Media,,relevante,,1,nenhum,0,0,CE-IHC|CE-SI,
+Humanoids,IEEE RAS International Conference on Humanoid Robot,,top10,,1,nenhum,33,0,CE-R,
+Hypertext,ACM Conference on Hypertext and Hypermedia,21,top10,,1,scholar,22,0,CE-WEBMEDIA,ACM Conference on Hypertext and Hypermedia (h5=21)
+I/ITSEC,"Interservice/Industry Training, Simulation & Education Conference",,relevante,,1,nenhum,2,0,CE-RV,
+i3D,ACM Symposium on Interactive 3D Graphics and Games,,top10,,1,nenhum,,0,CE-GRAPI|CE-IHC|CE-JOGOS|CE-RV,
+IAS,Industry Applications Society Annual Meeting,28,relevante,,1,scholar,13,0,CE-SI,IEEE Annual Meeting Industry Applications Society (h5=28)
+IAV,IFAC Symposium on Intelligent Autonomous Vehicles,,relevante,,1,nenhum,,0,CE-R,
+IBERCHIP,Workshop Iberchip,,relevante,,1,nenhum,2,0,CE-CCI,
+IBERSPEECH,IberSPEECH Conference,,relevante,,1,nenhum,1,0,CE-PLN,
+ic-ETITE,International Conference on Emerging Trends in Information Technology and Engineering,31,relevante,,1,scholar,21,0,CE-SI,International Conference on Emerging Trends in Information Technology and Engineering (h5=31)
+IC3K,"International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management",10,relevante,,1,scholar,10,0,CE-BD|CE-SI,"International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management (h5=10)"
+ICA3PP,International Conference on Algorithms and Architectures for Parallel Processing,13,relevante,,1,scholar,12,0,CE-TF,International Conference on Algorithms and Architectures for Parallel Processing (ICA3PP) (h5=13)
+ICALP,"International Colloquium on Automata, Languages, and Programming",29,top10,,1,scholar,33,0,CE-ACO,"International Colloquium on Automata, Languages and Programming (ICALP) (h5=29)"
+ICALT,IEEE International Conference on Advanced Learning Technologies,20,top10,,1,scholar,22,0,CE-IE|CE-IHC,IEEE International Conference on Advanced Learning Technologies (h5=20)
+ICANN,International Conference on Artificial Neural Networks,28,top20,,1,scholar,32,0,CE-IC,International Conference on Artificial Neural Networks (h5=28)
+ICAPS,International Conference on Automated Planning and Scheduling,33,top10,,1,scholar,35,0,CE-IA,International Conference on Automated Planning and Scheduling (ICAPS) (h5=33)
+ICAR,International Conference on Advanced Robotics,32,top10,,1,scholar,15,1,CE-R|CE-RV,Advanced Robotics (h5=32) || International Conference on Advanced Robotics (h5=18)
+ICARA,"International Conference on Automation, Robotics and Applications",,relevante,,1,nenhum,14,0,CE-R,
+ICARCV,"International Conference on Control, Automation, Robotics and Vision",16,relevante,,1,scholar,13,0,CE-R,"International Conference on Control, Automation, Robotics and Vision (h5=16)"
+ICARM,International Conference on Advanced Robotics and Mechatronics,14,relevante,,1,scholar,9,0,CE-R,International Conference on Advanced Robotics and Mechatronics (h5=14)
+ICAROB,International Conference on Artificial Life and Robotics,18,relevante,,1,scholar,,0,CE-R,Artificial Life and Robotics (h5=18)
+ICARSC,IEEE International Conference on Autonomous Robot Systems and Competitions,19,relevante,,1,scholar,15,0,CE-R,IEEE International Conference on Autonomous Robot Systems and Competitions (h5=19)
+ICASSP,"International Conference on Acoustics, Speech and Signal Processing",137,top10,,1,scholar,80,0,CE-CM|CE-GRAPI|CE-RV|CE-WEBMEDIA,"IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (h5=137)"
+ICB,IAPR International Conference on Biometrics,,top10,,1,nenhum,17,0,CE-GRAPI,
+ICBC,IEEE International Conference on Blockchain and Cryptocurrency,32,relevante,,1,scholar,31,0,CE-RESD|CE-SEG|CE-TF,IEEE International Conference on Blockchain and Cryptocurrency (h5=32)
+ICBCT,Internacional Conference on Blockchain Technology,,relevante,,1,nenhum,15,0,CE-TF,
+ICC,IEEE International Conference on Communications,76,top10,,1,scholar,76,0,CE-ESC|CE-RESD,IEEE International Conference on Communications (h5=76)
+ICC Workshops,International Conference on Communications Workshops,34,relevante,,1,scholar,39,1,CE-RESD,IEEE International Conference on Communications Workshops (ICC Workshops) (h5=34) || IEEE International Conference on Communications Workshops (h5=14)
+ICCA,IEEE International Conference on Control and Automation,17,relevante,,1,scholar,12,0,CE-R,IEEE International Conference on Control and Automation (h5=17)
+ICCABS,International Conference on Computational Advances in Bio and Medical Sciences,,top20,,1,nenhum,6,0,CE-BioComp,
+ICCAD,IEEE/ACM International Conference on Computer-Aided Design,46,top10,,1,scholar,41,1,CE-CCI,IEEE/ACM International Conference on Computer-Aided Design (ICCAD) (h5=46) || Computer-Aided Design (h5=37)
+ICCAR,"International Conference on Control, Automation and Robotics",19,relevante,,1,scholar,14,1,CE-R,"International Conference on Control, Automation and Robotics (h5=19) || International Conference on Robotics, Control and Automation (h5=6)"
+ICCCN,International Conference on Computer Communications and Networks,29,relevante,,1,scholar,26,0,CE-RESD,International Conference on Computer Communications and Networks (h5=29)
+ICCD,IEEE International Conference on Computer Design,37,top20,,1,scholar,21,1,CE-CCI|CE-ESC,"Computer-Aided Design (h5=37) || IEEE International Conference on Computer Design, ICCD (h5=23)"
+ICCE-EDU,International Conference on Computers in Education,16,relevante,,1,scholar,,1,CE-IE,International Conference on Computers in Education (h5=16) || International Symposium on Computers in Education (h5=8)
+ICCHP,International Conference on Computers Helping People with Special Needs,15,relevante,,1,scholar,12,0,CE-IHC,International Conference on Computers Helping People with Special Needs (h5=15)
+ICCPS,International Conference on Cyber-Physical Systems,23,top20,,1,scholar,23,0,CE-ESC,IEEE International Conference on Cyber-Physical Systems (h5=23)
+ICCS,International Conference on Computational Science,67,relevante,,1,scholar,,1,CE-ACPAD,Nature Computational Science (h5=67) || Computational Materials Science (h5=63) || Journal of Computational Science (h5=46) || Computational Urban Science (h5=22) || International Conference on Computational Science and Computational Intelligence (h5=21) || Computational Management Science (h5=17) || International Conference on Computational Science and Technology (h5=10)
+ICCTCC,"International Conference on Computability Theory, Computability and Complexity",,top20,,1,nenhum,,0,GI-L,
+ICCV,IEEE International Conference on Computer Vision,262,relevante,,1,scholar,291,1,CE-GRAPI|CE-RV,European Conference on Computer Vision (h5=262) || IEEE/CVF International Conference on Computer Vision (h5=256) || International Journal of Computer Vision (h5=109) || IET Computer Vision (h5=21) || International Workshop on Frontiers of Computer Vision (h5=11) || International Conference on Control and Computer Vision (h5=9) || International Conference on Robotics and Computer Vision (h5=6)
+ICCVW,IEEE International Conference on Computer Vision Workshops (ICCVW),63,top10,,1,scholar,80,0,CE-GRAPI|CE-RV,IEEE/CVF International Conference on Computer Vision Workshops (ICCVW) (h5=63)
+ICDAR,International Conference on Document Analysis and Recognition,30,relevante,,1,scholar,50,0,CE-GRAPI,International Conference on Document Analysis and Recognition (h5=30)
+ICDCN,International Conference on Distributed Computing and Networking,19,top20,,1,scholar,13,0,CE-RESD|CE-TF,International Conference of Distributed Computing and Networking (h5=19)
+ICDCS,International Conference on Distributed Computing Systems,41,top10,,1,scholar,47,1,CE-RESD|CE-TF,"International Conference on Distributed Computing Systems, ICDCS (h5=41) || IEEE International Conference on Distributed Computing in Sensor Systems (h5=22)"
+ICDCSW,International Conference on Distributed Computing Systems Workshops,,relevante,,1,nenhum,14,0,CE-TF,
+ICDE,IEEE International Conference on Data Engineering,82,top10,,1,scholar,69,0,CE-BD,International Conference on Data Engineering (h5=82)
+ICDF,IFIP International Conference on Digital Forensics,27,relevante,,1,scholar,10,0,CE-SEG,International Symposium on Digital Forensics and Security (h5=27)
+ICDIM,International Conference on Digital Information Management,,relevante,,1,nenhum,32,0,CE-SI,
+ICDIP,International Conference on Digital Image Processing,10,relevante,,1,scholar,11,0,CE-GRAPI,International Conference on Digital Image Processing (h5=10)
+ICDL-EpiRob,IEEE International Conference on Development and Learning and Epigenetic Robotics,,relevante,,1,nenhum,,0,CE-R,
+ICDM,IEEE International Conference on Data Mining (ICDM),49,top10,,1,scholar,50,0,CE-BD|CE-IC,IEEE International Conference on Data Mining (h5=49)
+ICDT,International Conference on Database Theory,19,top20,,1,scholar,19,0,CE-BD,International Conference on Database Theory (h5=19)
+ICDVRAT,"International Conference on Disability, Virtual Reality & Associated Technologies",,relevante,,1,nenhum,2,0,CE-RV,
+ICE-CCN,"International Conference on Emerging Trends in Computing, Communication and Nanotechnology",,relevante,,1,nenhum,,0,CE-CCI,
+ICEC,IFIP International Conference on Entertainment Computing,38,top10,,1,scholar,11,1,CE-JOGOS,Entertainment Computing (h5=38) || International Conference on Entertainment Computing (h5=12)
+ICECS,"IEEE International Conference on Electronics, Circuits and Systems",17,top10,,1,scholar,18,0,CE-ACPAD|CE-CCI|CE-ESC,"IEEE International Conference on Electronics, Circuits and Systems (h5=17)"
+ICEGOV,International Conference on Theory and Practice of Eletronic Governance,,relevante,,1,nenhum,19,0,CE-SI,
+ICEIS,International Conference on Enterprise Information Systems,44,top20,,1,scholar,20,1,CE-BD|CE-ES|CE-IHC|CE-SI,Enterprise Information Systems (h5=44) || International Conference on Enterprise Information Systems (ICEIS) (h5=23)
+ICEIT,International Conference on Educational and Information Technology,13,relevante,,1,scholar,10,0,CE-IE,International Conference on Educational and Information Technology (h5=13)
+ICEMT,International Conference on Education and Multimedia Technology,12,top20,,1,scholar,10,0,CE-IE,International Conference on Education and Multimedia Technology (h5=12)
+ICER,ACM Conference on International Computing Education Research,29,top10,,1,scholar,32,1,CE-EDUCOMP|CE-IE|CE-RV,International Computing Education Research Conference (ICER) (h5=29) || Koli Calling International Conference on Computing Education Research (h5=16)
+ICET,International Conference on Education and Technology,23,top20,,1,scholar,22,0,CE-IE,International Conference on Education and Technology (h5=23)
+ICETC,International Conference on Education Technology and Computer,2,top20,,1,scholar,11,0,CE-IE,International Conference on Intelligent Education and Computer Technology (h5=2)
+ICFEM,International Conference on Formal Engineering Methods,15,top10,,1,scholar,13,0,CE-MF,Software Engineering and Formal Methods (h5=15)
+ICFP,International Conference on Functional Programming,13,top10,,1,scholar,27,0,CE-LP|GI-L,Journal of Functional Programming (h5=13)
+ICGSE,IEEE International Conference on Global Software Engineering,,relevante,,1,nenhum,12,0,CE-ES,
+ICGT,International Conference on Graph Transformations,,top20,,1,nenhum,,0,CE-ACO|CE-MF,
+ICHI,IEEE International Conference on Healthcare Informatics,19,top10,,1,scholar,20,0,CE-CAS,IEEE International Conference on Healthcare Informatics (h5=19)
+ICIAP,International Conference on Image Analysis and Processing,17,top20,,1,scholar,19,0,CE-GRAPI,International Conference on Image Analysis and Processing (ICIAP) (h5=17)
+ICICS,International Conference on Information and Communications Security,14,relevante,,1,scholar,16,0,CE-SEG,International Conference on Information and Communications Security (h5=14)
+ICIDS,International Conference on Interactive Digital Storytelling,16,top10,,1,scholar,14,0,CE-JOGOS,International Conference on Interactive Digital Storytelling (h5=16)
+ICIET,International Conference on Information and Education Technology,15,top20,,1,scholar,15,0,CE-IE,International Conference on Information and Education Technology (h5=15) || International Conference on Information Technology and Education (h5=15)
+ICIIECS,"International Conference on Innovations in Information, Embedded and Communication Systems",,relevante,,1,nenhum,21,0,CE-ESC,
+ICIIS,IEEE International Conference on Industrial and Information Systems,18,relevante,,1,scholar,17,0,CE-SI,IEEE International Conference on Industrial and Information Systems (h5=18)
+ICINCO,"International Conference on Informatics in Control, Automation and Robotics",12,relevante,,1,scholar,14,0,CE-R,"International Conference on Informatics in Control, Automation and Robotics (h5=12)"
+ICIP,IEEE International Conference on Image Processing,165,relevante,,1,scholar,66,1,CE-GRAPI|CE-RV,IEEE Transactions on Image Processing (h5=165) || IEEE International Conference on Image Processing (ICIP) (h5=55) || IET Image Processing (h5=52) || International Conference on Signal and Image Processing (h5=17) || International Conference on Image Information Processing (h5=16) || International Conference on Digital Image Processing (h5=10) || International Conference on Graphics and Image Processing (h5=9) || International Conference on Image and Graphics Processing (h5=8) || International Conference on Multimedia and Image Processing (h5=8)
+ICIRA,International Conference on Intelligent Robotics and Applications,13,relevante,,1,scholar,14,0,CE-R,International Conference on Intelligent Robotics and Applications (h5=13)
+ICIS,International Conference on Information Systems,52,top10,,1,scholar,39,1,CE-BD|CE-ES|CE-SI,Information Systems (h5=52) || International Conference on Information Systems (ICIS) (h5=35)
+ICISC,International Conference on Information Security and Cryptology,12,relevante,,1,scholar,11,0,CE-SEG,International Conference on Information Security and Cryptology (h5=12)
+ICISO,IFIP International Conference on Informatics and Semiotics in Organisations,,relevante,,1,nenhum,0,0,CE-IHC,
+ICISS,International Conference on Information Systems Security,7,relevante,,1,scholar,4,0,CE-SEG,International Conference on Information Systems Security (h5=7)
+ICIT,International Conference on Information Technology,32,relevante,,1,scholar,23,0,CE-SI,International Conference on Information Technology (h5=32)
+ICITE,International Conference on Information Technology and Education,15,top20,,1,scholar,13,0,CE-IE,International Conference on Information and Education Technology (h5=15) || International Conference on Information Technology and Education (h5=15)
+ICITS,International Conference on Information Technology & Systems,13,relevante,,1,scholar,16,0,CE-SI,International Conference on Information Technology & Systems (h5=13)
+ICLP,International Conference on Logic Programming,9,top10,,1,scholar,9,0,GI-L,International Conference on Logic Programming (h5=9)
+ICLR,International Conference on Learning Representations,362,relevante,,1,scholar,304,0,CE-GRAPI|CE-IA|CE-IC,International Conference on Learning Representations (h5=362)
+ICM,International Conference on Microelectronics,16,relevante,,1,scholar,16,1,CE-CCI,International Conference on Microelectronics (h5=16) || Microelectronics International (h5=8)
+ICMA,IEEE International Conference on Mechatronics and Automation,16,relevante,,1,scholar,17,0,CE-R,IEEE International Conference on Mechatronics and Automation (h5=16)
+ICMC,International Computer Music Conference,,top10,,1,nenhum,15,0,CE-CM,
+ICMCR,"International Conference on Mechatronics, Control and Robotics",,relevante,,1,nenhum,,0,CE-R,
+ICME,International Conference on Multimedia and Expo,50,top10,,1,scholar,46,0,CE-GRAPI|CE-RV|CE-WEBMEDIA,IEEE International Conference on Multimedia and Expo (h5=50)
+ICMEW,IEEE International Conference on Multimedia and Expo Workshops,24,relevante,,1,scholar,22,0,CE-RV|CE-WEBMEDIA,IEEE International Conference on Multimedia and Expo Workshops (ICMEW) (h5=24)
+ICMI,ACM International Conference on Multimodal Interfaces,34,top20,,1,scholar,31,1,CE-IHC|CE-RV,International Conference on Multimodal Interfaces (ICMI) (h5=34) || Journal on Multimodal User Interfaces (h5=26)
+ICML,International Conference on Machine Learning,272,top10,,1,scholar,268,1,CE-GRAPI|CE-IA|CE-IC,International Conference on Machine Learning (h5=272) || Machine Learning (h5=63)
+ICMLA,International Conference on Machine Learning and Applications,39,top20,,1,scholar,35,0,CE-GRAPI|CE-IA|CE-IC,International Conference on Machine Learning and Applications (h5=39)
+ICMPC,International Conference on Music Perception and Cognition,,top20,,1,nenhum,,0,CE-CM,
+ICMR,ACM International Conference on Multimedia Retrieval,33,top10,,1,scholar,34,0,CE-GRAPI|CE-RV|CE-WEBMEDIA,ACM International Conference on Multimedia Retrieval (h5=33)
+ICNC,"International Conference on Computing, Networking and Communications",23,top20,,1,scholar,28,0,CE-RESD,"International Conference on Computing, Networking and Communications (h5=23)"
+ICNP,International Conference on Network Protocols,26,top20,,1,scholar,27,0,CE-RESD,IEEE International Conference on Network Protocols (h5=26)
+ICOIN,International Conference on Information Networking,28,relevante,,1,scholar,26,0,CE-RESD,International Conference on Information Networking (h5=28)
+ICOMPWC,International Conference on Internet Computing and Internet of Things,17,relevante,,1,scholar,,1,CE-ESC,"International Conference on Communication, Computing and Internet of Things (h5=17) || International Conference on Computing, Networks and Internet of Things (h5=10)"
+ICONIP,International Conference on Neural Information Processing,27,relevante,,1,scholar,27,0,CE-IC,International Conference on Neural Information Processing (h5=27)
+ICORR,IEEE International Conference on Rehabilitation Robotics,10,top20,,1,scholar,22,0,CE-R,IEEE International Conference on Rehabilitation Robotics (h5=10)
+ICPADS,International Conference on Parallel and Distributed Systems,19,relevante,,1,scholar,21,0,CE-ACPAD|CE-TF,International Conference on Parallel and Distributed Systems (h5=19)
+ICPC,International Conference on Program Comprehension,32,relevante,,1,scholar,33,0,CE-ES,IEEE International Conference on Program Comprehension (h5=32)
+ICPE,International Conference on Performance Engineering,25,relevante,,1,scholar,23,0,CE-ES|CE-ESC,ACM/SPEC International Conference on Performance Engineering (h5=25)
+ICPME,"International Conference on Philosophy, Music and Emotion",,relevante,,1,nenhum,,0,CE-CM,
+ICPP,International Conference on Parallel Processing,41,top20,,1,scholar,,1,CE-ACPAD|CE-TF,IEEE International Symposium on Parallel & Distributed Processing (h5=41) || International Conference on Parallel Processing (ICPP) (h5=24) || European Conference on Parallel Processing (h5=17) || International Conference on Parallel Processing Workshops (h5=12) || Parallel Processing Letters (h5=8)
+ICPR,International Conference on Pattern Recognition,126,relevante,,1,scholar,56,1,CE-GRAPI|CE-IA|CE-RV,Pattern Recognition (h5=126) || International Conference on Pattern Recognition (h5=68)
+ICPRAM,International Conference on Pattern Recognition Applications and Methods,17,relevante,,1,scholar,21,0,CE-GRAPI,International Conference on Pattern Recognition Applications and Methods (ICPRAM) (h5=17)
+ICRA,IEEE International Conference on Robotics and Automation,129,top10,,1,scholar,94,0,CE-GRAPI|CE-IA|CE-IC|CE-R|CE-RV,IEEE International Conference on Robotics and Automation (h5=129)
+ICRAE,International Conference on Robotics and Automation Engineering,11,relevante,,1,scholar,7,0,CE-R,International Conference on Robotics and Automation Engineering (h5=11)
+ICS,International Conference on Supercomputing,83,top20,,1,scholar,26,1,CE-ACPAD,The Journal of Supercomputing (h5=83) || International Conference on Supercomputing (ICS) (h5=25)
+ICSC,International CSound Conference,,top20,,1,nenhum,,0,CE-CM|CE-SI,
+ICSE,International Conference on Software Engineering,98,top10,,1,scholar,84,1,CE-EDUCOMP|CE-ES,ACM/IEEE International Conference on Software Engineering (h5=98) || Software Engineering (h5=29) || ACM International Conference on AI Engineering–Software Engineering for (h5=19)
+ICSE-NIER,ACM International Conference on Software Engineering: New Ideas and Emerging Results,21,relevante,,1,scholar,22,0,CE-ES,ACM/IEEE International Conference on Software Engineering: New Ideas and Emerging Results (h5=21)
+ICSE-SEET,Software Engineering Education and Training of ICSE,,top20,,1,nenhum,21,0,CE-EDUCOMP|CE-ES,
+ICSE-SEIP,ACM International Conference on Software Engineering: Software Engineering in Practice,34,relevante,,1,scholar,32,0,CE-ES,ACM International Conference on Software Engineering: Software Engineering in Practice (h5=34)
+ICSE-SEIS,International Conference on Software Engineering: Software Engineering in Society,,top20,,1,nenhum,10,0,CE-ES,
+ICSLE,International Conference on Smart Learning Environments,60,relevante,,1,scholar,,0,CE-IE,Smart Learning Environments (h5=60)
+ICSME,IEEE International Conference on Software Maintenance and Evolution,35,top10,,1,scholar,33,0,CE-ES,IEEE International Conference on Software Maintenance and Evolution (h5=35)
+ICSOB,International Conference on Software Business,13,relevante,,1,scholar,13,0,CE-ES|CE-SI,International Conference on Software Business (ICSOB) (h5=13) || Business Modeling and Software Design (h5=13)
+ICSOFT,International Conference on Software Technologies,14,relevante,,1,scholar,13,1,CE-BD|CE-ES,International Joint Conference on Software Technologies (ICSOFT) (h5=14) || International Conference on Information and Software Technologies (ICIST) (h5=10)
+ICSPCEC,"International Conference on Signal Processing, Communication, Power and Embedded System",2,relevante,,1,scholar,18,0,CE-ESC,"International Conference on Signal Processing, Communication, Power and Embedded System (h5=2)"
+ICSR,International Conference on Software Reuse,,relevante,,1,nenhum,9,0,CE-ES,
+ICSSP,International Conference on Software and Systems Process,,relevante,,1,nenhum,6,0,CE-ES,
+ICSTV,"IEEE International Conference on Software Testing, Verification and Validation",34,relevante,,1,scholar,32,0,CE-ES,"IEEE International Conference on Software Testing, Verification and Validation (ICST) (h5=34)"
+ICT,International Conference on Telecommunications,15,relevante,,1,scholar,18,1,CE-ESC|CE-RESD,IEEE International Conference on Telecommunications (ICT) (h5=15) || International Conference on Telecommunications (h5=14) || International Telecommunications Conference (h5=12)
+ICT4D,International Conference on Social Implications of Computers in Developing Countries,7,relevante,,1,scholar,16,0,CE-SC,International Conference on Social Implications of Computers in Developing Countries (h5=7)
+ICTAC,International Colloquium on Theoretical Aspects of Computing,11,top10,,1,scholar,10,0,CE-MF|GI-L,International Colloquium on Theoretical Aspects of Computing (h5=11)
+ICTAI,IEEE International Conference on Artificial Intelligence Tools,26,top20,,1,scholar,28,1,CE-GRAPI|CE-IA|CE-IC,IEEE International Conference on Tools with Artificial Intelligence (ICTAI) (h5=26) || International Journal on Artificial Intelligence Tools (h5=20)
+ICTIR,Conference on the Theory of Information Retrieval,,relevante,,1,nenhum,24,0,CE-BD,
+ICTSS,International Conference on Testing Software and Systems,,relevante,,1,nenhum,7,0,CE-BD|CE-ES,
+ICUAS,International Conference on Unmanned Aircraft Systems,29,top10,,1,scholar,31,0,CE-R|CE-RESD|CE-RV,International Conference on Unmanned Aircraft Systems (h5=29)
+ICUMT,International Conference on Ultra Modern Telecommunications,16,relevante,,1,scholar,19,0,CE-RESD,International Conference on Ultra Modern Telecommunications (ICUMT) (h5=16)
+ICVIIP,International Conference on Visualization: Imaging and Image Processing,,relevante,,1,nenhum,,0,CE-RV,
+ICVR,International Conference on Virtual Rehabilitation,12,top20,,1,scholar,10,0,CE-CAS,International Conference on Virtual Rehabilitation (ICVR) (h5=12)
+ICWE,International Conference on Web Engineering,23,top20,,1,scholar,15,1,CE-ES|CE-SI|CE-WEBMEDIA,Journal of Web Engineering (h5=23) || International Conference on Web Engineering (ICWE) (h5=15)
+ICWS,International Conference on Web Services,23,top20,,1,scholar,26,0,CE-SI|CE-WEBMEDIA,IEEE International Conference on Web Services (h5=23)
+ICWSM,International Conference on Web and Social Media (ICWSM),59,top10,,1,scholar,59,0,CE-BD|CE-IA|CE-SC|CE-SI|CE-WEBMEDIA,International Conference on Web and Social Media (ICWSM) (h5=59)
+IDA,International Symposium on Intelligent Data Analysis,19,relevante,,1,scholar,,0,CE-IA,Intelligent Data Analysis (h5=19)
+IDC,International Conference on Interaction Design and Children,35,top10,,1,scholar,33,0,CE-IHC|CE-RV,Interaction Design and Children (h5=35)
+IDCS,International Conference on Internet and Distributed Computing Systems,,relevante,,1,nenhum,,0,CE-RESD,
+IDEAS,International Database Engineering and Applications Symposium,15,top20,,1,scholar,16,0,CE-BD,International Database Engineering & Applications Symposium (h5=15)
+IECON,Annual Conference of the IEEE Industrial Electronics Society,27,relevante,,1,scholar,28,0,CE-ESC|CE-R,IEEE Annual Conference of the Industrial Electronics Society (h5=27)
+IEEE Blockchain,IEEE International Conference on Blockchain,30,relevante,,1,scholar,42,0,CE-TF,IEEE International Conference on Blockchain (h5=30)
+IEEE IST,IEEE International Workshop on Imaging Systems and Techniques,16,relevante,,1,scholar,17,0,CE-GRAPI,IEEE International Workshop on Imaging Systems and Techniques (h5=16)
+IEEE NANO,IEEE Conference on Nanotechnology,65,top20,,1,scholar,10,0,CE-CCI,Nanotechnology (h5=65)
+IEEE S&P,IEEE Symposium on Security and Privacy,110,relevante,,1,scholar,112,1,CE-RV,IEEE Symposium on Security and Privacy (h5=110) || Security and Privacy (h5=29)
+IEEE SMC,"IEEE International Conference on Systems, Man and Cybernetics",36,top10,,1,scholar,32,0,CE-SC,"IEEE International Conference on Systems, Man and Cybernetics (h5=36)"
+IEEE VIS,IEEE Visualization Conference,23,top10,,1,scholar,22,0,CE-GRAPI|CE-RV,IEEE Visualization Conference (h5=23)
+IEEEANTS,IEEE International Conference on Advanced Networks and Telecommuncations Systems,,relevante,,1,nenhum,15,0,CE-RESD,
+IEEECLOUD,IEEE International Conference on Cloud Computing,39,relevante,,1,scholar,34,1,CE-RESD,ACM Symposium on Cloud Computing (h5=39) || IEEE International Conference on Cloud Computing (CLOUD) (h5=24)
+IESS,IFIP International Embedded Systems Symposium,,relevante,,1,nenhum,,0,CE-ESC,
+IFAC,World Congress of the International Federation of Automatic Control,18,relevante,,1,scholar,29,0,CE-ESC|CE-R,IFAC Journal of Systems and Control (h5=18)
+IFM,Integrated Formal Methods,,top10,,1,nenhum,12,0,CE-MF,
+IGARSS,International Geoscience and Remote Sensing Symposium (IGARSS),36,top20,,1,scholar,26,0,CE-GRAPI|CE-Geoinformática|CE-RV,IEEE International Geoscience and Remote Sensing Symposium (h5=36)
+IH&MMSec,ACM Workshop on Information Hiding and Multimedia Security,20,relevante,,1,scholar,21,0,CE-WEBMEDIA,ACM Workshop on Information Hiding and Multimedia Security (h5=20)
+IHC,Simpósio Brasileiro sobre Fatores Humanos em Sistemas Computacionais,16,top10,,1,scholar,14,1,CE-IHC|CE-RV|CE-SC|CE-SI,Brazilian Symposium on Human Factors in Computing Systems (h5=16) || Simpósio Brasileiro sobre Fatores Humanos em Sistemas Computacionais (IHC) (h5=5)
+IHM,Conférence Francophone sur l’Interaction Homme-Machin,,relevante,,1,nenhum,0,0,CE-IHC,
+IIH-MSP,International Conference on Intelligent Information Hiding and Multimedia Signal Processing,,relevante,,1,nenhum,4,0,CE-SEG,
+IISWC,IEEE International Symposium on Workload Characterization,22,relevante,,1,scholar,21,0,CE-ACPAD,IEEE International Symposium on Workload Characterization (h5=22)
+IIWAS,International Conference on Information Integration and Web-based Applications & Services,12,top20,,1,scholar,15,0,CE-BD|CE-SI,International Conference on Information Integration and Web-based Applications & Services (IIWAS) (h5=12)
+IJCAI,International Joint Conference on Artificial Intelligence,136,top10,,1,scholar,136,1,CE-GRAPI|CE-IA|CE-IC|CE-PLN,International Joint Conference on Artificial Intelligence (IJCAI) (h5=136) || Artificial Intelligence (h5=62)
+IJCAR,International Joint Conference on Automated Reasoning,23,top20,,1,scholar,12,0,GI-L,Journal of Automated Reasoning (h5=23)
+IJCNLP,International Joint Conference on Natural Language Processing,41,top10,,1,scholar,32,1,CE-PLN,International Joint Conference on Natural Language Processing (IJCNLP) (h5=41) || International Joint Symposium on Artificial Intelligence and Natural Language Processing (h5=15) || International Conference on Natural Language Processing (h5=8)
+IJCNN,International Joint Conference on Neural Networks,66,top10,,1,scholar,64,0,CE-GRAPI|CE-IA|CE-IC,International Joint Conference on Neural Networks (h5=66)
+ILP,International Conference on Inductive Logic Programming,,relevante,,1,nenhum,,0,CE-IA,
+IM,IFIP/IEEE International Symposium on Integrated Network Management,19,top20,,1,scholar,23,0,CE-RESD,IFIP/IEEE International Symposium on Integrated Network Management (h5=19)
+IMC,ACM Internet Measurement Conference,43,top10,,1,scholar,45,0,CE-RESD|CE-WEBMEDIA,ACM on Internet Measurement Conference (h5=43)
+IMIS,International Conference on Innovative Mobile and Internet Services in Ubiquitous Computing,11,relevante,,1,scholar,12,0,CE-RESD,International Conference on Innovative Mobile and Internet Services in Ubiquitous Computing (h5=11)
+INCOS,INCOS - International Conference on Intelligent Networking and Collaborative Systems,10,top20,,1,scholar,14,0,CE-SC,International Conference on Intelligent Networking and Collaborative Systems (INCoS) (h5=10)
+INDIN,IEEE International Conference on Industrial Informatics,20,top20,,1,scholar,21,0,CE-ESC|CE-R,IEEE International Conference on Industrial Informatics (h5=20)
+INDOCRYPT,International Conference on Cryptology in India,17,relevante,,1,scholar,17,0,CE-SEG,International Conference on Cryptology in India (INDOCRYPT) (h5=17)
+INDUSCON,International Conference on Industry Applications,12,relevante,,1,scholar,12,0,CE-SI,IEEE International Conference on Industry Applications (h5=12)
+INFOCOM,IEEE International Conference on Computer Communications,101,top10,,1,scholar,80,1,CE-ESC|CE-RESD,Computer Communications (h5=101) || IEEE International Conference on Computer Communications (INFOCOM) (h5=80) || International Conference on Computer and Communications (h5=14)
+INFOCOM WKSHPS,IEEE Conference on Computer Communications Workshops,,relevante,,1,nenhum,43,0,CE-RESD,
+InfoVis,IEEE Information Visualization,23,relevante,,1,scholar,,1,CE-RV,IEEE Visualization Conference (h5=23) || International Conference on Information Visualization (h5=15)
+INLG,International Natural Language Generation conference,25,top20,,1,scholar,29,0,CE-IA|CE-PLN,International Conference on Natural Language Generation (h5=25)
+INOC,International Network Optimization Conference,,relevante,,1,nenhum,,0,CE-ACO,
+INTECH,International Conference on Innovative Computing Technology,7,relevante,,1,scholar,15,0,CE-SI,J-INTECH (Journal of Information and Technology) (h5=7)
+INTERACT,IFIP International Conference on Human-Computer Interaction,88,top10,,1,scholar,23,1,CE-IHC|CE-RV,Proceedings of the ACM on Human-Computer Interaction (h5=88) || Human–Computer Interaction (h5=39) || IFIP Conference on Human-Computer Interaction (INTERACT) (h5=20) || International Conference on Human-Computer Interaction (h5=14) || International Conference on Human Computer Interaction (h5=10)
+INTERSPEECH,Conference of the International Speech Communication Association,112,top20,,1,scholar,111,0,CE-GRAPI|CE-PLN,Conference of the International Speech Communication Association (INTERSPEECH) (h5=112)
+IOLTS,IEEE International On-Line Testing Symposium,16,relevante,,1,scholar,18,0,CE-CCI,IEEE International On-Line Testing Symposium (h5=16)
+IoTAAL,Workshop on Internet of Things for Ambient Assisted Living,,relevante,,1,nenhum,0,0,CE-IHC,
+IPAW,International Provenance and Annotation Workshop,,relevante,,1,nenhum,,0,CE-BD,
+IPCCC,"International Performance, Computing, and Communications Conference",19,relevante,,1,scholar,17,1,CE-RESD,"IEEE International Conference on High Performance Computing and Communications (h5=19) || IEEE International Performance, Computing, and Communications Conference, IPCCC (h5=15)"
+IPCO,Conference on Integer Programming and Combinatorial Optimization,,top10,,1,nenhum,16,0,CE-ACO,
+IPDLN,International Population Data Linkage Network,,relevante,,1,nenhum,,0,CE-CAS,
+IPDPS,IEEE International Parallel & Distributed Processing Symposium,41,top10,,1,scholar,38,0,CE-ACPAD|CE-RESD|CE-TF,IEEE International Symposium on Parallel & Distributed Processing (h5=41)
+IPEC,International Symposium on Parameterized and Exact Computation,16,top20,,1,scholar,17,0,CE-ACO,International Workshop on Parameterized and Exact Computation (h5=16)
+IPMU,International Conference on Information Processing and Management of Uncertainty in Knowledge-Based Systems,16,relevante,,1,scholar,12,0,CE-IA|CE-IC|CE-SI,International Conference on Information Processing and Management of Uncertainty in Knowledge-Based Systems (h5=16)
+IRC,IEEE International Conference on Robotic Computing,16,relevante,,1,scholar,13,0,CE-R,IEEE International Conference on Robotic Computing (h5=16)
+IRI,IEEE International Conference on Information Reuse and Integration,22,relevante,,1,scholar,21,0,CE-BD,IEEE International Conference on Information Reuse and Integration (h5=22)
+IRMMW-THZ,"International Conference on Infrared, Millimeter and Terahertz Waves",29,relevante,,1,scholar,18,1,CE-GRAPI,"Journal of Infrared, Millimeter, and Terahertz Waves (h5=29) || International Conference on Infrared, Millimeter and Terahertz Waves (IRMMW-THz) (h5=16)"
+IROS,IEEE/RSJ International Conference on Intelligent Robots and Systems,92,top10,,1,scholar,63,0,CE-GRAPI|CE-IA|CE-IC|CE-R|CE-RV,IEEE/RSJ International Conference on Intelligent Robots and Systems (h5=92)
+ISAAC,International Symposium on Algorithms and Computation,17,top20,,1,scholar,15,0,CE-ACO,International Symposium on Algorithms and Computation (h5=17)
+ISADS,International Symposium on Autonomous Decentralized Systems,,relevante,,1,nenhum,,0,CE-RESD,
+ISAM,IEEE International Symposium on Assembly and Manufacturing,,relevante,,1,nenhum,,0,CE-R,
+ISBI,IEEE International Symposium on Biomedical Imaging,52,top20,,1,scholar,53,0,CE-CAS|CE-GRAPI,IEEE International Symposium on Biomedical Imaging: From Nano to Macro (h5=52)
+ISBRA,International Symposium on Bioinformatics Research and Applications,8,top10,,1,scholar,8,1,CE-BioComp,Bioinformatics Research and Applications (h5=8) || International Conference on Bioinformatics Research and Applications (h5=6)
+ISC,International Supercomputing Conference,25,top20,,1,scholar,14,0,CE-ACPAD|CE-SEG,International Conference on Supercomputing (ICS) (h5=25)
+ISC2,IEEE International Smart Cities Conference,19,relevante,,1,scholar,24,0,CE-RESD,International Smart Cities Conference (h5=19)
+ISCA,International Symposium on Computer Architecture,64,top10,,1,scholar,62,1,CE-ACPAD,International Symposium on Computer Architecture (ISCA) (h5=64) || IEEE Computer Architecture Letters (h5=24)
+ISCAS,IEEE International Symposium on Circuits and Systems,40,top10,,1,scholar,39,0,CE-ACPAD|CE-CCI|CE-ESC,IEEE International Symposium on Circuits and Systems (h5=40)
+ISCC,IEEE Symposium on Computers and Communications,27,top20,,1,scholar,26,0,CE-ACPAD|CE-ESC|CE-RESD|CE-TF,IEEE Symposium on Computers and Communications (h5=27)
+ISCIS,International Symposium on Computer and Information Sciences,18,relevante,,1,scholar,12,0,CE-SI,International Conference on Computer and Information Sciences (h5=18)
+ISCO,International Symposium on Combinatorial Optimization,22,relevante,,1,scholar,8,1,CE-ACO,Journal of Combinatorial Optimization (h5=22) || Conference on Combinatorial Optimization and Applications (h5=9)
+ISCON,International Conference on Information Systems and Computer Networks,21,relevante,,1,scholar,14,0,CE-SI,International Conference on Information Systems and Computer Networks (h5=21)
+ISCRAM,Information Systems for Crisis Response and Management,16,relevante,,1,scholar,21,0,CE-SI,International Conference on Information Systems for Crisis Response and Management (h5=16)
+ISD,International Conference on Information Systems Development,9,relevante,,1,scholar,13,0,CE-SI,International Conference on Information Systems Development (h5=9)
+ISDA,International Conference on Intelligent Systems Design and Applications,16,top20,,1,scholar,13,0,CE-CAS,International Conference on Intelligent Systems Design and Applications (h5=16)
+ISE,Workshop Brasileiro de Engenharia de Software Inteligente,,relevante,,1,nenhum,3,0,CE-ES,
+ISEA,International Symposium on Electronic /Emerging Art,12,relevante,,1,scholar,0,0,CE-IHC,Conference on Electronic Visualisation and the Arts (h5=12)
+ISECON,Information Systems Education Conference,15,relevante,,1,scholar,,0,CE-IE,IEEE International Conference on Information Systems and Computer Aided Education (h5=15)
+ISER,International Symposium on Experimental Robotics,12,top20,,1,scholar,14,0,CE-R,International Symposium on Experimental Robotics (h5=12)
+ISET,International Symposium on Educational Technology,14,top20,,1,scholar,14,0,CE-IE,International Symposium on Educational Technology (h5=14)
+ISGT,IEEE PES Innovative Smart Grid Technologies,26,relevante,,1,scholar,22,1,CE-RESD,IEEE PES Innovative Smart Grid Technologies (ISGT) (h5=26) || IEEE PES Innovative Smart Grid Technologies Conference Europe (h5=22) || IEEE PES Innovative Smart Grid Technologies Conference Latin America (h5=10)
+ISGT-Europe,IEEE PES Innovative Smart Grid Technologies Conference Europe,22,relevante,,1,scholar,22,0,CE-RESD,IEEE PES Innovative Smart Grid Technologies Conference Europe (h5=22)
+ISIE,IEEE International Symposium on Industrial Electronics,24,relevante,,1,scholar,22,0,CE-ESC|CE-R,IEEE International Symposium on Industrial Electronics (h5=24)
+ISIPTA,International Symposium on Imprecise Probabilities: Theories and Applications,,relevante,,1,nenhum,,0,CE-IA,
+ISLA,Information Systems in Latin America,3,relevante,,1,scholar,4,0,CE-SI,En la otra isla (h5=3)
+ISLPED,ACM/IEEE International Symposium on Low Power Electronics and Design,19,relevante,,1,scholar,21,0,CE-CCI,ACM/IEEE International Symposium on Low Power Electronics and Design (h5=19)
+ISLS,International Conference on Computer Supported Collaborative Learning,7,relevante,,1,scholar,12,0,CE-SC,International Conference on Computer-Supported Collaborative Learning (h5=7)
+ISM,IEEE International Symposium on Multimedia,14,top10,,1,scholar,15,0,CE-BD|CE-CM|CE-GRAPI|CE-WEBMEDIA,IEEE International Symposium on Multimedia (h5=14)
+ISMAR,IEEE International Symposium on Mixed and Augmented Reality,37,top10,,1,scholar,35,0,CE-IHC|CE-RV,IEEE International Symposium on Mixed and Augmented Reality (h5=37)
+ISMB/ECCB,Intelligent Systems for Molecular Biology / European Conference on Computational Biology,,top20,,1,nenhum,,0,CE-BioComp,
+ISMCR,International Symposium on Measurement and Control in Robotics,,relevante,,1,nenhum,,0,CE-R,
+ISMIR,International Society for Music Information Retrieval Conference,42,top10,,1,scholar,32,0,CE-CM,International Society for Music Information Retrieval Conference (h5=42)
+ISMM,International Symposium on Memory Management,,top20,,1,nenhum,13,0,CE-LP,
+ISMP,International Symposium on Mathematical Programming,64,relevante,,1,scholar,,0,CE-ACO,Mathematical Programming (h5=64)
+ISMR,International Symposium on Medical Robotics,16,relevante,,1,scholar,,0,CE-R,International Symposium on Medical Robotics (h5=16)
+ISMVL,IEEE International Symposium on Multiple-Valued Logic,16,relevante,,1,scholar,12,1,CE-CCI,Journal of Multiple-Valued Logic & Soft Computing (h5=16) || IEEE International Symposium on Multiple-Valued Logic (ISMVL) (h5=13)
+ISOLA,"International Symposium on Leveraging Applications of Formal Methods, Verification and Validation",22,top20,,1,scholar,17,0,CE-MF,"International Symposium On Leveraging Applications of Formal Methods, Verification and Validation (h5=22)"
+ISORC,IEEE International Symposium on RealTime Distributed Computing,12,top20,,1,scholar,12,0,CE-ESC,IEEE International Symposium on Object Oriented Real-Time Distributed Computing (h5=12)
+ISPD,International Symposium on Physical Design,18,top10,,1,scholar,18,0,CE-CCI,International Symposium on Physical Design (h5=18)
+ISPDC,International Symposium on Parallel and Distributed Computing,8,relevante,,1,scholar,12,0,CE-ACPAD|CE-TF,International Symposium on Parallel and Distributed Computing (h5=8)
+ISPRS,"ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",32,top10,,1,scholar,29,0,CE-Geoinformática,"ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences (h5=32)"
+ISQED,International Symposium on Quality Electronic Design,22,relevante,,1,scholar,21,0,CE-CCI,International Symposium on Quality Electronic Design (h5=22)
+ISR,IEEE International Conference on Intelligence and Safety for Robotics,,relevante,,1,nenhum,4,0,CE-R,
+ISRR,International Symposium on Robotics Research,71,top20,,1,scholar,22,0,CE-R,The International Journal of Robotics Research (h5=71)
+ISS,ACM Interactive Surfaces and Spaces,,top20,,1,nenhum,14,0,CE-RV,
+ISSA,Information Security for South Africa,5,relevante,,1,scholar,11,0,CE-SEG,ISSA Journal (h5=5)
+ISSRE,International Symposium on Software Reliability Engineering,31,top10,,1,scholar,28,0,CE-ES|CE-TF,International Symposium on Software Reliability Engineering (h5=31)
+ISSTA,International Symposium on Software Testing and Analysis,50,relevante,,1,scholar,45,0,CE-ES,International Symposium on Software Testing and Analysis (h5=50)
+ISTAR,International i*Workshop,,relevante,,1,nenhum,3,0,CE-ES,
+ISVC,International Symposium on Visual Computing,18,relevante,,1,scholar,18,0,CE-GRAPI,International Symposium on Visual Computing (h5=18)
+ISVLSI,IEEE Computer Society Annual Symposium on VLSI,23,top10,,1,scholar,22,0,CE-CCI|CE-ESC,IEEE Computer Society Annual Symposium on VLSI (h5=23)
+ISWC,International Semantic Web Conference,36,relevante,,1,scholar,37,0,CE-BD|CE-IA|CE-RV,International Semantic Web Conference (h5=36)
+ISWCS,International Symposium on Wireless Communication Systems,15,relevante,,1,scholar,23,0,CE-RESD,International Symposium on Wireless Communication Systems (h5=15)
+ITCS,Conference on Innovations in Theoretical Computer Science,37,top10,,1,scholar,35,0,CE-ACO,Conference on Innovations in Theoretical Computer Science (h5=37)
+ITICSE,ACM Conference on Innovation and Technology in Computer Science Education,38,top10,,1,scholar,35,0,CE-EDUCOMP|CE-IE|CE-RV,Joint Conference on Innovation and Technology in Computer Science Education (h5=38)
+ITNG,International Conference on Information Technology - New Generations,12,top20,,1,scholar,12,0,CE-SI,International Conference on Information Technology-New Generations (h5=12)
+ITP,International Conference on Interactive Theorem Proving,15,top20,,1,scholar,19,0,CE-MF,International Conference on Interactive Theorem Proving (h5=15)
+ITS,International Conference on Intelligent Tutoring Systems,18,top20,,1,scholar,16,0,CE-IA|CE-IE|CE-IHC,Intelligent Tutoring Systems (h5=18)
+ITSC,IEEE Intelligent Transportation Systems Conference,50,relevante,,1,scholar,55,0,CE-BD|CE-GRAPI|CE-RESD,IEEE Intelligent Transportation Systems Conference (h5=50)
+IUI,International Conference on Intelligent User Interfaces,50,top10,,1,scholar,52,0,CE-IA|CE-IHC|CE-RV,International Conference on Intelligent User Interfaces (IUI) (h5=50)
+IV,International Conference on Information Visualisation,,relevante,,1,nenhum,15,0,CE-IHC,
+IVA,Intelligent Virtual Agents,24,top10,,1,scholar,23,0,CE-GRAPI|CE-IHC|CE-JOGOS,Intelligent Virtual Agents (h5=24)
+IVAPP,International Conference on Information Visualization Theory and Applications,,relevante,,1,nenhum,3,0,CE-RV,
+IWBBIO,International Work-Conference on Bioinformatics and Biomedical Engineering,13,top10,,1,scholar,11,1,CE-BioComp,International Work-Conference on Bioinformatics and Biomedical Engineering (IWBBIO) (h5=13) || International Conference on Biomedical and Bioinformatics Engineering (h5=5)
+IWCMC,International Wireless Communications and Mobile Computing Conference,29,relevante,,1,scholar,31,1,CE-RESD,International Wireless Communications and Mobile Computing Conference (IWCMC) (h5=29) || IEEE International Conference on Wireless and Mobile Computing Networking and Communications (h5=16)
+IWCS,International Workshop on Computational Semantics,20,relevante,,1,scholar,0,0,CE-PLN,Joint Conference on Lexical and Computational Semantics (h5=20)
+IWCTS,International Workshop on Computational Transportation Science,,relevante,,1,nenhum,,0,CE-Geoinformática,
+IWOCA,International Workshop on Combinatorial Algorithms,11,relevante,,1,scholar,11,0,CE-ACO,International Workshop on Combinatorial Algorithms (h5=11)
+IWSECO,International Workshop on Software Ecosystems,,relevante,,1,nenhum,9,0,CE-SI,
+IWSSIP,"International Conference on Systems, Signals and Image Processing",16,top20,,1,scholar,17,0,CE-CAS|CE-GRAPI,"International Conference on Systems, Signals and Image Processing (h5=16)"
+IxDA,Interaction Latin America,,relevante,,1,nenhum,0,0,CE-IHC,
+Jornadas HCI,Iberoamerican Workshop on Human-Computer Interaction,7,relevante,,1,scholar,7,0,CE-IHC,Iberoamerican Workshop on Human-Computer Interaction (h5=7)
+JURIX,International Conference on Legal Knowledge and Information Systems,18,relevante,,1,scholar,15,0,CE-SI,International Conference on Legal Knowledge and Information Systems (JURIX) (h5=18)
+KDD,ACM SIGKDD conference on Knowledge Discovery and Data Mining,124,top10,,1,scholar,124,0,CE-BD|CE-IC,ACM SIGKDD Conference on Knowledge Discovery and Data Mining (h5=124)
+KDIR,International Conference on Knowledge Discovery and Information Retrieval,10,relevante,,1,scholar,12,0,CE-BD,International Conference on Knowledge Discovery and Information Retrieval (KDIR) (h5=10)
+KDMILE,"Symposium on Knowledge Discovery, Mining and Learning",8,top20,,1,scholar,7,0,CE-BD|CE-IA,"Symposium on Knowledge Discovery, Mining and Learning (KDMiLe) (h5=8)"
+KES,International Conference on Knowledge-Based and Intelligent Information & Engineering Systems,,relevante,,1,nenhum,2,0,CE-BD|CE-SI,
+KESW,International Conference on Knowledge Engineering and Semantic Web,,relevante,,1,nenhum,37,0,CE-SI,
+KMO,International Conference on Knowledge Management in Organizations,,relevante,,1,nenhum,12,0,CE-SI,
+Koli Calling,Koli Calling International Conference on Computing Education Research,16,top10,,1,scholar,17,0,CE-EDUCOMP,Koli Calling International Conference on Computing Education Research (h5=16)
+KR,International Conference on Principles of Knowledge Representation and Reasoning,29,top10,,1,scholar,23,0,CE-BD|CE-IA,Principles of Knowledge Representation and Reasoning (KR) (h5=29)
+L@S,ACM Conference on Learning @ Scale,28,top10,,1,scholar,23,0,CE-IE,ACM Conference on Learning at Scale (h5=28)
+LA-CCI,IEEE Latin American Conference on Computational Intelligence,8,relevante,,1,scholar,10,0,CE-IA|CE-IC,IEEE Latin American Conference on Computational Intelligence (h5=8)
+LA-WEB,Latin American Web Congress,,relevante,,1,nenhum,0,0,CE-IHC,
+LAC,Linux Audio Conference,,top20,,1,nenhum,,0,CE-CM,
+LACLO,Latin American Conference on Learning Objects and Technologies,10,top20,,1,scholar,10,0,CE-IE,Latin American Conference on Learning Technologies (h5=10)
+LADC,Latin-American Symposium on Dependable Computing,7,top20,,1,scholar,14,0,CE-TF,Latin-American Symposium on Dependable Computing (h5=7)
+LAGIRS,IEEE Latin American GRSS & ISPRS Remote Sensing Conference (LAGIRS),14,top20,,1,scholar,,0,CE-Geoinformática,IEEE Latin American GRSS & ISPRS Remote Sensing Conference (h5=14)
+LAGOS,"Latin-American Algorithms, Graphs and Optimization Symposium",7,relevante,,1,scholar,,1,CE-ACO,LAGOS (h5=7) || University of Lagos Journal of Basic Medical Sciences (h5=5)
+LAK,International Learning Analytics and Knowledge Conference,46,top10,,1,scholar,45,0,CE-IE,International Conference on Learning Analytics & Knowledge' (h5=46)
+LANC,Latin American Networking Conference,,relevante,,1,nenhum,,0,CE-RESD,
+LANMAN,IEEE International Symposium on Local and Metropolitan Area Networks,,relevante,,1,nenhum,,0,CE-RESD,
+LANOMS,Latin-American Network Operations and Management Symposium,,relevante,,1,nenhum,,0,CE-RESD,
+LARS,Latin American Robotics Symposium,,relevante,,1,nenhum,14,0,CE-GRAPI|CE-IA|CE-RV,
+LASCAS,IEEE Latin American Symposium on Circuits and Systems,40,top10,,1,scholar,13,1,CE-CCI,IEEE International Symposium on Circuits and Systems (h5=40) || IEEE Latin American Symposium on Circuits and Systems (LASCAS) (h5=15)
+LATIN,Latin American Theoretical Informatics Symposium,32,top10,,1,scholar,15,1,CE-ACO,"IEEE Latin America Transactions (h5=32) || Bulletin of Latin American Research (h5=22) || Latin American Politics and Society (h5=22) || Latin American Perspectives (h5=22) || Latin American Research Review (h5=19) || Journal of Latin American Geography (h5=18) || Latin American Journal of Central Banking (h5=18) || Latin American Journal of Solids and Structures (h5=18) || Tapuya: Latin American Science, Technology and Society (h5=17) || Latin American Journal of Aquatic Research (h5=16) || Latin American Antiquity (h5=16) || European Review of Latin American and Caribbean Studies (h5=15) || Journal of Latin American Studies (h5=15) || Latin American and Caribbean Ethnic Studies (h5=15) || ALEA. Latin American Journal of Probability & Mathematical Statistics (h5=15) || IEEE Latin American Symposium on Circuits and Systems (LASCAS) (h5=15) || IEEE Latin American GRSS & ISPRS Remote Sensing Conference (h5=14) || International Journal of Latin American Religions (h5=14) || The Journal of Latin American and Caribbean Anthropology (h5=14) || Latin American Policy (h5=14)"
+LATINCLOUD,IEEE Latin America Conference on Cloud Computing and Communications,,relevante,,1,nenhum,,0,CE-RESD,
+LATINCOM,IEEE Latin-American Conference on Communications,,relevante,,1,nenhum,11,0,CE-RESD,
+LATINCRYPT,International Conference on Cryptology and Information Security in Latin America,,relevante,,1,nenhum,12,0,CE-SEG,
+Latinoware,Congresso Latino-Americano de Software Livre e Tecnologias Abertas,3,relevante,,1,scholar,3,0,CE-ES,Congresso Latino-Americano de Software Livre e Tecnologias Abertas (Latinoware) (h5=3)
+LATS,Latin American Test Symposium,8,top20,,1,scholar,9,0,CE-CCI|CE-TF,IEEE Latin American Test Symposium (LATS) (h5=8)
+LAW,Linguistic Annotation Workshop,,top20,,1,nenhum,8,0,CE-PLN,
+LAWCG,Latin American Workshop on Cliques in Graphs,,relevante,,1,nenhum,,0,CE-ACO,
+LCN,IEEE Conference on Local Computer Networks,23,relevante,,1,scholar,18,0,CE-RESD,Conference on Local Computer Networks (LCN) (h5=23)
+LCTES,"Languages, Compilers, and Tools for Embedded Systems",,top20,,1,nenhum,9,0,CE-ESC|CE-LP,
+LCTRTS,"ACM SIGPLAN/SIGBED Conference on Languages, Compilers, and Tools for Real-Time Systems",,relevante,,1,nenhum,,0,CE-ESC,
+LDAV,IEEE Symposium on Large Data Analysis and Visualization,,top20,,1,nenhum,13,0,CE-BD|CE-RV,
+LICS,ACM/IEEE Symposium on Logic in Computer Science,30,top10,,1,scholar,30,0,GI-L,IEEE Symposium on Logic in Computer Science (h5=30)
+LMCS,Logical Methods in Computer Science,28,top20,,1,scholar,27,0,GI-L,Logical Methods in Computer Science (h5=28)
+LocalRec,"International Workshop on Location-Based Recommendations, Geosocial Networks and Geoadvertising",,relevante,,1,nenhum,,0,CE-Geoinformática,
+LocWeb,International Workshop on Location and the Web,,top20,,1,nenhum,17,0,CE-Geoinformática,
+LoPaS,Location Privacy and Security Workshop,,relevante,,1,nenhum,,0,CE-Geoinformática,
+LREC,International Conference on Language Resources and Evaluation,68,top10,,1,scholar,59,1,CE-PLN,International Conference on Language Resources and Evaluation (LREC) (h5=68) || Language Resources and Evaluation (h5=36)
+LSFA,"International Workshop on Logical and Semantic Frameworks, with Applications",,top10,,1,nenhum,1,0,GI-L,
+ManSDN/NFV,International Workshop on Management of SDN and NFV Systems,,relevante,,1,nenhum,,0,CE-RESD,
+MASCOTS,"International Symposium on the Modeling, Analysis, and Simulation of Computer and Telecommunication Systems",16,relevante,,1,scholar,16,0,CE-RESD,"IEEE International Symposium on Modeling, Analysis & Simulation of Computer and Telecommunication Systems, MASCOTS (h5=16)"
+MASS,IEEE International Conference on Mobile Adhoc and Sensor Systems,21,relevante,,1,scholar,19,0,CE-RESD,IEEE International Conference on Mobile Adhoc and Sensor Systems (MASS) (h5=21)
+MCM,International Conference on Mathematics and Computation in Music,,relevante,,1,nenhum,,0,CE-CM,
+MCSoC,International Symposium on Embedded Multicore/Many-core Systems-on-Chip,10,relevante,,1,scholar,11,0,CE-ACPAD|CE-ESC,International Symposium on Embedded Multicore/Many-core Systems-on-Chip (h5=10)
+MDM,IEEE International Conference on Mobile Data Management,16,relevante,,1,scholar,19,0,CE-BD,International Conference on Mobile Data Management (h5=16)
+MED,Mediterranean Conference on Control and Automation,19,relevante,,1,scholar,19,0,CE-R,Mediterranean Conference on Control and Automation (h5=19)
+Med-Hoc-Net,Mediterranean Ad Hoc Networking Workshop,16,relevante,,1,scholar,12,0,CE-RESD,Mediterranean Communication and Computer Networking Conference (h5=16)
+MEDES,International Conference on Management of Digital EcoSystems,10,relevante,,1,scholar,12,0,CE-SI,International Conference on Management of Digital EcoSystems (h5=10)
+MEDINFO,World Congress on Medical and Health Informatics,32,top10,,1,scholar,35,0,CE-CAS,Studies in Health Technology and Informatics (h5=32)
+MEDITCOM,IEEE International Mediterranean Conference on Communications and Networking,15,relevante,,1,scholar,8,0,CE-RESD,IEEE International Mediterranean Conference on Communications and Networking (h5=15)
+MESA,IEEE/ASME International Conference on Mechatronic and Embedded Systems and Applications,8,relevante,,1,scholar,12,0,CE-ESC,IEEE/ASME International Conference on Mechatronic and Embedded Systems and Applications (h5=8)
+MFCS,International Symposium on Mathematical Foundations of Computer Science,19,top20,,1,scholar,19,0,CE-ACO|GI-L,Mathematical Foundations of Computer Science (MFCS) (h5=19)
+MFI,IEEE International Conference on Multisensor Fusion and Integration for Intelligent Systems,17,relevante,,1,scholar,13,0,CE-R,IEEE International Conference on Multisensor Fusion and Integration for Intelligent Systems (h5=17)
+MICAI,Mexican International Conference on Artificial Intelligence,62,relevante,,1,scholar,12,1,CE-IA|CE-PLN,Artificial Intelligence (h5=62) || Mexican International Conference on Artificial Intelligence (MICAI) (h5=13)
+MICCAI,International Conference on Medical Image Computing and Computer Assisted Intervention,98,top10,,1,scholar,96,0,CE-CAS|CE-GRAPI|CE-RV,Medical Image Computing and Computer Assisted Intervention (h5=98)
+MICRO,IEEE/ACM International Symposium on Microarchitecture,58,top10,,1,scholar,61,0,CE-ACPAD,IEEE/ACM International Symposium on Microarchitecture (h5=58)
+MIDDLEWARE,ACM/IFIP International Middleware Conference,24,top10,,1,scholar,22,0,CE-ESC|CE-RESD|CE-SI|CE-TF,International Middleware Conference (h5=24)
+MIE,Medical Informatics Europe,32,top20,,1,scholar,35,0,CE-CAS,Studies in Health Technology and Informatics (h5=32)
+MIG,"ACM SIGGRAPH Conference on Motion, Interaction and Games",,top10,,1,nenhum,17,0,CE-GRAPI|CE-JOGOS,
+MLDM,Machine Learning and Data Mining in Pattern Recognition,,relevante,,1,nenhum,,0,CE-GRAPI,
+MM,ACM Multimedia Conference,119,top10,,1,scholar,101,0,CE-WEBMEDIA,ACM International Conference on Multimedia (h5=119)
+MMAR,International Conference on Methods and Models in Automation and Robotics,8,relevante,,1,scholar,16,0,CE-R,International Conference on Methods and Models in Automation and Robotics (h5=8)
+MMM,International Conference on Multimedia Modelling,,top20,,1,nenhum,26,0,CE-RV|CE-WEBMEDIA,
+MMRP,International Workshop on Multilayer Music Representation and Processing,,top20,,1,nenhum,,0,CE-CM,
+MMSP,IEEE Workshop on Multimedia Signal Processing,26,relevante,,1,scholar,20,0,CE-WEBMEDIA,IEEE Workshop on Multimedia Signal Processing (h5=26)
+MMSys,ACM Multimedia Systems Conference,27,top10,,1,scholar,28,0,CE-IHC|CE-RESD|CE-RV|CE-WEBMEDIA,ACM Multimedia Systems Conference (MMSys) (h5=27)
+MNR,Mostra Nacional de Robótica,,relevante,,1,nenhum,,0,CE-R,
+MOBICOM,ACM/IEEE International Conference on Mobile Computing and Networking,57,top10,,1,scholar,51,0,CE-RESD,Annual International Conference on Mobile Computing and Networking (h5=57)
+MOBIHOC,ACM International Symposium on Mobile Ad Hoc Networking and Computing,22,top20,,1,scholar,25,0,CE-RESD,ACM International Symposium on Mobile Ad Hoc Networking and Computing (h5=22)
+MobileHCI,International Conference on Human-Computer Interaction with Mobile Devices and Services,,top10,,1,nenhum,22,0,CE-IHC|CE-RV,
+MOBILESoft,International Conference on Mobile Software Engineering and Systems,,relevante,,1,nenhum,11,0,CE-ES,
+MobiQuitous,"International Conference on Mobile and Ubiquitous Systems: Computing, Networking and Services",14,relevante,,1,scholar,17,0,CE-RESD,"EAI International Conference on Mobile and Ubiquitous Systems: Computing, Networking and Services (h5=14)"
+MobiSys,"Annual International Conference on Mobile Systems, Applications, and Services",40,top10,,1,scholar,39,0,CE-RESD,"Annual International Conference on Mobile Systems, Applications and Services (h5=40)"
+MOBIWAC,ACM International Symposium on Mobility Management and Wireless Access,,relevante,,1,nenhum,,0,CE-RESD,
+MODELS,International Conference on Model Driven Engineering Languages and Systems,31,relevante,,1,scholar,26,0,CE-ES,Model Driven Engineering Languages and Systems (h5=31)
+MODRE,International Model-Driven Requirements Engineering,,relevante,,1,nenhum,16,0,CE-ES,
+MoMM,International Conference on Advances in Mobile Computing & Multimedia,,relevante,,1,nenhum,9,0,CE-WEBMEDIA,
+MRS,International Symposium on Multi-Robot and Multi-Agent Systems,,relevante,,1,nenhum,,0,CE-R,
+MSN,International Conference on Mobile Ad-Hoc and Sensor Networks,19,relevante,,1,scholar,13,0,CE-RESD,International Conference on Mobile Ad-hoc and Sensor Networks (h5=19)
+MSR,Working Conference on Mining Software Repositories,44,top10,,1,scholar,46,0,CE-ES,Mining Software Repositories (h5=44)
+MSSiS,Workshop de Modelagem e Simulação de Sistemas Intensivos em Software,,relevante,,1,nenhum,3,0,CE-ES,
+MSWIM,"ACM International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",18,relevante,,1,scholar,19,0,CE-RESD,"ACM International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems (h5=18)"
+MTSR,International Conference on Metadata and Semantics Research,11,relevante,,1,scholar,11,0,CE-BD,Research Conference on Metadata and Semantics Research (MTSR) (h5=11)
+MUM,International Conference on Mobile and Ubiquitous Multimedia,19,relevante,,1,scholar,18,0,CE-WEBMEDIA,Mobile and Ubiquitous Multimedia (h5=19)
+MVA,International Conference on Machine Vision Applications,38,relevante,,1,scholar,35,1,CE-GRAPI|CE-R|CE-RV,Machine Vision and Applications (h5=38) || International Conference on Machine Vision and Applications (h5=11)
+MWSCAS,IEEE International Midwest Symposium on Circuits and Systems,40,top20,,1,scholar,20,1,CE-CCI,IEEE International Symposium on Circuits and Systems (h5=40) || IEEE International Midwest Symposium on Circuits and Systems (MWSCAS) (h5=20)
+NAACL,North American Chapter of the Association for Computational Linguistics Annual Meeting,126,top10,,1,scholar,132,0,CE-IA|CE-PLN,Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (HLT-NAACL) (h5=126)
+NCA,IEEE International Symposium on Network Computing and Applications,15,relevante,,1,scholar,20,0,CE-RESD|CE-TF,IEEE International Symposium on Network Computing and Applications (h5=15)
+NDSS,Network and Distributed System Security Symposium,72,top10,,1,scholar,73,0,CE-RESD|CE-SEG,Network and Distributed System Security Symposium (NDSS) (h5=72)
+NetSoft,IEEE NetSoft Conference and Workshops,25,relevante,,1,scholar,26,0,CE-RESD,IEEE NetSoft Conference and Workshops (h5=25)
+NetSys,International Conference on Networked Systems,42,relevante,,1,scholar,12,0,CE-RESD,ACM Conference on Embedded Networked Sensor Systems (h5=42)
+Networking,IFIP Networking Conference,57,top20,,1,scholar,22,1,CE-RESD,"Annual International Conference on Mobile Computing and Networking (h5=57) || International Conference for High Performance Computing, Networking, Storage and Analysis (h5=50) || International Conference on Computing Communication and Networking Technologies (h5=41) || IEEE Wireless Communications & Networking Conference (h5=41) || IEEE Consumer Communications and Networking Conference (h5=34) || International Conference on Information Networking (h5=28) || IFIP Networking Conference (h5=26) || IEEE Information Technology, Networking, Electronic and Automation Control Conference (h5=26) || International Conference on System, Computation, Automation and Networking (h5=26) || International Conference on Advances in Computing, Communication Control and Networking (h5=25) || IEEE Wireless Communications and Networking Conference Workshops (WCNCW) (h5=24) || International Conference on Computing, Networking and Communications (h5=23) || International Conference on Advanced Information Networking and Applications (AINA) (h5=21) || International Conference on Wireless Communications Signal Processing and Networking (h5=19) || International Conference of Distributed Computing and Networking (h5=19) || International Conference on Computational Intelligence, Communication Technology and Networking (h5=18) || IEEE Vehicular Networking Conference (VNC) (h5=18) || International Conference on Networking, Information Systems & Security (h5=17) || International Conference on Smart Generation Computing, Communication and Networking (h5=17) || International Black Sea Conference on Communications and Networking (BlackSeaCom) (h5=16)"
+NeurIPS,Neural Information Processing Systems,371,top10,,1,scholar,337,0,CE-GRAPI|CE-IC,Neural Information Processing Systems (h5=371)
+NEW2AN,"International Conference on Internet of Things, Smart Spaces, and Next Generation Networks and Systems",,relevante,,1,nenhum,,0,CE-RESD,
+NEWCAS,International New Circuits and Systems Conference,13,top20,,1,scholar,11,0,CE-CCI,International New Circuits and Systems Conference (NEWCAS) (h5=13)
+NFM,Nasa Formal Methods,20,top10,,1,scholar,16,0,CE-MF,NASA Formal Methods (h5=20)
+NFV-SDN,IEEE Conference on Network Function Virtualization and Software Defined Networks,17,relevante,,1,scholar,18,0,CE-RESD,IEEE Conference on Network Function Virtualization and Software Defined Networks (h5=17)
+NIME,International Conference on New Interfaces for Musical Expression,22,top10,,1,scholar,18,0,CE-CM,New Interfaces for Musical Expression (NIME) (h5=22)
+NIPS,Neural Information Processing Systems,371,top10,,1,scholar,337,0,CE-IA,Neural Information Processing Systems (h5=371)
+NISS,"International Conference on Networking, Information Systems & Security",17,relevante,,1,scholar,15,0,CE-SI,"International Conference on Networking, Information Systems & Security (h5=17)"
+NLDB,International Conference on Application of Natural Language to Information Systems,19,relevante,,1,scholar,18,0,CE-PLN|CE-SI,International Conference on Applications of Natural Language to Information Systems (NLDB) (h5=19)
+NOCS,ACM/IEEE International Symposium on Networks-on-Chip,,top20,,1,nenhum,9,0,CE-ACPAD|CE-CCI,
+NOF,International Conference on Network of the Future,12,relevante,,1,scholar,11,0,CE-RESD,International Conference on Network of the Future (h5=12)
+NOMS,IEEE/IFIP Network Operations and Management Symposium,33,relevante,,1,scholar,32,0,CE-RESD,IEEE/IFIP Network Operations and Management Symposium (h5=33)
+NORCAS,Nordic Circuits and Systems Conference,10,relevante,,1,scholar,8,0,CE-CCI,Nordic Circuits and Systems Conference (NORCAS) (h5=10)
+NordiCHI,Nordic forum for Human-Computer Interaction,31,top10,,1,scholar,24,0,CE-IHC,NordiCHI (h5=31)
+NSDI,Networked Systems Design and Implementation,71,top10,,1,scholar,60,0,CE-RESD|CE-TF,USENIX Symposium on Networked Systems Design and Implementation (h5=71)
+NSS,Network and System Security,13,relevante,,1,scholar,15,0,CE-SEG,Network and System Security (h5=13)
+NTMS,"IFIP International Conference on New Technologies, Mobility and Security",,relevante,,1,nenhum,18,0,CE-SEG,
+OCEAN,IEEE Oceans Conference,105,relevante,,1,scholar,7,1,CE-R,"Ocean Engineering (h5=105) || Ocean & Coastal Management (h5=73) || Applied Ocean Research (h5=59) || Journal of Ocean Engineering and Science (h5=43) || Ocean Science (h5=37) || Ocean Modelling (h5=31) || International Journal of Naval Architecture and Ocean Engineering (h5=29) || Ocean Dynamics (h5=26) || Journal of Waterway, Port, Coastal, and Ocean Engineering (h5=24) || Journal of Ocean University of China (h5=22) || Journal of Ocean Engineering and Marine Energy (h5=21) || Brodogradnja: An International Journal of Naval Architecture and Ocean Engineering for Research and Development (h5=19) || China Ocean Engineering (h5=19) || Australian Journal of Maritime & Ocean Affairs (h5=16) || Ocean Science Journal (h5=16) || Atmosphere-Ocean (h5=15) || Journal of the Indian Ocean Region (h5=15) || Journal of Ocean Engineering and Technology (h5=15) || Ocean Development & International Law (h5=13) || Ocean and Coastal Research (h5=13)"
+ONTOBRAS,Seminar on Ontology Research in Brazil,7,top20,,1,scholar,6,0,CE-BD|CE-IA|CE-PLN,Brazilian Seminar on Ontologies (ONTOBRAS) (h5=7)
+Onward!,Onward!,,relevante,,1,nenhum,10,0,CE-LP,
+OOPSLA,"Conference on Object-Oriented Programming Systems, Languages, and Applications",,top10,,1,nenhum,29,0,CE-ES|CE-LP,
+OP,SIAM Conference on Optimization,,relevante,,1,nenhum,,0,CE-ACO,
+OpenScienSE,Workshop de Práticas de Ciência Aberta para Engenharia de Software,,relevante,,1,nenhum,3,0,CE-ES,
+OpenSym,International Symposium on Open Collaboration,,top20,,1,nenhum,11,0,CE-ES|CE-SC,
+OPODIS,International Conference on Principles of Distributed Systems,19,top20,,1,scholar,18,0,CE-RESD|CE-TF,International Conference On Principles Of DIstributed Systems (h5=19)
+OSDI,USENIX Symposium on Operating Systems Design and Implementation,68,relevante,,1,scholar,55,0,CE-RESD|CE-TF,Symposium on Operating Systems Design and Implementation (OSDI) (h5=68)
+OSS,International Conference on Open Source Systems,12,relevante,,1,scholar,12,0,CE-ES,International Conference on Open Source Systems and Technologies (h5=12)
+OzCHI,Australasian Computer-Human Interaction Conference,,top20,,1,nenhum,18,0,CE-IHC,
+PACBB,International Conference on Practical Applications of Computational Biology & Bioinformatics,,top10,,1,nenhum,9,0,CE-BioComp,
+PacificVis,IEEE Pacific Visualization Symposium,19,top10,,1,scholar,19,0,CE-GRAPI|CE-RV,IEEE Pacific Visualization Symposium (h5=19)
+PACIS,Pacific Asia Conference on Information Systems,52,relevante,,1,scholar,24,1,CE-SI,Information Systems (h5=52) || Pacific Asia Conference on Information Systems (PACIS) (h5=25)
+PACT,International Conference on Parallel Computing Technologies,7,relevante,,1,scholar,12,0,CE-ACPAD,"Parallel and Distributed Computing, Applications and Technologies (h5=7)"
+PACTT,International Conference on Parallel Architectures and Compilation Techniques,22,top20,,1,scholar,21,0,CE-ACPAD,International Conference on Parallel Architectures and Compilation Techniques (PACT) (h5=22)
+PAKDD,Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD),124,top20,,1,scholar,30,1,CE-BD|CE-IA|CE-IC,ACM SIGKDD Conference on Knowledge Discovery and Data Mining (h5=124) || Data Mining and Knowledge Discovery (h5=51) || Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD) (h5=33)
+PAM,Passive and Active Network Measurement Conference,21,relevante,,1,scholar,20,0,CE-RESD,International Conference on Passive and Active Network Measurement (h5=21)
+PATMOS,"International Workshop on Power and Timing Modeling, Optimization and Simulation",,relevante,,1,nenhum,,0,CE-CCI,
+PDC,Participatory Design Conference,23,top20,,1,scholar,19,0,CE-IHC,Participatory Design Conference (h5=23)
+PDCAT,"International Conference on Parallel and Distributed Computing, Applications and Technologies",7,relevante,,1,scholar,10,0,CE-ACPAD,"Parallel and Distributed Computing, Applications and Technologies (h5=7)"
+PDES,IFAC International Conference on Programmable Devices and Embedded Systems,,relevante,,1,nenhum,,0,CE-ESC,
+PDP,"Euromicro International Conference on Parallel, Distributed and Network-Based Processing",15,top20,,1,scholar,16,0,CE-ACPAD|CE-RESD,"Euromicro International Conference on Parallel, Distributed and Network-Based Processing (h5=15)"
+PE-WASUM,"ACM International Symposium on Performance Evaluation of Wireless Ad Hoc, Sensor, and Ubiquitous Networks",,relevante,,1,nenhum,,0,CE-RESD,
+PECCS,Pervasive and Embedded Computing and Communication Systems,,relevante,,1,nenhum,7,0,CE-ESC,
+PERCOM,International Conference on Pervasive Computing and Communications,28,relevante,,1,scholar,26,1,CE-RESD,IEEE International Conference on Pervasive Computing and Communications Workshops (PERCOM Workshops) (h5=28) || IEEE International Conference on Pervasive Computing and Communications (PerCom) (h5=26) || International Journal of Pervasive Computing and Communications (h5=24)
+PerCom Workshops,IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events,28,relevante,,1,scholar,29,0,CE-RESD,IEEE International Conference on Pervasive Computing and Communications Workshops (PERCOM Workshops) (h5=28)
+PervasiveHealth,International Conference on Pervasive Computing Technologies for Healthcare,14,top10,,1,scholar,18,0,CE-CAS,EAI International Conference on Pervasive Computing Technologies for Healthcare (h5=14)
+PETRA,ACM International Conference on PErvasive Technologies Related to Assistive Environments,24,relevante,,1,scholar,11,0,CE-IHC,International Conference on Pervasive Technologies Related to Assistive Environments (h5=24)
+PETS,Proceedings on Privacy Enhancing Technologies,56,top20,,1,scholar,12,0,CE-SEG,Proceedings on Privacy Enhancing Technologies (h5=56)
+PG,Pacific Conference on Computer Graphics and Applications,27,top20,,1,scholar,,0,CE-GRAPI,IEEE Computer Graphics and Applications (h5=27)
+PGM,International Conference on Probabilistic Graphical Models,,relevante,,1,nenhum,13,0,CE-IA,
+PIMRC,"International Symposium on Personal, Indoor and Mobile Radio Communications",28,top20,,1,scholar,30,0,CE-RESD,"IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (h5=28)"
+PKC,International Conference on Practice and Theory in Public Key Cryptography,37,top20,,1,scholar,35,0,CE-SEG,International Conference on Practice and Theory in Public Key Cryptography (h5=37)
+PLATIAL,International Symposium on Platial Information Science,,relevante,,1,nenhum,4,0,CE-Geoinformática,
+PLDI,SIGPLAN Conference on Programming Language Design and Implementation,51,top10,,1,scholar,51,0,CE-LP,ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) (h5=51)
+PLOP,Conference on Pattern Languages of Programs,14,relevante,,1,scholar,12,0,CE-ES,European Conference on Pattern Languages of Programs (h5=14)
+PODC,ACM Symposium on Principles of Distributed Computing,30,top10,,1,scholar,30,0,CE-RESD|CE-TF,ACM Symposium on Principles of Distributed Computing (PODC) (h5=30)
+PODS,Symposium on Principles of Database Systems,22,top10,,1,scholar,24,0,CE-BD,ACM SIGMOD-SIGACT-SIGART Symposium on Principles of Database Systems (h5=22)
+PoEM,IFIP WG 8.1 Working Conference on the Practice of Enterprise Modelling,,relevante,,1,nenhum,12,0,CE-SI,
+POPL,Symposium on Principles of Programming Languages,,top10,,1,nenhum,45,0,CE-LP,
+PP,SIAM Conference on Parallel Processing for Scientific Computing,,relevante,,1,nenhum,,0,CE-ACPAD,
+PPAM,International Conference on Parallel Processing and Applied Mathematics,5,relevante,,1,scholar,10,0,CE-ACPAD,International Conference on Parallel Processing and Applied Mathematics (PPAM) (h5=5)
+PPDP,International  Symposium on Principles and Practice of Declarative Programming,,top20,,1,nenhum,10,0,CE-LP,
+PPOPP,ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming,34,top10,,1,scholar,33,0,CE-ACPAD|CE-LP,ACM SIGPLAN Symposium on Principles & Practice of Parallel Programming (PPOPP) (h5=34)
+PRDC,Pacific Rim International Symposium on Dependable Computing,14,top20,,1,scholar,13,0,CE-TF,Pacific Rim International Symposium on Dependable Computing (h5=14)
+PredictGIS,International Workshop on Prediction of Human Mobility,,relevante,,1,nenhum,,0,CE-Geoinformática,
+PROFES,International Conference on Product-Focused Software Process Improvement,16,top20,,1,scholar,18,0,CE-ES,Product Focused Software Process Improvement (PROFES) (h5=16)
+PROMISE,International Conference on Predictive Models in Software Engineering,,top20,,1,nenhum,8,0,CE-ES,
+PROPOR,International Conference on Computational Processing of the Portuguese Language,13,top10,,1,scholar,9,0,CE-IA|CE-PLN|CE-SI,International Conference on Computational Processing of the Portuguese Language (h5=13)
+PSB,Pacific Symposium on Biocomputing,24,top10,,1,scholar,22,0,CE-BioComp,Pacific Symposium on Biocomputing (h5=24)
+PST,"Conference on Privacy, Security and Trust",14,relevante,,1,scholar,15,0,CE-SEG,"Conference on Privacy, Security and Trust (h5=14)"
+Q2SWinet,ACM Symposium on QoS and Security for Wireless and Mobile Networks,,relevante,,1,nenhum,,0,CE-RESD,
+QoMEX,International Workshop on Quality of Multimedia Experience,24,top20,,1,scholar,24,0,CE-RV|CE-WEBMEDIA,International Workshop on Quality of Multimedia Experience (h5=24)
+QRS,"IEEE International Conference on Software Quality, Reliability, and Security",25,relevante,,1,scholar,23,0,CE-ES,"IEEE International Conference on Software Quality, Reliability, and Security Companion (h5=25)"
+QUATIC,International Conference on Quality of Information and Communications Technology,16,relevante,,1,scholar,14,0,CE-ES,International Conference on the Quality of Information and Communications Technology (h5=16)
+RADECS,European Conference on Radiation and Its Effects on Components and Systems,7,relevante,,1,scholar,6,0,CE-CCI,European Conference on Radiation and Its Effects on Components and Systems (h5=7)
+RAHA,IEEE Internacional Conference on Robotics and Automation for Humanitarian Applications,,relevante,,1,nenhum,,0,CE-R,
+RAID,"International Symposium on Research in Attacks, Intrusions, and Defenses",28,relevante,,1,scholar,28,0,CE-SEG,"International Symposium on Research in Attacks, Intrusions, and Defenses (h5=28)"
+RANLP,International Conference on Recent Advances in Natural Language Processing,23,top20,,1,scholar,25,0,CE-PLN,Recent Advances in Natural Language Processing (RANLP) (h5=23)
+RCAR,IEEE International Conference on Real-time Computing and Robotics,14,relevante,,1,scholar,14,0,CE-ESC|CE-R,IEEE International Conference on Real-time Computing and Robotics (h5=14)
+RCIS,International Conference on Research Challenges in Information Science,18,relevante,,1,scholar,18,0,CE-ES|CE-SI,International Conference on Research Challenges in Information Science (h5=18)
+RE,IEEE International Requirements Engineering Conference,32,relevante,,1,scholar,32,0,CE-ES,IEEE International Requirements Engineering Conference (h5=32)
+REBLS,Workshop on Reactive and Event-Based Languages and Systems,,relevante,,1,nenhum,5,0,CE-LP,
+RECOMB,International Conference on Research in Computational Molecular Biology,21,top10,,1,scholar,23,0,CE-BioComp,International Conference on Research in Computational Molecular Biology (h5=21)
+RECONFIG,International Conference on Reconfigurable Computing and FPGAs,,relevante,,1,nenhum,,0,CE-CCI,
+RECOSOC,International Symposium on Reconfigurable Communication-centric Systems-on-Chip,,relevante,,1,nenhum,11,0,CE-ACPAD|CE-CCI|CE-ESC,
+RecSys,ACM Conference on Recommender Systems,57,top10,,1,scholar,53,0,CE-BD|CE-IA|CE-IC|CE-IHC|CE-SI|CE-WEBMEDIA,ACM Conference on Recommender Systems (h5=57)
+REFSQ,International Working Conference on Requirements Engineering: Foundations for Software Quality,,relevante,,1,nenhum,20,0,CE-ES,
+RITA,International Conference on Robot Intelligence Technology and Applications,5,relevante,,1,scholar,8,0,CE-R,Rita: Revista Indexada de Textos Académicos (h5=5)
+RO-MAN,IEEE International Symposium on Robot and Human Interactive Communication,34,top10,,1,scholar,27,0,CE-IHC|CE-R,IEEE International Symposium on Robot and Human Interactive Communication (h5=34)
+ROBIO,IEEE International Conference on Robotics and Biomimetics,14,top20,,1,scholar,18,0,CE-R,IEEE International Conference on Robotics and Biomimetics (h5=14)
+ROBOCUP,RoboCup - Robocup International Symposium,9,top20,,1,scholar,15,0,CE-R,RoboCup International Symposium (h5=9)
+RoboSoft,IEEE International Conference on Soft Robotics,61,relevante,,1,scholar,,1,CE-R,Soft Robotics (h5=61) || IEEE International Conference on Soft Robotics (h5=29)
+ROBOT,Iberian Robotics Conference,8,relevante,,1,scholar,13,0,CE-R,Iberian Robotics Conference (h5=8)
+RoMoCo,International Workshop on Robot Motion and Control,,relevante,,1,nenhum,11,0,CE-R,
+ROSE,IEEE International Symposium on Robotic and Sensors Environments,,relevante,,1,nenhum,,0,CE-R,
+RSP,IEEE International Symposium on Rapid System Prototyping,,relevante,,1,nenhum,,0,CE-ESC,
+RSS,Robotics: Science and Systems,83,top10,,1,scholar,51,0,CE-R|CE-RV,Robotics: Science and Systems (h5=83)
+RTAS,IEEE REAL-TIME AND EMBEDDED TECHNOLOGY AND APPLICATIONS SYMPOSIUM,25,top10,,1,scholar,28,0,CE-ESC,IEEE Real-Time and Embedded Technology and Applications Symposium (h5=25)
+RTCSA,International Conference on Embedded and Real-Time Computing Systems and Applications,13,top20,,1,scholar,13,0,CE-ESC,IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA) (h5=13)
+RTIS,International Conference on Real Time Intelligent Systems,,relevante,,1,nenhum,6,0,CE-ESC,
+RTSS,Real-Time Systems Symposium,23,top10,,1,scholar,20,0,CE-ESC,IEEE International Real-Time Systems Symposium (RTSS) (h5=23)
+S&P,IEEE Symposium on Security and Privacy,110,top10,,1,scholar,112,1,CE-RESD|CE-SEG,IEEE Symposium on Security and Privacy (h5=110) || Security and Privacy (h5=29)
+SAC,International Conference on Selected Areas in Cryptography,18,relevante,,1,scholar,21,0,CE-BD|CE-ES|CE-IA|CE-IHC|CE-RV|CE-SEG|CE-SI|CE-WEBMEDIA,International Conference on Selected Areas in Cryptography (h5=18)
+SACI,IEEE International Symposium on Applied Computational Intelligence and Informatics,17,relevante,,1,scholar,13,0,CE-IA,IEEE International Symposium on Applied Computational Intelligence and Informatics (SACI) (h5=17)
+SACMAT,ACM Symposium on Access Control Models and Technologies,16,relevante,,1,scholar,16,0,CE-SEG,ACM Symposium on Access Control Models and Technologies (SACMAT) (h5=16)
+SafeComp,"International Conference on Computer Safety, Reliability and Security",20,top10,,1,scholar,20,0,CE-SEG|CE-TF,"International Conference on Computer Safety, Reliability, and Security (h5=20)"
+SAMOS,International Conference on Embedded Computer Systems,12,relevante,,1,scholar,11,0,CE-CCI|CE-ESC,International Conference on Embedded Computer Systems (SAMOS) (h5=12)
+SANER,"IEEE International Conference on Software Analysis, Evolution and Reengineering",38,top10,,1,scholar,39,0,CE-ES,"International Conference on Software Analysis, Evolution, and Reengineering (SANER) (h5=38)"
+SARNOFF,IEEE Sarnoff Symposium,,relevante,,1,nenhum,,0,CE-CCI,
+SAS,Static Analysis Symposium,15,top20,,1,scholar,14,0,CE-LP,IEEE Sensors Applications Symposium (SAS) (h5=15)
+SAST,Brazilian Symposium on Systematic and Automated Software Testing,,top10,,1,nenhum,6,0,CE-ES|CE-TF,
+SAT,International Conference on Theory and Applications of Satisfiability Testing,20,top20,,1,scholar,21,0,GI-L,Theory and Applications of Satisfiability Testing (h5=20)
+SBAC-PAD,International Symposium on Computer Architecture and High Performance Computing,14,top10,,1,scholar,12,0,CE-ACPAD|CE-RV|CE-TF,"International Symposium on Computer Architecture and High Performance Computing, SBAC-PAD (h5=14)"
+SBAI,Simpósio Brasileiro de Automação Inteligente,4,relevante,,1,scholar,,0,CE-R|CE-RV,Simpósio Brasileiro de Automação Inteligente-SBAI (h5=4)
+SBBD,Simpósio Brasileiro de Bancos de Dados,8,top10,,1,scholar,7,1,CE-BD|CE-Geoinformática,Brazilian Symposium on Databases (SBBD) (h5=8) || Simpósio Brasileiro de Banco de Dados (SBBD) (h5=4)
+SBCARS,"Brazilian Symposium on Components, Architectures and Reuse Software",,top10,,1,nenhum,7,0,CE-ES,
+SBCAS,Simpósio Brasileiro de Computação Aplicada à Saúde,7,top20,,1,scholar,7,0,CE-CAS,Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS) (h5=7)
+SBCCI,Symposium on Integrated Circuits and Systems Design,12,top20,,1,scholar,10,1,CE-CCI|CE-RV,Conference on Design of Circuits and Integrated Systems (h5=12) || Symposium on Integrated Circuits and Systems Design (h5=9) || SBC/SBMicro/IEEE/ACM Symposium on Integrated Circuits and Systems Design (h5=9)
+SBCM,Simpósio Brasileiro de Computação Musical,,top10,,1,nenhum,,0,CE-CM|CE-RV,
+SBCUP,Simpósio Brasileiro de Computação Ubíqua e Pervasiva,,relevante,,1,nenhum,3,0,CE-WEBMEDIA,
+SBES,Brazilian Symposium on Software Engineering,23,top10,,1,scholar,21,0,CE-ES,Brazilian Symposium on Software Engineering (h5=23)
+SBESC,Brazilian Symposium on Computing System Engineering,9,top10,,1,scholar,9,0,CE-ACPAD|CE-ESC|CE-TF,Brazilian Symposium on Computing Systems Engineering (h5=9)
+SBGames,Brazilian Symposium on Games and Digital Entertainment,10,top10,,1,scholar,10,0,CE-IHC|CE-JOGOS|CE-RV,Simpósio Brasileiro de Jogos e Entretenimento Digital (SBGames) (h5=10)
+SBIE,Simpósio Brasileiro de Informática na Educação,16,top10,,1,scholar,15,1,CE-EDUCOMP|CE-IE|CE-IHC|CE-RV,International Conference on Computers in Education (h5=16) || Simpósio Brasileiro de Informática na Educação (SBIE) (h5=15) || International Symposium on Computers in Education (h5=8)
+SBLP,Brazilian Symposium on Programming Languages,51,top10,,1,scholar,6,0,CE-LP,Proceedings of the ACM on Programming Languages (h5=51)
+SBMF,Simpósio Brasileiro de Métodos Formais,,top10,,1,nenhum,,0,CE-ES|CE-MF,
+SBMicro,Symposium on Microelectronics Technology and Devices,4,relevante,,1,scholar,6,0,CE-CCI,Symposium on Microelectronics Technology and Devices (h5=4)
+SBPO,Simpósio Brasileiro de Pesquisa Operacional,,relevante,,1,nenhum,,0,CE-ACO|CE-IC,
+SBQS,Simpósio Brasileiro de Qualidade de Software,12,top10,,1,scholar,12,0,CE-ES,Brazilian Symposium on Software Quality (h5=12)
+SBR,Brazilian Symposium on Robotics,,relevante,,1,nenhum,14,0,CE-GRAPI|CE-RV,
+SBR/LARS,Latin American Robotics Symposium,,top20,,1,nenhum,11,0,CE-R,
+SBRC,Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos,8,top20,,1,scholar,8,1,CE-RESD|CE-TF,"Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos (SBRC) (h5=8) || International Conference on Distributed Systems, Computer Networks and Cybersecurity (h5=2)"
+SBrT,Simpósio Brasileiro de Telecomunicações e Processamento de Sinais,12,relevante,,1,scholar,,1,CE-RESD,Journal of Radiosurgery & SBRT (h5=12) || Journal of radiosurgery and SBRT (h5=11)
+SBSC,SBSC - Simpósio Brasileiro de Sistemas Colaborativos,,top10,,1,nenhum,,0,CE-SC,
+SBSeg,Simpósio Brasileiro em Segurança da Informação e de Sistemas Computacionais,6,top20,,1,scholar,4,0,CE-SEG|CE-TF,Simpósio Brasileiro em Segurança da Informação e de Sistemas Computacionais (h5=6)
+SBSI,Simpósio Brasileiro de Sistemas de Informação,13,top10,,1,scholar,11,1,CE-ES|CE-IA|CE-IHC|CE-SI,Simpósio Brasileiro de Sistemas de Informação (h5=13) || Simpósio Brasileiro de Sistemas de Informação (SBSI) (h5=6)
+SBSR,Simpósio Brasileiro de Sensoriamento Remoto,,top20,,1,nenhum,7,0,CE-Geoinformática,
+SBTI,Simpósio Brasileiro de Tecnologia da Informação,8,relevante,,1,scholar,3,0,CE-SI,Simpósio Brasileiro de Tecnologia da Informação e da Linguagem Humana (STIL) (h5=8)
+SC,"International Conference for High Performance Computing, Networking, Storage and Analysis",50,top10,,1,scholar,50,0,CE-ACPAD,"International Conference for High Performance Computing, Networking, Storage and Analysis (h5=50)"
+SCA,ACM SIGGRAPH/Eurographics Symposium on Computer Animation,,top20,,1,nenhum,19,0,CE-GRAPI|CE-RV,
+SCAM,IEEE International Working Conference on Source Code Analysis and Manipulation,16,top20,,1,scholar,15,0,CE-ES|CE-LP,IEEE International Working Conference on Source Code Analysis and Manipulation (h5=16)
+SciVis,IEEE Scientific Visualization,23,relevante,,1,scholar,,1,CE-RV,IEEE Visualization Conference (h5=23) || Scientific Visualization (h5=11)
+SCOPES,Software and Compilers for Embedded Systems,,relevante,,1,nenhum,11,0,CE-LP,
+SCS,Symposium on Combinatorial Search,20,relevante,,1,scholar,21,0,CE-IA,Symposium on Combinatorial Search (h5=20)
+SDM,SIAM International Conference on Data Mining,49,top20,,1,scholar,36,1,CE-BD|CE-IC,IEEE International Conference on Data Mining (h5=49) || SIAM International Conference on Data Mining (SDM) (h5=36)
+SDSS,Spatial Data Science Symposium,,top10,,1,nenhum,2,0,CE-Geoinformática,
+SEA,International Symposium on Experimental Algorithms,11,top20,,1,scholar,9,0,CE-ACO,International Symposium on Experimental Algorithms (h5=11)
+SEAA,Euromicro Conference on Software Engineering and Advanced Applications,23,relevante,,1,scholar,23,0,CE-ES,Euromicro Conference on Software Engineering and Advanced Applications (h5=23)
+SEAMS,International Symposium on Software Engineering for Adaptive and Self-Managing Systems,21,relevante,,1,scholar,21,0,CE-ES,International Symposium on Software Engineering for Adaptive and Self-Managing Systems (h5=21)
+SEC,IFIP TC 11 International Conference on ICT Systems Security and Privacy Protection (IFIP SEC),15,relevante,,1,scholar,18,0,CE-SEG,IFIP TC 11 International Conference on ICT Systems Security and Privacy Protection (h5=15)
+SeCoGIS,Workshop on Semantic and Conceptual Issues in Geographic Information Systems,,top20,,1,nenhum,24,0,CE-Geoinformática,
+SECON,"IEEE International Conference on Sensing, Communication and Networking",23,relevante,,1,scholar,26,0,CE-RESD,"IEEE Communications Society Conference on Sensor, Mesh and Ad Hoc Communications and Networks (SECON) (h5=23)"
+SECRYPT,International Conference on Security and Cryptography,50,relevante,,1,scholar,11,1,CE-SEG,International Conference on Financial Cryptography and Data Security (h5=50) || Applied Cryptography and Network Security (h5=28) || International Conference on Security and Cryptography (SECRYPT) (h5=13)
+SEFM,Software Engineering and Formal Methods,15,top10,,1,scholar,14,0,CE-MF,Software Engineering and Formal Methods (h5=15)
+SeGAH,IEEE International Conference on Serious Games and Applications for Health,18,top10,,1,scholar,16,0,CE-JOGOS,International Conference on Serious Games and Applications for Health (SeGAH) (h5=18)
+SEH,International Workshop on Software Engineering in Healthcare,,relevante,,1,nenhum,5,0,CE-ES,
+SEKE,International Conference on Software Engineering and Knowledge Engineering,18,relevante,,1,scholar,14,1,CE-BD|CE-ES,International Journal of Software Engineering and Knowledge Engineering (h5=18) || International Conference on Software Engineering and Knowledge Engineering (SEKE) (h5=14)
+SEMEVAL,International Workshop on Semantic Evaluation,40,top20,,1,scholar,41,0,CE-PLN,International Workshop on Semantic Evaluation (h5=40)
+SEMISH,Seminário Integrado de Software e Hardware,5,relevante,,1,scholar,4,0,CE-IHC,Seminário Integrado de Software e Hardware (SEMISH) (h5=5)
+SENSORNETS,International Conference on Sensor Networks,39,relevante,,1,scholar,9,1,CE-CCI,ACM Transactions on Sensor Networks (h5=39) || International Journal of Sensor Networks (h5=15)
+SenSys,ACM Conference on Embedded Network Sensor Systems,,top20,,1,nenhum,36,0,CE-RESD,
+SER&IP,IEEE/ACM International Workshop on Software Engineering Research and Industrial Practice,,relevante,,1,nenhum,7,0,CE-ES,
+SESoS,International Workshop on Software Engineering for Systems-of-Systems,,relevante,,1,nenhum,5,0,CE-ES|CE-SI,
+Sforum,Microelectronics Student Forum,,relevante,,1,nenhum,1,0,CE-CCI,
+SIBGRAPI,"SIBGRAPI Conference on Graphics, Patterns and Images",22,top10,,1,scholar,23,0,CE-GRAPI|CE-RV,"SIBGRAPI Conference on Graphics, Patterns and Images (h5=22)"
+SIES,International Symposium on Industrial Embedded Systems,,relevante,,1,nenhum,12,0,CE-ESC,
+SIGCOMM,ACM SIGCOMM Conference,64,top10,,1,scholar,57,0,CE-RESD,ACM SIGCOMM Conference (h5=64)
+SIGCSE,ACM Technical Symposium on Computer Science Education,47,top10,,1,scholar,47,0,CE-EDUCOMP|CE-IE|CE-RV,Technical Symposium on Computer Science Education (h5=47)
+SIGDIAL,Annual Meeting of the Special Interest Group on Discourse and Dialogue,26,relevante,,1,scholar,31,0,CE-PLN,Annual Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL) (h5=26)
+SIGDOC,ACM International Conference on Design of Communication,12,relevante,,1,scholar,11,0,CE-IHC,ACM International Conference on Design of Communication (h5=12)
+SIGGRAPH,Proceedings of the ACM on Computer Graphics and Interactive Techniques,23,top10,,1,scholar,19,0,CE-GRAPI|CE-IHC,Proceedings of the ACM on Computer Graphics and Interactive Techniques (h5=23)
+SIGGRAPH Asia,Proceedings of the ACM on Computer Graphics and Interactive Techniques - Asia,,top10,,1,nenhum,25,0,CE-GRAPI,
+SIGIR,International ACM SIGIR Conference on Research and Development in Information Retrieval,123,relevante,,1,scholar,103,0,CE-BD|CE-PLN,ACM SIGIR Conference on Research and Development in Information Retrieval (h5=123)
+SIGKDD,ACM International Conference on Knowledge Discovery and Data Mining,124,relevante,,1,scholar,124,1,CE-ACPAD|CE-IA,ACM SIGKDD Conference on Knowledge Discovery and Data Mining (h5=124) || Data Mining and Knowledge Discovery (h5=51)
+SIGMETRICS,International Conference on Measurement and Modeling of Computer Systems,41,relevante,,1,scholar,40,0,CE-RESD,ACM SIGMETRICS Performance Evaluation Review (h5=41)
+SIGMOD,ACM International Conference on Management of Data,74,top10,,1,scholar,73,1,CE-BD,ACM SIGMOD International Conference on Management of Data (h5=74) || Proceedings of the ACM on Management of Data (h5=31)
+SIGSPATIAL,ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems,26,top10,,1,scholar,27,0,CE-BD|CE-Geoinformática,International Conference on Advances in Geographic Information Systems (h5=26)
+SII,IEEE/SICE International Symposium on System Integration,19,relevante,,1,scholar,13,0,CE-R,IEEE/SICE International Symposium on System Integration (h5=19)
+SIMBig,Annual International Symposium on Information Management and Big Data,6,relevante,,1,scholar,8,0,CE-BD,International Conference on Big Data Economy and Information Management (h5=6)
+SIMPAR,"IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots",,relevante,,1,nenhum,,0,CE-R,
+SIPAIM,International Symposium on Medical Information Processing and Analysis,13,relevante,,1,scholar,11,0,CE-GRAPI,International Symposium on Medical Information Processing and Analysis (h5=13)
+SISAP,International Conference on Similarity Search and Applications,12,relevante,,1,scholar,11,0,CE-BD,Similarity Search and Applications (h5=12)
+SLE,ACM SIGPLAN International Conference on Software Language Engineering,12,top20,,1,scholar,12,0,CE-ES|CE-LP,Software Language Engineering (h5=12)
+SmartGridComm,IEEE International Conference on Smart Grid Communications,21,relevante,,1,scholar,25,1,CE-RESD,IEEE International Conference on Smart Grid Communications (SmartGridComm) (h5=21) || International Conference on Wireless Communications and Smart Grid (h5=10)
+SMC,Sound and Music Computing Conference,36,top10,,1,scholar,,0,CE-CM|CE-ESC|CE-GRAPI|CE-IA|CE-IC|CE-RV|CE-SI,"IEEE International Conference on Systems, Man and Cybernetics (h5=36)"
+SNAA,Workshop on Social Network Analysis in Applications,,relevante,,1,nenhum,,0,CE-BD,
+SOCC,IEEE International System-on-Chip Conference,39,relevante,,1,scholar,11,1,CE-ACPAD|CE-BD|CE-CCI|CE-SI,ACM Symposium on Cloud Computing (h5=39) || IEEE International Conference on Cloud Computing (CLOUD) (h5=24)
+SoCG,International Symposium on Computational Geometry,22,top20,,1,scholar,22,1,CE-ACO,Symposium on Computational Geometry (h5=22) || Computational Geometry (h5=17)
+SocialCom,International Conference on Social Computing,17,relevante,,1,scholar,8,1,CE-IA|CE-SI,Journal of Social Computing (h5=17) || International Conference on Behavioural and Social Computing (h5=13)
+SOCINFO,International Conference on Social Informatics,27,relevante,,1,scholar,8,1,CE-SI,Informatics for Health and Social Care (h5=27) || Multidisciplinary International Social Networks Conference on Social Informatics (h5=6)
+SODA,ACM-SIAM Symposium on Discrete Algorithms,50,top10,,1,scholar,55,0,CE-ACO,ACM SIAM Symposium on Discrete Algorithms (h5=50)
+SOFSEM,International Conference on Current Trends in Theory and Practice of Computer Science,14,top10,,1,scholar,9,0,CE-ACO|CE-BD|GI-L,SOFSEM (Student Research Forum Papers/Posters) (h5=14)
+SoftCOM,"International Conference on Software, Telecommunications and Computer Networks",15,relevante,,1,scholar,17,0,CE-RESD,"International Conference on Software, Telecommunications and Computer Networks (h5=15)"
+SOSA,SIAM Symposium on Simplicity in Algorithms,15,relevante,,1,scholar,,0,CE-ACO,Symposium on Simplicity in Algorithms (h5=15)
+SoSE,IEEE International Conference on Systems of Systems Engineering,16,top10,,1,scholar,18,1,CE-SI,IEEE International Conference on System of Systems Engineering (h5=16) || Annual System of Systems Engineering Conference (h5=11)
+SOSP,ACM Symposium on Operating Systems Principles,43,relevante,,1,scholar,,0,CE-RESD,Symposium on Operating Systems Principles (h5=43)
+SOSR,Symposium on Software Defined Networking Research,,relevante,,1,nenhum,,0,CE-RESD,
+SOUPS,Symposium On Usable Privacy and Security,35,top20,,1,scholar,38,0,CE-SEG,Symposium On Usable Privacy and Security (h5=35)
+SoWeMi,International Workshop on Mining the Social Web,,relevante,,1,nenhum,3,0,CE-SI,
+SPAA,ACM Symposium on Parallelism in Algorithms and Architectures,21,top20,,1,scholar,22,0,CE-ACPAD|CE-RESD,ACM Symposium on Parallelism in Algorithms and Architectures (SPAA) (h5=21)
+SpatialBigData,Spatial Big Data and Machine Learning in GIScience,,relevante,,1,nenhum,,0,CE-Geoinformática,
+SPIE Conferences,Proceedings of Spie--the International Society for Optical Engineering,21,relevante,,1,scholar,21,0,CE-GRAPI,Proceedings of Spie--the International Society for Optical Engineering (h5=21)
+SPIRE,International Symposium on String Processing and Information Retrieval,12,relevante,,1,scholar,13,0,CE-BD,International Symposium on String Processing and Information Retrieval (h5=12)
+SPLC,International Software Product Line Conference,23,relevante,,1,scholar,25,0,CE-ES,International Software Product Line Conference (h5=23)
+SRDS,IEEE Symposium on Reliable Distributed Systems,20,top10,,1,scholar,18,0,CE-RESD|CE-SEG|CE-TF,Symposium on Reliable Distributed Systems (SRDS) (h5=20)
+SSBSE,International Symposium on Search Based Software Engineering,,relevante,,1,nenhum,11,0,CE-ES,
+SSCC,International Symposium on Security in Computing and Communications,31,relevante,,1,scholar,8,0,CE-SEG,"IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom) (h5=31)"
+SSCI,IEEE Symposium Series on Computational Intelligence,31,relevante,,1,scholar,29,0,CE-IC,IEEE Symposium Series on Computational Intelligence (h5=31)
+SSDBM,International Conference on Scientific and Statistical Database Management,13,top10,,1,scholar,12,0,CE-BD|CE-Geoinformática,Statistical and Scientific Database Management (SSDBM) (h5=13)
+SSE,IEEE International Conference on Services Computing,19,relevante,,1,scholar,19,0,CE-SI,IEEE International Conference on Services Computing (h5=19)
+SSRR,"International Symposium on Safety, Security and Rescue Robotics",19,top20,,1,scholar,19,0,CE-R,"IEEE International Workshop on Safety, Security and Rescue Robotics (h5=19)"
+SSTD,International Symposium on Spatial and Temporal Databases,,top20,,1,nenhum,6,0,CE-BD|CE-Geoinformática,
+STACS,Symposium on Theoretical Aspects of Computer Science,24,top10,,1,scholar,20,0,CE-ACO,Symposium on Theoretical Aspects of Computer Science (STACS) (h5=24)
+STIL,Brazilian Symposium in Information and Human Language Technology,8,top10,,1,scholar,4,0,CE-BD|CE-PLN,Simpósio Brasileiro de Tecnologia da Informação e da Linguagem Humana (STIL) (h5=8)
+STOC,ACM Symposium on Theory of Computing,63,top10,,1,scholar,57,0,CE-ACO,ACM Symposium on Theory of Computing (h5=63)
+SUI,Symposium on Spatial User Interaction,18,top10,,1,scholar,16,0,CE-IHC|CE-RV,ACM Symposium on Spatial User Interaction (h5=18)
+SustainIT,Conference on Sustainable Internet and ICT for Sustainability,,relevante,,1,nenhum,0,0,CE-IHC,
+SVR,Symposium on Virtual and Augmented Reality,18,top10,,1,scholar,14,1,CE-IHC|CE-RV,Augmented and Virtual Reality (h5=18) || Symposium on Virtual and Augmented Reality (h5=15)
+SWAT,Scandinavian Workshop on Algorithm Theory,11,relevante,,1,scholar,10,0,CE-ACO,Scandinavian Workshop on Algorithm Theory (SWAT) (h5=11)
+SWQD,Conference Software Quality Days,,relevante,,1,nenhum,13,0,CE-ES,
+SYSMUS,International Conference of Students of Systematic Musicology,,relevante,,1,nenhum,,0,CE-CM,
+SYSTOL,Conference on Control and Fault-Tolerant Systems,,top20,,1,nenhum,9,0,CE-TF,
+T4E,International conference on Technology 4 Education,,relevante,,1,nenhum,,0,CE-IE,
+TABLEAUX,International Conference on Automated Reasoning with Analytic Tableaux and Related Methods,,top10,,1,nenhum,11,0,GI-L,
+TAC,Text Analysis Conference,,top20,,1,nenhum,3,0,CE-PLN,
+TACAS,International Conference on Tools and Algorithms for the Construction and Analysis of Systems,35,top10,,1,scholar,36,0,CE-MF,International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS) (h5=35)
+TAROS,Towards Autonomous Robotics Systems,,relevante,,1,nenhum,12,0,CE-R,
+TASE,Theoretical Aspects of Software Engineering,10,top20,,1,scholar,9,0,CE-MF,International Symposium on Theoretical Aspects of Software Engineering (h5=10)
+TCC,Theory of Cryptography,35,top20,,1,scholar,31,0,CE-SEG,Theory of Cryptography (h5=35)
+TECH-EDU,"International Conference on Technology and Innovation in Learning, Teaching and Education",,relevante,,1,nenhum,,0,CE-IE,
+TechDebt,International Conference on Technical Debt,,top20,,1,nenhum,15,0,CE-ES,
+TEI,"ACM International Conference on Tangible, Embedded and Embodied Interactions",,top20,,1,nenhum,27,0,CE-IHC|CE-RV|CE-SC,
+TIMBRE,Interdisciplinary Workshop on Timbre,,relevante,,1,nenhum,,0,CE-CM,
+TISE,Congreso Internacional de Informática Educativa,,relevante,,1,nenhum,,0,CE-IE,
+TREC,Text Retrieval Conference,15,relevante,,1,scholar,17,0,CE-PLN,Text REtrieval Conference (TREC) (h5=15)
+TrustCom,"IEEE International Conference on Trust, Security and Privacy in Computing and Communications",31,top20,,1,scholar,29,0,CE-SEG,"IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom) (h5=31)"
+TSD,"International Conference on Text, Speech and Dialog",18,top20,,1,scholar,16,0,CE-PLN,"Text, Speech and Dialogue (TSD) (h5=18)"
+TVX,ACM International Conference on Interactive Experiences for TV and Online Video,,relevante,,1,nenhum,13,0,CE-IHC,
+UAHCI,International Conference Universal Access in Human-Computer Interaction,,relevante,,1,nenhum,0,0,CE-IHC,
+UAI,Conference on Uncertainty in Artificial Intelligence,50,top10,,1,scholar,56,0,CE-IA|CE-IC,Conference on Uncertainty in Artificial Intelligence (UAI) (h5=50)
+Ubicomp,Pervasive and Ubiquitous Computing,24,top20,,1,scholar,27,0,CE-IA|CE-IHC|CE-RESD|CE-RV|CE-WEBMEDIA,ACM Conference on Pervasive and Ubiquitous Computing (UbiComp) (h5=24)
+UBIMUS,Workshop de Música Ubíqua,,relevante,,1,nenhum,,0,CE-CM,
+UCC,IEEE/ACM International Conference on Utility and Cloud Computing,20,relevante,,1,scholar,23,0,CE-ACPAD|CE-BD|CE-RESD,International Conference on Utility and Cloud Computing (h5=20)
+UIST,ACM Symposium on User Interface Software and Technology,53,top10,,1,scholar,51,0,CE-IHC|CE-RV,ACM Symposium on User Interface Software and Technology (h5=53)
+UMAP,"User Modeling, Adaptation and Personalization Conference",34,relevante,,1,scholar,31,1,CE-IE|CE-IHC|CE-RV|CE-SI|CE-WEBMEDIA,"User Modeling and User-Adapted Interaction (h5=34) || International Conference on User Modeling, Adaptation and Personalization (UMAP) (h5=33)"
+UR,International Conference on Ubiquitous Robots and Ambient Intelligence,,relevante,,1,nenhum,13,0,CE-R,
+USENIX,USENIX Annual Technical Conference,57,relevante,,1,scholar,55,0,CE-TF,USENIX Annual Technical Conference (h5=57)
+USENIX Security,USENIX Security Symposium,116,top10,,1,scholar,106,0,CE-RESD|CE-SEG,USENIX Security Symposium (h5=116)
+USIHC,Congresso Internacional de Ergonomia e Usabilidade de Interfaces Humano Computador,,relevante,,1,nenhum,0,0,CE-IHC|CE-RV,
+VaMoS,International Workshop on Variability Modelling of Software-intensive Systems,,top20,,1,nenhum,9,0,CE-ES,
+VAST,IEEE Visual Analytics Science and Technology,23,relevante,,1,scholar,,0,CE-RV,IEEE Visualization Conference (h5=23)
+VECIMS/CIVEMSA,IEEE International Conference on Virtual Environments Human-Computer Interfaces and Measurement Systems,,relevante,,1,nenhum,11,0,CE-IHC,
+VEE,International Conference on Virtual Execution Environments,,top20,,1,nenhum,12,0,CE-LP,
+VEM,"Workshop on Software Visualization, Evolution and Maintenance",,top20,,1,nenhum,4,0,CE-ES,
+Videojogos,International Conference on Videogame Sciences and Arts,,relevante,,1,nenhum,,0,CE-JOGOS,
+VISAPP,International Conference on Computer Vision Theory and Applications,30,top20,,1,scholar,31,0,CE-CAS|CE-GRAPI|CE-RV,International Conference on Computer Vision Theory and Applications (h5=30)
+VISSOFT,IEEE Working Conference on Software Visualization,,relevante,,1,nenhum,10,0,CE-ES|CE-IHC,
+VL,IEEE Symposium on Visual Languages,19,relevante,,1,scholar,18,0,CE-IHC,IEEE Symposium on Visual Languages and Human-Centric Computing (h5=19)
+VLDB,International Conference on Very Large Data Bases,,top10,,1,nenhum,79,0,CE-BD,
+VLHCC,IEEE Symposium on Visual Languages and Human-Centric Computing,19,relevante,,1,scholar,18,0,CE-ES,IEEE Symposium on Visual Languages and Human-Centric Computing (h5=19)
+VLSI-DAT,"International Symposium on VLSI Design, Automation and Test",12,relevante,,1,scholar,10,0,CE-CCI,"International Symposium on VLSI Design, Automation and Test (VLSI-DAT) (h5=12)"
+VLSI-SOC,IEEE/IFIP International Conference on VLSI and System-on-Chip,14,top10,,1,scholar,13,0,CE-ACPAD|CE-CCI|CE-ESC,IEEE/IFIP International Conference on VLSI and System-on-Chip (VLSI-SoC) (h5=14)
+VLSID,International Conference on VLSI Design,,relevante,,1,nenhum,14,0,CE-CCI,
+VMV,"International Symposium on Vision, Modeling and Visualization",,relevante,,1,nenhum,1,0,CE-RV,
+VNC,IEEE Vehicular Networking Conference,18,relevante,,1,scholar,19,0,CE-RESD,IEEE Vehicular Networking Conference (VNC) (h5=18)
+VR,IEEE Virtual Reality Conference,52,top10,,1,scholar,48,1,CE-RV,IEEE Virtual Reality Conference (h5=52) || International Conference on Virtual Reality (h5=9)
+VRCAI,International Conference on Virtual Reality Continuum and its Applications,,top10,,1,nenhum,16,0,CE-RV,
+VRST,ACM Symposium on Virtual Reality Software and Technology,27,top10,,1,scholar,26,0,CE-GRAPI|CE-IHC|CE-RV,ACM Symposium on Virtual Reality Software and Technology (h5=27)
+VS-Games,International Conference on Virtual Worlds and Games for Serious Applications,,top20,,1,nenhum,,0,CE-JOGOS,
+VTC,IEEE Vehicular Technology Conference,46,relevante,,1,scholar,46,0,CE-GRAPI|CE-RESD,"IEEE Vehicular Technology Conference, VTC (h5=46)"
+VTS,VLSI Test Symposium,18,relevante,,1,scholar,18,1,CE-CCI,VLSI Test Symposium (VTS) (h5=18) || International Symposium on VLSI Design and Test (h5=11)
+W4A,International Cross-Disciplinary Conference on Web Accessibility,18,relevante,,1,scholar,17,0,CE-IHC,Conference on Web Accessibility (h5=18)
+WABI,Workshop on Algorithms in Bioinformatics,13,top10,,1,scholar,12,0,CE-BioComp,Algorithms in Bioinformatics (h5=13)
+WAC,Web Audio Conference,9,top20,,1,scholar,,0,CE-CM,World Automation Congress (WAC) (h5=9)
+WACV,Winter Conference on Applications of Computer Vision,131,relevante,,1,scholar,109,0,CE-GRAPI|CE-RV,IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) (h5=131)
+WADS,Algorithms and Data Structures Symposium,,top20,,1,nenhum,14,0,CE-ACO,
+WAFR,Workshop on the Algorithmic Foundations of Robotics,,top20,,1,nenhum,16,0,CE-R,
+WAIHCWS,Workshop sobre Aspectos da Interação Humano-Computador para a Web Social,,relevante,,1,nenhum,0,0,CE-IHC,
+WALCOM,International Workshop on Algorithms and Computation,17,relevante,,1,scholar,9,1,CE-ACO,International Symposium on Algorithms and Computation (h5=17) || International Workshop on Algorithms and Computation (WALCOM) (h5=11)
+WAOA,Workshop on Approximation and Online Algorithms,,relevante,,1,nenhum,,0,CE-ACO,
+WASHES,"Workshop sobre Aspectos Sociais, Humanos e Econômicos de Software",,top10,,1,nenhum,6,0,CE-ES|CE-IHC|CE-SC|CE-SI,
+WASPAA,IEEE Workshop on Applications of Signal Processing to Audio and Acoustics,21,top10,,1,scholar,15,0,CE-CM,IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (h5=21)
+WBL,Workshop Brasileiro de Lógica,,relevante,,1,nenhum,1,0,GI-L,
+WBMA,Workshop Brasileiro de Métodos Ágeis,,relevante,,1,nenhum,2,0,CE-ES,
+WCAMA,Workshop de Computação Aplicada à Gestão do Meio Ambiente e Recursos Naturais,,relevante,,1,nenhum,0,0,CE-SI,
+WCAS,Workshop on Circuits and System Design,,relevante,,1,nenhum,,0,CE-CCI,
+WCCE,IFIP World Conference on Computers in Education,16,relevante,,1,scholar,,1,CE-IE,International Conference on Computers in Education (h5=16) || International Symposium on Computers in Education (h5=8)
+WCGE,Workshop de Computação Aplicada em Governo Eletrônico,7,relevante,,1,scholar,5,0,CE-SI,Workshop de Computação Aplicada em Governo Eletrônico (WCGE) (h5=7)
+WCNC,IEEE Wireless Communications and Networking Conference,24,relevante,,1,scholar,,1,CE-ESC|CE-RESD,IEEE Wireless Communications and Networking Conference Workshops (WCNCW) (h5=24) || International Conference on Wireless Communications Signal Processing and Networking (h5=19) || IEEE International Conference on Wireless and Mobile Computing Networking and Communications (h5=16)
+WCNCW,IEEE Wireless Communications and Networking Conference Workshops,24,relevante,,1,scholar,26,0,CE-RESD,IEEE Wireless Communications and Networking Conference Workshops (WCNCW) (h5=24)
+WD,Wireless Days Conference,,relevante,,1,nenhum,18,0,CE-RESD,
+WDES,"Workshop on Distributed Software Development, Software Ecosystems and Systems-of-Systems",,relevante,,1,nenhum,3,0,CE-ES,
+Web3D,International Conference on 3D Web Technology,10,top10,,1,scholar,10,0,CE-RV,International Conference on 3D Web Technology (h5=10)
+Web4All,International Web for All Conference,,top20,,1,nenhum,16,0,CE-WEBMEDIA,
+WEBIST,International Conference on Web Information Systems and Technologies,11,top20,,1,scholar,12,0,CE-BD|CE-IHC|CE-SI,International Conference on Web Information Systems and Technologies (WEBIST) (h5=11)
+WebMedia,Brazilian Symposium on Multimedia and Web,12,top10,,1,scholar,13,1,CE-IHC|CE-RV|CE-WEBMEDIA,Brazilian Symposium on Multimedia and the Web (h5=12) || Simpósio Brasileiro de Sistemas Multimídia e Web (WebMedia) (h5=6)
+WEBSCI,Web Science Conference,30,relevante,,1,scholar,30,0,CE-SI,ACM Web Science Conference (h5=30)
+WEI,Workshop sobre Educação em Computação,10,top10,,1,scholar,11,0,CE-EDUCOMP,Workshop sobre Educação em Computação (WEI) (h5=10)
+WEIHC,Workshop sobre Educação em IHC,,relevante,,1,nenhum,0,0,CE-IHC,
+WER,Workshop de Engenharia de Requisitos,7,top20,,1,scholar,7,0,CE-ES,Workshp de Engenharia de Requisitos (h5=7)
+WESAAC,"Workshop-School on Agents, Environments, and Applications",,relevante,,1,nenhum,3,0,CE-SI,
+WETICE,IEEE International Conference on Enabling Technologies: Infrastructure for Collaborative Enterprises,11,relevante,,1,scholar,16,0,CE-ACPAD|CE-SC,IEEE International Workshops on Enabling Technologies: Infrastructure for Collaborative Enterprises (h5=11)
+WF-IoT,IEEE World Forum on Internet of Things,26,top20,,1,scholar,32,0,CE-ESC|CE-RESD,World Forum on Internet of Things (h5=26)
+WFCS,IEEE World Conference on Factory Communication Systems,15,relevante,,1,scholar,15,0,CE-ESC,IEEE International Conference on Factory Communication Systems (h5=15)
+WG,International Workshop on Graph-Theoretic Concepts in Computer Science,15,top10,,1,scholar,14,0,CE-ACO,Workshop on Graph-Theoretic Concepts in Computer Science (WG) (h5=15)
+WHC,Australasian Conference on Robotics and Automation,129,relevante,,1,scholar,,0,CE-R,IEEE International Conference on Robotics and Automation (h5=129)
+WHISPERS,Workshop on Hyperspectral Imaging and Signal Processing: Evolution in Remote Sensing,13,relevante,,1,scholar,17,0,CE-GRAPI,Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing (WHISPERS) (h5=13)
+WICSA,Working IEEE/IFIP Conference on Software Architecture,29,relevante,,1,scholar,28,0,CE-ES,IEEE International Conference on Software Architecture Companion (h5=29)
+WIDE,Workshop on Interactions with Human Experiences,120,relevante,,1,scholar,0,1,CE-IHC,International World Wide Web Conferences (WWW) (h5=120) || World Wide Web (h5=52) || Workshop on Wide Bandgap Power Devices & Applications (h5=14) || IEEE Workshop on Wide Bandgap Power Devices and Applications in Asia (h5=12)
+WIE,Workshop de Informática na Escola,9,top10,,1,scholar,10,0,CE-IE|CE-IHC,Workshop de Informática na Escola (WIE) (h5=9)
+WIFS,IEEE International Workshop on Information Forensics and Security,20,relevante,,1,scholar,21,0,CE-GRAPI|CE-SEG,IEEE International Workshop on Information Forensics and Security (h5=20)
+WiMob,"IEEE International Conference on Wireless and Mobile Computing, Networking and Communications",16,relevante,,1,scholar,20,0,CE-RESD,IEEE International Conference on Wireless and Mobile Computing Networking and Communications (h5=16)
+WiOpt,"International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks",17,relevante,,1,scholar,19,0,CE-RESD,"International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks and Workshops (h5=17)"
+WiPCSE,Workshop in Primary and Secondary Computing Education,,top10,,1,nenhum,14,0,CE-EDUCOMP,
+WIPLAY,Workshop sobre Interação e Pesquisa de Usuários no Desenvolvimento de Jogos,,relevante,,1,nenhum,0,0,CE-IHC,
+WISE,Web Information Systems Engineering,17,top20,,1,scholar,18,0,CE-BD|CE-SI|CE-WEBMEDIA,Web Information Systems Engineering (WISE) (h5=17)
+WISEC,Wireless Network Security,27,relevante,,1,scholar,26,0,CE-SEG,Wireless Network Security (h5=27)
+WMNC,Joint IFIP Wireless and Mobile Networking Conference,,relevante,,1,nenhum,,0,CE-RESD,
+WOCC,Wireless and Optical Communications Conference,14,relevante,,1,scholar,18,0,CE-RESD,Wireless and Optical Communications Conference (WOCC) (h5=14)
+WoLLIC,"Workshop on Logic, Language, Information and Computation",,top10,,1,nenhum,12,0,CE-LP|GI-L,
+WONS,Wireless On-demand Network systems and Services Conference,,relevante,,1,nenhum,7,0,CE-RESD,
+WoWMoM,"International Symposium on a World of Wireless, Mobile and Multimedia Networks",22,relevante,,1,scholar,24,0,CE-RESD|CE-WEBMEDIA,"IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks (h5=22)"
+WPES,Annual ACM workshop on Privacy in the electronic society,,relevante,,1,nenhum,13,0,CE-SEG,
+WRC,World Robot Conference,,relevante,,1,nenhum,,0,CE-R,
+WRVA,Workshop de Realidade Virtual e Aumentada,,relevante,,1,nenhum,,0,CE-RV,
+WSCAD,Simpósio em Sistemas Computacionais de Alto Desempenho,5,top10,,1,scholar,5,0,CE-ACPAD|CE-RV|CE-TF,Simpósio em Sistemas Computacionais de Alto Desempenho (SSCAD) (h5=5)
+WSCG,"International Conferences in Central Europe on Computer Graphics, Visualization and Computer Vision",,relevante,,1,nenhum,,0,CE-RV,
+WSDM,ACM International Conference on Web Search and Data Mining,86,top10,,1,scholar,75,0,CE-BD|CE-IA|CE-SI|CE-WEBMEDIA,ACM International Conference on Web Search and Data Mining (h5=86)
+WTF,Workshop de Testes e Tolerância a Falhas,,relevante,,1,nenhum,2,0,CE-TF,
+WVC,Workshop de Visão Computacional,,top20,,1,nenhum,6,0,CE-GRAPI,
+WWIC,International Conference on Wired & Wireless Internet Communications,,relevante,,1,nenhum,,0,CE-RESD,
+WWW,International World Wide Web Conferences,120,top10,,1,scholar,112,1,CE-BD|CE-RESD|CE-WEBMEDIA,International World Wide Web Conferences (WWW) (h5=120) || International Semantic Web Conference (h5=36) || ACM Web Science Conference (h5=30) || IEEE International Conference on Web Services (h5=23) || International Conference on Web Research (h5=23) || Conference on Web Accessibility (h5=18) || International Conference on 3D Web Technology (h5=10)
+XP,International Conference on Agile Software Development,23,relevante,,1,scholar,24,0,CE-ES,International Conference on Agile Processes in Software Engineering and Extreme Programming (XP) (h5=23)

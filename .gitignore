@@ -1,0 +1,18 @@
+# Dados de fonte que NÃO devem ser redistribuídos ------------------------------
+# O export do Scopus vem de assinatura institucional; a planilha da SBC e o
+# Qualis Eventos oficial não têm licença declarada. O site publica o estrato
+# derivado; os arquivos de origem ficam na máquina de quem tem direito a eles.
+data/scopus_percentis.json.gz
+data/*.xlsx
+
+# Gerados ---------------------------------------------------------------------
+site/prints/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+package-lock.json
+package.json
+
+# Sistema ---------------------------------------------------------------------
+.DS_Store

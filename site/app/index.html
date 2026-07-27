@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QualisComp — estratos CAPES 2025–2028 para Computação</title>
+<meta name="description" content="Substituto do Qualis Periódicos na área de Computação. Busque o estrato A1–A8 de 1.983 periódicos e 1.125 eventos pelas regras da CAPES para 2025–2028: percentil do Scopus, h5 do Google Scholar e listas das Comissões Especiais da SBC.">
+<link rel="canonical" href="https://qualiscomp.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QualisComp — estratos CAPES 2025–2028 para Computação">
+<meta property="og:description" content="Substituto do Qualis Periódicos na Computação. Estrato A1–A8 de periódicos e eventos, com a conta à mostra.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://qualiscomp.com/">
+<meta property="og:site_name" content="QualisComp">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="pagina.css">
+<script type="module" src="app.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "url": "https://qualiscomp.com/",
+      "name": "QualisComp",
+      "inLanguage": "pt-BR",
+      "description": "Estrato A1–A8 de periódicos e eventos de Computação segundo o Documento de Área 02 da CAPES para o ciclo 2025-2028.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://qualiscomp.com/?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "url": "https://qualiscomp.com/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "name": "Estratos de periódicos e eventos de Computação (Área 02), ciclo 2025-2028",
+      "description": "Classificação estimada A1–A8 de 1.983 periódicos e 1.125 eventos, calculada a partir do percentil do Scopus, do h5-index do Google Scholar e da classificação das Comissões Especiais da SBC.",
+      "inLanguage": "pt-BR",
+      "isBasedOn": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-exatas-tecnologicas-e-multidisciplinar/ciencias-exatas-e-da-terra/ciencia-da-computacao"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<input type="checkbox" id="filtros" hidden>
+
+<!-- ===================== A FERRAMENTA ===================== -->
+<div class="app" id="app">
+
+  <header class="cab">
+    <label class="btn cab__menu" for="filtros" title="Filtros">☰</label>
+    <div class="cab__marca">Classificador de Periódicos e eventos CAPES
+      <span>Área: 02 &mdash; Computação</span></div>
+    <div class="cab__dir">
+      <nav class="cab__nav">
+        <a href="sobre/">Entenda a mudança de 2025</a>
+        <a href="sobre/#criterios">Critérios</a>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="lado">
+    <label class="lado__fechar btn" for="filtros" title="Fechar filtros"
+           aria-label="Fechar filtros">×</label>
+    <form id="form-filtros">
+      <div class="segm">
+        <label><input type="radio" name="tipo" value="todos" checked><span>Tudo</span></label>
+        <label><input type="radio" name="tipo" value="p"><span>Periódicos</span></label>
+        <label><input type="radio" name="tipo" value="e"><span>Eventos</span></label>
+      </div>
+
+      <div class="grupo">
+        <h3>Estrato</h3>
+        <div class="estratos">
+          <label data-e="A1"><input type="checkbox" name="estrato" value="A1"><span>A1</span></label>
+          <label data-e="A2"><input type="checkbox" name="estrato" value="A2"><span>A2</span></label>
+          <label data-e="A3"><input type="checkbox" name="estrato" value="A3"><span>A3</span></label>
+          <label data-e="A4"><input type="checkbox" name="estrato" value="A4"><span>A4</span></label>
+          <label data-e="A5"><input type="checkbox" name="estrato" value="A5"><span>A5</span></label>
+          <label data-e="A6"><input type="checkbox" name="estrato" value="A6"><span>A6</span></label>
+          <label data-e="A7"><input type="checkbox" name="estrato" value="A7"><span>A7</span></label>
+          <label data-e="A8"><input type="checkbox" name="estrato" value="A8"><span>A8</span></label>
+        </div>
+      </div>
+
+      <div class="grupo">
+        <h3 id="rot-faixa">Percentil e h5</h3>
+        <div class="faixa">
+          <input type="number" name="min" placeholder="de" min="0" step="1" inputmode="numeric">
+          <span>–</span>
+          <input type="number" name="max" placeholder="até" min="0" step="1" inputmode="numeric">
+        </div>
+        <p class="ajuda" id="ajuda-faixa">Periódico vai por percentil (0–100), evento por h5.</p>
+      </div>
+
+      <button class="limpar" id="limpar" type="button">Limpar filtros</button>
+    </form>
+
+    <div class="regras">
+      <h3>Novos estratos CAPES<span>Área 02 · Computação</span></h3>
+      <table>
+        <thead><tr><th></th><th>percentil</th><th>h5</th></tr></thead>
+        <tbody>
+          <tr><td><span class="e" data-e="A1">A1</span></td><td>≥ 87,5</td><td>≥ 35</td></tr>
+          <tr><td><span class="e" data-e="A2">A2</span></td><td>≥ 75</td><td>≥ 25</td></tr>
+          <tr><td><span class="e" data-e="A3">A3</span></td><td>≥ 62,5</td><td>≥ 20</td></tr>
+          <tr><td><span class="e" data-e="A4">A4</span></td><td>≥ 50</td><td>≥ 15</td></tr>
+          <tr><td><span class="e" data-e="A5">A5</span></td><td>≥ 37,5</td><td>≥ 12</td></tr>
+          <tr><td><span class="e" data-e="A6">A6</span></td><td>≥ 25</td><td>≥ 9</td></tr>
+          <tr><td><span class="e" data-e="A7">A7</span></td><td>≥ 12,5</td><td>≥ 6</td></tr>
+          <tr><td><span class="e" data-e="A8">A8</span></td><td>&lt; 12,5</td><td>&gt; 0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lado__aviso">O site apresenta somente uma <b>estimativa dos estratos</b> com base nos critérios do documento da <a href="https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-exatas-tecnologicas-e-multidisciplinar/ciencias-exatas-e-da-terra/ciencia-da-computacao/computacao-docarea.pdf/@@download/file">Área 02 — Computação</a>, divulgado pela CAPES em 2025. Não nos responsabilizamos por incompatibilidade com a decisão da comissão. A CAPES não publica lista de estratos por veículo no novo ciclo, e a decisão final é da comissão.<br><br>QualisComp é um projeto independente, sem vínculo com a CAPES, com a SBC ou com instituições de ensino.
+      <a href="sobre/">Veja como são calculados</a>.</p>
+  </aside>
+
+  <main class="principal">
+    <div class="busca busca--topo">
+      <span class="busca__lupa" aria-hidden="true">⌕</span>
+      <input id="q" type="search" placeholder="Nome ou sigla do periódico ou evento" autocomplete="off"
+             aria-label="Buscar periódico ou evento">
+      <button class="busca__x" id="q-x" title="Limpar" type="button">×</button>
+    </div>
+
+    <div class="barra">
+      <span><b id="contagem">0</b> veículos</span>
+      <div class="barra__dir">
+        <select id="ordem" aria-label="Ordenar">
+          <option value="relevancia">Relevância</option>
+          <option value="estrato">Melhor estrato</option>
+          <option value="indicador">Maior indicador</option>
+          <option value="nome">Nome</option>
+        </select>
+      </div>
+    </div>
+    <div class="rolo"><div class="lista" id="lista"></div></div>
+    <div class="desca"><a href="sobre/"><b>Entenda a mudança da CAPES a partir de 2025</b> →</a></div>
+  </main>
+</div>
+
+<div class="fundo-modal" id="fundo-modal"></div>
+
+<aside class="det" id="det" data-aberto="0" aria-hidden="true"
+       role="dialog" aria-label="Detalhe do veículo">
+  <header class="det__cab">
+    <div class="det__tit" id="det-tit"></div>
+    <span id="det-chip"></span>
+    <button class="det__x" id="det-x" title="Fechar (Esc)" type="button">×</button>
+  </header>
+  <div class="det__corpo" id="det-corpo"></div>
+</aside>
+
+</body>
+</html>

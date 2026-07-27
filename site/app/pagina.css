@@ -1,0 +1,260 @@
+/* Layout da página única: a ferramenta em cima, o texto embaixo.
+ *
+ * Em modo "compacto" a ferramenta é um painel de altura fixa, com a lista já
+ * rolando dentro — ou seja, as revistas aparecem sem clicar em nada. Em modo
+ * "cheio" ela ocupa a viewport inteira e o texto sai do caminho.
+ *
+ * O texto embaixo não é enfeite: é o que o buscador indexa, e é o que explica
+ * a mudança de 2025 para quem cai aqui sem saber o que é o Procedimento 2. */
+
+@layer pagina {
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* estilo.css fixa `html, body { block-size: 100% }` e trava a rolagem, porque
+     lá a ferramenta ocupa a tela inteira. Nesta página a ferramenta divide
+     espaço com o texto, então a altura tem que ser livre.
+     Cuidado: não transformar o body em flex — com altura de 100%, os itens
+     flex encolhem, e o texto (que é alto) esmaga a ferramenta até sumir. */
+  /* estilo.css fixa altura 100% e trava a rolagem, porque lá a ferramenta é a
+     página inteira. Aqui a página rola para revelar o texto abaixo. */
+  html, body { block-size: auto; min-block-size: 100%; overflow: visible; }
+
+  /* --- Ferramenta: primeira tela inteira ------------------------------- */
+  /* Sem modo compacto e sem botão de expandir. Botão que precisa ser
+     descoberto é botão que não é clicado: a pessoa ficaria presa na versão
+     encolhida sem saber que existe mais. A ferramenta ocupa a primeira tela, o
+     texto vem abaixo, e a rolagem — que todo mundo já faz — revela. */
+  .app {
+    block-size: 100svh;
+    min-block-size: 34rem;
+    grid-template-rows: auto 1fr;
+  }
+
+  /* Barra fixa no rodapé da ferramenta. Antes era pastilha flutuante e cobria
+     uma linha da lista — informação escondida por enfeite. */
+  .desca { border-block-start: 1px solid var(--borda); background: var(--painel); }
+  .desca a {
+    display: flex; align-items: center; justify-content: center; gap: .45rem;
+    min-block-size: 2.75rem; padding: .5rem .9rem;
+    padding-block-end: max(.5rem, env(safe-area-inset-bottom));
+    font-size: .84rem; text-decoration: none; color: var(--txt-2);
+  }
+  .desca a:hover { color: var(--txt); background: var(--acento-fr); }
+  .desca b { font-weight: 600; color: var(--txt); }
+  @media (max-width: 30rem) { .desca b { display: none; } }
+
+
+
+  /* Âncoras do cabeçalho para o texto de baixo. */
+  .cab__nav { display: flex; gap: .9rem; align-items: center; font-size: .82rem; }
+  .cab__nav a { color: var(--txt-2); text-decoration: none; }
+  .cab__nav a:hover { color: var(--txt); }
+  @media (max-width: 56rem) { .cab__nav { display: none; } }
+
+  /* --- Texto ------------------------------------------------------------- */
+  .lado__aviso { font-size: .7rem; color: var(--txt-3); line-height: 1.45;
+                 padding-block-start: .8rem; border-block-start: 1px solid var(--borda); }
+  .lado__aviso a { color: var(--acento); }
+
+  .regras h3 span { display: block; font-weight: 400; text-transform: none;
+                    letter-spacing: 0; font-size: .68rem; margin-block-start: .1rem;
+                    color: var(--txt-3); opacity: .85; }
+
+  /* --- Página "sobre" ---------------------------------------------------- */
+  body.pag-sobre { display: block; }
+  .cab--sobre { position: sticky; inset-block-start: 0; z-index: 20; }
+  .cab__marca { text-decoration: none; }
+  .btn--acento { background: var(--acento); color: var(--fundo); font-weight: 600;
+                 border-color: transparent; text-decoration: none;
+                 padding: .4rem .85rem; }
+  .btn--acento:hover { filter: brightness(1.08); }
+  .btn--g { padding: .7rem 1.4rem; font-size: 1rem; display: inline-block; }
+
+  .doc__eyebrow { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+                  color: var(--txt-3); }
+  .doc__indice { display: flex; flex-wrap: wrap; gap: .4rem; margin-block-start: 1.4rem; }
+  .doc__indice a { font-size: .82rem; padding: .3rem .7rem; border-radius: 99px;
+                   border: 1px solid var(--borda); text-decoration: none;
+                   color: var(--txt-2); }
+  .doc__indice a:hover { border-color: var(--acento); color: var(--txt); }
+
+  .doc__tabwrap { display: grid; gap: 1.2rem; margin-block-start: 1rem; }
+  @media (min-width: 46rem) { .doc__tabwrap { grid-template-columns: 1fr 9rem;
+    align-items: start; } }
+  .doc__tab { inline-size: 100%; border-collapse: collapse;
+              font-variant-numeric: tabular-nums; }
+  .doc__tab th, .doc__tab td { text-align: start; padding: .45rem .6rem;
+    border-block-end: 1px solid var(--borda); font-size: .92rem; }
+  .doc__tab thead th { font-size: .72rem; text-transform: uppercase; font-weight: 500;
+    letter-spacing: .05em; color: var(--txt-3); }
+  .doc__tab thead small { display: block; text-transform: none; letter-spacing: 0;
+    font-size: .68rem; opacity: .8; }
+  .doc__tab tbody tr:hover, .doc__tab tbody tr:focus-within { background: var(--acento-fr); }
+  .doc__tab--mini { margin-block-start: 1rem; }
+  .doc__tab--mini td:not(:first-child) { text-align: end; }
+
+  .doc__regua { margin: 0; position: sticky; inset-block-start: 5rem; }
+  .doc__regua-barra { position: relative; block-size: 13rem; inline-size: 2.8rem;
+    border-radius: 9px;
+    background: linear-gradient(to top,
+      var(--e8) 0 12.5%, var(--e7) 12.5% 25%, var(--e6) 25% 37.5%,
+      var(--e5) 37.5% 50%, var(--e4) 50% 62.5%, var(--e3) 62.5% 75%,
+      var(--e2) 75% 87.5%, var(--e1) 87.5% 100%); }
+  .doc__regua-foco { position: absolute; inset-inline: -5px;
+    inset-block-end: calc(var(--ini, 0) * 1%);
+    block-size: calc((var(--fim, 12.5) - var(--ini, 0)) * 1%);
+    border: 2px solid var(--txt); border-radius: 6px; opacity: 0;
+    transition: opacity .16s, inset-block-end .26s, block-size .26s; }
+  .doc__regua[data-ativo] .doc__regua-foco { opacity: 1; }
+  .doc__regua figcaption { font-size: .68rem; color: var(--txt-3);
+    margin-block-start: .45rem; }
+  @media (max-width: 45.99rem) { .doc__regua { display: none; } }
+
+  /* Citação literal do documento. Precisa ser inconfundivelmente "o que a CAPES
+     escreveu", separado do que somos nós dizendo. */
+  .doc__cita {
+    margin-block: .7rem 1.2rem; padding: .9rem 1.1rem;
+    border-inline-start: 3px solid var(--acento);
+    border-radius: 0 10px 10px 0;
+    background: color-mix(in oklab, var(--acento) 7%, var(--painel));
+    font-size: .94rem;
+  }
+  .doc__cita p { color: var(--txt); text-wrap: pretty; }
+  .doc__cita p + p { margin-block-start: .6rem; }
+  .doc__cita b { font-weight: 650; }
+  .doc__cita cite {
+    display: block; margin-block-start: .7rem; font-style: normal;
+    font-size: .74rem; color: var(--txt-3);
+  }
+  .doc__cita cite::before { content: "— "; }
+
+  /* Comentário nosso: visualmente diferente da citação, para ninguém confundir. */
+  .doc__coment {
+    margin-block: -.5rem 1.3rem; padding: .6rem .8rem;
+    border: 1px dashed var(--borda); border-radius: 9px;
+    font-size: .88rem;
+  }
+  .doc__h3 { margin-block-start: 1.6rem; font-size: 1.02rem; }
+  .doc__abre2 { margin-block: .6rem 1.4rem; color: var(--txt-2); }
+  .doc__fonte-dados { margin-block-start: 1.6rem; }
+
+  /* ---- Telas estreitas ------------------------------------------------- */
+  @media (max-width: 46rem) {
+    /* O cabeçalho da /sobre/ tem título centralizado e botão à direita; em
+       tela estreita os dois brigam. O botão vira ícone-texto curto. */
+    .cab--sobre .btn--acento { padding: .6rem .8rem; font-size: .82rem;
+                               min-block-size: 2.5rem; display: inline-flex;
+                               align-items: center; }
+    .cab--sobre .cab__marca { font-size: .88rem; text-align: start; justify-self: start; }
+    .cab--sobre { grid-template-columns: 1fr auto; }
+    .cab--sobre .cab__marca { grid-column: 1; }
+    .cab--sobre .cab__dir { grid-column: 2; }
+
+    .doc { padding-inline: 1rem; }
+    .doc h1 { font-size: clamp(1.35rem, 6.5vw, 1.8rem); }
+    /* Citações longas ficam apertadas com recuo grande no celular. */
+    .doc__cita { padding: .8rem .85rem; border-radius: 0 8px 8px 0; }
+    .doc__indice { gap: .3rem; }
+    .doc__indice a { font-size: .78rem; padding: .3rem .6rem; min-block-size: 2.5rem;
+                     display: inline-flex; align-items: center; }
+    /* Tabela dos estratos: a coluna de rótulo pode espremer os números. */
+    .doc__tab th, .doc__tab td { padding: .5rem .35rem; font-size: .86rem; }
+    .doc__tab thead th { font-size: .66rem; }
+    /* A tabela comparativa não cabe em 320px: rola sozinha, sem empurrar a
+       página. `white-space: nowrap` mantém as colunas legíveis. */
+    .doc__tab--mini { display: block; overflow-x: auto; white-space: nowrap;
+                      -webkit-overflow-scrolling: touch; }
+    .doc__tab--mini td, .doc__tab--mini th { padding-inline: .55rem; }
+    .doc details { padding: .8rem .85rem; }
+    .doc__rodape { padding-block-end: max(1rem, env(safe-area-inset-bottom)); }
+  }
+
+  /* Tablet em retrato: o texto ganha respiro mas a régua ainda não cabe. */
+  @media (min-width: 46rem) and (max-width: 62rem) {
+    .doc { max-inline-size: 42rem; }
+  }
+
+  .doc__cta { text-align: center; padding-block: clamp(2rem, 6vh, 3.2rem);
+    border-block-start: 1px solid var(--borda); margin-block-start: 2.5rem; }
+  .doc__cta p { margin-block: .5rem 1.2rem; }
+
+  .som { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden;
+         clip-path: inset(50%); white-space: nowrap; }
+
+  .doc {
+    max-inline-size: 48rem;
+    margin: clamp(2rem, 6vh, 3.5rem) auto;
+    padding-inline: 1.25rem;
+    font-size: 1rem; line-height: 1.62;
+  }
+  .doc h1 {
+    font-size: clamp(1.5rem, 4.2vw, 2.15rem);
+    letter-spacing: -.028em; line-height: 1.12;
+  }
+  .doc__abre {
+    margin-block-start: .9rem; color: var(--txt-2); font-size: 1.02rem;
+    max-inline-size: 60ch;
+  }
+  .doc section { margin-block-start: clamp(2rem, 5vh, 3rem); }
+  .doc h2 {
+    font-size: 1.22rem; letter-spacing: -.02em;
+    padding-block-end: .45rem; border-block-end: 1px solid var(--borda);
+  }
+  .doc p { color: var(--txt-2); }
+  .doc p + p { margin-block-start: .6rem; }
+  .doc__nota { font-size: .86rem; color: var(--txt-3); margin-block-start: .55rem; }
+
+  .doc__par { display: grid; gap: .8rem; margin-block-start: 1rem; }
+  @media (min-width: 40rem) { .doc__par { grid-template-columns: 1fr 1fr; } }
+  .doc__card { padding: .95rem 1.05rem; border-radius: 12px;
+               border: 1px solid var(--borda); background: var(--painel); }
+  .doc__card h3 { font-size: .7rem; text-transform: uppercase; letter-spacing: .07em;
+                  color: var(--txt-3); }
+  .doc__forte { font-size: 1.05rem; color: var(--txt) !important;
+                margin-block: .4rem .5rem; }
+  .doc__card p { font-size: .92rem; }
+  .doc__card--velho { opacity: .8; }
+  .doc__card--velho .doc__forte { text-decoration: line-through;
+    text-decoration-color: color-mix(in oklab, var(--aviso) 75%, transparent);
+    text-decoration-thickness: 2px; }
+  .doc__card--novo { border-color: color-mix(in oklab, var(--acento) 45%, var(--borda)); }
+
+  .doc details {
+    margin-block-start: .6rem; padding: .85rem 1.05rem;
+    border: 1px solid var(--borda); border-radius: 12px; background: var(--painel);
+  }
+  .doc details[open] { border-color: color-mix(in oklab, var(--acento) 38%, var(--borda)); }
+  .doc summary { cursor: pointer; font-size: .98rem; }
+  .doc summary::marker { color: var(--txt-3); }
+  .doc details > *:not(summary) { margin-block-start: .7rem; font-size: .94rem; }
+  .doc ul { padding-inline-start: 1.15rem; display: grid; gap: .35rem;
+            color: var(--txt-2); font-size: .94rem; }
+
+  .doc__links { display: grid; gap: .35rem; margin-block-start: .9rem; }
+  .doc__links a {
+    display: block; padding: .55rem .7rem; border-radius: 9px;
+    text-decoration: none; font-weight: 550; font-size: .94rem;
+    border: 1px solid transparent;
+  }
+  .doc__links a:hover { background: var(--acento-fr); border-color: var(--borda); }
+  .doc__links span { display: block; font-weight: 400; font-size: .78rem;
+                     color: var(--txt-3); }
+  .doc__links a::after { content: " ↗"; color: var(--txt-3); font-weight: 400; }
+
+  .doc__rodape { margin-block-start: clamp(2rem, 5vh, 3rem);
+                 padding-block-start: 1.1rem; border-block-start: 1px solid var(--borda);
+                 font-size: .88rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app { transition: max-inline-size .28s, border-radius .28s; }
+  @supports (animation-timeline: view()) {
+    .doc__card, .doc details {
+      animation: doc-entra both linear;
+      animation-timeline: view();
+      animation-range: entry 5% entry 50%;
+    }
+    @keyframes doc-entra { from { opacity: 0; translate: 0 .9rem; } }
+  }
+}

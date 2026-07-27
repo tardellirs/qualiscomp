@@ -1,0 +1,36 @@
+// Apelidos de eventos: nomes pelos quais o Google Scholar indexa um evento e
+// que NÃO dá para deduzir do nome oficial da planilha da SBC.
+//
+// Existe porque o Scholar indexa vários eventos brasileiros DUAS vezes, uma em
+// português e outra em inglês, com as citações partidas entre as duas. Quando
+// as duas grafias não compartilham tokens nem trazem a sigla, nenhum algoritmo
+// de similaridade as une — o IHC é o caso extremo: a entrada em português tem
+// h5=5 e a em inglês h5=16, três estratos de diferença.
+//
+// Cada linha vira uma consulta extra ao Scholar e um alvo extra de casamento.
+// Verifique em https://scholar.google.com/citations?view_op=search_venues
+// antes de adicionar. Linhas com // são ignoradas.
+// Nomes em português de eventos que a planilha da SBC só registra em inglês.
+// Não são invenção: é como a comunidade chama e busca o evento.
+sigla,alias
+SBES,Simpósio Brasileiro de Engenharia de Software
+SBBD,Simpósio Brasileiro de Banco de Dados
+SBRC,Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos
+SBSI,Simpósio Brasileiro de Sistemas de Informação
+SBQS,Simpósio Brasileiro de Qualidade de Software
+SBESC,Simpósio Brasileiro de Engenharia de Sistemas Computacionais
+SBLP,Simpósio Brasileiro de Linguagens de Programação
+SBMF,Simpósio Brasileiro de Métodos Formais
+SBCARS,Simpósio Brasileiro de Componentes Arquiteturas e Reutilização de Software
+WebMedia,Simpósio Brasileiro de Sistemas Multimídia e Web
+SIBGRAPI,Conferência sobre Gráficos Padrões e Imagens
+BRACIS,Conferência Brasileira de Sistemas Inteligentes
+SBGames,Simpósio Brasileiro de Jogos e Entretenimento Digital
+IHC,Brazilian Symposium on Human Factors in Computing Systems
+SBBD,Brazilian Symposium on Databases
+SBRC,Brazilian Symposium on Computer Networks and Distributed Systems
+SBSI,Brazilian Symposium on Information Systems
+WebMedia,Brazilian Symposium on Multimedia and the Web
+SBSeg,Brazilian Symposium on Information and Computational Systems Security
+WSCAD,Symposium on High Performance Computing Systems
+SBGames,Brazilian Symposium on Computer Games and Digital Entertainment

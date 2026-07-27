@@ -1,0 +1,453 @@
+@layer reset, tokens, base, layout, componentes, painel;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { background: none; border: 0; cursor: pointer; }
+  a { color: inherit; }
+  ul { list-style: none; padding: 0; }
+}
+
+@layer tokens {
+  :root {
+    color-scheme: dark light;
+    --h: 250;
+
+    --fundo:     light-dark(oklch(0.970 0.006 var(--h)), oklch(0.145 0.020 var(--h)));
+    --fundo-2:   light-dark(oklch(0.940 0.012 var(--h)), oklch(0.115 0.024 var(--h)));
+    --painel:    light-dark(oklch(1 0 0),                oklch(0.196 0.016 var(--h)));
+    --painel-2:  light-dark(oklch(0.965 0.005 var(--h)), oklch(0.240 0.014 var(--h)));
+    --borda:     light-dark(oklch(0.885 0.010 var(--h)), oklch(0.305 0.016 var(--h)));
+    --borda-f:   light-dark(oklch(0.800 0.020 var(--h)), oklch(0.420 0.024 var(--h)));
+
+    --txt:       light-dark(oklch(0.215 0.020 var(--h)), oklch(0.965 0.004 var(--h)));
+    --txt-2:     light-dark(oklch(0.455 0.020 var(--h)), oklch(0.740 0.012 var(--h)));
+    --txt-3:     light-dark(oklch(0.590 0.018 var(--h)), oklch(0.600 0.014 var(--h)));
+    --acento:    light-dark(oklch(0.480 0.170 268),      oklch(0.760 0.145 268));
+    --acento-fr: light-dark(oklch(0.480 0.170 268 / .12), oklch(0.760 0.145 268 / .16));
+    --aviso:     light-dark(oklch(0.520 0.150 55),       oklch(0.800 0.130 68));
+
+    /* Vidro — usado SÓ no painel de detalhe e no cabeçalho. O piso de alfa é o
+       que garante contraste; o brightness() é o que salva o tema escuro. */
+    --vidro-tinta: light-dark(oklch(0.995 0.004 var(--h)), oklch(0.205 0.018 var(--h)));
+    --vidro: color-mix(in oklab, var(--vidro-tinta) 88%, transparent);
+    --vidro-luz: light-dark(oklch(1 0 0 / .8), oklch(1 0 0 / .09));
+    --vidro-norm: light-dark(1.45, 0.55);
+
+    /* Rampa verificada: todos os 8 chips passam de 7:1 contra a própria tinta,
+       e a luminância é monotônica (a ordem sobrevive em escala de cinza e em
+       daltonismo). Não é uma progressão uniforme de lightness de propósito:
+       entre 0,44 e 0,68 existe uma zona onde nem tinta branca nem escura
+       alcançam 7:1, então a rampa salta essa faixa. */
+    --e1: oklch(0.315 0.140 258); --e1t: oklch(0.99 0 0);
+    --e2: oklch(0.368 0.133 233); --e2t: oklch(0.99 0 0);
+    --e3: oklch(0.421 0.126 207); --e3t: oklch(0.99 0 0);
+    --e4: oklch(0.688 0.119 182); --e4t: oklch(0.16 0.02 182);
+    --e5: oklch(0.748 0.112 156); --e5t: oklch(0.16 0.02 156);
+    --e6: oklch(0.809 0.105 131); --e6t: oklch(0.16 0.02 131);
+    --e7: oklch(0.869 0.098 106); --e7t: oklch(0.16 0.02 106);
+    --e8: oklch(0.930 0.091  80); --e8t: oklch(0.16 0.02  80);
+
+    --r: 10px;
+    --lateral: 19rem;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+  }
+  [data-e="A1"]{--ec:var(--e1);--et:var(--e1t)} [data-e="A2"]{--ec:var(--e2);--et:var(--e2t)}
+  [data-e="A3"]{--ec:var(--e3);--et:var(--e3t)} [data-e="A4"]{--ec:var(--e4);--et:var(--e4t)}
+  [data-e="A5"]{--ec:var(--e5);--et:var(--e5t)} [data-e="A6"]{--ec:var(--e6);--et:var(--e6t)}
+  [data-e="A7"]{--ec:var(--e7);--et:var(--e7t)} [data-e="A8"]{--ec:var(--e8);--et:var(--e8t)}
+}
+
+@layer base {
+  html, body { block-size: 100%; }
+  body { overflow-x: hidden; }
+  img, table, pre { max-inline-size: 100%; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--txt);
+    background:
+      radial-gradient(52rem 34rem at 8% -10%, color-mix(in oklab, var(--acento) 20%, transparent), transparent 65%),
+      radial-gradient(44rem 30rem at 100% 0%, color-mix(in oklab, oklch(0.7 0.15 200) 15%, transparent), transparent 65%),
+      linear-gradient(var(--fundo), var(--fundo-2));
+    background-attachment: fixed;
+    font-size: 15px; line-height: 1.5;
+    overflow: hidden;                 /* a lista rola, a página não */
+  }
+  :focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 4px; }
+  h1,h2,h3 { line-height: 1.2; font-weight: 640; text-wrap: balance; }
+  ::-webkit-scrollbar { inline-size: 10px; block-size: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--borda-f); border-radius: 99px; }
+  * { scrollbar-width: thin; scrollbar-color: var(--borda-f) transparent; }
+}
+
+@layer layout {
+  .app {
+    display: grid;
+    grid-template-columns: var(--lateral) 1fr;
+    grid-template-rows: auto 1fr;
+    block-size: 100svh;
+  }
+  .cab {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 1rem;
+    padding: .55rem 1rem;
+    border-block-end: 1px solid var(--borda);
+    background: var(--vidro);
+    backdrop-filter: blur(14px) saturate(1.3) brightness(var(--vidro-norm));
+    -webkit-backdrop-filter: blur(14px) saturate(1.3) brightness(var(--vidro-norm));
+    z-index: 30;
+  }
+  /* Título centralizado, sem cinza: é o nome do produto, e quem cai aqui pelo
+     buscador precisa entender em um segundo o que está vendo. */
+  .cab { display: grid; grid-template-columns: auto 1fr auto; }
+  .cab__marca {
+    grid-column: 2; justify-self: center; text-align: center;
+    font-weight: 700; letter-spacing: -.015em; font-size: 1.08rem;
+    line-height: 1.18; color: var(--txt); text-decoration: none;
+  }
+  .cab__marca span {
+    display: block; font-weight: 500; font-size: .84rem;
+    letter-spacing: 0; color: var(--txt); opacity: .92;
+  }
+  .cab__dir { grid-column: 3; display: flex; gap: .5rem; align-items: center; }
+  .cab__menu { grid-column: 1; min-inline-size: 2.75rem; min-block-size: 2.75rem;
+               display: grid; place-items: center; }
+  @media (max-width: 46rem) {
+    .cab__marca { font-size: .95rem; }
+    .cab__marca span { font-size: .74rem; }
+  }
+
+  .lado {
+    overflow-y: auto; padding: .85rem;
+    border-inline-end: 1px solid var(--borda);
+    display: flex; flex-direction: column; gap: .9rem;
+  }
+  .principal { overflow: hidden; display: flex; flex-direction: column; min-inline-size: 0; }
+
+  @media (max-width: 62rem) {
+    .app { grid-template-columns: 1fr; }
+    .lado {
+      position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 40;
+      inline-size: min(88vw, var(--lateral));
+      background: var(--painel);
+      translate: -100% 0; transition: translate .22s ease;
+      box-shadow: 0 0 40px oklch(0 0 0 / .4);
+    }
+    body:has(#filtros:checked) .lado { translate: 0 0; }
+
+    /* O drawer precisa de um fundo clicável para fechar. Sem ele, quem abre os
+       filtros no celular fica preso: o ☰ some atrás do painel. */
+    .lado::after {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background: oklch(0 0 0 / .45);
+      opacity: 0; pointer-events: none; transition: opacity .22s;
+    }
+    body:has(#filtros:checked) .lado::after { opacity: 1; pointer-events: auto; }
+    .lado__fechar { display: flex !important; }
+
+    /* Respira nos aparelhos com entalhe. */
+    .lado { padding-block-end: max(.85rem, env(safe-area-inset-bottom)); }
+    .cab { padding-block-start: max(.55rem, env(safe-area-inset-top)); }
+  }
+  .lado__fechar {
+    display: none; align-items: center; justify-content: center;
+    position: absolute; inset-block-start: .5rem; inset-inline-end: .5rem;
+    inline-size: 2.75rem; block-size: 2.75rem; border-radius: 50%;
+    font-size: 1.3rem; color: var(--txt-2); background: var(--painel-2);
+    z-index: 1;
+  }
+  @media (min-width: 62.01rem) { .cab__menu { display: none; } }
+}
+
+@layer componentes {
+  /* --- Chip de estrato --------------------------------------------------- */
+  .e {
+    display: inline-grid; place-items: center;
+    min-inline-size: 2.35em; padding: .12em .4em;
+    font-weight: 700; font-size: .8rem; letter-spacing: .01em;
+    font-variant-numeric: tabular-nums;
+    border-radius: 6px;
+    background: var(--ec, var(--painel-2)); color: var(--et, var(--txt-3));
+  }
+  .e--v {
+    background: repeating-linear-gradient(135deg, var(--painel-2) 0 5px, transparent 5px 10px);
+    color: var(--txt-3); box-shadow: inset 0 0 0 1px var(--borda);
+  }
+  .e--g { font-size: 1.6rem; min-inline-size: 2.1em; border-radius: 9px; padding: .1em .3em; }
+
+  /* --- Busca ------------------------------------------------------------- */
+  .busca { position: relative; }
+  .busca input {
+    /* 16px é o piso: abaixo disso o Safari do iPhone dá zoom ao focar, e a
+       página fica torta até o usuário pinçar de volta. */
+    font-size: max(16px, 1rem);
+    inline-size: 100%; padding: .6rem .7rem .6rem 2rem;
+    background: var(--painel); border: 1px solid var(--borda);
+    border-radius: var(--r);
+  }
+  .busca input:focus { border-color: var(--acento); }
+  .busca__lupa { position: absolute; inset-block: 0; inset-inline-start: 0;
+                 inline-size: 2rem; display: grid; place-items: center;
+                 font-size: 1.15rem; line-height: 1;
+                 color: var(--txt-3); pointer-events: none; }
+  .busca--topo .busca__lupa { inset-inline-start: 1rem; }
+  .busca--topo .busca__x { inset-inline-end: 1.2rem; }
+  .busca__x { position: absolute; inset-block: 0; inset-inline-end: .2rem;
+              color: var(--txt-3); inline-size: 2.5rem; }
+
+  /* --- Grupos de filtro --------------------------------------------------- */
+  .cab__nota { font-size: .68rem; color: var(--txt-3); border: 1px solid var(--borda);
+               padding: .12rem .45rem; border-radius: 99px; }
+
+  .grupo { margin-block-start: 1rem; }
+  .grupo > h3 {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--txt-3); margin-block-end: .45rem;
+  }
+  .segm { display: flex; background: var(--painel-2); border-radius: 8px; padding: 2px; }
+  .segm label { flex: 1; }
+  .segm input { position: absolute; opacity: 0; pointer-events: none; }
+  .segm span {
+    display: grid; place-items: center; min-block-size: 2.5rem;
+    text-align: center; padding: .3rem; border-radius: 6px;
+    font-size: .8rem; color: var(--txt-2); cursor: pointer;
+  }
+  .segm label:has(:checked) span { background: var(--painel); color: var(--txt); font-weight: 600;
+                                   box-shadow: 0 1px 3px oklch(0 0 0 / .18); }
+
+  .estratos { display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem; }
+  .estratos label { position: relative; }
+  .estratos input { position: absolute; opacity: 0; pointer-events: none; }
+  .estratos span {
+    display: grid; place-items: center; padding: .35rem 0;
+    min-block-size: 2.75rem;
+    border-radius: 7px; font-size: .78rem; font-weight: 650;
+    background: var(--painel-2); color: var(--txt-3);
+    border: 1px solid transparent; cursor: pointer;
+    font-variant-numeric: tabular-nums;
+  }
+  .estratos label:has(:checked) span {
+    background: var(--ec); color: var(--et); border-color: color-mix(in oklab, var(--ec) 70%, #000);
+  }
+  .estratos small { display: block; font-size: .6rem; font-weight: 400; opacity: .8; }
+
+  .faixa { display: flex; gap: .4rem; align-items: center; }
+  .faixa input {
+    inline-size: 100%; min-inline-size: 0; padding: .35rem .45rem;
+    background: var(--painel); border: 1px solid var(--borda); border-radius: 7px;
+    font-family: var(--mono); font-size: max(16px, .8rem);
+  }
+  .faixa span { color: var(--txt-3); font-size: .8rem; }
+  .ajuda { font-size: .7rem; color: var(--txt-3); margin-block-start: .3rem; }
+
+  /* Tabela de cortes: substitui o aviso de cobertura que só confundia.
+     Mostra a regra, que é o que a pessoa precisa para ler a lista. */
+  .regras { margin-block-start: auto; padding-block-start: 1rem;
+            border-block-start: 1px solid var(--borda); }
+  .regras h3 { font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
+               color: var(--txt-3); margin-block-end: .4rem; }
+  .regras table { inline-size: 100%; border-collapse: collapse;
+                  font-size: .72rem; font-variant-numeric: tabular-nums; }
+  .regras th { font-weight: 500; color: var(--txt-3); text-align: end; padding-block: .1rem; }
+  .regras td { padding-block: .11rem; text-align: end; color: var(--txt-2); }
+  .regras td:first-child { text-align: start; }
+  .regras .e { font-size: .68rem; min-inline-size: 2.1em; padding: .05em .3em; }
+
+  .caixa { display: flex; gap: .45rem; align-items: center; font-size: .82rem; color: var(--txt-2);
+           padding: .2rem 0; cursor: pointer; }
+
+  .limpar { font-size: .78rem; color: var(--acento); text-decoration: underline; align-self: start; }
+
+  /* A busca fica fora da gaveta de filtros: no celular a gaveta nasce fechada,
+     e a busca é a ação principal do site — escondê-la atrás do ☰ deixava a
+     tela sem nenhuma forma visível de procurar. */
+  .busca--topo { padding: .6rem 1rem; border-block-end: 1px solid var(--borda); }
+
+  /* --- Barra de resultados ------------------------------------------------ */
+  .barra {
+    display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+    padding: .55rem 1rem; border-block-end: 1px solid var(--borda);
+    font-size: .82rem; color: var(--txt-2);
+  }
+  .barra b { color: var(--txt); font-variant-numeric: tabular-nums; }
+  .barra select { background: var(--painel); border: 1px solid var(--borda);
+                  border-radius: 7px; padding: .3rem .45rem;
+                  font-size: max(16px, .8rem); }
+  .barra__dir { margin-inline-start: auto; display: flex; gap: .6rem; align-items: center; }
+
+  /* --- Lista --------------------------------------------------------------- */
+  .rolo { overflow-y: auto; flex: 1; overscroll-behavior: contain; }
+
+  .lista { display: block; }
+  .item {
+    min-block-size: 3rem;
+    display: grid;
+    grid-template-columns: 2.9rem 1fr 6.5rem 4.5rem;
+    gap: .8rem; align-items: center;
+    padding: .5rem 1rem;
+    border-block-end: 1px solid color-mix(in oklab, var(--borda) 55%, transparent);
+    inline-size: 100%; text-align: start;
+  }
+  .item:hover { background: var(--acento-fr); }
+  .item[aria-current="true"] { background: var(--acento-fr);
+    box-shadow: inset 3px 0 0 var(--acento); }
+  .item__nome { min-inline-size: 0; }
+  .item__nome b { display: block; font-weight: 550; font-size: .88rem;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item__nome small { color: var(--txt-3); font-size: .72rem;
+    display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item__ind { font-family: var(--mono); font-size: .8rem; color: var(--txt-2);
+               text-align: end; font-variant-numeric: tabular-nums; }
+  .item__tipo { font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
+                color: var(--txt-3); text-align: end; }
+  @media (max-width: 46rem) {
+    .item { grid-template-columns: 2.6rem 1fr auto; }
+    .item__tipo { display: none; }
+  }
+
+  .vazio { padding: 3rem 1rem; text-align: center; color: var(--txt-2); }
+  .vazio h2 { font-size: 1rem; margin-block-end: .4rem; }
+
+  .nota-base {
+    margin: .8rem; padding: .6rem .75rem; border-radius: var(--r);
+    background: color-mix(in oklab, var(--aviso) 12%, transparent);
+    border: 1px solid color-mix(in oklab, var(--aviso) 32%, transparent);
+    font-size: .76rem; color: var(--txt-2);
+  }
+
+  .btn {
+    padding: .3rem .6rem; border-radius: 7px; border: 1px solid var(--borda);
+    background: var(--painel); font-size: .8rem;
+  }
+  .btn:hover { border-color: var(--acento); }
+}
+
+/* ========================================================================== */
+/* O PAINEL DE VIDRO — a "janela" de detalhe. Não sai da lista.               */
+/* ========================================================================== */
+@layer painel {
+  .fundo-modal {
+    position: fixed; inset: 0; z-index: 45;
+    background: oklch(0 0 0 / .35);
+    opacity: 0; pointer-events: none; transition: opacity .2s;
+  }
+  body:has(.det[data-aberto="1"]) .fundo-modal { opacity: 1; pointer-events: auto; }
+
+  .det {
+    position: fixed; inset-block: 0; inset-inline-end: 0; z-index: 50;
+    inline-size: min(34rem, 100vw);
+    translate: 100% 0;
+    transition: translate .26s cubic-bezier(.22,.8,.28,1);
+    display: flex; flex-direction: column;
+    background: var(--vidro);
+    backdrop-filter: blur(26px) saturate(1.5) brightness(var(--vidro-norm));
+    -webkit-backdrop-filter: blur(26px) saturate(1.5) brightness(var(--vidro-norm));
+    border-inline-start: 1px solid var(--vidro-luz);
+    box-shadow: -24px 0 60px -20px oklch(0 0 0 / .5);
+  }
+  .det[data-aberto="1"] { translate: 0 0; }
+
+  @media (max-width: 46rem) {
+    /* Folha inferior: no celular, painel que vem da lateral cobre tudo e
+       desorienta. Vindo de baixo, a lista fica visível atrás. */
+    .det {
+      inset-block-start: auto; inset-inline: 0;
+      inline-size: 100%; max-block-size: 88svh;
+      translate: 0 100%;
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--vidro-luz);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -20px 50px -18px oklch(0 0 0 / .5);
+      padding-block-end: env(safe-area-inset-bottom);
+    }
+    .det__corpo { overscroll-behavior: contain; }
+  }
+
+  .det__cab { display: flex; gap: .8rem; align-items: start; padding: 1rem;
+              border-block-end: 1px solid var(--borda); }
+  .det__tit { flex: 1; min-inline-size: 0; }
+  .det__tit h2 { font-size: 1.05rem; overflow-wrap: anywhere; }
+  .det__tit p { font-size: .76rem; color: var(--txt-3); margin-block-start: .2rem; }
+  .det__x { font-size: 1.4rem; line-height: 1; color: var(--txt-2);
+            inline-size: 2.75rem; block-size: 2.75rem; border-radius: 50%;
+            flex: none; }
+  .det__corpo { overflow-y: auto; padding: 1rem; display: grid; gap: 1rem; }
+
+  .cartao { background: var(--painel); border: 1px solid var(--borda);
+            border-radius: var(--r); padding: .8rem; }
+  .cartao > h3 { font-size: .7rem; text-transform: uppercase; letter-spacing: .07em;
+                 color: var(--txt-3); margin-block-end: .55rem; }
+
+  /* Recibo: coluna de saldo à direita */
+  .passo { display: grid; grid-template-columns: 1.25rem 1fr auto; gap: .5rem .7rem;
+           padding-block: .5rem; border-block-start: 1px solid var(--borda); }
+  .passo:first-of-type { border-block-start: 0; padding-block-start: 0; }
+  .passo__n { inline-size: 1.25rem; aspect-ratio: 1; display: grid; place-items: center;
+              border-radius: 50%; background: var(--painel-2); font-size: .65rem;
+              font-weight: 700; color: var(--txt-3); }
+  /* Rótulo e detalhe em linhas próprias: juntos viravam uma frase corrida
+     ("h5 = 23 no Google Scholar corte de A3: h5 >= 20"). */
+  .passo__r { display: block; font-size: .84rem; font-weight: 560; }
+  .passo__d { display: block; font-size: .76rem; color: var(--txt-3);
+              margin-block-start: .1rem; }
+  .passo__f { display: inline-block; margin-block-start: .2rem; font-size: .66rem;
+              color: var(--txt-3); padding: .05rem .35rem; border-radius: 99px;
+              border: 1px solid var(--borda); }
+  .total { display: flex; align-items: center; justify-content: space-between;
+           margin-block-start: .6rem; padding-block-start: .6rem;
+           border-block-start: 2px solid var(--txt);
+           font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  /* Régua */
+  .regua { block-size: 1.5rem; border-radius: 6px; position: relative;
+    background: linear-gradient(to right, var(--e8) 0 12.5%, var(--e7) 12.5% 25%,
+      var(--e6) 25% 37.5%, var(--e5) 37.5% 50%, var(--e4) 50% 62.5%,
+      var(--e3) 62.5% 75%, var(--e2) 75% 87.5%, var(--e1) 87.5% 100%); }
+  .regua i { position: absolute; inset-block: -.3rem; inline-size: 3px; border-radius: 2px;
+             background: var(--txt); box-shadow: 0 0 0 2px var(--painel);
+             left: calc(var(--p,0) * 1%); translate: -50% 0;
+             transition: left .5s cubic-bezier(.2,.8,.2,1); }
+  .regua-esc { display: flex; justify-content: space-between; font-size: .62rem;
+               color: var(--txt-3); margin-block-start: .3rem; font-variant-numeric: tabular-nums; }
+
+  .fronteira { margin-block-start: .6rem; padding: .5rem .6rem; border-radius: 8px;
+    font-size: .78rem;
+    background: color-mix(in oklab, var(--aviso) 13%, transparent);
+    border: 1px solid color-mix(in oklab, var(--aviso) 34%, transparent); }
+  .bifurca { margin-block-start: .7rem; padding: .55rem .65rem; border-radius: 8px;
+    font-size: .78rem; border: 1px solid color-mix(in oklab, var(--aviso) 38%, transparent);
+    background: color-mix(in oklab, var(--aviso) 9%, transparent); }
+  .bifurca p { color: var(--txt-3); margin-block: .25rem .35rem; }
+  .bifurca li { color: var(--txt-2); padding-block: .1rem; }
+
+  .sim label { display: flex; gap: .5rem; align-items: center; padding: .35rem .5rem;
+               border: 1px solid var(--borda); border-radius: 8px; font-size: .8rem;
+               cursor: pointer; margin-block-end: .35rem; background: var(--painel); }
+  .sim label:has(:checked) { border-color: var(--acento); background: var(--acento-fr); }
+  .sim label.sim--atual { border-color: color-mix(in oklab, var(--acento) 60%, var(--borda)); }
+  .sim label b { font-weight: 600; font-size: .72rem; color: var(--acento); }
+  .sim__saida { display: flex; justify-content: space-between; align-items: center;
+                gap: .6rem; padding: .5rem .6rem; border-radius: 8px;
+                background: var(--painel-2); font-size: .8rem; font-weight: 600; }
+
+  .aviso-legal { font-size: .7rem; color: var(--txt-3); }
+  .sim__ajuda { font-size: .74rem; color: var(--txt-3); margin-block-end: .5rem; }
+  .sim__nota { font-size: .74rem; color: var(--txt-2); margin-block-end: .5rem;
+               padding: .35rem .5rem; border-radius: 7px; background: var(--painel-2); }
+  .oficial { display: flex; align-items: center; justify-content: space-between;
+             gap: .6rem; padding: .5rem .6rem; border-radius: 8px;
+             background: var(--painel-2); font-size: .8rem; margin-block-end: .4rem; }
+}
+
+/* Saídas de emergência: a informação nunca pode depender do vidro. */
+@media (prefers-reduced-transparency: reduce) {
+  .cab, .det { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--painel); }
+}
+@media (forced-colors: active) {
+  .cab, .det { backdrop-filter: none; background: Canvas; border: 1px solid CanvasText; }
+  .e { forced-color-adjust: none; background: Canvas; color: CanvasText; border: 2px solid CanvasText; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .det, .regua i, .lado { transition: none; }
+}
