@@ -328,6 +328,39 @@ function regua(d) {
   </div>`;
 }
 
+function historico(d) {
+  const h = d.historico || [];
+  if (h.length < 2) return '';
+  // O ano em curso muda ao longo do ano e não classifica nada: vai marcado,
+  // e o estrato vigente é o do último ano completo.
+  const usado = [...h].reverse().find((x) => x[3]);
+  return `<div class="cartao">
+    <h3>Percentil ano a ano</h3>
+    <div class="serie">
+      ${h.map(([ano, pct, est, completo]) => `
+        <div class="serie__ano ${!completo ? 'serie__ano--curso' : ''}
+             ${usado && ano === usado[0] ? 'serie__ano--usado' : ''}">
+          <span class="serie__rot">${ano}${completo ? '' : '*'}</span>
+          ${chip(est)}
+          <span class="serie__pct">${pct}%</span>
+        </div>`).join('')}
+    </div>
+    <p class="sim__ajuda" style="margin-block:.5rem 0">
+      ${usado ? `O estrato vem de <b>${usado[0]}</b>, o último ano completo.` : ''}
+      ${h.some((x) => !x[3]) ? ' O ano marcado com * ainda está em curso e muda até fechar.' : ''}
+      ${(() => {
+        const comp = h.filter((x) => x[3]);
+        if (comp.length < 2) return '';
+        const dif = Math.abs(ESTRATOS.indexOf(comp.at(-1)[2]) - ESTRATOS.indexOf(comp.at(-2)[2]));
+        return dif >= 2
+          ? ` <b>Oscilou ${dif} estratos</b> de um ano para o outro — em revista de
+             poucos artigos o percentil balança muito.`
+          : '';
+      })()}
+    </p>
+  </div>`;
+}
+
 function simulador(d) {
   const base = d.estrato_base || d.estrato;
   if (!base) return '';
@@ -470,6 +503,7 @@ async function abrir(slug) {
         É do ciclo anterior — não vale para 2025-2028, mas é a única classificação
         oficial de eventos que existe.</p></div>` : ''}
     ${regua(d)}
+    ${historico(d)}
     ${simulador(d)}
     ${d.url_scopus ? `<p class="ver-fonte"><a href="${esc(d.url_scopus)}" target="_blank"
        rel="noopener">Conferir no Scopus ↗</a></p>` : ''}

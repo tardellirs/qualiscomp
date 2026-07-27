@@ -66,6 +66,10 @@ class Fonte:
     ano_inicio: int | None = None
     ano_fim: int | None = None
     scopus_id: str = ""
+    # Série do percentil por ano: [ano, percentil, ano_completo?]. A API já
+    # devolve os últimos anos na mesma resposta — descartá-los escondia que o
+    # estrato de uma revista pequena oscila muito.
+    historico: list[list] = field(default_factory=list)
 
     @property
     def url_scopus(self) -> str:

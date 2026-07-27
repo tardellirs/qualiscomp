@@ -515,6 +515,17 @@
   .regua-esc { display: flex; justify-content: space-between; font-size: .62rem;
                color: var(--txt-3); margin-block-start: .3rem; font-variant-numeric: tabular-nums; }
 
+  /* Série anual: o estrato é o que a pessoa lê; o percentil fica de apoio,
+     porque é ele que a maioria ainda não interpreta. */
+  .serie { display: flex; gap: .4rem; }
+  .serie__ano { flex: 1; display: grid; justify-items: center; gap: .25rem;
+                padding: .45rem .2rem; border-radius: 9px; background: var(--painel-2); }
+  .serie__rot { font-size: .68rem; color: var(--txt-3); font-variant-numeric: tabular-nums; }
+  .serie__pct { font-size: .68rem; color: var(--txt-3); font-variant-numeric: tabular-nums; }
+  .serie__ano--curso { opacity: .6; }
+  .serie__ano--usado { background: var(--acento-fr);
+                       box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--acento) 45%, transparent); }
+
   .fronteira { margin-block-start: .6rem; padding: .5rem .6rem; border-radius: 8px;
     font-size: .78rem;
     background: color-mix(in oklab, var(--aviso) 13%, transparent);

@@ -158,6 +158,32 @@ def _ano(v: object) -> int | None:
     return int(t) if t.isdigit() else None
 
 
+def _serie(entrada: dict) -> list[list]:
+    """Percentil por ano, do mais antigo ao mais recente.
+
+    Cada item é [ano, maior percentil do ano, o ano está completo]. O ano
+    "In-Progress" muda ao longo do ano e não classifica nada — vai marcado.
+    """
+    cs = entrada.get("citeScoreYearInfoList") or {}
+    out: list[list] = []
+    for ano in cs.get("citeScoreYearInfo") or []:
+        a = _ano(ano.get("@year"))
+        if a is None:
+            continue
+        melhor = None
+        for lista in ano.get("citeScoreInformationList") or []:
+            for info in lista.get("citeScoreInfo") or []:
+                if info.get("docType") not in (None, "all"):
+                    continue
+                for r in info.get("citeScoreSubjectRank") or []:
+                    p = r.get("percentile")
+                    if str(p).isdigit():
+                        melhor = max(melhor or 0, int(p))
+        if melhor is not None:
+            out.append([a, melhor, ano.get("@status") == "Complete"])
+    return sorted(out)[-4:]
+
+
 def _para_fonte(e: dict) -> Fonte | None:
     pct, cod, rank, ano = _maior_percentil(e)
     if pct is None:
@@ -199,6 +225,7 @@ def _para_fonte(e: dict) -> Fonte | None:
     f.ano_inicio = _ano(e.get("coverageStartYear"))
     f.ano_fim = _ano(e.get("coverageEndYear"))
     f.scopus_id = (e.get("source-id") or "").strip()
+    f.historico = _serie(e)
     return f
 
 
@@ -263,7 +290,7 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
                 if f.areas and not atual.areas:
                     atual.areas = f.areas
                 for campo in ("tipo_scopus", "acesso_aberto", "ano_inicio",
-                              "ano_fim", "scopus_id"):
+                              "ano_fim", "scopus_id", "historico"):
                     if getattr(f, campo) and not getattr(atual, campo):
                         setattr(atual, campo, getattr(f, campo))
 

@@ -83,6 +83,8 @@ class Veiculo:
     acesso_aberto: bool = False
     url_scopus: str = ""
     descontinuada: bool = False
+    # [ano, percentil, estrato, ano_completo?] — só periódicos vindos da API.
+    historico: list[list] = field(default_factory=list)
     fronteira: str = ""
     nota: str = ""
     e_sbc_evento: bool = False
@@ -306,6 +308,10 @@ def montar_periodicos() -> list[Veiculo]:
                 acesso_aberto=fonte.acesso_aberto,
                 url_scopus=fonte.url_scopus,
                 descontinuada=fonte.descontinuada,
+                historico=[
+                    [ano, pct, rules.estrato_por_percentil(pct), completo]
+                    for ano, pct, completo in fonte.historico
+                ],
                 estrato_base=c.estrato,
                 apelidos=siglas_do_titulo(fonte.titulo),
                 fronteira=_fronteira_percentil(fonte.percentil, c.estrato),
