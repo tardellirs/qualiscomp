@@ -148,6 +148,91 @@ def carregar_aliases(caminho: Path | None = None) -> dict[str, list[str]]:
     return out
 
 
+ABA_EVENTOS_SBC = "Eventos SBC"
+TRADICAO = Path(__file__).resolve().parent.parent / "data" / "tradicao_eventos.csv"
+
+
+@dataclass(frozen=True)
+class EventoDaSBC:
+    """Evento promovido pela SBC, com o que mede sua tradição.
+
+    A aba "Eventos SBC" da planilha é o que habilita o **critério de indução**
+    do Documento de Área: "artigos publicados em eventos com pelo menos 20 anos
+    de tradição poderão ser classificados no nível A4 e [...] pelo menos 10 anos
+    [...] no nível A5". Sem ela, o CSBC — que existe desde 1980 — saía como A8.
+    """
+
+    sigla: str
+    nome: str
+    edicoes: int | None
+    ano_primeira: int | None
+    ce: str
+
+    @property
+    def anos_de_tradicao(self) -> int | None:
+        """Medida conservadora: o número de EDIÇÕES.
+
+        A planilha traz o ano da primeira edição em só 20 dos 88 eventos, mas o
+        número de edições em todos. Para evento anual, edições <= anos desde a
+        primeira (o SBES tem 37 edições e existe desde 1987). Usar edições nunca
+        superestima a tradição — e superestimar aqui inflaria estrato.
+        """
+        return self.edicoes
+
+
+def eventos_da_sbc(caminho: Path | None = None) -> dict[str, EventoDaSBC]:
+    """Mapa sigla (maiúscula) -> evento promovido pela SBC."""
+    from openpyxl import load_workbook
+
+    caminho = caminho or baixar()
+    wb = load_workbook(caminho, read_only=True, data_only=True)
+    if ABA_EVENTOS_SBC not in wb.sheetnames:
+        return {}
+
+    def _int(v: object) -> int | None:
+        t = str(v or "").strip()
+        return int(t) if t.isdigit() else None
+
+    out: dict[str, EventoDaSBC] = {}
+    linhas = wb[ABA_EVENTOS_SBC].iter_rows(values_only=True)
+    next(linhas, None)  # Sigla | Nome | SOL | edições | ano | CE | ...
+    for r in linhas:
+        if not r or not r[0]:
+            continue
+        sigla = str(r[0]).strip().rstrip("*").strip()
+        if not sigla or sigla.lower() == "sigla":
+            continue
+        out[sigla.upper()] = EventoDaSBC(
+            sigla=sigla,
+            nome=str(r[1] or "").strip(),
+            edicoes=_int(r[3]) if len(r) > 3 else None,
+            ano_primeira=_int(r[4]) if len(r) > 4 else None,
+            ce=str(r[5] or "").strip() if len(r) > 5 else "",
+        )
+
+    # Complemento curado, com fonte, para o que a aba não cobre.
+    from datetime import date
+
+    import csv as _csv
+
+    if TRADICAO.exists():
+        with TRADICAO.open(encoding="utf-8") as f:
+            crus = [l for l in f if not l.lstrip().startswith("//")]
+        for row in _csv.DictReader(crus):
+            sigla = (row.get("sigla") or "").strip()
+            desde = (row.get("desde") or "").strip()
+            if not sigla or not desde.isdigit() or sigla.upper() in out:
+                continue
+            out[sigla.upper()] = EventoDaSBC(
+                sigla=sigla,
+                nome="",
+                edicoes=date.today().year - int(desde),
+                ano_primeira=int(desde),
+                ce="",
+            )
+    return out
+
+
 def ler(caminho: Path | None = None) -> list[EventoSBC]:
     """Lê todas as abas de CE e devolve os eventos deduplicados por sigla.
 

@@ -1,0 +1,12 @@
+// Tradição de eventos que a aba "Eventos SBC" da planilha não cobre.
+// Ela lista os eventos-satélite e deixa de fora alguns guarda-chuva, como o
+// próprio Congresso da SBC.
+//
+// Habilita o critério de indução do Documento de Área (p. 22-23): evento
+// nacional promovido pela SBC com >=20 anos de tradição pode ir a A4, com
+// >=10 anos a A5.
+//
+// SÓ ENTRA COM FONTE. Um ano errado aqui vira estrato errado.
+// Linhas com // são ignoradas.
+sigla,desde,fonte
+CSBC,1980,https://sol.sbc.org.br/index.php/csbc/about

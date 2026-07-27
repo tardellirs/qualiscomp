@@ -38,6 +38,7 @@ let filtrados = [];
 let atual = null;
 let limite = 80;
 let subareas = new Set();   // índices das CEs escolhidas (múltipla)
+let apenasSBC = false;      // pastilha 'SBC': eventos promovidos pela SBC
 
 /* ---------------------------------------------------------------- dados -- */
 
@@ -77,6 +78,7 @@ function estado() {
     tipo: d.get('tipo') || 'todos',
     estratos: new Set(d.getAll('estrato')),
     ces: subareas,
+    soSBC: apenasSBC,
     ordem: $('#ordem').value,
   };
 }
@@ -129,7 +131,11 @@ function aplicar() {
     if (e.estratos.size && !e.estratos.has(v.e)) continue;
     // Múltipla escolha: união, não interseção — quem marca IHC e IA quer ver
     // os eventos das duas, não só os que estão nas duas.
-    if (e.ces.size && !(v.ce || []).some((c) => e.ces.has(c))) continue;
+    if (e.ces.size || e.soSBC) {
+      const naCE = e.ces.size && (v.ce || []).some((c) => e.ces.has(c));
+      const naSBC = e.soSBC && v.br;
+      if (!naCE && !naSBC) continue;
+    }
     if (q) {
       const p = pontuar(v, q);
       if (!p) continue;
@@ -185,7 +191,9 @@ function desenharSubareas() {
   bloco.hidden = !mostrar;
   if (regras) regras.hidden = !!mostrar;   // cede o lugar na lateral
   if (!mostrar) {
-    if (subareas.size) { subareas.clear(); return true; }  // pede novo filtro
+    if (subareas.size || apenasSBC) {
+      subareas.clear(); apenasSBC = false; return true;   // pede novo filtro
+    }
     return false;
   }
 
@@ -196,13 +204,17 @@ function desenharSubareas() {
   }
   const ordenadas = [...contagem.entries()].sort((a, b) => b[1] - a[1]);
 
+  const nSBC = BASE.veiculos.filter((v) => v.t === 'e' && v.br).length;
   $('#subareas-grade').innerHTML = ordenadas.map(([i, n]) => {
     const [sigla, nome] = BASE.ces[i];
     return `<button class="atalho" type="button" data-ce="${i}"
       aria-pressed="${subareas.has(i)}"
       title="${esc(nome || sigla)}">${esc(sigla)}<small>${n}</small></button>`;
-  }).join('');
-  $('#limpar-subareas').hidden = subareas.size === 0;
+  }).join('') + (nSBC ? `<button class="atalho atalho--sbc" type="button" data-sbc
+      aria-pressed="${apenasSBC}"
+      title="Eventos promovidos pela Sociedade Brasileira de Computação">
+      SBC<small>${nSBC}</small></button>` : '');
+  $('#limpar-subareas').hidden = subareas.size === 0 && !apenasSBC;
   return false;
 }
 
@@ -517,6 +529,7 @@ addEventListener('DOMContentLoaded', async () => {
   // A marca no canto esquerdo devolve o estado inicial sem recarregar: fecha a
   // ficha, limpa busca e filtros, volta a ordenação e sobe a lista.
   $('#subareas-grade').addEventListener('click', (e) => {
+    if (e.target.closest('[data-sbc]')) { apenasSBC = !apenasSBC; return aplicar(); }
     const b = e.target.closest('[data-ce]');
     if (!b) return;
     const i = Number(b.dataset.ce);
@@ -524,11 +537,14 @@ addEventListener('DOMContentLoaded', async () => {
     else subareas.add(i);
     aplicar();
   });
-  $('#limpar-subareas').addEventListener('click', () => { subareas.clear(); aplicar(); });
+  $('#limpar-subareas').addEventListener('click', () => {
+    subareas.clear(); apenasSBC = false; aplicar();
+  });
 
   $('#ir-inicio').addEventListener('click', () => {
     if (atual) fechar();
     subareas.clear();
+    apenasSBC = false;
     $('#form-filtros').reset();
     $('#q').value = '';
     $('#ordem').value = 'relevancia';

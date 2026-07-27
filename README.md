@@ -131,9 +131,6 @@ porque as CEs não classificam periódicos.
 
 ## Limites conhecidos
 
-- O **critério de indução** (evento nacional da SBC com 20+ anos → A4) não é
-  aplicado: exige o ano de fundação, que não temos de fonte verificável. O CSBC,
-  por exemplo, aparece como A8.
 - Alguns eventos casaram com a entrada errada no Google Scholar e aparecem com
   estrato indevido.
 - Livros, capítulos, produção técnica e as cotas de seleção do documento não são

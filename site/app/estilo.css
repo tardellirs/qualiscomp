@@ -160,6 +160,10 @@
                                  border-color: transparent; font-weight: 650; }
   .atalho small { opacity: .65; margin-inline-start: .25rem;
                   font-variant-numeric: tabular-nums; }
+  /* A pastilha da SBC não é uma Comissão Especial: agrupa por quem promove o
+     evento. Fica no fim e destacada para não se confundir com as subáreas. */
+  .atalho--sbc { border-color: color-mix(in oklab, var(--acento) 45%, var(--borda));
+                 font-weight: 600; margin-inline-start: .25rem; }
   .cab__esq { grid-column: 1; display: flex; gap: .35rem; align-items: center; }
   .cab__menu { min-inline-size: 2.75rem; min-block-size: 2.75rem;
                display: grid; place-items: center; }

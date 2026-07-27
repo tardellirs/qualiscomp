@@ -85,6 +85,8 @@ class Veiculo:
     descontinuada: bool = False
     fronteira: str = ""
     nota: str = ""
+    e_sbc_evento: bool = False
+    edicoes: int | None = None
     # Base do simulador: o estrato que o INDICADOR sozinho dá, antes de
     # qualquer ajuste. Sem isso o simulador soma o bônus da CE-SBC de novo
     # sobre um estrato que já o inclui, e conta duas vezes.
@@ -114,6 +116,8 @@ class Veiculo:
             d["s2"] = self.issns
         if self.e_computacao:
             d["k"] = 1          # revista da área de Computação no ASJC
+        if self.e_sbc_evento:
+            d["br"] = 1         # evento promovido pela SBC
         if self.editora:
             d["ed"] = self.editora   # trocado por índice em `_compactar`
         if self.acesso_aberto:
@@ -318,9 +322,15 @@ def montar_periodicos() -> list[Veiculo]:
 def montar_eventos() -> list[Veiculo]:
     cache = Cache()
     of = oficial.carregar()
+    # A aba "Eventos SBC" da planilha traz o número de edições de cada evento
+    # promovido pela SBC — é o que habilita o critério de indução do documento,
+    # que até aqui não era aplicado por falta do dado.
+    da_sbc = sbc.eventos_da_sbc()
     out: list[Veiculo] = []
     for ev in sbc.ler():
         r = resolver(ev, cache)
+        info_sbc = da_sbc.get(ev.sigla.upper())
+        anos = info_sbc.anos_de_tradicao if info_sbc else None
         slug = f"e-{slugificar(r.sigla or r.nome)}"
         # Muitos eventos brasileiros têm nome oficial em inglês na planilha da
         # SBC e são procurados em português (e vice-versa). Indexamos todos os
@@ -331,7 +341,10 @@ def montar_eventos() -> list[Veiculo]:
 
         if r.h5_fonte != "scholar" or r.h5 is None:
             # Sem h5 do Google, a regra ainda pode classificar pela CE-SBC.
-            c = rules.classificar_evento(r.sigla, h5=0, ce_sbc=r.ce_sbc)
+            c = rules.classificar_evento(
+                r.sigla, h5=0, ce_sbc=r.ce_sbc,
+                anos_tradicao_sbc=anos, promovido_por_sociedade=bool(info_sbc),
+            )
             passos = [
                 Passo(
                     rotulo="Sem h5-index no Google Scholar",
@@ -353,10 +366,11 @@ def montar_eventos() -> list[Veiculo]:
             # grande: dos 126 eventos sem h5 que a CAPES classificou no ciclo
             # anterior, 82 receberam estrato melhor que o nosso.
             nota = (
-                "Se este evento for um dos principais eventos nacionais "
-                "promovidos pela SBC, o critério de indução pode elevá-lo a A4 "
-                "(20+ anos de tradição) ou A5 (10+ anos). Não aplicamos porque "
-                "não temos o ano de fundação verificado."
+                ""
+                if info_sbc
+                else "Se este evento for promovido pela SBC, o critério de "
+                "indução pode elevá-lo. Ele não está na lista de eventos da "
+                "SBC que usamos, então não aplicamos."
             )
             out.append(
                 Veiculo(
@@ -373,6 +387,8 @@ def montar_eventos() -> list[Veiculo]:
                     h5_sbc=r.h5_sbc,
                     nota=nota,
                     apelidos=apelidos,
+                    e_sbc_evento=bool(info_sbc),
+                    edicoes=anos,
                     estrato_base=None,
                     oficial_estrato=of[r.sigla.upper()].estrato
                     if r.sigla.upper() in of else "",
@@ -382,7 +398,10 @@ def montar_eventos() -> list[Veiculo]:
             )
             continue
 
-        c = rules.classificar_evento(r.sigla, h5=r.h5, ce_sbc=r.ce_sbc)
+        c = rules.classificar_evento(
+            r.sigla, h5=r.h5, ce_sbc=r.ce_sbc,
+            anos_tradicao_sbc=anos, promovido_por_sociedade=bool(info_sbc),
+        )
         base = rules.estrato_por_h5(r.h5)
         passos = [
             Passo(
@@ -403,12 +422,28 @@ def montar_eventos() -> list[Veiculo]:
             sem_teto = rules.classificar_evento(
                 r.sigla, h5=r.h5, ce_sbc=r.ce_sbc, teto_qualitativo=False
             ).estrato
+            # Sem a indução: senão a linha da CE já mostraria o resultado dela,
+            # e a linha seguinte pareceria não ter feito nada.
+            so_ce = rules.classificar_evento(
+                r.sigla, h5=r.h5, ce_sbc=r.ce_sbc
+            ).estrato
             passos.append(
                 Passo(
                     rotulo=f"CE-SBC: \u201c{r.ce_sbc}\u201d",
                     detalhe=rotulos.get(r.ce_sbc, ""),
-                    estrato=sem_teto if teto else c.estrato,
+                    estrato=sem_teto if teto else so_ce,
                     fonte=f"CEs: {', '.join(r.ces)}" if r.ces else "planilha da SBC",
+                )
+            )
+        if anos and any("indução" in m for m in c.motivos):
+            passos.append(
+                Passo(
+                    rotulo="Critério de indução da área",
+                    detalhe=f"evento nacional da SBC com {anos} edições; "
+                    f"a partir de 20 anos de tradição pode ir a A4, "
+                    f"a partir de 10 anos a A5",
+                    estrato=c.estrato,
+                    fonte="Documento de Área, p. 22-23",
                 )
             )
         if teto:
@@ -449,6 +484,8 @@ def montar_eventos() -> list[Veiculo]:
                 h5_sbc=r.h5_sbc,
                 fronteira=_fronteira_h5(r.h5, base),
                 apelidos=apelidos,
+                e_sbc_evento=bool(info_sbc),
+                edicoes=anos,
                 estrato_base=base,
                 oficial_estrato=of[r.sigla.upper()].estrato
                 if r.sigla.upper() in of else "",
