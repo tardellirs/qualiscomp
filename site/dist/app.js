@@ -117,10 +117,14 @@ function aplicar() {
     estrato: (a, b) => (a[1].e || 'Z').localeCompare(b[1].e || 'Z') || cmpNome(a, b),
     indicador: (a, b) => (b[1].i ?? -1) - (a[1].i ?? -1) || cmpNome(a, b),
     nome: cmpNome,
+    // Estado de abertura: periódicos primeiro, depois eventos, cada grupo em
+    // ordem alfabética. Em ordem puramente alfabética a primeira tela ficava
+    // tomada por conferências da ACM e da AAAI, e o site parecia ser só de
+    // eventos. Vale só quando não há busca nem ordenação escolhida.
+    inicial: (a, b) =>
+      (a[1].t === 'p' ? 0 : 1) - (b[1].t === 'p' ? 0 : 1) || cmpNome(a, b),
   };
-  // Sem busca, "relevância" vira ordem alfabética. Ordenar por estrato deixava
-  // a primeira tela com centenas de A1 iguais, que não diz nada sobre a base.
-  const criterio = e.ordem !== 'relevancia' ? e.ordem : (q ? 'relevancia' : 'nome');
+  const criterio = e.ordem !== 'relevancia' ? e.ordem : (q ? 'relevancia' : 'inicial');
   rs.sort(ord[criterio]);
 
   filtrados = rs.map(([, v]) => v);
