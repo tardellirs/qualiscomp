@@ -37,7 +37,7 @@ CE-SBC Top10 sobe 2 níveis, Top20 sobe 1, relevante mantém. Sem h5: "Top" → 
 ## Como rodar
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 python site/build.py --servir      # gera site/dist e sobe em localhost:8000
 python -m pytest -q                # 109 testes
 node site/checar.mjs               # abre em 5 tamanhos de tela e reporta problemas

@@ -1,0 +1,17 @@
+# O deploy é estático: só site/dist é servido. Tudo abaixo é ferramenta de
+# construção e fica de fora — inclusive para o Vercel não achar que isto é um
+# aplicativo Python e tentar procurar um entrypoint.
+qualis/
+data/
+docs/
+site/app/
+site/prints/
+site/build.py
+site/paginas.py
+site/checar.mjs
+site/testa_painel.mjs
+test_*.py
+requirements-dev.txt
+*.pdf
+__pycache__/
+.pytest_cache/
