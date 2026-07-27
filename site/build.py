@@ -79,6 +79,10 @@ class Veiculo:
     e_sbc: bool = False
     issns: list[str] = field(default_factory=list)
     e_computacao: bool = False
+    editora: str = ""
+    acesso_aberto: bool = False
+    url_scopus: str = ""
+    descontinuada: bool = False
     fronteira: str = ""
     nota: str = ""
     # Base do simulador: o estrato que o INDICADOR sozinho dá, antes de
@@ -110,6 +114,10 @@ class Veiculo:
             d["s2"] = self.issns
         if self.e_computacao:
             d["k"] = 1          # revista da área de Computação no ASJC
+        if self.editora:
+            d["ed"] = self.editora   # trocado por índice em `_compactar`
+        if self.acesso_aberto:
+            d["oa"] = 1
         return d
 
 
@@ -138,6 +146,45 @@ def siglas_do_titulo(titulo: str) -> list[str]:
             if 2 <= len(sel) <= 9:
                 out.add("".join(w[0] for w in sel).upper())
     return [s for s in out if 3 <= len(s) <= 8]
+
+
+# A mesma editora aparece com grafias diferentes no Scopus ("IEEE" e "Institute
+# of Electrical and Electronics Engineers Inc."). Sem normalizar, filtrar por
+# uma delas perde metade das revistas.
+_EDITORAS = (
+    ("institute of electrical and electronics engineers", "IEEE"),
+    ("ieee", "IEEE"),
+    ("association for computing machinery", "ACM"),
+    ("springer", "Springer Nature"),
+    ("elsevier", "Elsevier"),
+    ("john wiley", "Wiley"),
+    ("wiley", "Wiley"),
+    ("taylor & francis", "Taylor & Francis"),
+    ("taylor and francis", "Taylor & Francis"),
+    ("multidisciplinary digital publishing", "MDPI"),
+    ("sage", "SAGE"),
+    ("oxford university press", "Oxford University Press"),
+    ("cambridge university press", "Cambridge University Press"),
+    ("world scientific", "World Scientific"),
+    ("igi global", "IGI Global"),
+    ("inderscience", "Inderscience"),
+    ("emerald", "Emerald"),
+    ("frontiers media", "Frontiers"),
+    ("public library of science", "PLOS"),
+    ("nature publishing", "Springer Nature"),
+    ("sociedade brasileira de computa", "SBC"),
+    ("brazilian comput", "SBC"),
+)
+
+
+def normalizar_editora(nome: str | None) -> str:
+    if not nome:
+        return ""
+    baixo = nome.lower()
+    for chave, canonico in _EDITORAS:
+        if chave in baixo:
+            return canonico
+    return nome.strip()
 
 
 def slugificar(texto: str) -> str:
@@ -189,6 +236,13 @@ def montar_periodicos() -> list[Veiculo]:
     for fonte in scopus_export.carregar().values():
         if fonte.parece_evento:
             continue  # anais indexados no Scopus: vão pela regra de h5
+        if fonte.tipo_scopus == "bookseries":
+            # Séries de livros (Foundations and Trends, Synthesis Lectures,
+            # Handbooks). O documento manda livros e capítulos pelo relatório do
+            # GT de livros da CAPES, não pelo percentil — e esse caminho não é
+            # modelado aqui. Classificá-las por percentil seria usar a regra
+            # errada, então ficam de fora.
+            continue
         c = rules.classificar_periodico(
             fonte.titulo,
             percentil_scopus=fonte.percentil,
@@ -207,6 +261,17 @@ def montar_periodicos() -> list[Veiculo]:
                 fonte=f"Scopus · categoria {fonte.categoria or '?'}",
             )
         ]
+        if fonte.descontinuada:
+            passos.append(
+                Passo(
+                    rotulo="Periódico descontinuado no Scopus",
+                    detalhe=f"deixou de ser indexado em {fonte.ano_fim}; o "
+                    f"percentil é retrato de um período encerrado",
+                    estrato=c.estrato,
+                    fonte="Scopus",
+                    alerta="ausente",
+                )
+            )
         if fonte.e_sbc:
             passos.append(
                 Passo(
@@ -231,6 +296,10 @@ def montar_periodicos() -> list[Veiculo]:
                 e_sbc=fonte.e_sbc,
                 issns=list(getattr(fonte, "issns", []) or []),
                 e_computacao=fonte.e_computacao,
+                editora=normalizar_editora(fonte.editora),
+                acesso_aberto=fonte.acesso_aberto,
+                url_scopus=fonte.url_scopus,
+                descontinuada=fonte.descontinuada,
                 estrato_base=c.estrato,
                 apelidos=siglas_do_titulo(fonte.titulo),
                 fronteira=_fronteira_percentil(fonte.percentil, c.estrato),
@@ -458,12 +527,26 @@ def main() -> int:
     # Índice leve: só o que a lista e a busca precisam. As fichas completas vão
     # em arquivos separados, buscados sob demanda — 3.100 fichas com recibo não
     # cabem num payload inicial.
+    # Editora repetida em 2.800 entradas dobrava o índice; vira tabela e cada
+    # veículo guarda só o número.
+    indice = [v.para_indice() for v in veiculos]
+    editoras: list[str] = []
+    pos: dict[str, int] = {}
+    for d in indice:
+        nome = d.pop("ed", None)
+        if nome:
+            if nome not in pos:
+                pos[nome] = len(editoras)
+                editoras.append(nome)
+            d["ed"] = pos[nome]
+
     (SAIDA / "dados" / "indice.json").write_text(
         json.dumps(
             {
                 "snapshot": SNAPSHOT,
                 "dist": dist,
-                "veiculos": [v.para_indice() for v in veiculos],
+                "editoras": editoras,
+                "veiculos": indice,
             },
             ensure_ascii=False,
             separators=(",", ":"),

@@ -153,6 +153,11 @@ def _maior_percentil(entrada: dict) -> tuple[float | None, str | None, int | Non
     return None, None, None, None
 
 
+def _ano(v: object) -> int | None:
+    t = str(v or "").strip()
+    return int(t) if t.isdigit() else None
+
+
 def _para_fonte(e: dict) -> Fonte | None:
     pct, cod, rank, ano = _maior_percentil(e)
     if pct is None:
@@ -189,6 +194,11 @@ def _para_fonte(e: dict) -> Fonte | None:
     f.issns = [i for i in issns if i]  # type: ignore[attr-defined]
     f.ano_citescore = ano  # type: ignore[attr-defined]
     f.areas = sorted({a.get("@abbrev") for a in areas if a.get("@abbrev")})  # type: ignore[attr-defined]
+    f.tipo_scopus = (e.get("prism:aggregationType") or "").strip().lower()
+    f.acesso_aberto = str(e.get("openaccess") or "") == "1"
+    f.ano_inicio = _ano(e.get("coverageStartYear"))
+    f.ano_fim = _ano(e.get("coverageEndYear"))
+    f.scopus_id = (e.get("source-id") or "").strip()
     return f
 
 
@@ -252,6 +262,10 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
                     atual.issns = f.issns
                 if f.areas and not atual.areas:
                     atual.areas = f.areas
+                for campo in ("tipo_scopus", "acesso_aberto", "ano_inicio",
+                              "ano_fim", "scopus_id"):
+                    if getattr(f, campo) and not getattr(atual, campo):
+                        setattr(atual, campo, getattr(f, campo))
 
     import gzip
     from dataclasses import asdict

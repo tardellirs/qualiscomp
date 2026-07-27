@@ -32,6 +32,9 @@ async function carregar() {
     v._g = norm(v.g || '');
     v._ap = (v.a || '').split(' · ').map(norm).filter(Boolean);
     v._issn = v.s2 || [];   // sem hífen, como a API devolve
+    // A editora vem como índice numa tabela, para não repetir a string 2.800x.
+    v._ed = typeof v.ed === 'number' ? (BASE.editoras[v.ed] || '') : '';
+    v._edn = norm(v._ed);
     v._a = v._ap.join(' ');
   });
 }
@@ -81,6 +84,8 @@ function pontuar(v, q) {
   const i = a.indexOf(q);
   if (i > 0) return a[i - 1] === ' ' ? 620 : 450;
   if (ap && ap.includes(q)) return 420;
+  // Editora: quem digita "MDPI" ou "Springer" quer ver as revistas delas.
+  if (v._edn && v._edn.includes(q)) return 380;
 
   const ps = q.split(' ').filter(Boolean);
   if (ps.length > 1 && ps.every((x) => a.includes(x) || ap.includes(x))) return 300;
@@ -184,6 +189,7 @@ function desenhar() {
         <b>${v.g ? `${esc(v.g)} · ` : ''}${esc(v.n)}</b>
         ${v.g && v.a ? `<small>${esc(v.a.split(' · ')[0])}</small>` : ''}
       </span>
+      <span class="item__ed">${esc(v._ed)}</span>
       <span class="item__ind">${ind}</span>
       <span class="item__tipo">${v.t === 'p' ? 'periódico' : 'evento'}</span>
     </button>`;
@@ -370,8 +376,15 @@ async function abrir(slug) {
   }
   const det = $('#det');
 
+  const meta = [
+    d.tipo === 'periodico' ? 'Periódico' : 'Evento',
+    d.editora || '',
+    d.acesso_aberto ? 'acesso aberto' : '',
+    d.ce_sbc ? `CE-SBC: ${d.ce_sbc}` : '',
+    d.ces?.length ? d.ces.join(', ') : '',
+  ].filter(Boolean).join(' · ');
   $('#det-tit').innerHTML = `<h2>${d.sigla ? `${esc(d.sigla)} · ` : ''}${esc(d.nome)}</h2>
-    <p>${d.tipo === 'periodico' ? 'Periódico' : 'Evento'}${d.ce_sbc ? ` · CE-SBC: ${esc(d.ce_sbc)}` : ''}${d.ces?.length ? ` · ${esc(d.ces.join(', '))}` : ''}</p>`;
+    <p>${esc(meta)}</p>`;
   $('#det-chip').innerHTML = chip(d.estrato, 'e--g');
 
   $('#det-corpo').innerHTML = `
@@ -395,6 +408,8 @@ async function abrir(slug) {
         oficial de eventos que existe.</p></div>` : ''}
     ${regua(d)}
     ${simulador(d)}
+    ${d.url_scopus ? `<p class="ver-fonte"><a href="${esc(d.url_scopus)}" target="_blank"
+       rel="noopener">Conferir no Scopus ↗</a></p>` : ''}
     <p class="aviso-legal">Somente uma <b>estimativa do estrato</b>, com base nos
       critérios do documento da Área 02 — Computação, divulgado pela CAPES em 2025.
       Não nos responsabilizamos por incompatibilidade com a decisão da comissão.</p>`;

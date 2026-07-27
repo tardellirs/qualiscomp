@@ -59,6 +59,27 @@ class Fonte:
     # Áreas de topo do ASJC da revista (COMP, MULT, MEDI...). Vem da API; o
     # export manual não traz, e aí inferimos pelo nome da categoria.
     areas: list[str] = field(default_factory=list)
+    # journal | conferenceproceeding | bookseries — dado autoritativo do Scopus,
+    # melhor que adivinhar pelo título (ver `parece_evento`).
+    tipo_scopus: str = ""
+    acesso_aberto: bool = False
+    ano_inicio: int | None = None
+    ano_fim: int | None = None
+    scopus_id: str = ""
+
+    @property
+    def url_scopus(self) -> str:
+        """Página da fonte no Scopus, para quem quiser conferir o número."""
+        return (
+            f"https://www.scopus.com/sourceid/{self.scopus_id}"
+            if self.scopus_id else ""
+        )
+
+    @property
+    def descontinuada(self) -> bool:
+        """Deixou de ser indexada. O percentil vira retrato de um período morto."""
+        from datetime import date
+        return self.ano_fim is not None and self.ano_fim < date.today().year - 1
 
     @property
     def e_computacao(self) -> bool:
@@ -100,16 +121,20 @@ class Fonte:
 
     @property
     def parece_evento(self) -> bool:
-        """True quando o título indica anais de evento, não periódico.
+        """True quando a fonte é anais de evento, não periódico.
 
-        Importa porque o export do Scopus mistura os dois, e a Área 02 usa
-        regras diferentes: periódico vai por percentil, evento vai por h5 do
-        Google Scholar. Aplicar percentil a um evento é usar a regra errada.
+        Importa porque a Área 02 usa regras diferentes: periódico vai por
+        percentil, evento vai por h5 do Google Scholar. Aplicar percentil a um
+        evento é usar a regra errada.
 
-        Heurística, não verdade: existem PERIÓDICOS com "Proceedings" no nome
-        (veja `_PERIODICOS_COM_NOME_DE_EVENTO`). Por isso quem chama deve
-        avisar, não bloquear.
+        Quando a API informa o tipo, ele decide — é dado do Scopus, não palpite.
+        Foi a heurística de título que quase classificou o PACMPL (onde saem
+        POPL, OOPSLA e PLDI) como evento, e obrigou a manter lista de exceções.
+        A heurística fica só para os registros vindos do export manual, que não
+        traz o tipo.
         """
+        if self.tipo_scopus:
+            return self.tipo_scopus == "conferenceproceeding"
         t = self.titulo.lower()
         if any(exc in t for exc in _PERIODICOS_COM_NOME_DE_EVENTO):
             return False

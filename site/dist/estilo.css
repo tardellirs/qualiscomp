@@ -328,7 +328,7 @@
   .item {
     min-block-size: 3rem;
     display: grid;
-    grid-template-columns: 2.9rem 1fr 6.5rem 4.5rem;
+    grid-template-columns: 2.9rem 1fr 8rem 6.5rem 4.5rem;
     gap: .8rem; align-items: center;
     padding: .5rem 1rem;
     border-block-end: 1px solid color-mix(in oklab, var(--borda) 55%, transparent);
@@ -342,14 +342,20 @@
                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .item__nome small { color: var(--txt-3); font-size: .72rem;
     display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item__ed { font-size: .74rem; color: var(--txt-3); text-align: end;
+              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .item__ind { font-family: var(--mono); font-size: .8rem; color: var(--txt-2);
                text-align: end; font-variant-numeric: tabular-nums; }
   .item__tipo { font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
                 color: var(--txt-3); text-align: end; }
+  @media (max-width: 62rem) { .item { grid-template-columns: 2.9rem 1fr 6.5rem 4.5rem; }
+                              .item__ed { display: none; } }
   @media (max-width: 46rem) {
     .item { grid-template-columns: 2.6rem 1fr auto; }
-    .item__tipo { display: none; }
+    .item__tipo, .item__ed { display: none; }
   }
+  .ver-fonte { margin-block-start: -.4rem; }
+  .ver-fonte a { font-size: .78rem; color: var(--acento); text-decoration: none; }
 
   .vazio { padding: 3rem 1rem; text-align: center; color: var(--txt-2); }
   .vazio h2 { font-size: 1rem; margin-block-end: .4rem; }
