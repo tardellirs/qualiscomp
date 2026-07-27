@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documento de Área — Computação (CAPES)
+    url: https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-exatas-tecnologicas-e-multidisciplinar/ciencias-exatas-e-da-terra/ciencia-da-computacao/computacao-docarea.pdf/@@download/file
+    about: A fonte de todas as regras. Seção 2.2, páginas 20-23.
+  - name: Google Scholar Metrics
+    url: https://scholar.google.com/citations?view_op=search_venues
+    about: Onde conferir o h5-index de um evento antes de reportar.

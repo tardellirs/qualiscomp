@@ -1,0 +1,39 @@
+name: Veículo faltando
+description: Um periódico ou evento que existe não está na base
+labels: ["dados", "cobertura"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes: tente a **sigla** e o nome em **português e em inglês** — muitos
+        eventos estão indexados só numa das formas.
+
+        Vale saber de onde vem a cobertura: periódicos saem de um export do
+        Scopus, e eventos, da planilha das Comissões Especiais da SBC. Veículo
+        fora dessas duas fontes não aparece — o que não significa que seja ruim.
+  - type: input
+    id: nome
+    attributes:
+      label: Nome completo
+    validations: { required: true }
+  - type: input
+    id: sigla
+    attributes:
+      label: Sigla
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options: ["Periódico", "Evento"]
+    validations: { required: true }
+  - type: input
+    id: indicador
+    attributes:
+      label: Percentil no Scopus (periódico) ou h5 no Scholar (evento)
+      placeholder: h5 = 18
+  - type: input
+    id: fonte
+    attributes:
+      label: Link onde conferir o indicador
+      placeholder: https://scholar.google.com/citations?view_op=search_venues&vq=...
+    validations: { required: true }

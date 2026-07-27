@@ -1,0 +1,38 @@
+name: h5 divergente
+description: O h5 exibido difere do que o Google Scholar mostra hoje
+labels: ["dados", "h5"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        O h5 é coletado do Google Scholar Metrics e **muda a cada edição**.
+        Divergência pode ser dado velho do nosso lado, ou casamento com a
+        entrada errada — há eventos indexados duas vezes, em português e em
+        inglês, com as citações divididas.
+  - type: input
+    id: evento
+    attributes:
+      label: Evento
+      placeholder: SBBD
+    validations: { required: true }
+  - type: input
+    id: nosso
+    attributes:
+      label: h5 que o site mostra
+    validations: { required: true }
+  - type: input
+    id: scholar
+    attributes:
+      label: h5 no Google Scholar
+    validations: { required: true }
+  - type: input
+    id: link
+    attributes:
+      label: Link da busca no Scholar Metrics
+      placeholder: https://scholar.google.com/citations?view_op=search_venues&vq=...
+    validations: { required: true }
+  - type: textarea
+    id: entrada
+    attributes:
+      label: Nome exato da entrada no Scholar
+      description: Copie como aparece lá; é o que permite corrigir o casamento.

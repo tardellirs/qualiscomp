@@ -1,0 +1,17 @@
+name: Veículo duplicado
+description: O mesmo periódico ou evento aparece mais de uma vez
+labels: ["dados", "duplicata"]
+body:
+  - type: textarea
+    id: fichas
+    attributes:
+      label: As fichas duplicadas
+      description: Um link por linha
+      placeholder: |
+        https://qualiscomp.com/?v=e-ccs
+        https://qualiscomp.com/?v=e-acm-ccs
+    validations: { required: true }
+  - type: input
+    id: manter
+    attributes:
+      label: Qual deveria ficar, e por quê

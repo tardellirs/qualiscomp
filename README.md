@@ -90,6 +90,17 @@ site/dist/            saída publicada (versionada para o Vercel servir sem buil
 test_*.py             109 testes
 ```
 
+## Contribuindo
+
+Achou um estrato errado, um h5 desatualizado ou um veículo faltando?
+[Abra uma issue](https://github.com/tardellirs/qualiscomp/issues/new/choose) —
+há modelos prontos e não precisa clonar nada. Para mandar correção direto, veja
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
+O que mais precisa de gente da área: o **ano de fundação dos eventos da SBC**
+(sem ele o critério de indução não dispara e o CSBC aparece como A8) e os
+**nomes alternativos** de eventos que o Google Scholar indexa duas vezes.
+
 ## Limites conhecidos
 
 - O **critério de indução** (evento nacional da SBC com 20+ anos → A4) não é

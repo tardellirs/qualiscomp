@@ -1,0 +1,38 @@
+name: testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - run: pip install -r requirements-dev.txt pytest
+
+      # Os testes que dependem de arquivos de fonte não versionados (export do
+      # Scopus, planilhas da SBC) se auto-pulam. Os de regra, de cor e de
+      # montagem das fichas rodam sempre.
+      - name: pytest
+        run: python -m pytest -q
+
+      - name: montar todas as fichas
+        run: node site/testa_painel.mjs
+
+      - name: conferir se o site publicado está atualizado
+        run: |
+          if git diff --quiet HEAD -- site/dist; then
+            echo "site/dist em dia"
+          else
+            echo "::warning::site/dist difere do commit — rode 'python site/build.py' e inclua o resultado"
+          fi

@@ -1,0 +1,45 @@
+name: Estrato incorreto
+description: O estrato de um periódico ou evento está errado
+labels: ["dados", "estrato"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Abra a ficha do veículo no site e olhe a seção **"Como chegamos nesse
+        estrato"**: ela mostra cada regra aplicada. Saber em qual linha a conta
+        desandou acelera muito a correção.
+  - type: input
+    id: veiculo
+    attributes:
+      label: Veículo
+      description: Nome ou sigla, como aparece no site
+      placeholder: SBES — Brazilian Symposium on Software Engineering
+    validations: { required: true }
+  - type: input
+    id: url
+    attributes:
+      label: Link da ficha
+      placeholder: https://qualiscomp.com/?v=e-sbes
+  - type: input
+    id: mostrado
+    attributes:
+      label: Estrato que o site mostra
+      placeholder: A5
+    validations: { required: true }
+  - type: input
+    id: correto
+    attributes:
+      label: Estrato que deveria mostrar
+      placeholder: A3
+    validations: { required: true }
+  - type: textarea
+    id: porque
+    attributes:
+      label: Por quê, e onde conferir
+      description: |
+        O essencial. Qual número está errado (percentil, h5, classificação da
+        CE-SBC) e **o link onde se confere**. Sem fonte não dá para aceitar.
+      placeholder: |
+        O h5 no Scholar é 23, não 16 — o site casou com a entrada em português,
+        que tem menos cobertura: https://scholar.google.com/...
+    validations: { required: true }
