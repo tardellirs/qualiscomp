@@ -110,6 +110,7 @@
   .cab { display: grid; grid-template-columns: auto 1fr auto; }
   .cab__marca {
     grid-column: 2; justify-self: center; text-align: center;
+    min-inline-size: 0; overflow-wrap: anywhere;
     font-weight: 700; letter-spacing: -.015em; font-size: 1.08rem;
     line-height: 1.18; color: var(--txt); text-decoration: none;
   }
@@ -190,6 +191,15 @@
   @media (max-width: 46rem) {
     .cab__marca { font-size: .95rem; }
     .cab__marca span { font-size: .74rem; }
+  }
+  /* Em 320px o cabeçalho não comporta marca + menu + título + tema + GitHub.
+     O GitHub sai primeiro: ele está no rodapé da /sobre/ e no README, e é o
+     único ali que não serve para usar o site. */
+  @media (max-width: 30rem) {
+    .cab { gap: .4rem; padding-inline: .6rem; }
+    .cab__gh { display: none; }
+    .cab__marca { font-size: .84rem; }
+    .cab__marca span { font-size: .68rem; }
   }
 
   .lado {

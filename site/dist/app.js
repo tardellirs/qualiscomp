@@ -22,9 +22,13 @@ const ESTRATOS = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'];
    quem chega sem saber o nome do veículo. Cobre só eventos: as CEs não
    classificam periódicos. */
 const FLAGS = { subareas: false };
-for (const f of new URLSearchParams(location.search).getAll('flag')) {
-  if (f.startsWith('-')) FLAGS[f.slice(1)] = false;
-  else FLAGS[f] = true;
+// `location` não existe fora do navegador, e este módulo é executado em Node
+// pelo teste que monta as 3.816 fichas. Sem a guarda, o teste quebra inteiro.
+if (typeof location !== 'undefined') {
+  for (const f of new URLSearchParams(location.search).getAll('flag')) {
+    if (f.startsWith('-')) FLAGS[f.slice(1)] = false;
+    else FLAGS[f] = true;
+  }
 }
 const CORTE_PCT = { A1: 87.5, A2: 75, A3: 62.5, A4: 50, A5: 37.5, A6: 25, A7: 12.5 };
 const CORTE_H5 = { A1: 35, A2: 25, A3: 20, A4: 15, A5: 12, A6: 9, A7: 6, A8: 1 };
