@@ -122,12 +122,18 @@ function aplicar() {
     estrato: (a, b) => (a[1].e || 'Z').localeCompare(b[1].e || 'Z') || cmpNome(a, b),
     indicador: (a, b) => (b[1].i ?? -1) - (a[1].i ?? -1) || cmpNome(a, b),
     nome: cmpNome,
-    // Estado de abertura: periódicos primeiro, depois eventos, cada grupo em
-    // ordem alfabética. Em ordem puramente alfabética a primeira tela ficava
-    // tomada por conferências da ACM e da AAAI, e o site parecia ser só de
-    // eventos. Vale só quando não há busca nem ordenação escolhida.
-    inicial: (a, b) =>
-      (a[1].t === 'p' ? 0 : 1) - (b[1].t === 'p' ? 0 : 1) || cmpNome(a, b),
+    // Estado de abertura, em três blocos: periódicos da área de Computação,
+    // depois os demais periódicos, depois os eventos — cada bloco alfabético.
+    //
+    // Em ordem puramente alfabética a primeira tela ficava tomada por
+    // conferências da ACM e da AAAI, e o site parecia ser só de eventos. E a
+    // base tem 239 revistas de outras áreas (multidisciplinares, onde também
+    // se publica computação): elas contam pela regra, mas não são o que quem
+    // abre o site espera ver primeiro.
+    inicial: (a, b) => {
+      const bloco = (v) => (v.t !== 'p' ? 2 : v.k ? 0 : 1);
+      return bloco(a[1]) - bloco(b[1]) || cmpNome(a, b);
+    },
   };
   const criterio = e.ordem !== 'relevancia' ? e.ordem : (q ? 'relevancia' : 'inicial');
   rs.sort(ord[criterio]);

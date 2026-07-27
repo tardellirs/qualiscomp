@@ -188,6 +188,7 @@ def _para_fonte(e: dict) -> Fonte | None:
     # ISSN, que o site prometia no campo e não entregava.
     f.issns = [i for i in issns if i]  # type: ignore[attr-defined]
     f.ano_citescore = ano  # type: ignore[attr-defined]
+    f.areas = sorted({a.get("@abbrev") for a in areas if a.get("@abbrev")})  # type: ignore[attr-defined]
     return f
 
 
@@ -244,8 +245,13 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
             elif f.percentil > atual.percentil:
                 bd[k] = f
                 atualizados += 1
-            elif getattr(f, "issns", None) and not getattr(atual, "issns", None):
-                atual.issns = f.issns  # type: ignore[attr-defined]
+            else:
+                # Mantém o percentil maior, mas aproveita os campos que só a
+                # API traz e o export não tinha.
+                if f.issns and not atual.issns:
+                    atual.issns = f.issns
+                if f.areas and not atual.areas:
+                    atual.areas = f.areas
 
     import gzip
     from dataclasses import asdict

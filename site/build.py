@@ -78,6 +78,7 @@ class Veiculo:
     h5_sbc: int | None = None
     e_sbc: bool = False
     issns: list[str] = field(default_factory=list)
+    e_computacao: bool = False
     fronteira: str = ""
     nota: str = ""
     # Base do simulador: o estrato que o INDICADOR sozinho dá, antes de
@@ -107,6 +108,8 @@ class Veiculo:
             d["a"] = " · ".join(self.apelidos)
         if self.issns:
             d["s2"] = self.issns
+        if self.e_computacao:
+            d["k"] = 1          # revista da área de Computação no ASJC
         return d
 
 
@@ -227,6 +230,7 @@ def montar_periodicos() -> list[Veiculo]:
                 percentil=fonte.percentil,
                 e_sbc=fonte.e_sbc,
                 issns=list(getattr(fonte, "issns", []) or []),
+                e_computacao=fonte.e_computacao,
                 estrato_base=c.estrato,
                 apelidos=siglas_do_titulo(fonte.titulo),
                 fronteira=_fronteira_percentil(fonte.percentil, c.estrato),

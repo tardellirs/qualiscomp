@@ -56,6 +56,29 @@ class Fonte:
     # Vem só da API da Elsevier; o export da tela Scopus Sources não traz ISSN.
     issns: list[str] = field(default_factory=list)
     ano_citescore: int | None = None
+    # Áreas de topo do ASJC da revista (COMP, MULT, MEDI...). Vem da API; o
+    # export manual não traz, e aí inferimos pelo nome da categoria.
+    areas: list[str] = field(default_factory=list)
+
+    @property
+    def e_computacao(self) -> bool:
+        """A revista pertence à área de Computação do ASJC.
+
+        A regra da CAPES não exige isso — artigo de Computação em revista de
+        outra área conta igual. Serve só para ordenar a tela de abertura por
+        quem chega: gente da Computação.
+        """
+        if self.areas:
+            return "COMP" in self.areas
+        c = (self.categoria or "").lower()
+        return any(
+            m in c
+            for m in (
+                "comput", "software", "information system", "artificial",
+                "vision and pattern", "hardware", "networks and communi",
+                "signal processing", "human-computer", "theoretical comput",
+            )
+        )
 
     @property
     def e_sbc(self) -> bool:
