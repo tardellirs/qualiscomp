@@ -444,6 +444,19 @@ addEventListener('DOMContentLoaded', async () => {
     if (el) el.textContent = BASE.snapshot;
   }
 
+  // A marca no canto esquerdo devolve o estado inicial sem recarregar: fecha a
+  // ficha, limpa busca e filtros, volta a ordenação e sobe a lista.
+  $('#ir-inicio').addEventListener('click', () => {
+    if (atual) fechar();
+    $('#form-filtros').reset();
+    $('#q').value = '';
+    $('#ordem').value = 'relevancia';
+    history.replaceState(null, '', location.pathname);
+    rodar();
+    $('.rolo').scrollTop = 0;
+    if (matchMedia('(pointer: fine)').matches) $('#q').focus();
+  });
+
   $('#lista').addEventListener('click', (e) => {
     const b = e.target.closest('[data-slug]');
     if (b) abrir(b.dataset.slug);

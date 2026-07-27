@@ -96,7 +96,10 @@
     background: var(--vidro);
     backdrop-filter: blur(14px) saturate(1.3) brightness(var(--vidro-norm));
     -webkit-backdrop-filter: blur(14px) saturate(1.3) brightness(var(--vidro-norm));
-    z-index: 30;
+    /* Acima do fundo escurecido do painel de detalhe (45), abaixo do painel
+       (50): com a ficha aberta, o cabeçalho continua clicável. Antes o fundo
+       cobria tudo e a marca, o menu e a navegação ficavam mortos. */
+    z-index: 46;
   }
   /* Título centralizado, sem cinza: é o nome do produto, e quem cai aqui pelo
      buscador precisa entender em um segundo o que está vendo. */
@@ -117,8 +120,40 @@
     color: var(--txt-2);
   }
   .cab__gh:hover { color: var(--txt); background: var(--acento-fr); }
-  .cab__menu { grid-column: 1; min-inline-size: 2.75rem; min-block-size: 2.75rem;
+  .cab__esq { grid-column: 1; display: flex; gap: .35rem; align-items: center; }
+  .cab__menu { min-inline-size: 2.75rem; min-block-size: 2.75rem;
                display: grid; place-items: center; }
+
+  /* A marca são as barras da própria rampa de estratos, com o ponto marcando o
+     A1 — o mesmo vocabulário visual dos chips da lista. Clicar volta ao estado
+     inicial: sem busca, sem filtro, sem ficha aberta. */
+  .cab__logo {
+    display: grid; place-items: center;
+    inline-size: 2.75rem; block-size: 2.75rem;
+    border-radius: 11px; padding: .45rem;
+    background: var(--painel-2);
+    border: 1px solid var(--borda);
+    cursor: pointer;
+    transition: transform .16s cubic-bezier(.2,.8,.3,1),
+                border-color .16s, background-color .16s;
+  }
+  .cab__logo svg { inline-size: 100%; block-size: 100%; overflow: visible; }
+  .cab__logo rect, .cab__logo circle { transition: y .22s ease, height .22s ease, cy .22s ease; }
+  .cab__logo:hover {
+    border-color: var(--acento);
+    background: var(--acento-fr);
+    transform: translateY(-1px);
+  }
+  /* As barras "crescem" no hover: o gesto conta o que o clique faz — recomeçar. */
+  .cab__logo:hover rect:nth-child(1) { y: 13; height: 11; }
+  .cab__logo:hover rect:nth-child(2) { y: 9;  height: 15; }
+  .cab__logo:hover rect:nth-child(3) { y: 5;  height: 19; }
+  .cab__logo:hover circle { cy: 3.4; }
+  .cab__logo:active { transform: translateY(0) scale(.96); }
+  @media (prefers-reduced-motion: reduce) {
+    .cab__logo, .cab__logo rect, .cab__logo circle { transition: none; }
+    .cab__logo:hover rect, .cab__logo:hover circle { y: revert; height: revert; cy: revert; }
+  }
   @media (max-width: 46rem) {
     .cab__marca { font-size: .95rem; }
     .cab__marca span { font-size: .74rem; }

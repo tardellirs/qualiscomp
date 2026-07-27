@@ -55,7 +55,20 @@
 <div class="app" id="app">
 
   <header class="cab">
-    <label class="btn cab__menu" for="filtros" title="Filtros">☰</label>
+    <div class="cab__esq">
+      <button class="cab__logo" id="ir-inicio" type="button"
+              title="Voltar ao início e limpar os filtros"
+              aria-label="Voltar ao início e limpar os filtros">
+        <svg viewBox="0 0 26 26" aria-hidden="true" focusable="false">
+          <rect x="2"  y="15" width="4.6" height="9"  rx="2" fill="var(--e7)"/>
+          <rect x="8.7" y="11" width="4.6" height="13" rx="2" fill="var(--e5)"/>
+          <rect x="15.4" y="6.5" width="4.6" height="17.5" rx="2" fill="var(--e3)"/>
+          <circle cx="22.3" cy="4.2" r="3.1" fill="var(--e1)"/>
+        </svg>
+      </button>
+      <label class="btn cab__menu" for="filtros" title="Filtros"
+             aria-label="Abrir filtros">☰</label>
+    </div>
     <div class="cab__marca">Classificador de Periódicos e eventos CAPES (2025-2028)
       <span>Área: 02 &mdash; Computação</span></div>
     <div class="cab__dir">
