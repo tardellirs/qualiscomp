@@ -77,6 +77,7 @@ class Veiculo:
     entradas: list[str] = field(default_factory=list)
     h5_sbc: int | None = None
     e_sbc: bool = False
+    issns: list[str] = field(default_factory=list)
     fronteira: str = ""
     nota: str = ""
     # Base do simulador: o estrato que o INDICADOR sozinho dá, antes de
@@ -104,6 +105,8 @@ class Veiculo:
             d["i"] = round(ind, 1) if isinstance(ind, float) else ind
         if self.apelidos:
             d["a"] = " · ".join(self.apelidos)
+        if self.issns:
+            d["s2"] = self.issns
         return d
 
 
@@ -223,6 +226,7 @@ def montar_periodicos() -> list[Veiculo]:
                 passos=passos,
                 percentil=fonte.percentil,
                 e_sbc=fonte.e_sbc,
+                issns=list(getattr(fonte, "issns", []) or []),
                 estrato_base=c.estrato,
                 apelidos=siglas_do_titulo(fonte.titulo),
                 fronteira=_fronteira_percentil(fonte.percentil, c.estrato),

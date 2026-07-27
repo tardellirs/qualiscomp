@@ -14,7 +14,7 @@ import sys
 
 from . import eventos as ev
 from . import h5 as h5mod
-from . import coleta, openalex, rules, scopus, scopus_export, validacao
+from . import coleta, elsevier, openalex, rules, scopus, scopus_export, validacao
 
 AVISO_PROXY = (
     "percentil ESTIMADO via OpenAlex (2yr_mean_citedness ranqueado entre os "
@@ -264,6 +264,11 @@ def cmd_validar(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_importar_api(args: argparse.Namespace) -> int:
+    elsevier.importar(args.areas)
+    return 0
+
+
 def cmd_importar_scopus(args: argparse.Namespace) -> int:
     scopus_export.importar(args.arquivos, mesclar=not args.substituir)
     return 0
@@ -380,6 +385,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("nome")
     p.add_argument("--email", required=True)
     p.set_defaults(func=cmd_h5)
+
+    p = sub.add_parser(
+        "importar-api",
+        help="busca percentis pela API da Elsevier (precisa de ELSEVIER_API_KEY)",
+    )
+    p.add_argument(
+        "--areas", nargs="+", default=["COMP"], choices=sorted(elsevier.AREAS),
+        help="áreas de topo do ASJC a varrer (padrão: COMP)",
+    )
+    p.set_defaults(func=cmd_importar_api)
 
     p = sub.add_parser(
         "importar-scopus",

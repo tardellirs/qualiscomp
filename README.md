@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://qualiscomp.com"><img alt="Site" src="https://img.shields.io/badge/site-qualiscomp.com-2f6feb?style=flat-square"></a>
   <a href="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml"><img alt="Testes" src="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml/badge.svg"></a>
-  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.107-0b7285?style=flat-square">
+  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.849-0b7285?style=flat-square">
   <img alt="Ciclo" src="https://img.shields.io/badge/ciclo-2025--2028-495057?style=flat-square">
   <a href="LICENSE"><img alt="Licença" src="https://img.shields.io/badge/c%C3%B3digo-MIT-1c7ed6?style=flat-square"></a>
   <a href="CONTRIBUTING.md"><img alt="Contribuições" src="https://img.shields.io/badge/PRs-bem--vindos-2b8a3e?style=flat-square"></a>
@@ -66,6 +66,7 @@ python -m qualis evento SBES
 
 | Fonte | O que fornece | No repositório |
 |---|---|---|
+| API Serial Title da Elsevier | percentil e ISSN dos periódicos | **não** — uso acadêmico, sem redistribuição |
 | Scopus Sources (export) | percentil dos periódicos | **não** — assinatura institucional |
 | Google Scholar Metrics | h5 dos eventos | sim (`data/scholar_cache.json.gz`) |
 | Planilha das CEs da SBC | Top10 / Top20 / relevante | **não** — sem licença declarada |
@@ -76,7 +77,9 @@ Os arquivos de origem sob assinatura ou sem licença declarada ficam fora do
 versionamento (ver `.gitignore`). Para reconstruir do zero é preciso baixá-los:
 
 ```bash
-python -m qualis importar-scopus ~/Downloads/*-source-results.xlsx
+export ELSEVIER_API_KEY=...                # dev.elsevier.com/apikey/manage
+python -m qualis importar-api --areas COMP MULT
+python -m qualis importar-scopus ~/Downloads/*-source-results.xlsx   # alternativa manual
 python -m qualis coletar-eventos          # baixa a planilha da SBC e consulta o Scholar
 python -m qualis atualizar --email voce@exemplo
 ```

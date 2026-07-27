@@ -31,6 +31,7 @@ async function carregar() {
     v._n = norm(v.n);
     v._g = norm(v.g || '');
     v._ap = (v.a || '').split(' · ').map(norm).filter(Boolean);
+    v._issn = v.s2 || [];   // sem hífen, como a API devolve
     v._a = v._ap.join(' ');
   });
 }
@@ -62,6 +63,10 @@ function estado() {
 
 function pontuar(v, q) {
   const { _n: a, _g: s, _a: ap } = v;
+  // ISSN: a pessoa digita com ou sem hífen, e norm() já tirou a pontuação.
+  if (v._issn.length && /^\d{7}[\dx]$/i.test(q.replace(/ /g, ''))) {
+    if (v._issn.includes(q.replace(/ /g, '').toUpperCase())) return 1000;
+  }
   if (s && s === q) return 1000;
   if (a === q) return 900;
   if (v._ap.some((x) => x === q)) return 850;

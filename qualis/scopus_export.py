@@ -18,7 +18,7 @@ from __future__ import annotations
 import gzip
 import json
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 
 BD = Path(__file__).resolve().parent.parent / "data" / "scopus_percentis.json.gz"
@@ -53,6 +53,9 @@ class Fonte:
     snip: float | None
     sjr: float | None
     editora: str | None
+    # Vem só da API da Elsevier; o export da tela Scopus Sources não traz ISSN.
+    issns: list[str] = field(default_factory=list)
+    ano_citescore: int | None = None
 
     @property
     def e_sbc(self) -> bool:
@@ -217,7 +220,11 @@ def carregar() -> dict[str, Fonte]:
     if not BD.exists():
         return {}
     with gzip.open(BD, "rt", encoding="utf-8") as fh:
-        return {k: Fonte(**v) for k, v in json.load(fh).items()}
+        campos = {f.name for f in fields(Fonte)}
+        return {
+            k: Fonte(**{c: v for c, v in d.items() if c in campos})
+            for k, d in json.load(fh).items()
+        }
 
 
 # Palavras genéricas demais para sustentar um match sozinhas.
