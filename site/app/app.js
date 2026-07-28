@@ -121,8 +121,9 @@ function bonusEstrato(v) {
 }
 
 function aplicar() {
-  // Trocar de tipo pode invalidar as subáreas escolhidas; nesse caso refiltra.
+  // Trocar de tipo pode invalidar filtros já escolhidos; nesses casos refiltra.
   if (desenharSubareas()) return aplicar();
+  if (ajustarAPC()) return aplicar();
   const e = estado();
   const q = norm(e.q);
   let rs = [];
@@ -179,6 +180,22 @@ function aplicar() {
 function chip(e, extra = '') {
   if (!e) return `<span class="e e--v ${extra}">—</span>`;
   return `<span class="e ${extra}" data-e="${e}">${e}</span>`;
+}
+
+function ajustarAPC() {
+  // Só periódico tem taxa de publicação: acordo de APC é entre a CAPES e
+  // editora de revista. Com o filtro em Eventos a opção não se aplica, e
+  // deixá-la marcada devolveria lista vazia sem explicar por quê.
+  const caixa = $('#caixa-apc');
+  const campo = caixa?.querySelector('input');
+  if (!caixa || !campo) return false;
+  const some = new FormData($('#form-filtros')).get('tipo') === 'e';
+  caixa.hidden = some;
+  if (some && campo.checked) {
+    campo.checked = false;
+    return true;   // pede novo filtro, já sem o APC
+  }
+  return false;
 }
 
 function desenharSubareas() {
