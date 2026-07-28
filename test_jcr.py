@@ -132,3 +132,38 @@ def test_categoria_no_teto_do_export_e_recusada(tmp_path, capsys):
             w.writerow([f"R{i}", f"{1000 + i:04d}-0000", "N/A", str(600 - i)])
     assert jcr.carregar(tmp_path) == {}
     assert "no teto" in capsys.readouterr().out
+
+
+def _parte(pasta, nome, categoria, linhas):
+    p = pasta / f"x_JCR_JournalResults_{nome}.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow([f"Selected Categories: {categoria} Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "2025 JIF"])
+        w.writerows(linhas)
+
+
+def test_categoria_partida_e_ranqueada_inteira(tmp_path):
+    """Categoria grande sai em partes (por faixa de JIF) e tem que ser unida.
+
+    Ranquear cada parte isolada daria N errado nas duas: a pior revista da
+    metade de baixo apareceria como topo de uma categoria que não existe.
+    """
+    _parte(tmp_path, "alta", "CAT", [["A", "1111-1111", "N/A", "9.0"],
+                                     ["B", "2222-2222", "N/A", "5.0"]])
+    _parte(tmp_path, "baixa", "CAT", [["C", "3333-3333", "N/A", "1.0"],
+                                      ["D", "4444-4444", "N/A", "0.5"]])
+    base = jcr.carregar(tmp_path)
+    assert jcr.buscar(["1111-1111"], base).total == 4          # N da categoria inteira
+    assert jcr.buscar(["1111-1111"], base).percentil == 87.5   # 1ª de 4
+    assert jcr.buscar(["3333-3333"], base).percentil == 37.5   # 3ª de 4, não 1ª de 2
+
+
+def test_revista_repetida_entre_as_partes_conta_uma_vez(tmp_path):
+    """As partes se sobrepõem nas bordas — contar duas vezes inflaria N."""
+    _parte(tmp_path, "a", "CAT", [["A", "1111-1111", "N/A", "9.0"],
+                                  ["B", "2222-2222", "N/A", "5.0"]])
+    _parte(tmp_path, "b", "CAT", [["B", "2222-2222", "N/A", "5.0"],
+                                  ["C", "3333-3333", "N/A", "1.0"]])
+    assert jcr.buscar(["1111-1111"], jcr.carregar(tmp_path)).total == 3

@@ -124,25 +124,34 @@ def _posicoes(ordenadas: list[float]) -> list[int]:
 
 
 def carregar(pasta: Path | None = None) -> dict[str, Revista]:
-    """ISSN normalizado -> revista com o MAIOR percentil entre suas categorias."""
+    """ISSN normalizado -> revista com o MAIOR percentil entre suas categorias.
+
+    O ranking é feito sobre a **categoria inteira**, juntando os arquivos que a
+    compõem. Isso importa porque uma categoria grande não cabe num export só:
+    Education tem 775 revistas e sai em duas partes (JIF < 2 e JIF >= 2).
+    Ranquear cada parte isoladamente daria N errado nas duas — a metade de baixo
+    viraria uma categoria inteira e suas piores revistas apareceriam no topo.
+    """
     pasta = pasta or DADOS
-    melhor: dict[str, Revista] = {}
+    porcategoria: dict[str, dict[tuple[str, ...], tuple[dict, float]]] = {}
     truncadas: list[tuple[str, int]] = []
 
     for caminho in sorted(pasta.glob(PADRAO)):
         categoria, linhas = _ler(caminho)
-        validas = [(r, _numero(r.get("2025 JIF"))) for r in linhas]
-        validas = [(r, j) for r, j in validas if j is not None]
-        validas.sort(key=lambda rj: -rj[1])
-        total = len(validas)
-        if not total:
+        if not linhas:
             continue
-        if total >= TETO_DO_EXPORT:
-            truncadas.append((categoria, total))
+        completas = [(r, _numero(r.get("2025 JIF"))) for r in linhas]
+        completas = [(r, j) for r, j in completas if j is not None]
+        if len(completas) >= TETO_DO_EXPORT:
+            # Este ARQUIVO bateu no teto e veio cortado. Não dá para saber o que
+            # ficou de fora, então a categoria toda fica sem percentil.
+            truncadas.append((categoria, len(completas)))
+            porcategoria[categoria] = {}
             continue
-
-        for (linha, jif), posicao in zip(validas, _posicoes([j for _, j in validas])):
-            pct = (total - posicao + 0.5) / total * 100
+        if porcategoria.get(categoria) == {}:
+            continue  # já descartada por truncamento
+        alvo = porcategoria.setdefault(categoria, {})
+        for linha, jif in completas:
             issns = tuple(
                 i
                 for i in (
@@ -153,9 +162,23 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
             )
             if not issns:
                 continue
+            # Partes de uma mesma categoria podem se sobrepor nas bordas, e uma
+            # categoria pode ter sido exportada duas vezes. A chave por ISSN faz
+            # a repetição virar uma revista só — contá-la duas vezes inflaria N
+            # e baixaria o percentil de todo mundo.
+            alvo[issns] = (linha, jif)
+
+    melhor: dict[str, Revista] = {}
+    for categoria, revistas in porcategoria.items():
+        validas = sorted(revistas.items(), key=lambda kv: -kv[1][1])
+        total = len(validas)
+        if not total:
+            continue
+        posicoes = _posicoes([jif for _, (_, jif) in validas])
+        for (issns, (linha, jif)), posicao in zip(validas, posicoes):
             rev = Revista(
                 titulo=(linha.get("Journal name") or "").strip(),
-                percentil=round(pct, 1),
+                percentil=round((total - posicao + 0.5) / total * 100, 1),
                 categoria=categoria,
                 jif=jif,
                 posicao=posicao,
@@ -169,9 +192,9 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
 
     for categoria, n in truncadas:
         print(
-            f"  JCR: categoria {categoria!r} ignorada — {n} linhas, no teto de "
-            f"{TETO_DO_EXPORT} do export. Reexporte em partes (por quartil ou "
-            f"edição) para o percentil ficar correto."
+            f"  JCR: categoria {categoria!r} ignorada — um arquivo com {n} "
+            f"linhas, no teto de {TETO_DO_EXPORT} do export. Reexporte em "
+            f"partes (por faixa de JIF) para o percentil ficar correto."
         )
     return melhor
 
