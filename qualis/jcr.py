@@ -52,6 +52,11 @@ DADOS = Path(__file__).resolve().parent.parent / "data"
 PADRAO = "*JCR_JournalResults*.csv"
 
 _CABECALHO = "Journal name"
+
+# A tela do JCR exporta no máximo 600 linhas. Uma categoria que chega exatamente
+# nesse número quase certamente foi cortada — e aí N está errado, o que erra o
+# percentil de TODAS as revistas dela. Melhor não ter o dado do que tê-lo torto.
+TETO_DO_EXPORT = 600
 _CATEGORIA = re.compile(r"Selected Categories:\s*(.*?)\s*Selected Editions")
 
 
@@ -122,6 +127,7 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
     """ISSN normalizado -> revista com o MAIOR percentil entre suas categorias."""
     pasta = pasta or DADOS
     melhor: dict[str, Revista] = {}
+    truncadas: list[tuple[str, int]] = []
 
     for caminho in sorted(pasta.glob(PADRAO)):
         categoria, linhas = _ler(caminho)
@@ -130,6 +136,9 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
         validas.sort(key=lambda rj: -rj[1])
         total = len(validas)
         if not total:
+            continue
+        if total >= TETO_DO_EXPORT:
+            truncadas.append((categoria, total))
             continue
 
         for (linha, jif), posicao in zip(validas, _posicoes([j for _, j in validas])):
@@ -157,6 +166,13 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
                 atual = melhor.get(i)
                 if atual is None or rev.percentil > atual.percentil:
                     melhor[i] = rev
+
+    for categoria, n in truncadas:
+        print(
+            f"  JCR: categoria {categoria!r} ignorada — {n} linhas, no teto de "
+            f"{TETO_DO_EXPORT} do export. Reexporte em partes (por quartil ou "
+            f"edição) para o percentil ficar correto."
+        )
     return melhor
 
 

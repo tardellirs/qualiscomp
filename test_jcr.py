@@ -113,3 +113,22 @@ def test_maior_percentil_entre_categorias(tmp_path):
 
 def test_pasta_vazia_nao_quebra_o_build(tmp_path):
     assert jcr.carregar(tmp_path) == {}
+
+
+def test_categoria_no_teto_do_export_e_recusada(tmp_path, capsys):
+    """600 linhas é o limite da tela do JCR: a categoria veio cortada.
+
+    Com N errado, o percentil de TODAS as revistas da categoria sai errado.
+    Publicar número torto é pior que não ter o dado — foi o que aconteceu com
+    EDUCATION & EDUCATIONAL RESEARCH, que exportou exatamente 600.
+    """
+    p = tmp_path / "x_JCR_JournalResults_edu.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Selected Categories: CHEIA Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "2025 JIF"])
+        for i in range(jcr.TETO_DO_EXPORT):
+            w.writerow([f"R{i}", f"{1000 + i:04d}-0000", "N/A", str(600 - i)])
+    assert jcr.carregar(tmp_path) == {}
+    assert "no teto" in capsys.readouterr().out
