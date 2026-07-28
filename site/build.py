@@ -31,7 +31,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
-from qualis import apc, historico_oficial, oficial, rules, sbc, scopus_export  # noqa: E402
+from qualis import apc, historico_oficial, jcr, oficial, rules, sbc, scopus_export  # noqa: E402
 from qualis.coleta import Cache, resolver  # noqa: E402
 
 SAIDA = Path(__file__).resolve().parent / "dist"
@@ -85,6 +85,7 @@ class Veiculo:
     descontinuada: bool = False
     # [ano, percentil, estrato, ano_completo?] — só periódicos vindos da API.
     historico: list[list] = field(default_factory=list)
+    percentil_wos: float | None = None
     qualis_ciclos: list[list] = field(default_factory=list)
     apc_capes: bool = False
     apc_editora: str = ""
@@ -249,6 +250,7 @@ def _fronteira_h5(h5: int, estrato: str) -> str:
 def montar_periodicos() -> list[Veiculo]:
     acordos = apc.carregar()
     ciclos = historico_oficial.carregar()
+    wos = jcr.carregar()
     out: list[Veiculo] = []
     for fonte in scopus_export.carregar().values():
         if fonte.parece_evento:
@@ -260,22 +262,33 @@ def montar_periodicos() -> list[Veiculo]:
             # modelado aqui. Classificá-las por percentil seria usar a regra
             # errada, então ficam de fora.
             continue
+        # A regra manda usar "o percentil da WoS ou Scopus - o maior entre os
+        # dois". Com só uma base, toda estimativa era um piso.
+        no_wos = jcr.buscar(getattr(fonte, "issns", []) or [], wos)
         c = rules.classificar_periodico(
             fonte.titulo,
             percentil_scopus=fonte.percentil,
+            percentil_wos=no_wos.percentil if no_wos else None,
             e_sbc=fonte.e_sbc,
             rotulo_scopus="Scopus",
         )
+        venceu_wos = no_wos is not None and no_wos.percentil > fonte.percentil
+        pct = no_wos.percentil if venceu_wos else fonte.percentil
+        base = "no Web of Science" if venceu_wos else "no Scopus"
         passos = [
             Passo(
-                rotulo=f"Percentil {fonte.percentil:.0f} no Scopus",
+                rotulo=f"Percentil {pct:.0f} {base}",
                 detalhe=(
                     f"corte de {c.estrato}: {rules.PERCENTIL_MINIMO[c.estrato]:.1f}"
                     if c.estrato in rules.PERCENTIL_MINIMO
                     else f"A8 é tudo abaixo de {rules.PERCENTIL_MINIMO['A7']:.1f}"
                 ),
                 estrato=c.estrato,
-                fonte=f"Scopus · categoria {fonte.categoria or '?'}",
+                fonte=(
+                    f"Web of Science · categoria {no_wos.categoria.title()}"
+                    if venceu_wos
+                    else f"Scopus · categoria {fonte.categoria or '?'}"
+                ),
             )
         ]
         if fonte.descontinuada:
@@ -322,6 +335,7 @@ def montar_periodicos() -> list[Veiculo]:
                     [ano, pct, rules.estrato_por_percentil(pct), completo]
                     for ano, pct, completo in fonte.historico
                 ],
+                percentil_wos=no_wos.percentil if no_wos else None,
                 qualis_ciclos=historico_oficial.buscar(
                     getattr(fonte, "issns", []) or [], ciclos
                 ),

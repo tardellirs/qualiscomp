@@ -20,3 +20,6 @@ package.json
 # Qualis oficial da Sucupira — publicação da CAPES, sem licença declarada
 data/classifica*.xls
 data/classifica*.xlsx
+
+# JCR/Clarivate — licenciado, via Portal de Periódicos da CAPES
+data/*JCR_JournalResults*.csv
