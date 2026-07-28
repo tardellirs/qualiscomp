@@ -301,18 +301,6 @@ def montar_periodicos() -> list[Veiculo]:
                 )
             )
         acordo = apc.buscar(getattr(fonte, "issns", []) or [], acordos)
-        if acordo:
-            passos.append(
-                Passo(
-                    rotulo="Taxa de publicação coberta pela CAPES",
-                    detalhe=f"acordo com {acordo.editora}"
-                    + (f", licença {acordo.licenca}" if acordo.licenca else "")
-                    + ". Não altera o estrato — muda quanto custa publicar.",
-                    estrato=c.estrato,
-                    fonte="Acordos de APC da CAPES",
-                    alerta="apc",
-                )
-            )
         out.append(
             Veiculo(
                 slug=f"p-{slugificar(fonte.titulo)}",

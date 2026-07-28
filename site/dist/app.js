@@ -508,7 +508,6 @@ async function abrir(slug) {
         instituições participantes — confirme se a sua está na lista.</p>
       ${d.apc_url ? `<p><a href="${esc(d.apc_url)}" target="_blank" rel="noopener"
          class="apc__link">Ver a revista na editora ↗</a></p>` : ''}
-      <p class="sim__ajuda">Não altera o estrato: muda quanto custa publicar.</p>
     </div>` : ''}
     ${regua(d)}
     ${historico(d)}
