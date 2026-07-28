@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import csv
 import re
+from decimal import ROUND_HALF_UP, Decimal
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -77,8 +78,19 @@ def normalizar_issn(v: object) -> str:
 
 
 def _numero(v: object) -> float | None:
-    """O JCR grafa milhares com vírgula ("123,304") e ausências como "N/A"."""
+    """O JCR grafa milhares com vírgula ("123,304") e ausências como "N/A".
+
+    Também grafa impacto muito baixo como **"<0.1"**. Essas revistas TÊM JIF e
+    entram no ranking da categoria — descartá-las encolhe N e baixa o percentil
+    de todas as outras. Em Education eram 16 de 760, e o erro resultante era de
+    um ponto percentual em toda a categoria.
+
+    Elas ficam no fim da fila, empatadas, que é como o próprio JCR as trata
+    (as 16 receberam percentil 2,0 idêntico).
+    """
     t = str(v or "").replace(",", "").strip()
+    if t.startswith("<"):
+        return 0.0
     try:
         return float(t)
     except ValueError:
@@ -104,6 +116,16 @@ def _ler(caminho: Path) -> tuple[str, list[dict]]:
         if r and r[0].strip() and "Copyright" not in r[0]
     ]
     return categoria, dados
+
+
+def _uma_casa(x: float) -> float:
+    """Arredonda para uma casa, meia para CIMA.
+
+    O `round()` do Python arredonda meia para o par ("bancário"), e isso
+    divergia do JCR em 39 das 760 revistas de Education. Meia para cima acerta
+    as 760.
+    """
+    return float(Decimal(str(x)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
 
 
 def _posicoes(ordenadas: list[float]) -> list[int]:
@@ -178,7 +200,7 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
         for (issns, (linha, jif)), posicao in zip(validas, posicoes):
             rev = Revista(
                 titulo=(linha.get("Journal name") or "").strip(),
-                percentil=round((total - posicao + 0.5) / total * 100, 1),
+                percentil=_uma_casa((total - posicao + 0.5) / total * 100),
                 categoria=categoria,
                 jif=jif,
                 posicao=posicao,
