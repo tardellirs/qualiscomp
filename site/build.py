@@ -31,7 +31,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
-from qualis import apc, oficial, rules, sbc, scopus_export  # noqa: E402
+from qualis import apc, historico_oficial, oficial, rules, sbc, scopus_export  # noqa: E402
 from qualis.coleta import Cache, resolver  # noqa: E402
 
 SAIDA = Path(__file__).resolve().parent / "dist"
@@ -85,6 +85,7 @@ class Veiculo:
     descontinuada: bool = False
     # [ano, percentil, estrato, ano_completo?] — só periódicos vindos da API.
     historico: list[list] = field(default_factory=list)
+    qualis_ciclos: list[list] = field(default_factory=list)
     apc_capes: bool = False
     apc_editora: str = ""
     apc_licenca: str = ""
@@ -247,6 +248,7 @@ def _fronteira_h5(h5: int, estrato: str) -> str:
 
 def montar_periodicos() -> list[Veiculo]:
     acordos = apc.carregar()
+    ciclos = historico_oficial.carregar()
     out: list[Veiculo] = []
     for fonte in scopus_export.carregar().values():
         if fonte.parece_evento:
@@ -332,6 +334,9 @@ def montar_periodicos() -> list[Veiculo]:
                     [ano, pct, rules.estrato_por_percentil(pct), completo]
                     for ano, pct, completo in fonte.historico
                 ],
+                qualis_ciclos=historico_oficial.buscar(
+                    getattr(fonte, "issns", []) or [], ciclos
+                ),
                 apc_capes=bool(acordo),
                 apc_editora=acordo.editora if acordo else "",
                 apc_licenca=acordo.licenca if acordo else "",

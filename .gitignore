@@ -16,3 +16,7 @@ package.json
 
 # Sistema ---------------------------------------------------------------------
 .DS_Store
+
+# Qualis oficial da Sucupira — publicação da CAPES, sem licença declarada
+data/classifica*.xls
+data/classifica*.xlsx

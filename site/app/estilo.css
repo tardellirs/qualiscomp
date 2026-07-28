@@ -359,6 +359,21 @@
 
   /* APC: a taxa que a revista cobraria do autor e a CAPES cobre. Não muda o
      estrato — por isso a cor é a de acento, não a da rampa dos estratos. */
+  /* Ciclos anteriores do Qualis. Deliberadamente fora da rampa de cor dos
+     estratos novos: as escalas não são equivalentes, e pintar um "B2" de 2013
+     com a cor de um estrato de 2025 afirmaria uma correspondência que a CAPES
+     nunca publicou. */
+  .ciclos { display: flex; flex-wrap: wrap; gap: .45rem; align-items: stretch; }
+  .ciclo { display: flex; flex-direction: column; gap: .3rem; align-items: center;
+           padding: .45rem .55rem; border: 1px solid var(--borda);
+           border-radius: 8px; min-inline-size: 5.1rem; }
+  .ciclo__rot { font-size: .68rem; color: var(--txt-3);
+                font-variant-numeric: tabular-nums; }
+  .ciclo__e { font-size: .84rem; font-weight: 700; color: var(--txt-2);
+              font-variant-numeric: tabular-nums; }
+  .ciclo--novo { border-color: color-mix(in oklab, var(--acento) 45%, var(--borda));
+                 background: color-mix(in oklab, var(--acento) 6%, transparent); }
+
   .tag-apc {
     font-size: .62rem; font-weight: 700; letter-spacing: .04em;
     padding: .1rem .3rem; border-radius: 4px; vertical-align: .05em;

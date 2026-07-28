@@ -331,34 +331,30 @@ function regua(d) {
 }
 
 function historico(d) {
-  const h = d.historico || [];
-  if (h.length < 2) return '';
-  // O ano em curso muda ao longo do ano e não classifica nada: vai marcado,
-  // e o estrato vigente é o do último ano completo.
-  const usado = [...h].reverse().find((x) => x[3]);
+  const h = d.qualis_ciclos || [];
+  if (!h.length) return '';
+  // A escala mudou entre os ciclos: até 2016 ia de A1 a B5, de 2017 em diante
+  // A1 a B4. Um "A2" de 2013 e um de 2021 saíram de réguas diferentes, e a
+  // CAPES nunca publicou equivalência — por isso o rótulo antigo aparece com
+  // estilo próprio, e não pintado com as cores dos estratos novos.
   return `<div class="cartao">
-    <h3>Percentil ano a ano</h3>
-    <div class="serie">
-      ${h.map(([ano, pct, est, completo]) => `
-        <div class="serie__ano ${!completo ? 'serie__ano--curso' : ''}
-             ${usado && ano === usado[0] ? 'serie__ano--usado' : ''}">
-          <span class="serie__rot">${ano}${completo ? '' : '*'}</span>
-          ${chip(est)}
-          <span class="serie__pct">${pct}%</span>
+    <h3>Como a CAPES classificou antes</h3>
+    <div class="ciclos">
+      ${h.map(([ciclo, e]) => `
+        <div class="ciclo">
+          <span class="ciclo__rot">${esc(ciclo)}</span>
+          <span class="ciclo__e">${esc(e)}</span>
         </div>`).join('')}
+      <div class="ciclo ciclo--novo">
+        <span class="ciclo__rot">2025-2028</span>
+        ${chip(d.estrato)}
+      </div>
     </div>
-    <p class="sim__ajuda" style="margin-block:.5rem 0">
-      ${usado ? `O estrato vem de <b>${usado[0]}</b>, o último ano completo.` : ''}
-      ${h.some((x) => !x[3]) ? ' O ano marcado com * ainda está em curso e muda até fechar.' : ''}
-      ${(() => {
-        const comp = h.filter((x) => x[3]);
-        if (comp.length < 2) return '';
-        const dif = Math.abs(ESTRATOS.indexOf(comp.at(-1)[2]) - ESTRATOS.indexOf(comp.at(-2)[2]));
-        return dif >= 2
-          ? ` <b>Oscilou ${dif} estratos</b> de um ano para o outro — em revista de
-             poucos artigos o percentil balança muito.`
-          : '';
-      })()}
+    <p class="sim__ajuda" style="margin-block:.6rem 0">
+      Qualis Periódicos oficial da área, publicado na Plataforma Sucupira.
+      <b>Os estratos não se comparam entre ciclos</b> — a escala mudou (até 2016
+      ia até B5; de 2017 a 2024, A1 a B4) e o ciclo 2025-2028 usa A1 a A8.
+      O de 2025-2028 é a estimativa deste site, não uma classificação da CAPES.
     </p>
   </div>`;
 }
