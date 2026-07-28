@@ -188,28 +188,91 @@ def test_arredonda_meia_para_cima():
 
 
 @tem_dados
-def test_education_reproduz_o_percentil_publicado():
-    """Education vem em duas partes e traz a coluna JIF Percentile, o que
-    permite conferir o caso difícil: categoria repartida, unida e ranqueada.
+def test_calculo_reproduz_o_percentil_publicado_de_education():
+    """Confere o CÁLCULO contra as 760 revistas de Education.
 
-    Confere as 760 de uma vez, em vez de uma amostra."""
-    publicado, calculado = {}, {}
+    O carregador hoje lê a coluna `JIF Percentile` quando ela existe, então
+    comparar a saída dele com o publicado seria tautológico. Aqui a coluna é
+    removida de propósito, forçando o caminho de reconstituição — que é o que
+    vale para todo export que não a traga.
+
+    É o caso mais difícil: categoria repartida em dois arquivos, unida por ISSN
+    e ranqueada inteira.
+    """
+    publicado, linhas_por_arquivo = {}, []
     for caminho in sorted(jcr.DADOS.glob(jcr.PADRAO)):
         cat, linhas = jcr._ler(caminho)
         if cat != "EDUCATION & EDUCATIONAL RESEARCH":
             continue
+        linhas_por_arquivo.append(linhas)
         for r in linhas:
-            p = jcr._numero(r.get("JIF Percentile"))
+            p = jcr._numero(r.get(jcr.COLUNA_PERCENTIL))
             if p is not None:
                 publicado[(r.get("Journal name") or "").strip()] = p
     if not publicado:
         pytest.skip("export de Education sem a coluna JIF Percentile")
-    for r in jcr.carregar().values():
-        if r.categoria == "EDUCATION & EDUCATIONAL RESEARCH":
-            calculado[r.titulo] = r.percentil
+
+    # Reconstitui do zero, sem olhar a coluna de percentil.
+    revistas = {}
+    for linhas in linhas_por_arquivo:
+        for r in linhas:
+            jif = jcr._numero(r.get("2025 JIF"))
+            k = tuple(
+                i
+                for i in (
+                    jcr.normalizar_issn(r.get("ISSN")),
+                    jcr.normalizar_issn(r.get("eISSN")),
+                )
+                if i
+            )
+            if jif is not None and k:
+                revistas[k] = (r, jif)
+    validas = sorted(revistas.values(), key=lambda rj: -rj[1])
+    n = len(validas)
+    pos = jcr._posicoes([j for _, j in validas])
+    calculado = {
+        (r.get("Journal name") or "").strip(): jcr._uma_casa((n - p + 0.5) / n * 100)
+        for (r, _), p in zip(validas, pos)
+    }
     divergem = {
         t: (p, calculado[t])
         for t, p in publicado.items()
         if t in calculado and abs(calculado[t] - p) >= 0.05
     }
-    assert not divergem, f"{len(divergem)} de {len(publicado)} divergem: {list(divergem.items())[:5]}"  # noqa: E501
+    assert n == len(publicado), f"N calculado {n} != {len(publicado)} publicados"
+    assert not divergem, f"{len(divergem)} de {len(publicado)} divergem"
+
+
+def test_export_por_pais_usa_a_coluna_e_nao_ranqueia(tmp_path):
+    """O export de revistas brasileiras filtra por país, não por categoria.
+
+    São 440 linhas de 122 categorias diferentes. Ranqueá-las juntas daria
+    percentil sem sentido — mas o arquivo traz `JIF Percentile`, então o valor
+    é lido, com a categoria de cada linha.
+    """
+    p = tmp_path / "x_JCR_JournalResults_br.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Selected Country/region: BRAZIL Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "Category", "2025 JIF",
+                    jcr.COLUNA_PERCENTIL])
+        w.writerow(["A", "1111-1111", "N/A", "HISTORY", "0.4", "12.5"])
+        w.writerow(["B", "2222-2222", "N/A", "LAW", "0.9", "88.0"])
+    base = jcr.carregar(tmp_path)
+    assert jcr.buscar(["1111-1111"], base).percentil == 12.5
+    assert jcr.buscar(["1111-1111"], base).categoria == "HISTORY"
+    assert jcr.buscar(["2222-2222"], base).percentil == 88.0
+
+
+def test_export_sem_categoria_e_sem_percentil_e_recusado(tmp_path, capsys):
+    """Sem categoria não dá para ranquear, e sem a coluna não dá para ler."""
+    p = tmp_path / "x_JCR_JournalResults_br.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Selected Country/region: BRAZIL Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "Category", "2025 JIF"])
+        w.writerow(["A", "1111-1111", "N/A", "HISTORY", "0.4"])
+    assert jcr.carregar(tmp_path) == {}
+    assert "ignorado" in capsys.readouterr().out
