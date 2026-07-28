@@ -535,6 +535,11 @@ def distribuicoes(vs: list[Veiculo]) -> dict:
     }
 
 
+def _mil(n: int) -> str:
+    """1234 -> "1.234" — separador de milhar do português."""
+    return f"{n:,}".replace(",", ".")
+
+
 def _sitemap(saida: Path, veiculos: list) -> None:
     """sitemap.xml e robots.txt — sem eles o buscador não acha as páginas."""
     urls = ["", "sobre/"]
@@ -659,14 +664,32 @@ def main() -> int:
 
     # Página única: a ferramenta em cima, o texto embaixo. A raiz é o que o
     # buscador indexa, e é a mesma coisa que a pessoa usa.
+    # Números que aparecem no HTML saem dos dados de fato gerados. Cravados à
+    # mão eles envelhecem calados: a descrição do Dataset ficou meses anunciando
+    # 1.983 periódicos quando já eram 2.692.
+    marcas = {
+        "{{N_PERIODICOS}}": _mil(sum(1 for v in veiculos if v.tipo == "periodico")),
+        "{{N_EVENTOS}}": _mil(sum(1 for v in veiculos if v.tipo == "evento")),
+        "{{N_TOTAL}}": _mil(len(veiculos)),
+    }
     for nome in ("index.html", "estilo.css", "pagina.css", "app.js", "tema.js"):
-        shutil.copy2(APP / nome, SAIDA / nome)
+        destino = SAIDA / nome
+        if nome.endswith(".html"):
+            texto = (APP / nome).read_text(encoding="utf-8")
+            for k, v in marcas.items():
+                texto = texto.replace(k, v)
+            destino.write_text(texto, encoding="utf-8")
+        else:
+            shutil.copy2(APP / nome, destino)
     # A explicação vive em /sobre/: quem chega vai direto para a busca, e quem
     # quer entender tem uma página própria — que é também a que carrega o FAQ
     # para o buscador.
     sobre = SAIDA / "sobre"
     sobre.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(APP / "sobre.html", sobre / "index.html")
+    texto = (APP / "sobre.html").read_text(encoding="utf-8")
+    for k, v in marcas.items():
+        texto = texto.replace(k, v)
+    (sobre / "index.html").write_text(texto, encoding="utf-8")
     shutil.copy2(APP / "sobre.js", sobre / "sobre.js")
 
     _sitemap(SAIDA, veiculos)
