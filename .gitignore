@@ -14,6 +14,9 @@ node_modules/
 package-lock.json
 package.json
 
+# Instruções locais para agentes de código — não fazem parte do projeto
+CLAUDE.md
+
 # Sistema ---------------------------------------------------------------------
 .DS_Store
 
