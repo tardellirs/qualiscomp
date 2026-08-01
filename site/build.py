@@ -657,20 +657,15 @@ def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
         )
         alvo = e.site or e.url_sbc
         nome = _html.escape(e.titulo)
+        # A data é fato estável; contagem regressiva e rótulo de "encerrada"
+        # seriam calculados no build e ficariam errados no dia seguinte.
         prazo_html = ""
         if p and p.prazo:
-            dias = (p.prazo - hoje).days
-            if dias >= 0:
-                urg = " ag__prazo--perto" if dias <= 7 else ""
-                quanto = "hoje" if dias == 0 else (
-                    "amanhã" if dias == 1 else f"em {dias} dias")
-                prazo_html = (
-                    f'<a class="ag__prazo{urg}" href="{_html.escape(p.url)}"'
-                    f' target="_blank" rel="noopener">submissão até'
-                    f' {p.prazo.strftime("%d/%m")} &middot; {quanto}</a>'
-                )
-            else:
-                prazo_html = '<span class="ag__prazo ag__prazo--fim">submissão encerrada</span>'
+            prazo_html = (
+                f'<a class="ag__prazo" href="{_html.escape(p.url)}"'
+                f' target="_blank" rel="noopener">submissão até'
+                f' {p.prazo.strftime("%d/%m/%Y")}</a>'
+            )
             if p.observacao:
                 prazo_html += f'<span class="ag__obs">{_html.escape(p.observacao)}</span>'
 
