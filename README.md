@@ -50,7 +50,7 @@ CE-SBC Top10 sobe 2 níveis, Top20 sobe 1, relevante mantém. Sem h5: "Top" → 
 ```bash
 pip install -r requirements-dev.txt
 python site/build.py --servir      # gera site/dist e sobe em localhost:8000
-python -m pytest -q                # 164 testes
+python -m pytest -q                # 190 testes
 node site/checar.mjs               # abre em 5 tamanhos de tela e reporta problemas
 ```
 
@@ -74,6 +74,7 @@ python -m qualis evento SBES
 | Qualis Eventos oficial 2021-2024 | classificação do ciclo anterior | **não** — sem licença declarada |
 | Qualis Periódicos oficial 2010-2024 | histórico por ciclo na ficha | **não** — baixe da Sucupira |
 | OpenAlex | base de referência de Computação | sim |
+| Calendário da SBC (API do site) | datas e locais dos próximos eventos | sim (`data/sbc_calendario.json.gz`) |
 | [acordos-capes](https://periodicos.ifsp.dev/) | acordos de isenção de APC | **não** — base de outro projeto |
 
 Os arquivos de origem sob assinatura ou sem licença declarada ficam fora do
@@ -104,7 +105,7 @@ qualis/scopus_export.py, scholar.py, sbc.py, coleta.py, oficial.py
 site/build.py         gera o site estático
 site/app/             index.html · sobre.html · estilo.css · pagina.css · app.js
 site/dist/            saída publicada (versionada para o Vercel servir sem build)
-test_*.py             164 testes
+test_*.py             190 testes
 ```
 
 ## Contribuindo

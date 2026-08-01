@@ -1,0 +1,54 @@
+/* Agenda de eventos.
+   Lista densa: quem abre esta página quer varrer datas, não ler. A linha é
+   uma grade de quatro colunas fixas para que data, estrato e prazo alinhem
+   verticalmente e o olho desça por coluna. */
+@layer componentes {
+
+  .ag { list-style: none; margin: 1.2rem 0 0; padding: 0;
+        display: flex; flex-direction: column; gap: .15rem; }
+
+  .ag__it {
+    display: grid;
+    grid-template-columns: 6.6rem 2.4rem minmax(0, 1fr) auto;
+    gap: .5rem 1rem;
+    align-items: baseline;
+    padding: .6rem .5rem;
+    border-block-end: 1px solid var(--borda);
+  }
+  .ag__it:last-child { border-block-end: 0; }
+  .ag__it:hover { background: color-mix(in oklab, var(--txt) 3%, transparent); }
+
+  .ag__quando { font-size: .78rem; color: var(--txt-2);
+                font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .ag__estrato .e { text-decoration: none; }
+  .ag__sem { color: var(--txt-3); font-size: .8rem; }
+
+  .ag__nome { min-inline-size: 0; }
+  .ag__nome a { color: var(--txt); text-decoration: none; font-size: .9rem; }
+  .ag__nome a:hover { text-decoration: underline; }
+  .ag__nome small { display: block; font-size: .74rem; color: var(--txt-3);
+                    margin-block-start: .1rem; }
+
+  .ag__praz { justify-self: end; text-align: end; }
+  .ag__prazo { display: block; font-size: .74rem; white-space: nowrap;
+               color: var(--acento); text-decoration: none; }
+  .ag__prazo:hover { text-decoration: underline; }
+  /* Prazo a menos de uma semana muda de cor: é a informação da página com
+     consequência irreversível. Cor de alerta, não da rampa de estratos. */
+  .ag__prazo--perto { color: var(--e8-txt, #b45309); font-weight: 650; }
+  .ag__prazo--fim { color: var(--txt-3); font-weight: 400; }
+  .ag__obs { display: block; font-size: .68rem; color: var(--txt-3);
+             max-inline-size: 22ch; white-space: normal; }
+
+  .ag__resumo { font-size: .9rem; color: var(--txt-2); }
+
+  /* No celular a grade vira duas linhas: data e estrato em cima, nome embaixo,
+     prazo alinhado à esquerda — empilhar mantendo 4 colunas espremeria o nome
+     a duas palavras por linha. */
+  @media (max-width: 40rem) {
+    .ag__it { grid-template-columns: 6.6rem 2.4rem 1fr; gap: .25rem .6rem; }
+    .ag__praz { grid-column: 1 / -1; justify-self: start; text-align: start; }
+    .ag__obs { max-inline-size: none; }
+  }
+}

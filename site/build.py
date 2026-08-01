@@ -31,7 +31,10 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
-from qualis import apc, historico_oficial, jcr, oficial, rules, sbc, scopus_export  # noqa: E402
+from qualis import (  # noqa: E402
+    apc, calendario, historico_oficial, jcr, oficial, rules, sbc,
+    sbc_calendario, scopus_export,
+)
 from qualis.coleta import Cache, resolver  # noqa: E402
 
 SAIDA = Path(__file__).resolve().parent / "dist"
@@ -364,7 +367,28 @@ def montar_eventos() -> list[Veiculo]:
     # que até aqui não era aplicado por falta do dado.
     da_sbc = sbc.eventos_da_sbc()
     out: list[Veiculo] = []
-    for ev in sbc.ler():
+    das_ces = sbc.ler()
+
+    # A lista de eventos vinha SÓ das abas das Comissões Especiais. Mas a aba
+    # "Eventos SBC" tem 35 eventos que CE nenhuma classificou — e o critério de
+    # indução do documento não depende de CE: basta ser evento nacional da SBC
+    # com tradição. O WGRS tem 28 edições e ficava de fora, quando a regra lhe
+    # daria A4. Os demais entram sem estrato, visíveis, em vez de invisíveis.
+    ja_listados = {e.sigla.upper() for e in das_ces}
+    for chave, info in sorted(da_sbc.items()):
+        if chave in ja_listados:
+            continue
+        das_ces.append(
+            sbc.EventoSBC(
+                sigla=info.sigla,
+                nome=info.nome or info.sigla,
+                classificacao="",       # nenhuma CE se manifestou (vira None na regra)
+                h5_sbc=None,
+                ces=[],
+            )
+        )
+
+    for ev in das_ces:
         r = resolver(ev, cache)
         info_sbc = da_sbc.get(ev.sigla.upper())
         anos = info_sbc.anos_de_tradicao if info_sbc else None
@@ -379,7 +403,7 @@ def montar_eventos() -> list[Veiculo]:
         if r.h5_fonte != "scholar" or r.h5 is None:
             # Sem h5 do Google, a regra ainda pode classificar pela CE-SBC.
             c = rules.classificar_evento(
-                r.sigla, h5=0, ce_sbc=r.ce_sbc,
+                r.sigla, h5=0, ce_sbc=r.ce_sbc or None,
                 anos_tradicao_sbc=anos, promovido_por_sociedade=bool(info_sbc),
             )
             passos = [
@@ -389,14 +413,27 @@ def montar_eventos() -> list[Veiculo]:
                     estrato=None,
                     fonte="Google Scholar Metrics",
                 ),
-                Passo(
-                    rotulo=f"CE-SBC classifica como \u201c{r.ce_sbc}\u201d",
-                    detalhe="para evento sem h5, o documento define: "
-                    "\u201cTop\u201d \u2192 A7, \u201crelevante\u201d \u2192 A8",
-                    estrato=c.estrato,
-                    fonte="Documento de Área, p. 22",
-                ),
             ]
+            if r.ce_sbc:
+                passos.append(
+                    Passo(
+                        rotulo=f"CE-SBC classifica como \u201c{r.ce_sbc}\u201d",
+                        detalhe="para evento sem h5, o documento define: "
+                        "\u201cTop\u201d \u2192 A7, \u201crelevante\u201d \u2192 A8",
+                        estrato=c.estrato,
+                        fonte="Documento de Área, p. 22",
+                    )
+                )
+            elif anos:
+                passos.append(
+                    Passo(
+                        rotulo=f"Evento da SBC com {anos} edições",
+                        detalhe="critério de indução: >=20 anos de tradição "
+                        "\u2192 A4; >=10 anos \u2192 A5",
+                        estrato=c.estrato,
+                        fonte="Documento de Área, p. 22",
+                    )
+                )
             # O critério de indução (evento nacional da SBC com >=20 anos -> A4,
             # >=10 anos -> A5) exige o ano de fundação, que não temos de fonte
             # verificável. Não aplicamos — mas avisamos, porque a diferença é
@@ -436,7 +473,7 @@ def montar_eventos() -> list[Veiculo]:
             continue
 
         c = rules.classificar_evento(
-            r.sigla, h5=r.h5, ce_sbc=r.ce_sbc,
+            r.sigla, h5=r.h5, ce_sbc=r.ce_sbc or None,
             anos_tradicao_sbc=anos, promovido_por_sociedade=bool(info_sbc),
         )
         base = rules.estrato_por_h5(r.h5)
@@ -457,12 +494,12 @@ def montar_eventos() -> list[Veiculo]:
             # senão a linha da saturação apareceria como "sem mudança",
             # escondendo justamente a regra que decidiu o resultado.
             sem_teto = rules.classificar_evento(
-                r.sigla, h5=r.h5, ce_sbc=r.ce_sbc, teto_qualitativo=False
+                r.sigla, h5=r.h5, ce_sbc=r.ce_sbc or None, teto_qualitativo=False
             ).estrato
             # Sem a indução: senão a linha da CE já mostraria o resultado dela,
             # e a linha seguinte pareceria não ter feito nada.
             so_ce = rules.classificar_evento(
-                r.sigla, h5=r.h5, ce_sbc=r.ce_sbc
+                r.sigla, h5=r.h5, ce_sbc=r.ce_sbc or None
             ).estrato
             passos.append(
                 Passo(
@@ -549,6 +586,173 @@ def distribuicoes(vs: list[Veiculo]) -> dict:
     }
 
 
+def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
+    """Página /agenda/: próximos eventos, com o estrato que já estimamos.
+
+    Juntar as duas coisas é o que este site pode fazer e nenhum outro faz: o
+    calendário da SBC não sabe o estrato, e quem publica estrato não sabe a
+    data. O prazo de submissão vem de `calendario.py`, curado à mão.
+    """
+    from datetime import date
+    import html as _html
+
+    proximos, baixado_em = sbc_calendario.carregar()
+    curados = calendario.carregar()
+    prazos = {e.sigla.upper(): e for e in curados}
+    if not proximos and not curados:
+        return
+
+    # O calendário da SBC não é completo: SBQS e SBMF de 2026 não estão lá,
+    # embora tenham prazo aberto. Quem foi curado à mão com data própria entra
+    # também — senão o prazo existiria no CSV e não apareceria na página.
+    ja = {(e.sigla, e.inicio) for e in proximos}
+    for c in curados:
+        if (c.sigla.upper(), c.inicio) in ja or not c.inicio:
+            continue
+        proximos.append(
+            sbc_calendario.Evento(
+                sigla=c.sigla.upper(),
+                titulo=f"{c.nome} ({c.sigla} {c.inicio.year})" if c.nome else c.sigla,
+                inicio=c.inicio,
+                fim=c.fim or c.inicio,
+                cidade=c.cidade,
+                url_sbc="",
+                site=c.url,
+                categorias=(),
+            )
+        )
+    proximos.sort(key=lambda e: (e.inicio, e.sigla))
+
+    # Casa com o catálogo para pegar o estrato. Pela sigla, e depois pelo nome
+    # sem o numeral romano e sem o "(SIGLA ano)" do fim.
+    por_sigla = {v.sigla.upper(): v for v in veiculos if v.tipo == "evento" and v.sigla}
+    por_nome: dict[str, Veiculo] = {}
+    for v in veiculos:
+        if v.tipo != "evento":
+            continue
+        for n in [v.nome, *(v.apelidos or [])]:
+            if n:
+                por_nome.setdefault(_chave_nome(n), v)
+
+    hoje = date.today()
+    linhas = []
+    for e in proximos:
+        v = por_sigla.get(e.sigla)
+        if v is None:
+            t = re.sub(r"^[IVXLC]+\s+", "", e.titulo)
+            t = re.sub(r"\s*\([^)]*\)\s*$", "", t)
+            v = por_nome.get(_chave_nome(t))
+        p = prazos.get(e.sigla)
+
+        quando = e.inicio.strftime("%d/%m")
+        if e.fim != e.inicio:
+            quando += "&ndash;" + e.fim.strftime("%d/%m")
+        quando += e.inicio.strftime("/%Y")
+
+        estrato = (
+            f'<a class="e" data-e="{v.estrato}" href="../?v={v.slug}"'
+            f' title="Ver como chegamos a {v.estrato}">{v.estrato}</a>'
+            if v is not None and v.estrato
+            else '<span class="ag__sem" title="ainda não estimamos o estrato deste evento">&mdash;</span>'
+        )
+        alvo = e.site or e.url_sbc
+        nome = _html.escape(e.titulo)
+        prazo_html = ""
+        if p and p.prazo:
+            dias = (p.prazo - hoje).days
+            if dias >= 0:
+                urg = " ag__prazo--perto" if dias <= 7 else ""
+                quanto = "hoje" if dias == 0 else (
+                    "amanhã" if dias == 1 else f"em {dias} dias")
+                prazo_html = (
+                    f'<a class="ag__prazo{urg}" href="{_html.escape(p.url)}"'
+                    f' target="_blank" rel="noopener">submissão até'
+                    f' {p.prazo.strftime("%d/%m")} &middot; {quanto}</a>'
+                )
+            else:
+                prazo_html = '<span class="ag__prazo ag__prazo--fim">submissão encerrada</span>'
+            if p.observacao:
+                prazo_html += f'<span class="ag__obs">{_html.escape(p.observacao)}</span>'
+
+        linhas.append(
+            f'    <li class="ag__it">\n'
+            f'      <time class="ag__quando" datetime="{e.inicio.isoformat()}">{quando}</time>\n'
+            f'      <span class="ag__estrato">{estrato}</span>\n'
+            f'      <span class="ag__nome">'
+            f'<a href="{_html.escape(alvo)}" target="_blank" rel="noopener">{nome}</a>'
+            f'<small>{_html.escape(e.cidade) or "local a confirmar"}</small></span>\n'
+            f'      <span class="ag__praz">{prazo_html}</span>\n'
+            f'    </li>'
+        )
+
+    abertos = sum(
+        1 for p in prazos.values() if p.prazo and (p.prazo - hoje).days >= 0
+    )
+    resumo = (
+        f"<p class=\"ag__resumo\"><b>{abertos}</b> com prazo de submissão ainda aberto.</p>"
+        if abertos
+        else ""
+    )
+    corpo = (
+        f'  <section class="doc__sec">\n{resumo}\n'
+        f'  <ol class="ag">\n' + "\n".join(linhas) + "\n  </ol>\n"
+        f'  <p class="doc__nota">Calendário da SBC lido em '
+        f'{_data_br(baixado_em)}. {len(proximos)} eventos futuros.</p>\n'
+        f"  </section>"
+    )
+
+    dados = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Próximos eventos de Computação no Brasil",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": i,
+                "item": {
+                    "@type": "Event",
+                    "name": e.titulo,
+                    "startDate": e.inicio.isoformat(),
+                    "endDate": e.fim.isoformat(),
+                    "eventAttendanceMode":
+                        "https://schema.org/OfflineEventAttendanceMode",
+                    "url": e.site or e.url_sbc,
+                    **({"location": {"@type": "Place", "name": e.cidade}}
+                       if e.cidade else {}),
+                },
+            }
+            for i, e in enumerate(proximos, 1)
+        ],
+    }
+    jsonld = ('<script type="application/ld+json">'
+              + json.dumps(dados, ensure_ascii=False) + "</script>")
+
+    destino = saida / "agenda"
+    destino.mkdir(parents=True, exist_ok=True)
+    texto = (APP / "agenda.html").read_text(encoding="utf-8")
+    texto = texto.replace("{{AGENDA}}", corpo).replace("{{JSONLD}}", jsonld)
+    for k, v in marcas.items():
+        texto = texto.replace(k, v)
+    (destino / "index.html").write_text(texto, encoding="utf-8")
+    shutil.copy2(APP / "agenda.css", destino / "agenda.css")
+    print(f"  agenda: {len(proximos)} eventos, {abertos} com prazo aberto")
+
+
+def _chave_nome(t: str) -> str:
+    """Compara nomes de evento ignorando acento, caixa e pontuação."""
+    t = unicodedata.normalize("NFD", (t or "").lower())
+    t = "".join(c for c in t if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", t)).strip()
+
+
+def _data_br(iso: str) -> str:
+    from datetime import date as _d
+    try:
+        return _d.fromisoformat(iso).strftime("%d/%m/%Y")
+    except ValueError:
+        return iso or "data desconhecida"
+
+
 def _mil(n: int) -> str:
     """1234 -> "1.234" — separador de milhar do português."""
     return f"{n:,}".replace(",", ".")
@@ -556,11 +760,12 @@ def _mil(n: int) -> str:
 
 def _sitemap(saida: Path, veiculos: list) -> None:
     """sitemap.xml e robots.txt — sem eles o buscador não acha as páginas."""
-    urls = ["", "sobre/"]
+    urls = ["", "sobre/", "agenda/"]
     linhas = "".join(
         f"<url><loc>{DOMINIO}/{u}</loc>"
         f"<lastmod>{SNAPSHOT}</lastmod>"
-        f"<priority>{'1.0' if u == '' else '0.8'}</priority></url>"
+        f"<priority>{'1.0' if u == '' else '0.8'}</priority>"
+        f"<changefreq>{'weekly' if u == 'agenda/' else 'monthly'}</changefreq></url>"
         for u in urls
     )
     (saida / "sitemap.xml").write_text(
@@ -706,6 +911,7 @@ def main() -> int:
     (sobre / "index.html").write_text(texto, encoding="utf-8")
     shutil.copy2(APP / "sobre.js", sobre / "sobre.js")
 
+    _agenda(SAIDA, veiculos, marcas)
     _sitemap(SAIDA, veiculos)
 
     kb = sum(f.stat().st_size for f in SAIDA.rglob("*") if f.is_file()) / 1024
