@@ -102,3 +102,11 @@ def test_prazo_urgente_e_encerrado_se_distinguem(tmp_path):
     assert por["PERTO"].dias_ate_o_prazo == 3 and por["PERTO"].prazo_aberto
     assert por["LONGE"].dias_ate_o_prazo == 60 and por["LONGE"].prazo_aberto
     assert por["FIM"].dias_ate_o_prazo == -1 and not por["FIM"].prazo_aberto
+
+
+def test_linha_curada_pode_corrigir_so_a_cidade(tmp_path):
+    """O calendário da SBC erra cidade — o ENIAC 2026 consta em Campo Grande/MS
+    e acontece em Cuiabá/MT. A linha curada corrige sem precisar de prazo."""
+    p = _csv(tmp_path, "ENIAC,Encontro,23,2026-10-19,2026-10-22,Cuiabá/MT,,https://x,2026-08-01,")
+    e = calendario.carregar(p, hoje=HOJE)[0]
+    assert e.cidade == "Cuiabá/MT" and e.prazo is None

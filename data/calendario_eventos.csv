@@ -10,6 +10,9 @@
 //
 // `inicio`/`fim` só precisam ser preenchidos para evento que NÃO esteja no
 // calendário da SBC; caso contrário a data vem de lá.
+//
+// Cidade e URL preenchidas aqui SOBREPÕEM o calendário da SBC, que erra: o
+// ENIAC 2026 consta lá em Campo Grande/MS e acontece em Cuiabá/MT.
 sigla,nome,edicao,inicio,fim,cidade,prazo,url,conferido,observacao
 LADC,Latin-American Symposium on Dependable and Secure Computing,15,2026-11-24,2026-11-27,Salvador/BA,2026-08-02,https://ladc.sbc.org.br/2026/call-for-papers/,2026-08-01,manuscrito; o registro do artigo venceu em 31/07
 SSCAD,Simpósio em Sistemas Computacionais de Alto Desempenho,27,2026-11-03,2026-11-05,Natal/RN,2026-08-07,https://sscad2026.imd.ufrn.br/cfp/,2026-08-01,antes chamado WSCAD
@@ -17,3 +20,4 @@ SIBGRAPI,Conference on Graphics Patterns and Images,39,2026-09-29,2026-10-02,Goi
 SBQS,Simpósio Brasileiro de Qualidade de Software,25,2026-11-10,2026-11-13,Maringá/PR,2026-08-17,https://sbqs.sbc.org.br/2026/,2026-08-01,WTDQS: resumo 10/08 e artigo 17/08; trilha principal encerrada
 BSB,Brazilian Symposium on Bioinformatics,19,2026-11-30,2026-12-02,Ribeirão Preto/SP,2026-08-11,https://bsb.sbc.org.br/2026/,2026-08-01,artigos completos e curtos; pôsteres até 31/10
 SBMF,Brazilian Symposium on Formal Methods,29,2026-12-01,2026-12-04,Rio de Janeiro/RJ,2026-08-14,https://sbmf2026.github.io/,2026-08-01,prazo prorrogado
+ENIAC,Encontro Nacional de Inteligência Artificial e Computacional,23,2026-10-19,2026-10-22,Cuiabá/MT,,https://bracis.sbc.org.br/2026/eniac/,2026-08-01,acontece junto com o BRACIS; a SBC lista Campo Grande/MS por engano

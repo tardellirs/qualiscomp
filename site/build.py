@@ -24,7 +24,7 @@ import re
 import shutil
 import sys
 import unicodedata
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from datetime import date
 from pathlib import Path
 
@@ -605,6 +605,22 @@ def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
     # O calendário da SBC não é completo: SBQS e SBMF de 2026 não estão lá,
     # embora tenham prazo aberto. Quem foi curado à mão com data própria entra
     # também — senão o prazo existiria no CSV e não apareceria na página.
+    # O que foi conferido à mão vence o calendário da SBC. A entidade erra
+    # cidade: o ENIAC 2026 aparece em Campo Grande/MS quando acontece em
+    # Cuiabá/MT, junto com o BRACIS.
+    por_chave = {(e.sigla, e.inicio): i for i, e in enumerate(proximos)}
+    for c in curados:
+        i = por_chave.get((c.sigla.upper(), c.inicio))
+        if i is None:
+            continue
+        e = proximos[i]
+        proximos[i] = replace(
+            e,
+            cidade=c.cidade or e.cidade,
+            site=c.url or e.site,
+            fim=c.fim or e.fim,
+        )
+
     ja = {(e.sigla, e.inicio) for e in proximos}
     for c in curados:
         if (c.sigla.upper(), c.inicio) in ja or not c.inicio:
