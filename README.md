@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://qualiscomp.com"><img alt="Site" src="https://img.shields.io/badge/site-qualiscomp.com-2f6feb?style=flat-square"></a>
   <a href="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml"><img alt="Testes" src="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml/badge.svg"></a>
-  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.816-0b7285?style=flat-square">
+  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.851-0b7285?style=flat-square">
   <img alt="Ciclo" src="https://img.shields.io/badge/ciclo-2025--2028-495057?style=flat-square">
   <a href="LICENSE"><img alt="Licença" src="https://img.shields.io/badge/c%C3%B3digo-MIT-1c7ed6?style=flat-square"></a>
   <a href="CONTRIBUTING.md"><img alt="Contribuições" src="https://img.shields.io/badge/PRs-bem--vindos-2b8a3e?style=flat-square"></a>
@@ -16,7 +16,8 @@ Estrato **A1–A8** de periódicos e eventos de Computação segundo as regras d
 que substituiu o Qualis Periódicos.
 
 O site mostra a **conta**: qual indicador foi usado, qual corte, qual ajuste, e
-de onde veio cada número.
+de onde veio cada número. Em [/agenda](https://qualiscomp.com/agenda/), os
+próximos eventos da SBC com data, local e estrato.
 
 **Fonte de tudo:** [Documento de Área — Computação (PDF)](https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-exatas-tecnologicas-e-multidisciplinar/ciencias-exatas-e-da-terra/ciencia-da-computacao/computacao-docarea.pdf/@@download/file),
 seção 2.2, págs. 20-23.
@@ -88,22 +89,16 @@ python -m qualis coletar-eventos          # baixa a planilha da SBC e consulta o
 python -m qualis atualizar --email voce@exemplo
 ```
 
-## Uma decisão que a evidência resolveu
-
-O documento diz que "haverá uma saturação no nível A3", sem dizer se o teto
-limita o resultado ou só o ganho qualitativo. Comparando com o **Qualis Eventos
-oficial 2021-2024** (mesma comissão, mesmo método): entre eventos Top10/Top20
-cujo h5 sozinho daria pior que A3, apenas **3 de 93** ficaram acima de A3 — mas
-no grupo de controle, cujo h5 já justificava A1/A2, **109 de 140** ficaram.
-O teto limita o ganho, não o indicador. Travado em `test_saturacao_oficial.py`.
-
 ## Estrutura
 
 ```
 qualis/rules.py       as regras da Área 02 — puro, sem I/O
-qualis/scopus_export.py, scholar.py, sbc.py, coleta.py, oficial.py
+qualis/elsevier.py    percentil do Scopus     qualis/jcr.py        percentil do WoS
+qualis/sbc.py         eventos das CEs         qualis/coleta.py     h5 no Scholar
+qualis/oficial.py     Qualis Eventos 2021-24  qualis/historico_oficial.py  ciclos 2010-24
+qualis/apc.py         acordos de APC          qualis/sbc_calendario.py     agenda da SBC
 site/build.py         gera o site estático
-site/app/             index.html · sobre.html · estilo.css · pagina.css · app.js
+site/app/             index.html · sobre.html · agenda.html · app.js · estilo.css
 site/dist/            saída publicada (versionada para o Vercel servir sem build)
 test_*.py             181 testes
 ```
@@ -115,23 +110,9 @@ O site está em **[qualiscomp.com](https://qualiscomp.com)**. Achou um estrato e
 há modelos prontos e não precisa clonar nada. Para mandar correção direto, veja
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
-O que mais precisa de gente da área: o **ano de fundação dos eventos da SBC**
-(sem ele o critério de indução não dispara e o CSBC aparece como A8) e os
-**nomes alternativos** de eventos que o Google Scholar indexa duas vezes.
-
-## Funcionalidades em teste
-
-`FLAGS` em `site/app/app.js` guarda o que ainda está em avaliação. O padrão vem
-do código, e a URL sobrepõe sem precisar publicar de novo:
-
-```
-?flag=subareas      liga só nesta visita
-?flag=-subareas     desliga
-```
-
-Nenhuma em avaliação no momento. **subareas** — o painel das Comissões
-Especiais da SBC quando o filtro é Eventos — passou a ser o padrão; se algo
-quebrar, `?flag=-subareas` desliga sem publicar de novo.
+O que mais precisa de gente da área: os **nomes alternativos** de eventos que
+o Google Scholar indexa duas vezes, e os **prazos de submissão** da agenda
+(`data/calendario_eventos.csv`), que só existem no site de cada evento.
 
 ## Limites conhecidos
 
