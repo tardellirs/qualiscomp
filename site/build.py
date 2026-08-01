@@ -699,7 +699,7 @@ def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
     corpo = (
         '  <section class="doc__sec">\n'
         '  <ol class="ag">\n' + "\n".join(linhas) + "\n  </ol>\n"
-        f'  <p class="doc__nota">Atualizado em {_data_br(baixado_em)}.</p>\n'
+        f'  <p class="doc__nota">Última atualização {_data_br(baixado_em)}</p>\n'
         "  </section>"
     )
 
