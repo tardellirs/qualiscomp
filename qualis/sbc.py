@@ -107,6 +107,7 @@ def _normalizar_classificacao(v: object) -> str | None:
 
 
 ALIASES = Path(__file__).resolve().parent.parent / "data" / "aliases_eventos.csv"
+RECUSADOS = Path(__file__).resolve().parent.parent / "data" / "apelidos_recusados.csv"
 NOMES_CE = Path(__file__).resolve().parent.parent / "data" / "ces_sbc_nomes.csv"
 
 
@@ -127,6 +128,23 @@ def nomes_das_ces(caminho: Path | None = None) -> dict[str, str]:
         (r["sigla"] or "").strip(): (r["nome"] or "").strip()
         for r in csv.DictReader(linhas)
         if (r.get("sigla") or "").strip()
+    }
+
+
+def apelidos_recusados(caminho: Path | None = None) -> set[tuple[str, str]]:
+    """(sigla, apelido em minúsculas) que a planilha da SBC atribui ao evento
+    errado. Ver o cabeçalho do CSV."""
+    import csv
+
+    caminho = caminho or RECUSADOS
+    if not caminho.exists():
+        return set()
+    with caminho.open(encoding="utf-8") as f:
+        linhas = [ln for ln in f if not ln.lstrip().startswith("//")]
+    return {
+        ((r.get("sigla") or "").strip().upper(), (r.get("alias") or "").strip().lower())
+        for r in csv.DictReader(linhas)
+        if (r.get("sigla") or "").strip() and (r.get("alias") or "").strip()
     }
 
 
@@ -294,7 +312,12 @@ def ler(caminho: Path | None = None) -> list[EventoSBC]:
                         atual.nomes_alternativos.append(a)
 
     aliases = carregar_aliases()
+    recusados = apelidos_recusados()
     for chave, ev in por_sigla.items():
+        ev.nomes_alternativos = [
+            a for a in ev.nomes_alternativos
+            if (chave, a.strip().lower()) not in recusados
+        ]
         ev.ces = sorted(ces_por_sigla[chave])
         for a in aliases.get(chave, []):
             if a not in ev.nomes_alternativos:

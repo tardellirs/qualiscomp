@@ -1,0 +1,15 @@
+// Nomes alternativos que a planilha da SBC registra e que pertencem a OUTRO
+// evento com a mesma sigla.
+//
+// A coluna "Nome Alternativo" da planilha das CEs é preenchida à mão e às vezes
+// traz o evento errado. Cada linha aqui vira uma consulta ao Google Scholar e um
+// alvo de casamento, então um apelido errado não fica inerte: ele busca o evento
+// errado, encontra, e o h5 maior vence. Foi assim que o SoCC e o SMC saíram A1.
+//
+// Só entra aqui apelido que se possa demonstrar ser de outro evento — não
+// apelido que apenas não encontramos no Scholar.
+//
+// Linhas com // são ignoradas.
+sigla,alias,porque
+SOCC,ACM Symposium on Cloud Computing,SoCC da SBC é o IEEE International System-on-Chip Conference; a sigla colide com o simpósio de nuvem da ACM
+SMC,"IEEE International Conference on Systems, Man, and Cybernetics",SMC aqui é a Sound and Music Computing Conference; a sigla colide com o SMC do IEEE

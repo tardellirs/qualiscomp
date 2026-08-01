@@ -183,6 +183,11 @@ def _pontuar(ev: sbc.EventoSBC, v: scholar.Venue) -> float:
     return base + (0.4 if _sigla_no_nome(ev.sigla, v.nome) else 0.0)
 
 
+# Com a sigla já confirmando o evento, um casamento textual precisa ser quase
+# perfeito para acrescentar alguma coisa.
+_QUASE_EXATO = 0.95
+
+
 def resolver(
     ev: sbc.EventoSBC, cache: Cache, *, limiar: float = 0.45, margem: float = 0.12
 ) -> EventoResolvido:
@@ -213,8 +218,17 @@ def resolver(
     selecionados: dict[str, scholar.Venue] = dict(por_sigla)
     if por_similaridade:
         melhor_p = max(p for _, p in por_similaridade.values())
+        # Com uma entrada já confirmada pela sigla, a identidade do evento não
+        # está em dúvida — e aí casamento PARCIAL passa a ser mais perigoso que
+        # útil, porque só pode trazer outro evento. O SBIE tinha a sua entrada
+        # ("Simpósio Brasileiro de Informática na Educação (SBIE)", h5=15) e
+        # perdia para a do ICCE ("International Conference on Computers in
+        # Education", h5=16), que casou a 0,67 pela palavra genérica que
+        # sobrou ao tirar o preâmbulo. Só entra quem casar quase inteiro — é
+        # o caso do IHC, cujo nome em inglês casa a 1,00 e é o mesmo evento.
+        corte = _QUASE_EXATO if por_sigla else melhor_p - margem
         for v, p in por_similaridade.values():
-            if p >= melhor_p - margem:
+            if p >= corte:
                 selecionados.setdefault(v.nome, v)
 
     if selecionados:
