@@ -110,17 +110,26 @@ O site está em **[qualiscomp.com](https://qualiscomp.com)**. Achou um estrato e
 há modelos prontos e não precisa clonar nada. Para mandar correção direto, veja
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
-O que mais precisa de gente da área: os **nomes alternativos** de eventos que
-o Google Scholar indexa duas vezes, e os **prazos de submissão** da agenda
-(`data/calendario_eventos.csv`), que só existem no site de cada evento.
+Duas coisas em que ajuda de quem é da área rende mais:
+
+- **Siglas que colidem.** SoCC é *System-on-Chip* e também *Symposium on Cloud
+  Computing*; SMC é *Sound and Music Computing* e também *Systems, Man and
+  Cybernetics*. Quando isso acontece o h5 do evento errado vence. Correções vão
+  em `data/aliases_eventos.csv`.
+- **Prazos de submissão** em `data/calendario_eventos.csv` — 7 dos 43 eventos da
+  agenda têm prazo cadastrado, porque cada um só publica no próprio site.
 
 ## Limites conhecidos
 
-- Alguns eventos casaram com a entrada errada no Google Scholar e aparecem com
-  estrato indevido.
-- O histórico oficial por ciclo cobre 1.051 dos 2.692 periódicos — só os que a
-  área de Computação chegou a classificar em algum ciclo.
-- A marca **APC** cobre só os acordos das sete editoras negociadas pela CAPES;
-  isenção por acordo da própria instituição não aparece.
-- Livros, capítulos, produção técnica e as cotas de seleção do documento não são
-  modelados.
+- **149 eventos** têm mais de uma entrada candidata no Google Scholar. A ficha
+  mostra quais são; em alguns o h5 escolhido é do evento errado.
+- **15 eventos** aparecem duas vezes, sob siglas diferentes (`ACM-MM` e
+  `ACM Multimedia`, `ECML` e `ECML PKDD`).
+- **27 eventos da SBC** ficam sem estrato: são recentes demais para a indução
+  por tradição e não têm h5 no Scholar.
+- Percentil do **Web of Science** em 1.236 dos 2.692 periódicos; nos demais o
+  estrato vem só do Scopus.
+- **Qualis histórico** em 1.051 periódicos — os que a área chegou a classificar
+  em algum ciclo.
+- A marca **APC** cobre os acordos das sete editoras negociadas pela CAPES.
+- Livros, capítulos, produção técnica e as cotas de seleção não são modelados.
