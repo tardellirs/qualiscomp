@@ -685,20 +685,11 @@ def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
             f'    </li>'
         )
 
-    abertos = sum(
-        1 for p in prazos.values() if p.prazo and (p.prazo - hoje).days >= 0
-    )
-    resumo = (
-        f"<p class=\"ag__resumo\"><b>{abertos}</b> com prazo de submissão ainda aberto.</p>"
-        if abertos
-        else ""
-    )
     corpo = (
-        f'  <section class="doc__sec">\n{resumo}\n'
-        f'  <ol class="ag">\n' + "\n".join(linhas) + "\n  </ol>\n"
-        f'  <p class="doc__nota">Calendário da SBC lido em '
-        f'{_data_br(baixado_em)}. {len(proximos)} eventos futuros.</p>\n'
-        f"  </section>"
+        '  <section class="doc__sec">\n'
+        '  <ol class="ag">\n' + "\n".join(linhas) + "\n  </ol>\n"
+        f'  <p class="doc__nota">Atualizado em {_data_br(baixado_em)}.</p>\n'
+        "  </section>"
     )
 
     dados = {
@@ -735,6 +726,9 @@ def _agenda(saida: Path, veiculos: list[Veiculo], marcas: dict) -> None:
         texto = texto.replace(k, v)
     (destino / "index.html").write_text(texto, encoding="utf-8")
     shutil.copy2(APP / "agenda.css", destino / "agenda.css")
+    abertos = sum(
+        1 for c in curados if c.prazo and (c.prazo - hoje).days >= 0
+    )
     print(f"  agenda: {len(proximos)} eventos, {abertos} com prazo aberto")
 
 
