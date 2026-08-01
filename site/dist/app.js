@@ -338,12 +338,11 @@ function regua(d) {
     ? `Percentil ${valor.toFixed(0)} — acima de ${menores} dos ${serie.length} periódicos da base.`
     : `h5 ${valor} — acima de ${menores} dos ${serie.length} eventos com h5 no Scholar.`;
   return `<div class="cartao">
-    <h3>${d.tipo === 'periodico' ? 'Percentil no Scopus' : 'h5 no Google Scholar'}</h3>
+    <h3>${d.tipo === 'periodico' ? 'Percentil' : 'h5 no Google Scholar'}</h3>
     <div class="regua"><i style="--p:${Math.max(0, Math.min(100, p))}"></i></div>
     <div class="regua-esc">${escala}</div>
     <p style="font-size:.74rem;color:var(--txt-3);margin-block-start:.4rem">${nota}</p>
-    ${d.fronteira ? `<p class="fronteira"><b>Na fronteira:</b> ${esc(d.fronteira)}.
-       Confira na fonte antes de decidir.</p>` : ''}
+    ${d.fronteira ? `<p class="fronteira"><b>Na fronteira:</b> ${esc(d.fronteira)}.</p>` : ''}
   </div>`;
 }
 
@@ -368,10 +367,7 @@ function historico(d) {
       </div>
     </div>
     <p class="sim__ajuda" style="margin-block:.6rem 0">
-      Qualis Periódicos oficial da área, publicado na Plataforma Sucupira.
-      <b>Os estratos não se comparam entre ciclos</b> — a escala mudou (até 2016
-      ia até B5; de 2017 a 2024, A1 a B4) e o ciclo 2025-2028 usa A1 a A8.
-      O de 2025-2028 é a estimativa deste site, não uma classificação da CAPES.
+      Cada ciclo teve sua própria escala.
     </p>
   </div>`;
 }
@@ -411,8 +407,7 @@ function simulador(d) {
       ${d.tipo === 'evento' ? 'h5' : 'percentil'} dá sozinho.</p>
     ${linhas.join('')}
     <p class="sim__ajuda" style="margin-block:.5rem 0">O FWCI é do artigo, não do
-      veículo: só existe depois de publicado, e quem fornece o valor é a CAPES.
-      É o único ajuste que não dá para saber de antemão.</p>
+      veículo: quem fornece o valor é a CAPES.</p>
     <div class="sim__saida"><output id="sim-txt"></output>
       <span id="sim-chip">${chip(base)}</span></div>
   </form>`;
@@ -531,9 +526,7 @@ async function abrir(slug) {
     ${simulador(d)}
     ${d.url_scopus ? `<p class="ver-fonte"><a href="${esc(d.url_scopus)}" target="_blank"
        rel="noopener">Conferir no Scopus ↗</a></p>` : ''}
-    <p class="aviso-legal">Somente uma <b>estimativa do estrato</b>, com base nos
-      critérios do documento da Área 02 — Computação, divulgado pela CAPES em 2025.
-      Não nos responsabilizamos por incompatibilidade com a decisão da comissão.</p>`;
+    `;
 
   try {
     ligarSim();

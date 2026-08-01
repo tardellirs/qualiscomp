@@ -44,7 +44,7 @@
         { "@type": "Question", "name": "Quais são os cortes de h5 para eventos?",
           "acceptedAnswer": { "@type": "Answer", "text": "A1 com h5 igual ou maior que 35; A2 a partir de 25; A3 de 20; A4 de 15; A5 de 12; A6 de 9; A7 de 6; A8 com qualquer h5 maior que zero." } },
         { "@type": "Question", "name": "O que é a saturação em A3?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nenhum artigo passa de A3 somente por critério qualitativo. Na prática, o h5 do evento sozinho pode levar a A1 ou A2, mas o bônus dado pela Comissão Especial da SBC para em A3. Isso foi confirmado comparando com o Qualis Eventos oficial do ciclo anterior." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Nenhum artigo passa de A3 somente por critério qualitativo. O h5 do evento sozinho pode levar a A1 ou A2, mas o bônus dado pela Comissão Especial da SBC para em A3." } },
         { "@type": "Question", "name": "Qual é o Qualis do SBES, do SBBD ou do CVPR?",
           "acceptedAnswer": { "@type": "Answer", "text": "Não existe mais Qualis de uma conferência: no quadriênio 2025-2028 o estrato é do artigo, não do veículo. O que se pode estimar é qual estrato um artigo tende a receber ao ser publicado ali, a partir do h5-index do evento no Google Scholar e da classificação da Comissão Especial da SBC." } },
         { "@type": "Question", "name": "O que significa h5 igual a 20?",
@@ -118,7 +118,7 @@
     <a href="#mudou">O que mudou</a>
     <a href="#tabela">Os oito estratos</a>
     <a href="#criterios">O que o documento diz</a>
-    <a href="#ambiguidade">Um ponto ambíguo</a>
+    <a href="#ambiguidade">Saturação em A3</a>
     <a href="#perguntas">Perguntas frequentes</a>
     <a href="#fontes">Fontes</a>
   </nav>
@@ -178,10 +178,9 @@
 
   <section id="criterios">
     <h2>O que o documento diz</h2>
-    <p class="doc__abre2">Abaixo, os trechos <b>literais</b> da seção 2.2 do
-       Documento de Área — <i>Perspectivas na avaliação da produção
-       intelectual</i>, páginas 20 a 23. Nossos comentários vêm depois de cada
-       trecho, sempre identificados.</p>
+    <p class="doc__abre2">Trechos <b>literais</b> da seção 2.2 do Documento de
+       Área — <i>Perspectivas na avaliação da produção intelectual</i>,
+       páginas 20 a 23.</p>
 
     <h3 class="doc__h3">O procedimento escolhido</h3>
     <blockquote class="doc__cita">
@@ -253,10 +252,8 @@
          classificados nesses níveis.”</p>
       <cite>Documento de Área — Computação, p. 22-23</cite>
     </blockquote>
-    <p class="doc__coment"><b>Nota deste site.</b> Este critério exige o ano de
-       fundação de cada evento, que não temos de fonte verificável. Por isso ele
-       <b>não é aplicado</b> nos nossos cálculos — as fichas dos eventos sem h5
-       avisam quando ele poderia se aplicar.</p>
+    <p class="doc__coment"><b>Nota deste site.</b> A tradição é medida pelo
+       número de edições que a SBC registra para o evento.</p>
 
     <h3 class="doc__h3">Ajuste pelo FWCI</h3>
     <blockquote class="doc__cita">
@@ -304,36 +301,26 @@
     <details class="doc__fonte-dados">
       <summary>De onde vêm os números deste site</summary>
       <ul>
-        <li><b>Percentil</b>: export da tela Scopus Sources, coluna <i>Highest
-            percentile</i>.</li>
+        <li><b>Percentil</b>: Scopus e Web of Science, o maior entre os dois.</li>
         <li><b>h5</b>: Google Scholar Metrics, janela de cinco anos.</li>
         <li><b>Top 10 / Top 20</b>: planilha oficial das Comissões Especiais da SBC.</li>
+        <li><b>Tradição dos eventos</b>: número de edições registrado pela SBC.</li>
       </ul>
-      <p class="doc__nota">Publicamos o estrato calculado, não os dados brutos de
-         assinatura. Cada ficha mostra a origem de cada número e a data.</p>
     </details>
   </section>
 
   <section id="ambiguidade">
-    <h2>Um ponto ambíguo, e como o resolvemos</h2>
-    <p>O documento diz: <i>“Para a avaliação qualitativa haverá uma saturação no
-       nível A3, ou seja, nenhum artigo será avaliado acima do nível A3 somente por
-       meio desses critérios qualitativos.”</i> A frase admite duas leituras — o
-       teto limita só o <b>bônus</b> da CE-SBC, ou limita o resultado inteiro?</p>
-    <p>Resolvemos comparando com o <b>Qualis Eventos oficial do ciclo 2021-2024</b>,
-       publicado pela mesma comissão, com o mesmo método e os mesmos cortes de h5:</p>
-    <table class="doc__tab doc__tab--mini">
-      <thead><tr><th scope="col">Grupo</th><th scope="col">Casos</th>
-                 <th scope="col">Oficialmente acima de A3</th></tr></thead>
-      <tbody>
-        <tr><td>Top10/Top20 cujo h5 sozinho daria pior que A3</td><td>93</td><td>3</td></tr>
-        <tr><td>Controle: h5 sozinho já daria A1 ou A2</td><td>140</td><td>109</td></tr>
-      </tbody>
-    </table>
-    <p>Sem o teto, os 93 do primeiro grupo teriam ido todos a A1 ou A2. O grupo de
-       controle mostra que a comissão não hesita em passar de A3 quando é o
-       <b>h5</b> que justifica. Portanto: <b>o teto limita o ganho qualitativo, não
-       o indicador</b>. É assim que este site calcula.</p>
+    <h2>A saturação em A3</h2>
+    <p><i>“Para a avaliação qualitativa haverá uma saturação no nível A3, ou seja,
+       nenhum artigo será avaliado acima do nível A3 somente por meio desses
+       critérios qualitativos.”</i></p>
+    <p>O teto vale para o <b>ganho qualitativo</b>. Um evento Top 10 da CE-SBC
+       sobe dois níveis, mas não passa de A3 por esse caminho. Quando é o
+       <b>h5</b> que justifica, não há teto: um evento com h5 acima de 35 é A1,
+       venha ou não recomendado por uma Comissão Especial.</p>
+    <p>É o mesmo comportamento do Qualis Eventos oficial de 2021-2024: entre os
+       eventos Top 10 e Top 20 cujo h5 sozinho daria pior que A3, apenas
+       <b>3 de 93</b> ficaram acima de A3.</p>
   </section>
 
   <section id="perguntas">
