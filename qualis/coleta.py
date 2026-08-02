@@ -76,7 +76,13 @@ def _sigla_no_nome(sigla: str, nome: str) -> bool:
     # Reconstrói os parênteses, que `normalizar` remove.
     if re.search(rf"\(\s*{re.escape(sigla)}\s*\)", nome, re.IGNORECASE):
         return True
-    return len(s) >= 4 and s in normalizar(nome).split()
+    # Fora dos parênteses, a sigla só conta se estiver em CAIXA ALTA no nome
+    # original. "CASES" (compiladores para embarcados) casava com o "World
+    # Journal of Clinical Cases" pela palavra "Cases", e o h5=48 da revista
+    # virava estrato do evento. "CENTERIS/ProjMAN/HCist" continua valendo.
+    return len(s) >= 4 and re.search(
+        rf"(?<![A-Za-z]){re.escape(sigla.upper())}(?![A-Za-z])", nome
+    ) is not None
 
 
 @dataclass
@@ -187,6 +193,62 @@ def _pontuar(ev: sbc.EventoSBC, v: scholar.Venue) -> float:
 # perfeito para acrescentar alguma coisa.
 _QUASE_EXATO = 0.95
 
+# Palavras que só aparecem em nome de EVENTO. O Scholar Metrics indexa revistas
+# e conferências na mesma lista, e revista de área grande tem h5 muito maior que
+# qualquer conferência: "Information Fusion" (revista, h5=143) engolia a
+# "International Conference on Information Fusion" (h5=23), e o "World Journal
+# of Clinical Cases" virou um evento A1. Entre candidatos, os que têm cara de
+# evento vêm primeiro; o h5 só desempata dentro de cada grupo.
+_CARA_DE_EVENTO = re.compile(
+    r"\b(conference|conferencia|conferência|symposium|simp[oó]sio|workshop|"
+    r"congress|congresso|meeting|encontro|escola|school|colloquium|"
+    r"semin[aá]rio|jornada|summit|forum|f[oó]rum)\b",
+    re.I,
+)
+
+
+# E estas só aparecem em nome de REVISTA. Quando o alvo é um evento, essas
+# entradas não são "a melhor disponível" — são a errada. O CASES (compiladores
+# para sistemas embarcados) não tinha nenhum candidato com cara de evento e
+# ficava com o "World Journal of Clinical Cases", h5=48, publicado como A1.
+# Sem candidato, o evento fica sem h5 e vai pela CE-SBC, que é o certo.
+_CARA_DE_REVISTA = re.compile(
+    r"\b(journal|revista|transactions|letters|review|magazine|quarterly|"
+    r"annals|bulletin|archives)\b"
+    # A série "Proceedings of the ACM on ..." (PACM) é periódico, apesar da
+    # palavra: é onde saem POPL, CHI e CSCW como revista.
+    r"|proceedings of the acm on",
+    re.I,
+)
+
+
+def _parece_evento(nome: str) -> bool:
+    return bool(_CARA_DE_EVENTO.search(nome or ""))
+
+
+def _parece_revista(nome: str) -> bool:
+    return bool(_CARA_DE_REVISTA.search(nome or "")) and not _parece_evento(nome)
+
+
+def _sem_h5(ev: sbc.EventoSBC) -> "EventoResolvido":
+    """Sem entrada confiável no Scholar, o h5 fica VAZIO.
+
+    Rotular a origem não basta: se o número da planilha da SBC ocupar o campo
+    `h5`, ele alimenta `estrato_por_h5` e vira estrato publicado. E ele é
+    sistematicamente diferente do Google (delta médio ~+4,6 pontos, com cortes
+    espaçados de 3 a 5 — cerca de um estrato inteiro de erro). O valor da SBC
+    continua em `h5_sbc`, como referência.
+    """
+    return EventoResolvido(
+        sigla=ev.sigla,
+        nome=ev.nome,
+        ce_sbc=ev.classificacao,
+        ces=ev.ces,
+        h5=None,
+        h5_fonte="nenhum",
+        h5_sbc=ev.h5_sbc,
+    )
+
 
 def resolver(
     ev: sbc.EventoSBC, cache: Cache, *, limiar: float = 0.45, margem: float = 0.12
@@ -232,7 +294,34 @@ def resolver(
                 selecionados.setdefault(v.nome, v)
 
     if selecionados:
-        melhores = sorted(selecionados.values(), key=lambda v: -v.h5)
+        # Se o próprio evento se anuncia como conferência, candidato com cara
+        # de revista não é "o melhor disponível" — é o errado.
+        alvo_e_evento = _parece_evento(ev.nome) or any(
+            _parece_evento(n) for n in ev.todos_os_nomes
+        )
+        if alvo_e_evento:
+            # Entrada confirmada pela sigla vale sempre; as demais precisam ter
+            # cara de evento. Sem nenhuma, não há correspondência — e ficar sem
+            # h5 é melhor que herdar o h5 de outro veículo.
+            selecionados = {
+                k: v for k, v in selecionados.items()
+                if k in por_sigla or _parece_evento(v.nome)
+            }
+        if not selecionados:
+            return _sem_h5(ev)
+        # Ordem: cara de evento, depois semelhança com o nome oficial, e só
+        # então o h5. Sem a semelhança, o ECCV (h5=262) vencia o ICCV
+        # (h5=256) — os dois são conferências de visão computacional, e só o
+        # nome distingue "European" de "IEEE/CVF International".
+        pontos = {n: p for n, (_, p) in por_similaridade.items()}
+        melhores = sorted(
+            selecionados.values(),
+            key=lambda v: (
+                -(1 if (alvo_e_evento and _parece_evento(v.nome)) else 0),
+                -(1.0 if v.nome in por_sigla else pontos.get(v.nome, 0.0)),
+                -v.h5,
+            ),
+        )
         return EventoResolvido(
             sigla=ev.sigla,
             nome=ev.nome,
@@ -245,21 +334,8 @@ def resolver(
             ambiguo=len({v.h5 for v in melhores}) > 1,
         )
 
-    # Sem entrada no Scholar: h5 fica VAZIO. Rotular a origem não basta — se o
-    # número da planilha da SBC ocupar o campo `h5`, ele alimenta
-    # `estrato_por_h5` e vira estrato publicado. E ele é sistematicamente
-    # diferente do Google (delta médio ~+4,6 pontos nos casos verificados, com
-    # cortes espaçados de 3 a 5: cerca de um estrato inteiro de erro).
-    # O valor da SBC continua disponível em `h5_sbc`, só como referência.
-    return EventoResolvido(
-        sigla=ev.sigla,
-        nome=ev.nome,
-        ce_sbc=ev.classificacao,
-        ces=ev.ces,
-        h5=None,
-        h5_fonte="nenhum",
-        h5_sbc=ev.h5_sbc,
-    )
+    return _sem_h5(ev)
+
 
 
 def coletar(

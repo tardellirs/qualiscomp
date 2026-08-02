@@ -51,7 +51,7 @@ CE-SBC Top10 sobe 2 níveis, Top20 sobe 1, relevante mantém. Sem h5: "Top" → 
 ```bash
 pip install -r requirements-dev.txt
 python site/build.py --servir      # gera site/dist e sobe em localhost:8000
-python -m pytest -q                # 187 testes
+python -m pytest -q                # 192 testes
 node site/checar.mjs               # abre em 5 tamanhos de tela e reporta problemas
 ```
 
@@ -100,7 +100,7 @@ qualis/apc.py         acordos de APC          qualis/sbc_calendario.py     agend
 site/build.py         gera o site estático
 site/app/             index.html · sobre.html · agenda.html · app.js · estilo.css
 site/dist/            saída publicada (versionada para o Vercel servir sem build)
-test_*.py             187 testes
+test_*.py             192 testes
 ```
 
 ## Contribuindo
@@ -122,7 +122,7 @@ Duas coisas em que ajuda de quem é da área rende mais:
 
 ## Limites conhecidos
 
-- **91 eventos** têm mais de uma entrada candidata no Google Scholar. A ficha
+- **39 eventos** têm mais de uma entrada candidata no Google Scholar. A ficha
   mostra quais são; em alguns o h5 escolhido pode ser do evento errado.
 - **15 eventos** aparecem duas vezes, sob siglas diferentes (`ACM-MM` e
   `ACM Multimedia`, `ECML` e `ECML PKDD`).

@@ -85,3 +85,59 @@ def test_apelido_recusado_sai_das_consultas():
 
 def test_arquivo_de_recusados_ausente_nao_quebra(tmp_path):
     assert sbc.apelidos_recusados(tmp_path / "nao-existe.csv") == set()
+
+
+def _cache(ev, *venues):
+    return CacheFalso({q: list(venues) for q in coleta._consultas(ev)})
+
+
+def test_revista_nao_vence_conferencia():
+    """O Scholar Metrics mistura revista e conferência na mesma lista, e
+    revista de área grande tem h5 muito maior. 'Information Fusion' (143)
+    engolia a 'International Conference on Information Fusion' (23)."""
+    ev = _ev("FUSION", "International Conference on Information Fusion")
+    r = coleta.resolver(ev, _cache(
+        ev,
+        scholar.Venue("Information Fusion", 143, 0),
+        scholar.Venue("International Conference on Information Fusion", 23, 0),
+    ))
+    assert r.h5 == 23
+
+
+def test_sem_candidato_de_evento_fica_sem_h5():
+    """Melhor sem h5 do que com o h5 de outro veículo: o CASES (compiladores
+    para embarcados) saía A1 com o h5 do 'World Journal of Clinical Cases'."""
+    ev = _ev("CASES", "International Conference on Compilers, Architecture and Synthesis")
+    r = coleta.resolver(ev, _cache(ev, scholar.Venue("World Journal of Clinical Cases", 48, 0)))
+    assert r.h5 is None and r.h5_fonte == "nenhum"
+
+
+def test_sigla_em_minuscula_nao_confirma_o_evento():
+    """'Cases' no nome de uma revista não é a sigla CASES do evento."""
+    assert not coleta._sigla_no_nome("CASES", "World Journal of Clinical Cases")
+    assert coleta._sigla_no_nome("CENTERIS", "CENTERIS/ProjMAN/HCist")
+    assert coleta._sigla_no_nome("SBBD", "Brazilian Symposium on Databases (SBBD)")
+
+
+def test_serie_pacm_conta_como_revista():
+    """'Proceedings of the ACM on ...' é periódico, apesar da palavra."""
+    ev = _ev("HCII", "International Conference on Human-Computer Interaction")
+    r = coleta.resolver(ev, _cache(
+        ev,
+        scholar.Venue("Proceedings of the ACM on Human-Computer Interaction", 88, 0),
+        scholar.Venue("International Conference on Human-Computer Interaction", 14, 0),
+    ))
+    assert r.h5 == 14
+
+
+def test_semelhanca_desempata_antes_do_h5():
+    """Duas conferências da mesma área: só o nome distingue. O ECCV (262)
+    vencia o ICCV (256) por h5."""
+    ev = _ev("ICCV", "IEEE International Conference on Computer Vision",
+             ["IEEE/CVF International Conference on Computer Vision"])
+    r = coleta.resolver(ev, _cache(
+        ev,
+        scholar.Venue("European Conference on Computer Vision", 262, 0),
+        scholar.Venue("IEEE/CVF International Conference on Computer Vision", 256, 0),
+    ))
+    assert r.h5 == 256
