@@ -141,3 +141,22 @@ def test_semelhanca_desempata_antes_do_h5():
         scholar.Venue("IEEE/CVF International Conference on Computer Vision", 256, 0),
     ))
     assert r.h5 == 256
+
+
+def test_ano_de_fundacao_vence_contagem_de_edicoes(tmp_path, monkeypatch):
+    """Edições é piso, e o piso erra pela metade em evento bienal.
+
+    O SBCM tem 18 edições registradas e existe desde 1994: 32 anos de tradição,
+    que é a diferença entre A5 e A4 no critério de indução.
+    """
+    from datetime import date
+
+    csv = tmp_path / "tradicao_eventos.csv"
+    csv.write_text("sigla,desde,fonte\nSBCM,1994,https://exemplo\n", encoding="utf-8")
+    monkeypatch.setattr(sbc, "TRADICAO", csv)
+    evs = sbc.eventos_da_sbc()
+    if "SBCM" not in evs:
+        import pytest as _p
+        _p.skip("planilha da SBC não está em data/")
+    assert evs["SBCM"].ano_primeira == 1994
+    assert evs["SBCM"].anos_de_tradicao == date.today().year - 1994

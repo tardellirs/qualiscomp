@@ -6,7 +6,17 @@
 // nacional promovido pela SBC com >=20 anos de tradição pode ir a A4, com
 // >=10 anos a A5.
 //
+// O ano de fundação VENCE a contagem de edições da planilha. Edições são só o
+// piso de quem não tem ano registrado, e o piso erra pela metade em evento
+// bienal: o SBCM tem 18 edições e existe desde 1994.
+//
 // SÓ ENTRA COM FONTE. Um ano errado aqui vira estrato errado.
 // Linhas com // são ignoradas.
 sigla,desde,fonte
 CSBC,1980,https://sol.sbc.org.br/index.php/csbc/about
+LADC,2003,https://dblp.org/db/conf/ladc/index.html
+LARS,2004,https://larc.robolat.org/past-events
+SBCM,1994,https://sol.sbc.org.br/index.php/sbcm/about
+SBSC,2004,https://sol.sbc.org.br/index.php/sbsc/issue/archive
+SAST,2016,https://sol.sbc.org.br/index.php/sast/issue/archive
+WASHES,2016,https://sol.sbc.org.br/index.php/washes/about

@@ -190,10 +190,13 @@ class EventoDaSBC:
     def anos_de_tradicao(self) -> int | None:
         """Medida conservadora: o número de EDIÇÕES.
 
-        A planilha traz o ano da primeira edição em só 20 dos 88 eventos, mas o
-        número de edições em todos. Para evento anual, edições <= anos desde a
-        primeira (o SBES tem 37 edições e existe desde 1987). Usar edições nunca
-        superestima a tradição — e superestimar aqui inflaria estrato.
+        Quando sabemos o ano da primeira edição, é ele que vale. Sem ele,
+        usamos o número de edições, que a planilha traz para todos: para evento
+        ANUAL, edições <= anos desde a primeira, então nunca superestima.
+
+        Em evento BIENAL o piso fica pela metade, e a diferença chega a um
+        estrato inteiro — por isso `data/tradicao_eventos.csv` existe e vence
+        a contagem de edições.
         """
         return self.edicoes
 
@@ -239,14 +242,19 @@ def eventos_da_sbc(caminho: Path | None = None) -> dict[str, EventoDaSBC]:
         for row in _csv.DictReader(crus):
             sigla = (row.get("sigla") or "").strip()
             desde = (row.get("desde") or "").strip()
-            if not sigla or not desde.isdigit() or sigla.upper() in out:
+            if not sigla or not desde.isdigit():
                 continue
+            # O ano de fundação SUBSTITUI a contagem de edições quando existe.
+            # Edições só valem como piso, e o piso erra em evento bienal: o
+            # SBCM tem 18 edições e existe desde 1994, o que são 32 anos de
+            # tradição — a diferença entre A5 e A4.
+            atual = out.get(sigla.upper())
             out[sigla.upper()] = EventoDaSBC(
-                sigla=sigla,
-                nome="",
+                sigla=atual.sigla if atual else sigla,
+                nome=atual.nome if atual else "",
                 edicoes=date.today().year - int(desde),
                 ano_primeira=int(desde),
-                ce="",
+                ce=atual.ce if atual else "",
             )
     return out
 
