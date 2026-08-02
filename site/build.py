@@ -581,6 +581,44 @@ def montar_eventos() -> list[Veiculo]:
 # --------------------------------------------------------------------------- #
 
 
+def _fundir_eventos_repetidos(vs: list[Veiculo]) -> list[Veiculo]:
+    """Um evento listado duas vezes vira um, com as duas siglas buscáveis.
+
+    Acontece quando a planilha da SBC registra o mesmo evento sob nomes de
+    edições diferentes: o WSCAD virou SSCAD e aparece nas duas grafias, com
+    estratos diferentes (A6 e A4) porque só uma das linhas traz o número de
+    edições. O SBR/LARS é o LARS listado junto com o simpósio irmão.
+
+    Fica a entrada mais informada — a que tem h5, tradição, ou melhor estrato
+    nessa ordem — e a sigla da outra vira apelido, para a busca continuar
+    achando pelas duas.
+    """
+    ordem = {e: i for i, e in enumerate(rules.ESTRATOS)}
+    por_nome: dict[str, Veiculo] = {}
+    saida: list[Veiculo] = []
+    for v in vs:
+        chave = _chave_nome(v.nome)
+        atual = por_nome.get(chave)
+        if atual is None:
+            por_nome[chave] = v
+            saida.append(v)
+            continue
+        # Mais informado vence: h5 > tradição > estrato melhor.
+        peso = lambda x: (  # noqa: E731
+            x.h5 is not None,
+            x.edicoes or 0,
+            -ordem.get(x.estrato or "", 99),
+        )
+        vencedor, perdedor = (v, atual) if peso(v) > peso(atual) else (atual, v)
+        if vencedor is not atual:
+            saida[saida.index(atual)] = vencedor
+            por_nome[chave] = vencedor
+        for apelido in [perdedor.sigla, *(perdedor.apelidos or [])]:
+            if apelido and apelido not in vencedor.apelidos and apelido != vencedor.sigla:
+                vencedor.apelidos.append(apelido)
+    return saida
+
+
 def distribuicoes(vs: list[Veiculo]) -> dict:
     pcts = sorted(v.percentil for v in vs if v.percentil is not None)
     h5s = sorted(v.h5 for v in vs if v.h5 is not None)
@@ -802,7 +840,7 @@ def main() -> int:
     veiculos = montar_periodicos()
     print(f"  {len(veiculos)}")
     print("Montando eventos...", flush=True)
-    eventos = montar_eventos()
+    eventos = _fundir_eventos_repetidos(montar_eventos())
     print(f"  {len(eventos)}")
     veiculos += eventos
 

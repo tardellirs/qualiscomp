@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://qualiscomp.com"><img alt="Site" src="https://img.shields.io/badge/site-qualiscomp.com-2f6feb?style=flat-square"></a>
   <a href="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml"><img alt="Testes" src="https://github.com/tardellirs/qualiscomp/actions/workflows/testes.yml/badge.svg"></a>
-  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.851-0b7285?style=flat-square">
+  <img alt="Veículos" src="https://img.shields.io/badge/ve%C3%ADculos-3.836-0b7285?style=flat-square">
   <img alt="Ciclo" src="https://img.shields.io/badge/ciclo-2025--2028-495057?style=flat-square">
   <a href="LICENSE"><img alt="Licença" src="https://img.shields.io/badge/c%C3%B3digo-MIT-1c7ed6?style=flat-square"></a>
   <a href="CONTRIBUTING.md"><img alt="Contribuições" src="https://img.shields.io/badge/PRs-bem--vindos-2b8a3e?style=flat-square"></a>
@@ -51,7 +51,7 @@ CE-SBC Top10 sobe 2 níveis, Top20 sobe 1, relevante mantém. Sem h5: "Top" → 
 ```bash
 pip install -r requirements-dev.txt
 python site/build.py --servir      # gera site/dist e sobe em localhost:8000
-python -m pytest -q                # 195 testes
+python -m pytest -q                # 200 testes
 node site/checar.mjs               # abre em 5 tamanhos de tela e reporta problemas
 ```
 
@@ -100,7 +100,7 @@ qualis/apc.py         acordos de APC          qualis/sbc_calendario.py     agend
 site/build.py         gera o site estático
 site/app/             index.html · sobre.html · agenda.html · app.js · estilo.css
 site/dist/            saída publicada (versionada para o Vercel servir sem build)
-test_*.py             195 testes
+test_*.py             200 testes
 ```
 
 ## Contribuindo
@@ -124,8 +124,6 @@ Duas coisas em que ajuda de quem é da área rende mais:
 
 - **39 eventos** têm mais de uma entrada candidata no Google Scholar. A ficha
   mostra quais são; em alguns o h5 escolhido pode ser do evento errado.
-- **15 eventos** aparecem duas vezes, sob siglas diferentes (`ACM-MM` e
-  `ACM Multimedia`, `ECML` e `ECML PKDD`).
 - **27 eventos da SBC** ficam sem estrato: são recentes demais para a indução
   por tradição e não têm h5 no Scholar.
 - Percentil do **Web of Science** em 1.236 dos 2.692 periódicos; nos demais o

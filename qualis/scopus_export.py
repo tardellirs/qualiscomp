@@ -81,9 +81,24 @@ class Fonte:
 
     @property
     def descontinuada(self) -> bool:
-        """Deixou de ser indexada. O percentil vira retrato de um período morto."""
+        """Deixou de ser indexada — o percentil vira retrato de um período morto.
+
+        O sinal é o ANO MAIS RECENTE com percentil, não o `coverageEndYear` do
+        Scopus. Esse campo marca o fim do primeiro TRECHO de cobertura, não o
+        da revista: a Science aparece com fim em 1881 e a PNAS em 1951. Usá-lo
+        marcava 941 revistas como mortas, 658 delas vivas e indexadas.
+
+        Uma revista com percentil nos últimos dois anos está sendo indexada,
+        seja qual for o que diga o campo de cobertura.
+        """
         from datetime import date
-        return self.ano_fim is not None and self.ano_fim < date.today().year - 1
+
+        anos = [a for a, _, _ in (self.historico or [])]
+        ultimo = max(anos) if anos else self.ano_citescore
+        if ultimo is None:
+            # Sem série, resta o campo de cobertura — fraco, mas é o que há.
+            return self.ano_fim is not None and self.ano_fim < date.today().year - 1
+        return ultimo < date.today().year - 2
 
     @property
     def e_computacao(self) -> bool:
