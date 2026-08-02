@@ -414,31 +414,36 @@ def montar_eventos() -> list[Veiculo]:
                     fonte="Google Scholar Metrics",
                 ),
             ]
+            # A CE e a tradição são caminhos independentes, e ambos podem
+            # valer. O BSB é Top20 (A7 pela CE) e tem 16 edições (A5 pela
+            # indução): mostrar só a CE fazia o recibo terminar em A7 com A5
+            # no topo da ficha, sem explicar a diferença.
             if r.ce_sbc:
+                so_ce = rules.classificar_evento(
+                    r.sigla, h5=0, ce_sbc=r.ce_sbc or None,
+                    anos_tradicao_sbc=None, promovido_por_sociedade=False,
+                )
                 passos.append(
                     Passo(
                         rotulo=f"CE-SBC classifica como \u201c{r.ce_sbc}\u201d",
                         detalhe="para evento sem h5, o documento define: "
                         "\u201cTop\u201d \u2192 A7, \u201crelevante\u201d \u2192 A8",
-                        estrato=c.estrato,
+                        estrato=so_ce.estrato,
                         fonte="Documento de Área, p. 22",
                     )
                 )
-            elif anos:
+            if anos and info_sbc:
                 passos.append(
                     Passo(
                         rotulo=f"Evento da SBC com {anos} edições",
-                        detalhe="critério de indução: >=20 anos de tradição "
-                        "\u2192 A4; >=10 anos \u2192 A5",
+                        detalhe="critério de indução: a partir de 20 anos de "
+                        "tradição \u2192 A4; a partir de 10 \u2192 A5",
                         estrato=c.estrato,
-                        fonte="Documento de Área, p. 22",
+                        fonte="Documento de Área, p. 22-23",
                     )
                 )
-            # O critério de indução (evento nacional da SBC com >=20 anos -> A4,
-            # >=10 anos -> A5) exige o ano de fundação, que não temos de fonte
-            # verificável. Não aplicamos — mas avisamos, porque a diferença é
-            # grande: dos 126 eventos sem h5 que a CAPES classificou no ciclo
-            # anterior, 82 receberam estrato melhor que o nosso.
+            # Evento fora da lista da SBC não recebe indução por tradição —
+            # avisamos, porque a diferença chega a três estratos.
             nota = (
                 ""
                 if info_sbc
@@ -446,6 +451,7 @@ def montar_eventos() -> list[Veiculo]:
                 "indução pode elevá-lo. Ele não está na lista de eventos da "
                 "SBC que usamos, então não aplicamos."
             )
+
             out.append(
                 Veiculo(
                     slug=slug,
