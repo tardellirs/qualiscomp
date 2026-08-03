@@ -223,8 +223,11 @@ def carregar(pasta: Path | None = None) -> dict[str, Revista]:
 
         completas = [(r, _numero(r.get("2025 JIF"))) for r in linhas]
         completas = [(r, j) for r, j in completas if j is not None]
-        if len(completas) >= TETO_DO_EXPORT:
-            truncadas.append((categoria, len(completas)))
+        # O teto vale sobre as LINHAS EXPORTADAS, não sobre as que têm JIF:
+        # ECONOMICS veio com 601 linhas e 599 com JIF, e passava pela guarda
+        # contando as 599 — quando na verdade tinha sido cortada em 600.
+        if len(linhas) >= TETO_DO_EXPORT:
+            truncadas.append((categoria, len(linhas)))
             porcategoria[categoria] = {}
             continue
         if porcategoria.get(categoria) == {}:

@@ -51,7 +51,7 @@ CE-SBC Top10 sobe 2 níveis, Top20 sobe 1, relevante mantém. Sem h5: "Top" → 
 ```bash
 pip install -r requirements-dev.txt
 python site/build.py --servir      # gera site/dist e sobe em localhost:8000
-python -m pytest -q                # 205 testes
+python -m pytest -q                # 207 testes
 node site/checar.mjs               # abre em 5 tamanhos de tela e reporta problemas
 ```
 
@@ -101,7 +101,7 @@ qualis/apc.py         acordos de APC          qualis/sbc_calendario.py     agend
 site/build.py         gera o site estático
 site/app/             index.html · sobre.html · agenda.html · app.js · estilo.css
 site/dist/            saída publicada (versionada para o Vercel servir sem build)
-test_*.py             205 testes
+test_*.py             207 testes
 ```
 
 ## Contribuindo
@@ -129,8 +129,8 @@ Duas coisas em que ajuda de quem é da área rende mais:
   por tradição e não têm h5 no Scholar.
 - A API da Elsevier corta a paginação em 10.000 por área: SOCI e MEDI entram
   parciais (9.186 e 6.282).
-- Percentil do **Web of Science** em 1.236 dos 2.692 periódicos; nos demais o
-  estrato vem só do Scopus.
+- Percentil do **Web of Science** em 6.537 dos 30.266 periódicos; nos demais o
+  estrato vem só do Scopus e é, na prática, um piso.
 - **Qualis histórico** em 1.051 periódicos — os que a área chegou a classificar
   em algum ciclo.
 - A marca **APC** cobre os acordos das sete editoras negociadas pela CAPES.

@@ -276,3 +276,35 @@ def test_export_sem_categoria_e_sem_percentil_e_recusado(tmp_path, capsys):
         w.writerow(["A", "1111-1111", "N/A", "HISTORY", "0.4"])
     assert jcr.carregar(tmp_path) == {}
     assert "ignorado" in capsys.readouterr().out
+
+
+def test_teto_conta_linhas_exportadas_nao_as_com_jif(tmp_path, capsys):
+    """ECONOMICS veio com 601 linhas e 599 com JIF. Contar as 599 deixava
+    passar uma categoria cortada em 600 — e aí o N do ranking sai errado."""
+    p = tmp_path / "x_JCR_JournalResults_econ.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Selected Categories: CORTADA Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "2025 JIF"])
+        for i in range(jcr.TETO_DO_EXPORT - 1):
+            w.writerow([f"R{i}", f"{1000 + i:04d}-0000", "N/A", str(600 - i)])
+        w.writerow(["SemJIF", "9999-0000", "N/A", "N/A"])  # 600ª linha, sem JIF
+    assert jcr.carregar(tmp_path) == {}
+    assert "no teto" in capsys.readouterr().out
+
+
+def test_com_a_coluna_de_percentil_o_teto_nao_importa(tmp_path):
+    """Lendo o percentil publicado, não precisamos da categoria inteira — cada
+    revista já traz o seu. É por isso que vale pedir a coluna no JCR."""
+    p = tmp_path / "x_JCR_JournalResults_big.csv"
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Selected Categories: GRANDE Selected Editions: SCIE"])
+        w.writerow([])
+        w.writerow(["Journal name", "ISSN", "eISSN", "2025 JIF",
+                    jcr.COLUNA_PERCENTIL])
+        for i in range(jcr.TETO_DO_EXPORT + 1):
+            w.writerow([f"R{i}", f"{1000 + i:04d}-0000", "N/A", "1.0", "42.0"])
+    base = jcr.carregar(tmp_path)
+    assert base and jcr.buscar(["1000-0000"], base).percentil == 42.0
