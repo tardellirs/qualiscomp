@@ -269,6 +269,11 @@ def cmd_importar_api(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_importar_issns(args: argparse.Namespace) -> int:
+    elsevier.importar_issns(args.arquivo)
+    return 0
+
+
 def cmd_importar_scopus(args: argparse.Namespace) -> int:
     scopus_export.importar(args.arquivos, mesclar=not args.substituir)
     return 0
@@ -395,6 +400,14 @@ def main(argv: list[str] | None = None) -> int:
         help="áreas de topo do ASJC a varrer (padrão: COMP)",
     )
     p.set_defaults(func=cmd_importar_api)
+
+    p = sub.add_parser(
+        "importar-issns",
+        help="busca por ISSN os periódicos de data/periodicos_extra.csv "
+             "(revistas fora das áreas varridas do ASJC)",
+    )
+    p.add_argument("--arquivo", default=None)
+    p.set_defaults(func=cmd_importar_issns)
 
     p = sub.add_parser(
         "importar-scopus",

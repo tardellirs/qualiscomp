@@ -1,0 +1,42 @@
+// Periódicos buscados um a um por ISSN, além da varredura por área do ASJC.
+//
+// O `importar-api` varre áreas de topo do ASJC (COMP, ENGI, MATH, DECI, MULT).
+// Revista que a Elsevier classifica só em SOCI, ARTS ou PSYC fica de fora — e
+// a regra da Área 02 não restringe o campo do periódico: o que conta é a
+// aderência do ARTIGO à Computação. A "Education and Information Technologies"
+// tem percentil 99 e é onde muito artigo brasileiro de Informática na Educação
+// sai; ela estava invisível no site.
+//
+// Varrer SOCI inteira encheria o site de milhares de revistas de pedagogia,
+// psicologia e linguística sem relação com a área. Então a entrada é por ISSN,
+// uma a uma, com a razão registrada.
+//
+// Critério: interseção real entre educação e tecnologia/computação. Ficaram de
+// fora "Learning and Instruction", "Cognition and Instruction", "Instructional
+// Science" e afins — são pedagogia e psicologia da aprendizagem, sem o
+// componente tecnológico.
+//
+//     python -m qualis importar-issns
+//
+// Linhas com // são ignoradas.
+issn,titulo,porque
+1360-2357,Education and Information Technologies,informática na educação
+0007-1013,British Journal of Educational Technology,informática na educação
+1309-517X,Contemporary Educational Technology,informática na educação
+1176-3647,Educational Technology and Society,informática na educação
+1449-3098,Australasian Journal of Educational Technology,informática na educação
+1042-1629,Educational Technology Research and Development,informática na educação
+1793-7078,Research and Practice in Technology Enhanced Learning,tecnologia educacional
+2073-7904,Knowledge Management and E-Learning,e-learning e gestão do conhecimento
+1303-6521,Turkish Online Journal of Educational Technology,tecnologia educacional
+1302-6488,Turkish Online Journal of Distance Education,educação a distância
+0158-7919,Distance Education,educação a distância
+1477-8386,International Journal of Learning Technology,tecnologia de aprendizagem
+1045-1064,Journal of Technology Education,educação tecnológica
+1446-2257,World Transactions on Engineering and Technology Education,educação em engenharia e tecnologia
+2040-8633,Design and Technology Education,educação em design e tecnologia
+1305-8215,"Eurasia Journal of Mathematics, Science and Technology Education",educação em ciência e tecnologia
+1492-6156,"Canadian Journal of Science, Mathematics and Technology Education",educação em ciência e tecnologia
+0263-5143,Research in Science and Technological Education,educação científica e tecnológica
+1941-8027,Journal of Educational Technology Development and Exchange,tecnologia educacional
+3025-3888,Journal of Educational Technology and Learning Creativity,tecnologia educacional

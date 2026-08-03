@@ -265,6 +265,75 @@ def por_issn(issn: str) -> Fonte | None:
     return _para_fonte(entradas[0]) if entradas else None
 
 
+EXTRA = BD.parent / "periodicos_extra.csv"
+
+
+def _gravar(bd: dict[str, Fonte]) -> None:
+    import gzip
+    from dataclasses import asdict
+
+    BD.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(BD, "wt", encoding="utf-8") as fh:
+        json.dump(
+            {k: {**asdict(v), "issns": getattr(v, "issns", [])} for k, v in bd.items()},
+            fh,
+            ensure_ascii=False,
+        )
+
+
+def importar_issns(caminho=None, *, verbose: bool = True) -> dict[str, Fonte]:
+    """Busca um a um os ISSNs de `data/periodicos_extra.csv` e mescla na base.
+
+    A varredura por área do ASJC não alcança revista classificada só fora de
+    COMP/ENGI/MATH/DECI/MULT. Ver o cabeçalho do CSV para o critério de
+    inclusão.
+    """
+    import csv
+    from pathlib import Path as _P
+
+    caminho = _P(caminho) if caminho else EXTRA
+    if not caminho.exists():
+        if verbose:
+            print(f"{caminho} não existe — nada a importar.")
+        return carregar()
+
+    with caminho.open(encoding="utf-8") as fh:
+        linhas = [ln for ln in fh if not ln.lstrip().startswith("//")]
+
+    bd = carregar()
+    novos = ja_tinha = falhou = 0
+    for row in csv.DictReader(linhas):
+        issn = (row.get("issn") or "").strip()
+        if not issn:
+            continue
+        try:
+            f = por_issn(issn)
+        except Exception as e:  # rede, cota, chave
+            if verbose:
+                print(f"  {issn}: {type(e).__name__} {e}")
+            falhou += 1
+            continue
+        if f is None:
+            if verbose:
+                print(f"  {issn}: sem percentil no Scopus")
+            falhou += 1
+            continue
+        k = normalizar(f.titulo)
+        if k in bd:
+            ja_tinha += 1
+            continue
+        bd[k] = f
+        novos += 1
+        if verbose:
+            print(f"  + pct={f.percentil:>5} {f.titulo[:52]}")
+        time.sleep(PAUSA)
+
+    _gravar(bd)
+    if verbose:
+        print(f"\n{novos} novos, {ja_tinha} já estavam, {falhou} sem resultado.")
+    return bd
+
+
 def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
     """Busca as áreas pedidas e mescla na base local, ficando com o maior
     percentil em caso de duplicata — a mesma convenção da regra."""
@@ -294,19 +363,7 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
                     if getattr(f, campo) and not getattr(atual, campo):
                         setattr(atual, campo, getattr(f, campo))
 
-    import gzip
-    from dataclasses import asdict
-
-    BD.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(BD, "wt", encoding="utf-8") as fh:
-        json.dump(
-            {
-                k: {**asdict(v), "issns": getattr(v, "issns", [])}
-                for k, v in bd.items()
-            },
-            fh,
-            ensure_ascii=False,
-        )
+    _gravar(bd)
     if verbose:
         print(
             f"\nbase: {antes} -> {len(bd)} periódicos "
