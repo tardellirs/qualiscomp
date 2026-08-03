@@ -11,10 +11,12 @@
 // psicologia e linguística sem relação com a área. Então a entrada é por ISSN,
 // uma a uma, com a razão registrada.
 //
-// Critério: interseção real entre educação e tecnologia/computação. Ficaram de
-// fora "Learning and Instruction", "Cognition and Instruction", "Instructional
-// Science" e afins — são pedagogia e psicologia da aprendizagem, sem o
-// componente tecnológico.
+// Critério: a revista é sobre COMPUTAÇÃO APLICADA a um campo, não sobre o campo
+// que por acaso usa computação. "Journal of the American Medical Informatics
+// Association" entra; "Remote Sensing of Environment" não, apesar de processar
+// imagem — é revista de Ciências da Terra. Pelo mesmo motivo ficaram fora
+// "Learning and Instruction" (psicologia da aprendizagem), "Precision
+// Agriculture" (agronomia) e as de linguística de corpus.
 //
 //     python -m qualis importar-issns
 //
@@ -40,3 +42,33 @@ issn,titulo,porque
 0263-5143,Research in Science and Technological Education,educação científica e tecnológica
 1941-8027,Journal of Educational Technology Development and Exchange,tecnologia educacional
 3025-3888,Journal of Educational Technology and Learning Creativity,tecnologia educacional
+// --- computação aplicada a outros campos ---
+2589-7500,The Lancet Digital Health,saúde digital
+0160-791X,Technology in Society,tecnologia e sociedade
+2949-7612,Mayo Clinic Proceedings: Digital Health,saúde digital
+1066-2243,Internet Research,internet e sociedade
+0270-4676,"Bulletin of Science, Technology and Society",tecnologia e sociedade
+1833-3583,Health Information Management Journal,informática em saúde
+1067-5027,Journal of the American Medical Informatics Association,informática em saúde
+1357-633X,Journal of Telemedicine and Telecare,telemedicina
+1009-5020,Geo-Spatial Information Science,informação geoespacial
+1834-7649,International Journal of Accounting and Information Management,sistemas de informação
+1545-5963,IEEE/ACM Transactions on Computational Biology and Bioinformatics,biologia computacional
+1386-5056,International Journal of Medical Informatics,informática em saúde
+2588-9141,Clinical eHealth,saúde digital
+1523-0406,Cartography and Geographic Information Science,informação geográfica
+2637-6415,IEEE Transactions on Technology and Society,tecnologia e sociedade
+2666-6936,Cardiovascular Digital Health Journal,saúde digital
+2767-3170,PLOS Digital Health,saúde digital
+1432-5012,International Journal on Digital Libraries,bibliotecas digitais
+1476-9271,Computational Biology and Chemistry,biologia computacional
+0943-4747,Yearbook of Medical Informatics,informática em saúde
+1530-5627,Telemedicine and e-Health,telemedicina
+1559-4122,Perspectives in Health Information Management,informática em saúde
+2998-4165,IEEE Transactions on Computational Biology and Bioinformatics,biologia computacional
+0961-0006,Journal of Librarianship and Information Science,ciência da informação
+1547-9684,Informing Science,ciência da informação
+2634-3916,European Heart Journal - Digital Health,saúde digital
+2291-9694,JMIR Medical Informatics,informática em saúde
+0278-0097,IEEE Technology and Society Magazine,tecnologia e sociedade
+1460-4582,Health Informatics Journal,informática em saúde
