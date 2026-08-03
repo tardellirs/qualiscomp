@@ -12,6 +12,16 @@ const norm = (s) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
    .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 
+// O índice omite o slug quando ele sai do nome — 96% dos casos, e com 30 mil
+// veículos isso é 1,2 MB a menos na abertura. Precisa casar byte a byte com
+// `slugificar` em site/build.py, senão a ficha não é encontrada.
+const slugDe = (v) => v.s || `${v.t}-${
+  (v.n || '').toLowerCase().normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80) || 'veiculo'}`;
+
 const ESTRATOS = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'];
 
 /* Funcionalidades em teste. Trocar aqui muda o padrão; `?flag=nome` liga só
@@ -265,7 +275,8 @@ function desenhar() {
     const ind = v.i == null ? '—'
       : v.t === 'p' ? `${v.i.toFixed(0)}<small style="opacity:.6">%</small>`
       : `h5 ${v.i}`;
-    return `<button class="item" data-slug="${v.s}" aria-current="${v.s === atual}">
+    const sl = slugDe(v);
+    return `<button class="item" data-slug="${sl}" aria-current="${sl === atual}">
       ${chip(v.e)}
       <span class="item__nome">
         <b>${v.g ? `${esc(v.g)} · ` : ''}${esc(v.n)}</b>

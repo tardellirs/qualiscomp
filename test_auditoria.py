@@ -56,3 +56,41 @@ def test_todo_periodico_publicado_tem_percentil():
 
 def test_todo_veiculo_tem_recibo():
     assert not [d["slug"] for d in _ler("p") + _ler("e") if not d.get("passos")]
+
+
+def test_slug_omitido_e_derivavel_do_nome():
+    """O índice omite o slug quando ele sai do nome — 96% dos casos, e com 30
+    mil veículos isso é 1,2 MB a menos na abertura. A derivação em app.js
+    precisa bater byte a byte com `slugificar` do build; um descasamento faria
+    a ficha não abrir, sem erro visível."""
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "site"))
+    from build import slugificar
+
+    indice = json.loads(
+        (DIST.parent / "indice.json").read_text(encoding="utf-8")
+    )["veiculos"]
+    for v in indice:
+        if "s" in v:
+            continue  # exceção guardada de propósito
+        derivado = f"{v['t']}-{slugificar(v['n'])}"
+        assert (DIST / f"{derivado}.json").exists(), f"ficha ausente: {derivado}"
+
+
+def test_toda_ficha_do_indice_existe():
+    """Uma amostra ampla: slug guardado ou derivado, o arquivo tem que estar lá."""
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "site"))
+    from build import slugificar
+
+    indice = json.loads(
+        (DIST.parent / "indice.json").read_text(encoding="utf-8")
+    )["veiculos"]
+    faltam = [
+        v["n"]
+        for v in indice[::37]
+        if not (DIST / f"{v.get('s') or f'{v[chr(116)]}-{slugificar(v[chr(110)])}'}.json").exists()
+    ]
+    assert not faltam, faltam[:5]

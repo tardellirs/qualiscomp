@@ -865,6 +865,14 @@ def main() -> int:
     # Editora repetida em 2.800 entradas dobrava o índice; vira tabela e cada
     # veículo guarda só o número.
     indice = [v.para_indice() for v in veiculos]
+
+    # O slug é 26% do índice e sai do nome em 96% dos casos — vale a pena
+    # deixá-lo implícito e guardar só as exceções (eventos, que usam a sigla).
+    # Com 30 mil veículos, são 1,4 MB a menos na abertura do site.
+    for d in indice:
+        if d.get("s") == f"{d['t']}-{slugificar(d['n'])}":
+            del d["s"]
+
     editoras: list[str] = []
     pos: dict[str, int] = {}
     for d in indice:

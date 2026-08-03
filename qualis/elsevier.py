@@ -44,17 +44,39 @@ PAUSA = 0.25  # respeita o throttling; a cota semanal é de 20.000 requisições
 
 # Áreas de topo do ASJC. COMP é o núcleo; as demais existem porque a regra não
 # restringe o campo da revista — só exige aderência do ARTIGO à Computação.
+# As 27 áreas de topo do ASJC. Varremos TODAS: a regra da Área 02 não restringe
+# o campo do periódico — artigo de Computação publicado em revista de medicina,
+# direito ou agronomia conta igual. Restringir a busca a COMP deixava invisível
+# a JAMIA (percentil 97) e a Education and Information Technologies (98), que
+# são destino frequente de brasileiro da área.
 AREAS = {
+    "AGRI": "Agricultural and Biological Sciences",
+    "ARTS": "Arts and Humanities",
+    "BIOC": "Biochemistry, Genetics and Molecular Biology",
+    "BUSI": "Business, Management and Accounting",
+    "CENG": "Chemical Engineering",
+    "CHEM": "Chemistry",
     "COMP": "Computer Science",
-    "ENGI": "Engineering",
-    "MATH": "Mathematics",
     "DECI": "Decision Sciences",
-    "MULT": "Multidisciplinary",
+    "DENT": "Dentistry",
+    "EART": "Earth and Planetary Sciences",
+    "ECON": "Economics, Econometrics and Finance",
+    "ENER": "Energy",
+    "ENGI": "Engineering",
+    "ENVI": "Environmental Science",
     "HEAL": "Health Professions",
-    "SOCI": "Social Sciences",
+    "IMMU": "Immunology and Microbiology",
+    "MATE": "Materials Science",
+    "MATH": "Mathematics",
     "MEDI": "Medicine",
-    "BUSI": "Business and Management",
+    "MULT": "Multidisciplinary",
+    "NEUR": "Neuroscience",
+    "NURS": "Nursing",
+    "PHAR": "Pharmacology, Toxicology and Pharmaceutics",
+    "PHYS": "Physics and Astronomy",
     "PSYC": "Psychology",
+    "SOCI": "Social Sciences",
+    "VETE": "Veterinary",
 }
 
 
@@ -236,9 +258,20 @@ def buscar_area(
     out: list[Fonte] = []
     start = inicio
     while True:
-        d, restante = _pedir(
-            {"subj": abbrev, "count": POR_PAGINA, "start": start, "view": "CITESCORE"}
-        )
+        try:
+            d, restante = _pedir(
+                {"subj": abbrev, "count": POR_PAGINA, "start": start,
+                 "view": "CITESCORE"}
+            )
+        except Exception as e:
+            # A API corta a paginação em 10.000 e devolve 500 dali em diante.
+            # Áreas grandes (SOCI, MEDI) passam disso. Devolver o que já foi
+            # lido é muito melhor que perder a varredura inteira — foi o que
+            # aconteceu com as 9.186 revistas de SOCI já baixadas.
+            if verbose:
+                print(f"  {abbrev}: parou em {start} ({type(e).__name__}); "
+                      f"{len(out)} com percentil até aqui", flush=True)
+            break
         entradas = (d.get("serial-metadata-response") or {}).get("entry") or []
         if not entradas or "error" in entradas[0]:
             break
@@ -342,7 +375,17 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
     novos = atualizados = 0
 
     for a in areas:
-        for f in buscar_area(a, verbose=verbose):
+        # Grava a cada área. Uma varredura de 27 áreas leva dezenas de minutos,
+        # e a API devolve 500 de vez em quando: sem isto, uma falha na 20ª área
+        # jogava fora o trabalho das 19 anteriores.
+        try:
+            encontrados = buscar_area(a, verbose=verbose)
+        except Exception as e:
+            if verbose:
+                print(f"  {a}: interrompida ({type(e).__name__}) — segue para a próxima")
+            _gravar(bd)
+            continue
+        for f in encontrados:
             k = normalizar(f.titulo)
             atual = bd.get(k)
             if atual is None:
@@ -363,6 +406,9 @@ def importar(areas: list[str], *, verbose: bool = True) -> dict[str, Fonte]:
                     if getattr(f, campo) and not getattr(atual, campo):
                         setattr(atual, campo, getattr(f, campo))
 
+        _gravar(bd)
+        if verbose:
+            print(f"  {a}: base com {len(bd)} periódicos")
     _gravar(bd)
     if verbose:
         print(
