@@ -10,7 +10,18 @@ Dois defeitos motivaram estes testes, ambos inflando estrato:
    Computing, com h5=39, e saía A1.
 """
 
+import pytest
+
 from qualis import coleta, sbc, scholar
+
+# `sbc.ler()` e `sbc.eventos_da_sbc()` BAIXAM a planilha das CEs quando ela não
+# está em data/ — que é o caso da CI, porque o arquivo não é versionado (sem
+# licença declarada). Sem esta guarda os testes tentavam rede e estouravam o
+# tempo. Teste não faz I/O de rede.
+precisa_da_planilha = pytest.mark.skipif(
+    not sbc.CACHE.exists(),
+    reason="planilha das CEs da SBC não está em data/ (ver README)",
+)
 
 
 class CacheFalso:
@@ -75,6 +86,7 @@ def test_sem_entrada_por_sigla_o_maior_h5_ainda_vale():
     assert coleta.resolver(ev, cache).h5 == 40
 
 
+@precisa_da_planilha
 def test_apelido_recusado_sai_das_consultas():
     recusados = sbc.apelidos_recusados()
     assert ("SOCC", "acm symposium on cloud computing") in recusados
@@ -143,6 +155,7 @@ def test_semelhanca_desempata_antes_do_h5():
     assert r.h5 == 256
 
 
+@precisa_da_planilha
 def test_ano_de_fundacao_vence_contagem_de_edicoes(tmp_path, monkeypatch):
     """Edições é piso, e o piso erra pela metade em evento bienal.
 
